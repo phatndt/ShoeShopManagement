@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ShoeShopManagement.Resources">
+    <SolidColorBrush x:Key="Gray" Color="#FF415d80"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GrayWhite" Color="#FFd7e2e9"></SolidColorBrush>
+    <SolidColorBrush x:Key="AquaWhite" Color="#FFa5d4dc"></SolidColorBrush>
+    <SolidColorBrush x:Key="GreenWhite" Color="#FFaade87"></SolidColorBrush>
+    <SolidColorBrush x:Key="NearWhite" Color="#FFf2f4f8"></SolidColorBrush>
+    <SolidColorBrush x:Key="Color1" Color="#FF264653"></SolidColorBrush>
+    <SolidColorBrush x:Key="Color2" Color="#FF2a9d8f"></SolidColorBrush>
+    <SolidColorBrush x:Key="Color3" Color="#FFe9c46a"></SolidColorBrush>
+    <SolidColorBrush x:Key="Color4" Color="#FFf4a261"></SolidColorBrush>
+    <SolidColorBrush x:Key="Color5" Color="#FFe76f51"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PaletteColor1" Color="#FF222a68"></SolidColorBrush>
+    <SolidColorBrush x:Key="PaletteColor2" Color="#FF673ab7"></SolidColorBrush>
+    <SolidColorBrush x:Key="PaletteColor3" Color="#FFff6666"></SolidColorBrush>
+    <SolidColorBrush x:Key="PaletteColor4" Color="#FFccff66"></SolidColorBrush>
+    <SolidColorBrush x:Key="PaletteColor5" Color="#FF5d2e8c"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="t" Color="#CCFF99"></SolidColorBrush>
+    
+</ResourceDictionary>
