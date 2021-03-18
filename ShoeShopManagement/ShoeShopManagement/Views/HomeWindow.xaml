@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
         mc:Ignorable="d"
+        x:Name="HomeWd"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         Title="HomeWindow" Height="800" Width="1400"
@@ -39,8 +41,20 @@
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon Grid.Column="0" Kind="Home"/>
                     <Button Content="Trang chủ"
-                                 x:Name="btnHome"
-                            Style="{StaticResource MainMenuButton}"></Button>
+                            x:Name="btnHome"
+                            Style="{StaticResource MainMenuButton}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -48,8 +62,20 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" />
-                    <Button Style="{StaticResource MainMenuButton}" 
-                            Content="Kinh Doanh"></Button>
+                    <Button Style="{StaticResource MainMenuButton}"
+                            x:Name="btnBusiness"
+                            Content="Kinh Doanh">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnBusiness}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -171,7 +197,10 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="1"
-                  Background="#E0FFFF">
+                  Background="#E0FFFF"
+                  x:Name="grd">
+                <local:BusinessWindow x:Name="BusinessTab"
+                                      Visibility="Hidden"></local:BusinessWindow>
             </Grid>
         </Grid>
     </Grid>

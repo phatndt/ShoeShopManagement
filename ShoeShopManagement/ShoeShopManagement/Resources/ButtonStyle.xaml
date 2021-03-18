@@ -4,7 +4,7 @@
     <Style x:Key="MainMenuButton" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Background" Value="White"></Setter>
-        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="FontFamily" Value="Roboto"></Setter>
         <Setter Property="FontWeight" Value="Heavy"></Setter>
         <Setter Property="Foreground" Value="Black"></Setter>
@@ -24,6 +24,19 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="White"></Setter>
                 <Setter Property="Foreground" Value="#0066FF"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="GreenButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Heavy"></Setter>
+        <Setter Property="Foreground" Value="white"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PaletteColor2}"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource PaletteColor4}"></Setter>
             </Trigger>
         </Style.Triggers>
     </Style>

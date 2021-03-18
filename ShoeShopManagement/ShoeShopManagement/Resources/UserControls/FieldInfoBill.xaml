@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ShoeShopManagement.Resources.UserControls.FieldInfoBill"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="60" d:DesignWidth="1100"
+             Height="40"
+             Width="1080"
+             Margin="0 0 0 1">
+    <Grid x:Name="grdMain"
+          Background="{DynamicResource t}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="Margin" Value="5 0 0 0"></Setter>
+            </Style>
+        </Grid.Resources>
+        <TextBlock x:Name="Id" 
+                   Text="Anh" 
+                   Grid.Column="0"></TextBlock>
+        <TextBlock x:Name="DateSell" 
+                   Text="Anh" 
+                   Grid.Column="1"></TextBlock>
+        <TextBlock x:Name="StaffName" 
+                   Text="Anh" 
+                   Grid.Column="2"></TextBlock>
+        <TextBlock x:Name="CustomerName" 
+                   Text="Anh" 
+                   Grid.Column="3"></TextBlock>
+        <TextBlock x:Name="Money" 
+                   Text="Anh" 
+                   Grid.Column="4"></TextBlock>
+        
+    </Grid> 
+</UserControl>

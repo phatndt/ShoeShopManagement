@@ -3,4 +3,5 @@
                     xmlns:viewmodels="clr-namespace:ShoeShopManagement.ViewModels" 
                     xmlns:local="clr-namespace:ShoeShopManagement.Resources">
     <viewmodels:HomeViewModel x:Key="HomeVM"></viewmodels:HomeViewModel>
+    <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
 </ResourceDictionary> 

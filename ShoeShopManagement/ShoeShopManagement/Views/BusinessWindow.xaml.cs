@@ -10,22 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for HomeWindow.xaml
+    /// Interaction logic for BusinessWindow.xaml
     /// </summary>
-    public partial class HomeWindow : Window
+    public partial class BusinessWindow : UserControl
     {
-        public HomeWindow()
+        public BusinessWindow()
         {
-            //InitializeComponent();
-            //SignIn a = new SignIn();
-            //this.Close();
-            //a.ShowDialog();
+            InitializeComponent();
         }
-
     }
 }
