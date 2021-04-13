@@ -8,5 +8,6 @@ namespace ShoeShopManagement.Models
 {
     class test
     {
+        private int t;
     }
 }
