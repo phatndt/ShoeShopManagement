@@ -27,7 +27,7 @@ namespace ShoeShopManagement.Model
         }
         public Customer(int idCustomer, string name, string address, string phoneNumber)
         {
-            this.idCustomer = idCustomer;
+            this.IdCustomer = idCustomer;
             this.name = name;
             this.address = address;
             this.phoneNumber = phoneNumber;
