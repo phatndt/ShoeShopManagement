@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
@@ -160,9 +161,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Image\Logo.jpg" />
   </ItemGroup>
