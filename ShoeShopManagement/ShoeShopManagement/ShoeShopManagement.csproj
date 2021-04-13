@@ -69,6 +69,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Bill.cs" />
+    <Compile Include="Models\BillDetail.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Good.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Account.cs"/>
+    <Compile Include="Models\Salary.cs"/>
+    <Compile Include="Models\StockIn.cs"/>
+    <Compile Include="Models\StockInDetail.cs"/>
+    <Compile Include="Models\Employee.cs"/>
     <Compile Include="Models\test.cs" />
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
