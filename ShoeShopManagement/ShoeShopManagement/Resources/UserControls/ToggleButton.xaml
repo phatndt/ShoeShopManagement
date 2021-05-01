@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ShoeShopManagement.Resources.UserControls.ToggleButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+             mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             Height="176.667" Width="288.667">
+
+
+
+    <Viewbox Margin="0,2,2,1">
+        <Grid HorizontalAlignment="Left" Height="60" Margin="0" VerticalAlignment="Top" Width="100">
+            <Rectangle x:Name="Back" Fill="#FFA0A0A0" HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="96" Margin="2,2,0,0" RadiusY="29" RadiusX="29" MouseLeftButtonDown="Back_MouseLeftButtonDown"/>
+            <Ellipse x:Name="Dot" Fill="White" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="50" MouseLeftButtonDown="Dot_MouseLeftButtonDown"/>
+            <materialDesign:PackIcon
+                x:Name="Add"
+                Kind="AccountPlus" RenderTransformOrigin="0.553,1.356" Margin="10,10,0,0" Height="40" Width="35"/>
+            <materialDesign:PackIcon 
+                x:Name="Login"
+                Kind="Login" Margin="56,14,0,0" Height="32" Width="28" />
+
+        </Grid>
+    </Viewbox>
+
+</UserControl>

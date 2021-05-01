@@ -15,49 +15,15 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
         ResizeMode="NoResize"
-     Title="SignUp" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
+     Title="SignUp" Height="500" Width="320" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="1.2,0.5" StartPoint="0.2,0.5">
-                <GradientStop Color="#FFA5FBCE" Offset="0"/>
-                <GradientStop Color="#FFF3F8CD" Offset="0.5"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Image 
-                Source="C:\D\DAI_HOC\SecondYear\NMCNPM\3.jpg"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Height="150"
-                Width="300"
-                Margin="30 0 0 0">
-            </Image>
-            <TextBlock
-                TextWrapping="Wrap"
-                FontWeight="Bold"
-                Text="#1 Intelligent Management Shoes Shop App for Office, Mobile and Remote Teams"
-                FontSize="24"
-                VerticalAlignment="Center"
-                Margin="10 0 -170 200" Height="78"/>
-            <MediaElement 
-                Source="C:\D\DAI_HOC\SecondYear\NMCNPM\a.mp4"
-                Margin="84,84,-74.4,-84"
-                />
-        </Grid>
         <materialDesign:Card 
             UniformCornerRadius="10"
-            materialDesign:ShadowAssist.ShadowDepth="Depth4"
-            Margin="223.2,54,124,46"
-            Grid.Column="1" 
+            materialDesign:ShadowAssist.ShadowDepth="Depth4" 
             Width="320" 
             Height= "500" 
             HorizontalAlignment="Center" 
-            VerticalAlignment="Center" Grid.ColumnSpan="2">
+            VerticalAlignment="Center">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -76,34 +42,10 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <Grid Width="100">
-                                <Button
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Margin="0 18 0 0"
-                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                Height="30"
-                                materialDesign:ButtonAssist.CornerRadius="0"
-                                ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Background="#FFB2AFBC" >
-                                    <TextBlock
-                                    Text="Sign Up" />
-                                </Button>
-                            </Grid>
+                            <Grid Width="100"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <Grid Width="100" HorizontalAlignment="Right" Margin="0,0,12.8,-0.2">
-                                <Button                                
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Margin="-77,18,0,0"
-                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                Height="30"
-                                materialDesign:ButtonAssist.CornerRadius="0"
-                                ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Background="#FFB2AFBC">
-                                    <TextBlock
-                                    Text="Sign In" />
-                                </Button>
-                            </Grid>
+                            <Grid Width="100" HorizontalAlignment="Right" Margin="0,0,12.8,-0.2"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">

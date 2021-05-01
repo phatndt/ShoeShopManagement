@@ -199,8 +199,12 @@
             <Grid Grid.Row="1"
                   Background="#E0FFFF"
                   x:Name="grd">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="17*"/>
+                    <ColumnDefinition Width="1098*"/>
+                </Grid.ColumnDefinitions>
                 <local:BusinessWindow x:Name="BusinessTab"
-                                      Visibility="Hidden"></local:BusinessWindow>
+                                      Visibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,0.2,0.2"></local:BusinessWindow>
             </Grid>
         </Grid>
     </Grid>
