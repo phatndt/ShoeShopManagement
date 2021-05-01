@@ -15,17 +15,18 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for HomeWindow.xaml
+    /// Interaction logic for SignIn_Up.xaml
     /// </summary>
-    public partial class HomeWindow : Window
+    public partial class SignIn_Up : Window
     {
-        public HomeWindow()
+        public SignIn_Up()
         {
             InitializeComponent();
-            SignIn_Up a = new SignIn_Up();
-            this.Close();
-            a.ShowDialog();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -90,6 +90,9 @@
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\ToggleButton.xaml.cs">
+      <DependentUpon>ToggleButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Views\AddEmployeeWindow.xaml.cs">
       <DependentUpon>AddEmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SignIn_UpViewModel.cs" />
     <Compile Include="Views\BusinessWindow.xaml.cs">
       <DependentUpon>BusinessWindow.xaml</DependentUpon>
     </Compile>
@@ -106,6 +110,9 @@
     </Compile>
     <Compile Include="Views\SignIn.xaml.cs">
       <DependentUpon>SignIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignIn_Up.xaml.cs">
+      <DependentUpon>SignIn_Up.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
@@ -142,7 +149,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddEmployeeWindow.xaml">
+    <Page Include="Views\AddEmployeeWindow.xaml"
+    </Page>
+    <Page Include="Resources\UserControls\ToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignIn_Up.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Image\btnImage.png" />
+    <Resource Include="Resources\Image\Logo2.jpg" />
+    <Resource Include="Resources\Image\background.png" />
+    <Resource Include="Resources\Image\logo3.png" />
     <Content Include="Resources\Image\intro.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
