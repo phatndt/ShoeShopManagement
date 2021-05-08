@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ShoeShopManagement.Resources">
     <SolidColorBrush x:Key="Gray" Color="#FF415d80"></SolidColorBrush>
+    <SolidColorBrush x:Key="White" Color="White"/>
 
     <SolidColorBrush x:Key="GrayWhite" Color="#FFd7e2e9"></SolidColorBrush>
     <SolidColorBrush x:Key="AquaWhite" Color="#FFa5d4dc"></SolidColorBrush>

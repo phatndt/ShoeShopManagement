@@ -47,6 +47,7 @@
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
@@ -69,24 +70,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAL\DataProvider.cs" />
+    <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\SQLConnection.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Good.cs" />
     <Compile Include="Models\Service.cs" />
-    <Compile Include="Models\Account.cs"/>
-    <Compile Include="Models\Salary.cs"/>
-    <Compile Include="Models\StockIn.cs"/>
-    <Compile Include="Models\StockInDetail.cs"/>
-    <Compile Include="Models\Employee.cs"/>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\StockIn.cs" />
+    <Compile Include="Models\StockInDetail.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\test.cs" />
+    <Compile Include="Resources\UserControls\EmployeeUc.xaml.cs">
+      <DependentUpon>EmployeeUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\AddEmployeeWindow.xaml.cs">
+      <DependentUpon>AddEmployeeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BusinessWindow.xaml.cs">
       <DependentUpon>BusinessWindow.xaml</DependentUpon>
     </Compile>
@@ -123,7 +134,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\UserControls\EmployeeUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\FieldInfoBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +195,7 @@
     <Resource Include="Resources\Image\Logo.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Image\btnImage.png" />
     <Content Include="Resources\Image\intro.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
