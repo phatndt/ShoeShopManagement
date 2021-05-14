@@ -23,5 +23,6 @@ namespace ShoeShopManagement.Views
         {
             InitializeComponent();
         }
+
     }
 }

@@ -21,5 +21,6 @@
     <SolidColorBrush x:Key="PaletteColor5" Color="#FF5d2e8c"></SolidColorBrush>
 
     <SolidColorBrush x:Key="t" Color="#CCFF99"></SolidColorBrush>
-    
+
+    <SolidColorBrush x:Key="Orange1" Color="#FFFF8500"></SolidColorBrush>
 </ResourceDictionary>

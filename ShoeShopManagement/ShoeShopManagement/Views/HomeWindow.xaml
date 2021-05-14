@@ -242,8 +242,7 @@
                         FontSize="18"
                         FontWeight="SemiBold" FlowDirection="LeftToRight" >
                         <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                         </Button.Background>
                     </Button>
                     <Button 
@@ -253,7 +252,6 @@
                         CommandParameter="{Binding ElementName=wdHome}"
                         materialDesign:ButtonAssist.CornerRadius="2"
                         BorderThickness="0"
-                        Background="{DynamicResource PaletteColor3}"
                         ToolTip="Trả lương"
                         Margin="20,0,0,0" 
                         VerticalAlignment="Center" 
@@ -262,13 +260,18 @@
                         Content="Trả lương" 
                         FontSize="18" 
                         FontWeight="SemiBold" 
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                        </Button.Background>
+                    </Button>
                 </StackPanel>
                 <Grid 
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     Margin="20,0,0,0" 
-                    Width="1120" >
+                    Width="1120"
+                    Background="{DynamicResource Orange1}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2.5*"/>
@@ -279,10 +282,6 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.Background>
-                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
-                    </Grid.Background>
                     <TextBlock 
                         Grid.Column="0"
                         HorizontalAlignment="Center" 

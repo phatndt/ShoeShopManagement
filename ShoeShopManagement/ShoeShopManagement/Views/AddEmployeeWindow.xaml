@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
@@ -52,7 +53,7 @@
                     BorderThickness="0" 
                     MaxLines="1"
                     Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}" 
+                    Foreground="{StaticResource Orange1}" 
                     Margin="0,0,60,0" 
                     IsReadOnly="True" 
                     Height="40" 
@@ -61,7 +62,7 @@
                     VerticalAlignment="Center" 
                     SelectionBrush="{x:Null}"
                     FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}">
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
             </TextBox>
         </Grid>
         <Grid  
@@ -98,14 +99,14 @@
                     MaxLines="1"
                     Padding="0" 
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Foreground="{StaticResource PaletteColor3}"
+                    Foreground="{StaticResource Orange1}"
                     Margin="0 0 60 0"
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center" 
                     FontWeight="SemiBold" 
                     SelectionBrush="{x:Null}" 
                     CaretBrush="{x:Null}"
-                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}"/>
+                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}"/>
         </Grid>
         <Grid   
             x:Name="grdDate" 
@@ -130,11 +131,13 @@
                     FontSize="14" 
                     BorderThickness="0" 
                     Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}"
+                    Foreground="{StaticResource Orange1}"
                     Margin="0,0,60,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold"/>
+                    FontWeight="SemiBold"
+                materialDesign:ThemeAssist.Theme="Light"
+                Background="{DynamicResource PaletteColor3}"/>
             <Rectangle 
                     x:Name="recDate"
                     HorizontalAlignment="Right" 
@@ -142,8 +145,7 @@
                     Width="300"
                     Margin="0 0 50 0"
                     RadiusY="6" 
-                    RadiusX="6"
-                    Stroke="{StaticResource PaletteColor1}"/>
+                    RadiusX="6" Stroke="#FF222A68"/>
         </Grid>
         <Grid   
             x:Name="grdSex" 
@@ -172,15 +174,15 @@
                     Padding="20,1,0,0"
                     FontSize="14"
                     FontWeight="Bold" 
-                    BorderBrush="{StaticResource PaletteColor3}" 
-                    Background="{StaticResource PaletteColor3}" 
+                    BorderBrush="{StaticResource Orange1}" 
+                    Background="{StaticResource Orange1}" 
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Center"/>
                 <RadioButton
                     x:Name="rdoFemale"
                     Style="{StaticResource MaterialDesignLightRadioButton}"
-                    BorderBrush="{StaticResource PaletteColor3}" 
-                    Background="{StaticResource PaletteColor3}" 
+                    BorderBrush="{StaticResource Orange1}" 
+                    Background="{StaticResource Orange1}" 
                     Content="Nữ"
                     Padding="20,1,0,0" 
                     FontSize="14" 
@@ -190,7 +192,7 @@
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Left" Margin="20,0,0,0"/>
             </StackPanel>
-            
+
         </Grid>
         <Grid   
             x:Name="grdStartDate" 
@@ -215,7 +217,7 @@
                     FontSize="14" 
                     BorderThickness="0" 
                     Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}"
+                    Foreground="{StaticResource Orange1}"
                     Margin="0,0,60,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center" 
@@ -234,30 +236,35 @@
             x:Name="grdPosition" 
             Grid.Row="5">
             <Label 
-                    x:Name="lbPosition"
-                    Content="Chức vụ"
-                    HorizontalAlignment="Left"
-                    FontSize="20"
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="40" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbPosition"
+                Content="Chức vụ"
+                HorizontalAlignment="Left"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" 
+                VerticalAlignment="Center"/>
             <ComboBox 
-                    x:Name="txtPosition"
-                    materialDesign:HintAssist.Hint="Chức vụ"
-                    HorizontalAlignment="Right"
-                    Cursor="IBeam"
-                    Height="40" 
-                    Width="280" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}"
-                    Margin="0,0,60,0" 
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold"/>
+                x:Name="txtPosition"
+                materialDesign:HintAssist.Hint="Chức vụ"
+                HorizontalAlignment="Right"
+                Cursor="IBeam"
+                Height="40" 
+                Width="300" 
+                FontSize="14" 
+                BorderThickness="0" 
+                Padding="0" 
+                Foreground="{StaticResource Orange1}"
+                Margin="0,0,50,0" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold"
+                materialDesign:ComboBoxAssist.ClassicMode="True">
+
+                <ComboBoxItem Content="A"></ComboBoxItem>
+                <ComboBoxItem Content="B"></ComboBoxItem>
+            </ComboBox>
             <Rectangle 
                     x:Name="recPosition"
                     HorizontalAlignment="Right" 
@@ -300,7 +307,7 @@
                     FontSize="14"
                     BorderThickness="0"
                     MaxLines="1" 
-                    Foreground="{StaticResource PaletteColor3}"
+                    Foreground="{StaticResource Orange1}"
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     Padding="0" 
                     Margin="0,0,60,0" 
@@ -309,7 +316,7 @@
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
                     FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}">
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
             </TextBox>
         </Grid>
         <Grid  
@@ -343,7 +350,7 @@
                     FontSize="14" 
                     BorderThickness="0" 
                     MaxLines="1" 
-                    Foreground="{StaticResource PaletteColor3}"
+                    Foreground="{StaticResource Orange1}"
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     Padding="0"  
                     Margin="0,0,60,0" 
@@ -352,7 +359,7 @@
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center" 
                     FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}">
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
             </TextBox>
         </Grid>
         <StackPanel   
@@ -369,7 +376,6 @@
                 CommandParameter="{Binding ElementName=wdAddEmployee}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
-                Background="{DynamicResource PaletteColor3}"
                 ToolTip="Thêm nhân viên" 
                 Margin="0" 
                 VerticalAlignment="Center" 
@@ -378,14 +384,17 @@
                 FocusVisualStyle="{x:Null}"
                 Content="Lưu" 
                 FontSize="18" 
-                FontWeight="SemiBold"/>
+                FontWeight="SemiBold">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
             <Button
                 Height="40"
                 Command="{Binding CancalAddEmployeeCammand}" 
                 CommandParameter="{Binding ElementName=wdAddEmployee}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
-                Background="{DynamicResource PaletteColor3}"
                 ToolTip="Thêm nhân viên" 
                 Margin="20 0 0 0" 
                 VerticalAlignment="Center" 
@@ -394,7 +403,11 @@
                 FocusVisualStyle="{x:Null}"
                 Content="Bỏ qua" 
                 FontSize="18" 
-                FontWeight="SemiBold" FlowDirection="LeftToRight"/>
+                FontWeight="SemiBold" FlowDirection="LeftToRight">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
         <Grid  
             x:Name="grdSelectImage"
@@ -407,7 +420,7 @@
             <Rectangle 
                 x:Name="recImage"
                 StrokeDashArray="4 2" 
-                Stroke="{StaticResource PaletteColor3}" 
+                Stroke="{StaticResource Orange1}" 
                 StrokeThickness="4" 
                 RadiusX="4" 
                 RadiusY="4"
@@ -418,7 +431,6 @@
             <Button 
                 x:Name="btnSelectImage"
                 Content="Chọn ảnh"
-                Background="{StaticResource PaletteColor3}"
                 BorderThickness="0"
                 Height="35" 
                 Width="100" 
@@ -430,11 +442,14 @@
                 VerticalAlignment="Bottom"
                 FocusVisualStyle="{x:Null}"
                 FontSize="16">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
             </Button>
             <materialDesign:PackIcon 
                 x:Name="iconImage" 
                 Kind="FileImageOutline" 
-                Foreground="{StaticResource PaletteColor3}"
+                Foreground="{StaticResource Orange1}"
                 Width="64" 
                 Height="54"
                 HorizontalAlignment="Center"
