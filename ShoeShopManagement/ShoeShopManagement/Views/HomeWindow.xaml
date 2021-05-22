@@ -14,6 +14,7 @@
         Icon="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
         DataContext="{StaticResource HomeVM}">
     <Grid>
+        <!--DataContext="{StaticResource HomeVM}"-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="10*"/>

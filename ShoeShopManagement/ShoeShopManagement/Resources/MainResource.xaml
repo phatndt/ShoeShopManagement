@@ -17,4 +17,5 @@
                 HorizontalAlignment="Left"/>
         </StackPanel>
     </ControlTemplate>
+    <viewmodels:SignInViewModel x:Key="SignInVM"></viewmodels:SignInViewModel>
 </ResourceDictionary> 
