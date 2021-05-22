@@ -22,9 +22,6 @@ namespace ShoeShopManagement.Views
         public HomeWindow()
         {
             InitializeComponent();
-            SignIn_Up a = new SignIn_Up();
-            this.Close();
-            a.ShowDialog();
         }
 
     }
