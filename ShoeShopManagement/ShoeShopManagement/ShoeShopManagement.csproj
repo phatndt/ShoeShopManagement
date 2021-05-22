@@ -110,8 +110,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\MainResource.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\UserControls\FieldInfoBill.xaml">
       <SubType>Designer</SubType>

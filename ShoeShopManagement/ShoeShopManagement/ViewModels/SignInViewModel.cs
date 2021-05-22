@@ -26,7 +26,7 @@ namespace ShoeShopManagement.ViewModels
             LogInCommand = new RelayCommand<SignInWindow>((parameter) => true, (parameter) => SignIn(parameter));
         }
 
-        public void SignIn(SignInWindow parameter)
+        /*public void SignIn(SignInWindow parameter)
         {
             isLogin = false;
             if (parameter == null)
@@ -113,6 +113,6 @@ namespace ShoeShopManagement.ViewModels
             {
                 CustomMessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
+        }*/
     }
 }
