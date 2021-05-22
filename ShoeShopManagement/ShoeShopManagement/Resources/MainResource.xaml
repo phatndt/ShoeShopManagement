@@ -5,4 +5,17 @@
     <viewmodels:HomeViewModel x:Key="HomeVM"></viewmodels:HomeViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:SignInViewModel x:Key="SignInVM"></viewmodels:SignInViewModel>
+    <viewmodels:EmployeeViewModel x:Key="EmployeeVM"></viewmodels:EmployeeViewModel>
+    <ControlTemplate x:Key="textBoxErrorTemplate">
+        <StackPanel>
+            <AdornedElementPlaceholder x:Name="placeholder"/>
+            <TextBlock 
+                DockPanel.Dock="Bottom" 
+                Foreground="#FFF44336"
+                MaxWidth="220"
+                Text="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                TextWrapping="Wrap" 
+                HorizontalAlignment="Left"/>
+        </StackPanel>
+    </ControlTemplate>
 </ResourceDictionary> 
