@@ -1,5 +1,4 @@
-﻿using ShoeShopManagement.Resources.UserControls;
-using ShoeShopManagement.Views;
+﻿using ShoeShopManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,23 +24,20 @@ namespace ShoeShopManagement.ViewModels
         }
         public void SwitchTab(HomeWindow parameter)
         {
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    parameter.stkEmployee.Children.Add(new EmployeeUc());
-            //}
+            
+            string name = Name;
+            if (name == "btnHome")
+            {
 
-
-            //string name = Name;
-            //if (name == "btnHome")
-            //{
-
+                parameter.grd.Children.Clear();
                 
-            //}
-            //if (name == "btnBusiness")
-            //{
-            //    BusinessWindow businessWindow = new BusinessWindow();
+            }
+            if (name == "btnBusiness")
+            {
+                BusinessWindow businessWindow = new BusinessWindow();
+                parameter.grd.Children.Add(businessWindow);
 
-            //}
+            }
         }
     }
 }
