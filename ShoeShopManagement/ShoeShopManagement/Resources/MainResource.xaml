@@ -5,6 +5,7 @@
     <viewmodels:HomeViewModel x:Key="HomeVM"></viewmodels:HomeViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:EmployeeViewModel x:Key="EmployeeVM"></viewmodels:EmployeeViewModel>
+    <viewmodels:SignInViewModel x:Key="SignInVM"></viewmodels:SignInViewModel>
     <ControlTemplate x:Key="textBoxErrorTemplate">
         <StackPanel>
             <AdornedElementPlaceholder x:Name="placeholder"/>
@@ -17,5 +18,4 @@
                 HorizontalAlignment="Left"/>
         </StackPanel>
     </ControlTemplate>
-    <viewmodels:SignInViewModel x:Key="SignInVM"></viewmodels:SignInViewModel>
 </ResourceDictionary> 
