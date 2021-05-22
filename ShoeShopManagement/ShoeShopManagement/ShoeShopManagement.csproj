@@ -120,8 +120,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddEmployeeWindow.xaml"
-    </Page>
+	  <Page Include="Views\AddEmployeeWindow.xaml">
+	  </Page>
     <Page Include="Resources\UserControls\ToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
