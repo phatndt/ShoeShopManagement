@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
-         xmlns:image="clr-namespace:ShoeShopManagement.Resources"
+        xmlns:local="clr-namespace:ShoeShopManagement.Views"
         mc:Ignorable="d"
-        x:Name="wdHomeWindow"
+        x:Name="HomeWd"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         Title="HomeWindow" Height="800" Width="1400"
@@ -16,13 +15,11 @@
     <Grid>
         <!--DataContext="{StaticResource HomeVM}"-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0"
-              Background="White"
-              HorizontalAlignment="Left"
-              Width="240">
+              Background="White">
             <StackPanel Width="200"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -35,7 +32,7 @@
                         <Setter Property="Width" Value="30"></Setter>
                     </Style>
                     <Style TargetType="Grid">
-                        <Setter Property="Height" Value="60"></Setter>
+                        <Setter Property="Height" Value="75"></Setter>
                     </Style>
                 </StackPanel.Resources>
                 <Grid>
@@ -43,16 +40,14 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon
-                        Grid.Column="0" 
-                        Kind="Home"/>
+                    <materialDesign:PackIcon Grid.Column="0" Kind="Home"/>
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
                             Style="{StaticResource MainMenuButton}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
-                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="MouseMove">
                                 <i:InvokeCommandAction Command="{Binding GetNameTab}"
@@ -99,8 +94,7 @@
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon Kind="HomeCity" Grid.Column="0" />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Nhà cung cấp"
-                            VerticalAlignment="Center"></Button>
+                            Content="Nhà cung cấp"></Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -159,7 +153,12 @@
                 <Button Style="{StaticResource MainMenuButton}"
                             Content="Đăng xuất"></Button>
             </Grid>
-
+            <materialDesign:TransitioningContent x:Name="TransitioningMenu" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0:2}">
+                <Grid Height="75"
+                  Width="10"
+                  Background="#0066FF"
+                      HorizontalAlignment="Left" Margin="0,132,0,562"></Grid>
+            </materialDesign:TransitioningContent>
 
         </Grid>
         <Grid Grid.Column="1">
@@ -207,176 +206,6 @@
                 </Grid.ColumnDefinitions>
                 <local:BusinessWindow x:Name="BusinessTab"
                                       Visibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,0.2,0.2"></local:BusinessWindow>
-            <Grid 
-                x:Name="grdBody_Employee" 
-                HorizontalAlignment="Left" 
-                Height="710" 
-                VerticalAlignment="Top" 
-                Background="#E0FFFF"
-                Width="1160"
-                Margin="0"
-                Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
-                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="10*"/>
-                </Grid.RowDefinitions>
-                <StackPanel
-                    Orientation="Horizontal"
-                    Grid.Row="0" 
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center" 
-                    Margin="0,0,40,0">
-                    <Button 
-                        x:Name="btnAddEmployee"
-                        Height="40"
-                        Command="{Binding OpenWindowAddEmployeeCommand}" 
-                        CommandParameter="{Binding ElementName=wdHome}"
-                        materialDesign:ButtonAssist.CornerRadius="2"
-                        BorderThickness="0"
-                        ToolTip="Thêm nhân viên" 
-                        Margin="0" 
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Center" 
-                        Width="180"
-                        FocusVisualStyle="{x:Null}"
-                        Content="Thêm nhân viên" 
-                        FontSize="18"
-                        FontWeight="SemiBold" FlowDirection="LeftToRight" >
-                        <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
-                        </Button.Background>
-                    </Button>
-                    <Button 
-                        x:Name="btnPaySalary"
-                        Height="40"
-                        Command="{Binding ExportSalaryCommand}" 
-                        CommandParameter="{Binding ElementName=wdHome}"
-                        materialDesign:ButtonAssist.CornerRadius="2"
-                        BorderThickness="0"
-                        Background="{DynamicResource PaletteColor3}"
-                        ToolTip="Trả lương"
-                        Margin="20,0,0,0" 
-                        VerticalAlignment="Center" 
-                        Width="120"
-                        FocusVisualStyle="{x:Null}"
-                        Content="Trả lương" 
-                        FontSize="18" 
-                        FontWeight="SemiBold" 
-                        HorizontalAlignment="Center" />
-                </StackPanel>
-                <Grid 
-                    Grid.Row="1"
-                    HorizontalAlignment="Left"
-                    Margin="20,0,0,0" 
-                    Width="1120" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="20"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.Background>
-                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
-                    </Grid.Background>
-                    <TextBlock 
-                        Grid.Column="0"
-                        HorizontalAlignment="Center" 
-                        Margin="0" 
-                        TextWrapping="Wrap" 
-                        Text="STT" 
-                        VerticalAlignment="Center" 
-                        FontSize="18" 
-                        Foreground="{DynamicResource White}"
-                        FontWeight="SemiBold"/>
-                    <TextBlock
-                        Grid.Column="1" 
-                        HorizontalAlignment="Left" 
-                        Margin="20,0,0,0" 
-                        TextWrapping="Wrap" 
-                        Text="Họ tên nhân viên" 
-                        VerticalAlignment="Center"
-                        FontSize="18" 
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="2" 
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,0" 
-                        TextWrapping="Wrap" 
-                        Text="Chức vụ" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="3" 
-                        HorizontalAlignment="Left"
-                        Margin="20 0 0 0" 
-                        TextWrapping="Wrap" 
-                        Text="Số điện thoại" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="4" 
-                        HorizontalAlignment="Left"
-                        Margin="20 0 0 0" 
-                        TextWrapping="Wrap" 
-                        Text="Ngày vào làm" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="5" 
-                        HorizontalAlignment="Center"
-                        TextWrapping="Wrap" 
-                        Text="Lương" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                </Grid>
-                <Grid 
-                    Grid.Row="2"
-                    HorizontalAlignment="Left" 
-                    Margin="20,0,0,40"
-                    Width="1120" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="460*"/>
-                        <ColumnDefinition Width="184*"/>
-                        <ColumnDefinition Width="475*"/>
-                    </Grid.ColumnDefinitions>
-                    <ScrollViewer 
-                        VerticalScrollBarVisibility="Auto"
-                        HorizontalScrollBarVisibility="Disabled" 
-                        
-                        Margin="0,0,0,0.4" 
-                        Width="1120" Grid.ColumnSpan="3">
-                        <StackPanel 
-                            x:Name="stkEmployee"
-                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                            Width="1120" 
-                            HorizontalAlignment="Left">
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
             </Grid>
         </Grid>
     </Grid>
