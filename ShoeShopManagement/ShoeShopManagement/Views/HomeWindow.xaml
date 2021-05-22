@@ -199,12 +199,7 @@
             </Grid>
             <Grid 
                 x:Name="grdBody_Employee" 
-                HorizontalAlignment="Left" 
-                Height="710" 
-                VerticalAlignment="Top" 
                 Background="#E0FFFF"
-                Width="1160"
-                Margin="0"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Visible">
@@ -355,7 +350,6 @@
                     <ScrollViewer 
                         VerticalScrollBarVisibility="Auto"
                         HorizontalScrollBarVisibility="Disabled" 
-                        
                         Margin="0,0,0,0.4" 
                         Width="1120" Grid.ColumnSpan="3">
                         <StackPanel 

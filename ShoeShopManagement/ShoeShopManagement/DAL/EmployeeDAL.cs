@@ -131,7 +131,7 @@ namespace FootballFieldManagement.DAL
             try
             {
                 OpenConnection();
-                string query = "update Employee set name=@name,date=@date,sex=@sex,startDate=@startDate,position=@position,telephone=@telephone,address=@address,image=@image where id=" + employee.IdEmployee;
+                string query = "update Employee set name=@name,date=@date,sex=@sex,startDate=@startDate,position=@position,telephone=@telephone,address=@address,image=@image where idEmployee=" + employee.IdEmployee;
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@name", employee.Name);
                 command.Parameters.AddWithValue("@date", employee.Date);
@@ -184,21 +184,15 @@ namespace FootballFieldManagement.DAL
             try
             {
                 OpenConnection();
-                string query = @"Select max(id) from Employee";
+                string query = @"Select max(idEmployee) from Employee";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                if (command.ExecuteNonQuery() > 0)
-                    return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
-                else
-                {
-                    return 0;
-                }
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
             }
             catch
             {
-                MessageBox.Show("Xóa thất bại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                 return 0;
             }
             finally
@@ -265,7 +259,7 @@ namespace FootballFieldManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "select * from Employee where id = " + idEmployee;
+                string queryString = "select * from Employee where idEmployee = " + idEmployee;
 
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.ExecuteNonQuery();

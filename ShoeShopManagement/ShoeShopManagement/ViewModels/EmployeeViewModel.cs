@@ -58,7 +58,7 @@ namespace ShoeShopManagement.ViewModels
             this.AorU = true;
             AddEmployeeWindow addEmployeeWindow = new AddEmployeeWindow();
             int id = EmployeeDAL.Instance.GetMaxId()+ 1;
-            addEmployeeWindow.txtIDEmployee.Text = id.ToString();
+            addEmployeeWindow.txtIdEmployee.Text = id.ToString();
             addEmployeeWindow.Show();
         }
         public void ExportSalary(Button paramater)
@@ -152,7 +152,7 @@ namespace ShoeShopManagement.ViewModels
             try
             {
                 Employee employee = new Employee(
-                    int.Parse(parameter.txtIDEmployee.Text), 
+                    int.Parse(parameter.txtIdEmployee.Text), 
                     parameter.txtName.Text, 
                     DateTime.Parse(parameter.txtDate.Text), 
                     sex,
@@ -198,7 +198,7 @@ namespace ShoeShopManagement.ViewModels
             this.AorU = false;
             AddEmployeeWindow addEmployeeWindow = new AddEmployeeWindow();
             Employee employee = EmployeeDAL.Instance.GetEmployee(parameter.txbID.Text);
-            addEmployeeWindow.txtIDEmployee.Text = employee.IdEmployee.ToString();
+            addEmployeeWindow.txtIdEmployee.Text = employee.IdEmployee.ToString();
             addEmployeeWindow.txtName.Text = employee.Name;
             addEmployeeWindow.txtDate.Text = employee.Date.ToString();
             if (employee.Sex == "Nam")
@@ -227,5 +227,6 @@ namespace ShoeShopManagement.ViewModels
             }
             this.homeWindow.stkEmployee.Children.Remove(parameter);
         }
+        
     }
 }
