@@ -3,10 +3,173 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ShoeShopManagement.Views"
+        xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="PaySalaryWindowxaml" Height="800" Width="600">
+        DataContext="{StaticResource EmployeeVM}"
+        WindowStartupLocation="CenterScreen"
+        x:Name="wdPaySalary"
+        Title="PaySalaryWindowxaml" Height="760" Width="550">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            Text="Trả lương nhân viên"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="30"
+            FontFamily="Roboto"
+            FontWeight="SemiBold"
+            Foreground="{DynamicResource Orange1}"></TextBlock>
+        <Grid
+            Grid.Row="1">
+            <ComboBox 
+                Name="cbBoxMonth"
+                Height="50"
+                Width="200"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="50 0 0 0"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                materialDesign:HintAssist.Hint="Chọn tháng trả lương"
+                materialDesign:ComboBoxAssist.ClassicMode="True"
+                BorderBrush="{DynamicResource Orange1}"
+                FontWeight="SemiBold"
+                FontSize="18"/>
+            <ComboBox 
+                Name="cbBoxYear"
+                Height="50"
+                Width="200"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0 0 50 0"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                materialDesign:HintAssist.Hint="Chọn tháng trả lương"
+                materialDesign:ComboBoxAssist.ClassicMode="True"
+                BorderBrush="{DynamicResource Orange1}"
+                FontWeight="SemiBold"
+                FontSize="18">
+            </ComboBox>
+        </Grid>
+        <Grid
+            Grid.Row="2">
+            <Rectangle 
+                Width="440"
+                Height="4"
+                Fill="{DynamicResource Orange1}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"/>
+            <Grid
+                Margin="50 50 50 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Background="{DynamicResource Orange1}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="17" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                        Grid.Column="0"
+                        HorizontalAlignment="Center" 
+                        TextWrapping="Wrap" 
+                        TextAlignment="Center"
+                        Text="STT" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        Margin="20 0 0 0"
+                        TextWrapping="Wrap" 
+                        TextAlignment="Center"
+                        Text="Nhân viên" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="2"
+                        HorizontalAlignment="Center" 
+                        TextWrapping="Wrap" 
+                        TextAlignment="Center"
+                        Text="Lương" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+                </Grid>
+                <Border 
+                    BorderThickness="2"
+                    BorderBrush="{DynamicResource Orange1}"
+                    Grid.Row="1">
+                </Border>
+                <ScrollViewer 
+                    Grid.Row="1">
+                    <StackPanel
+                        x:Name="stkSalary"
+                        Margin="2 2 0 2">
+                    </StackPanel>
+                </ScrollViewer>
+
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="3">
+            <StackPanel   
+            Grid.Row="8"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal"
+            Height="60">
+                <Button
+                    Height="40"
+                    Command="{Binding ConfirmPaySalaryCommand}" 
+                    CommandParameter="{Binding ElementName=wdPaySalary}"
+                    materialDesign:ButtonAssist.CornerRadius="2"
+                    BorderThickness="0"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    Width="120"
+                    FocusVisualStyle="{x:Null}"
+                    Content="Trả lương" 
+                    FontSize="18" 
+                    FontWeight="SemiBold">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                    </Button.Background>
+                </Button>
+                <Button
+                    Height="40"
+                    Command="{Binding CancelPaySalaryCommand}" 
+                    CommandParameter="{Binding ElementName=wdPaySalary}"
+                    materialDesign:ButtonAssist.CornerRadius="2"
+                    BorderThickness="0"
+                    Margin="50 0 0 0" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    Width="120"
+                    FocusVisualStyle="{x:Null}"
+                    Content="Bỏ qua" 
+                    FontSize="18" 
+                    FontWeight="SemiBold" FlowDirection="LeftToRight">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

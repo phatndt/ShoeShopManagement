@@ -21,7 +21,7 @@ namespace ShoeShopManagement.ViewModels
     class EmployeeViewModel : BaseViewModel
     {
         public ICommand OpenWindowAddEmployeeCommand { get; set; }
-        public ICommand ExportSalaryCommand { get; set; }
+        public ICommand OpenSalaryCommand { get; set; }
         public ICommand LoadEmployeeCommand { get; set; }
 
         public ICommand SelectImageCommand { get; set; }
@@ -33,6 +33,8 @@ namespace ShoeShopManagement.ViewModels
         public ICommand UpdateCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
 
+        public ICommand ConfirmPaySalaryCommand { get; set; }
+        public ICommand CancelPaySalaryCommand { get; set; }
         private string imageFileName;
 
         public HomeWindow homeWindow;
@@ -42,17 +44,21 @@ namespace ShoeShopManagement.ViewModels
         {
             //grid_employee
             OpenWindowAddEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => OpenWindowAddEmployee(parameter));
-            ExportSalaryCommand = new RelayCommand<Button>((parameter) => true, (parameter) => ExportSalary(parameter));
+            OpenSalaryCommand = new RelayCommand<Button>((parameter) => true, (parameter) => OpenSalary(parameter));
             LoadEmployeeCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => LoadEmployee(parameter));
             //add_employee_window
             SelectImageCommand = new RelayCommand<Grid>((parameter) => true, (parameter) => SelectImage(parameter));
             SaveEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => SaveEmployee(parameter));
             CancalAddEmployeeCammand = new RelayCommand<Window>((parameter) => true, (parameter) => parameter.Close());
             LoadPositionCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => LoadPosition(parameter));
-
+            //employee_control
             UpdateCommand = new RelayCommand<EmployeeUc>((parameter) => true, (parameter) => UpdateEmployee(parameter));
             DeleteCommand = new RelayCommand<EmployeeUc>((parameter) => true, (parameter) => DeleteEmployee(parameter));
+            //pay_salary_window
+            ConfirmPaySalaryCommand = new RelayCommand<PaySalaryWindowxaml>((parameter) => true, (parameter) => ConfirmPaySalary(parameter));
+            CancelPaySalaryCommand = new RelayCommand<PaySalaryWindowxaml>((parameter) => true, (parameter) => parameter.Close());
         }
+
         public void OpenWindowAddEmployee(AddEmployeeWindow paramater)
         {
             this.AorU = true;
@@ -61,9 +67,10 @@ namespace ShoeShopManagement.ViewModels
             addEmployeeWindow.txtIdEmployee.Text = id.ToString();
             addEmployeeWindow.Show();
         }
-        public void ExportSalary(Button paramater)
+        public void OpenSalary(Button paramater)
         {
-
+            PaySalaryWindowxaml paySalaryWindowxaml = new PaySalaryWindowxaml();
+            paySalaryWindowxaml.Show();
         }
         public void LoadEmployee(HomeWindow parameter)
         {
@@ -227,6 +234,11 @@ namespace ShoeShopManagement.ViewModels
             }
             this.homeWindow.stkEmployee.Children.Remove(parameter);
         }
-        
+
+        private void ConfirmPaySalary(PaySalaryWindowxaml parameter)
+        {
+            parameter.stkSalary.Children.Add(new SalaryUc());
+        }
+
     }
 }

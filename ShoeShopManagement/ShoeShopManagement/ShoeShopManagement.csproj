@@ -90,6 +90,9 @@
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
+      <DependentUpon>SalaryUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\FieldInfoBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\SalaryUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

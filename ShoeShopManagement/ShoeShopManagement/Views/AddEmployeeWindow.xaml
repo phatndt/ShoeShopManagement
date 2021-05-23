@@ -10,7 +10,7 @@
         DataContext="{StaticResource EmployeeVM}"
         x:Name="wdAddEmployee"
         WindowStartupLocation="CenterScreen"
-        Title="AddEmployeeWindow" Height="840" Width="600">
+        Title="Thêm nhân vi" Height="840" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>

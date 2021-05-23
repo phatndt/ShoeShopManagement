@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
-         xmlns:image="clr-namespace:ShoeShopManagement.Resources"
+        xmlns:image="clr-namespace:ShoeShopManagement.Resources"
         mc:Ignorable="d"
         x:Name="wdHomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -243,7 +243,7 @@
                     <Button 
                         x:Name="btnPaySalary"
                         Height="40"
-                        Command="{Binding ExportSalaryCommand}" 
+                        Command="{Binding OpenSalaryCommand}" 
                         CommandParameter="{Binding ElementName=wdHome}"
                         materialDesign:ButtonAssist.CornerRadius="2"
                         BorderThickness="0"
