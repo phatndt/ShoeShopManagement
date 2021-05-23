@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewmodels="clr-namespace:ShoeShopManagement.ViewModels" 
                     xmlns:local="clr-namespace:ShoeShopManagement.Resources">
+    <viewmodels:SignInViewModel x:Key="SignInVM"></viewmodels:SignInViewModel>
     <viewmodels:HomeViewModel x:Key="HomeVM"></viewmodels:HomeViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:EmployeeViewModel x:Key="EmployeeVM"></viewmodels:EmployeeViewModel>
