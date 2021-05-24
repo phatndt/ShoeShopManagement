@@ -72,11 +72,12 @@
     </ApplicationDefinition>
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\GoodsDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Good.cs" />
+    <Compile Include="Models\Goods.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Salary.cs" />
