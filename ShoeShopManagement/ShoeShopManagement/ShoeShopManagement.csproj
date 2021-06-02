@@ -113,8 +113,8 @@
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PaySalaryWindow.xaml.cs">
-		<DependentUpon>PaySalaryWindow.xaml</DependentUpon>
-	</Compile>
+      <DependentUpon>PaySalaryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ImportGoodsWindow.xaml.cs">
       <DependentUpon>ImportGoodsWindow.xaml</DependentUpon>
     </Compile>
@@ -177,9 +177,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PaySalaryWindow.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ImportGoodsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -30,9 +30,9 @@ namespace ShoeShopManagement.ViewModels
             AddGoodsCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => OpenAddGoodsWindow(parameter));
             
             SelectImageCommand = new RelayCommand<Grid>((parameter) => true, (parameter) => ChooseImage(parameter));
-            SaveCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => AddGoods(parameter));
+            //SaveCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => AddGoods(parameter));
             ExitCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => parameter.Close());
-            SeparateThousandsCommand = new RelayCommand<TextBox>((parameter) => true, (parameter) => SeparateThousands(parameter));
+            //SeparateThousandsCommand = new RelayCommand<TextBox>((parameter) => true, (parameter) => SeparateThousands(parameter));
             ////
             ImportStockWindowCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => OpenImportStockWindow(parameter));
         }
@@ -69,85 +69,83 @@ namespace ShoeShopManagement.ViewModels
                 }
             }
         }
-        public void AddGoods(AddGoodsWindow parameter)
-        {
-            List<Goods> goodsList = GoodsDAL.Instance.ConvertDBToList();
-            if (string.IsNullOrWhiteSpace(parameter.txtName.Text))
-            {
-                parameter.txtName.Focus();
-                parameter.txtName.Text = "";
-                return;
-            }
-            if (string.IsNullOrEmpty(parameter.cboUnit.Text))
-            {
-                parameter.cboUnit.Focus();
-                return;
-            }
-            if (string.IsNullOrEmpty(parameter.txtUnitPrice.Text))
-            {
-                parameter.txtUnitPrice.Focus();
-                parameter.txtUnitPrice.Text = "";
-                return;
-            }
-            if (parameter.grdSelectImg.Background == null)
-            {
-                CustomMessageBox.Show("Vui lòng thêm hình ảnh!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            byte[] imgByteArr;
-            try
-            {
-                imgByteArr = Converter.Instance.ConvertImageToBytes(imageFileName);
-            }
-            catch
-            {
-                imgByteArr = GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).ImageFile;
-            }
-            //imageFileName = null;
-            Goods newGoods = new Goods(int.Parse(parameter.txtIdGoods.Text), parameter.txtName.Text,
-                parameter.cboUnit.Text, ConvertToNumber(parameter.txtUnitPrice.Text), imgByteArr);
-            bool isSuccessed1 = true, isSuccessed2 = true;
-            if (goodsList.Count == 0 || newGoods.IdGoods > goodsList[goodsList.Count - 1].IdGoods)
-            {
-                if (GoodsDAL.Instance.IsExistGoodsName(parameter.txtName.Text))
-                {
-                    CustomMessageBox.Show("Mặt hàng đã tồn tại, vui lòng nhập lại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-                    parameter.txtName.Focus();
-                    parameter.txtName.Text = "";
-                    return;
-                }
-                isSuccessed1 = GoodsDAL.Instance.AddIntoDB(newGoods);
-                if (isSuccessed1)
-                {
-                    CustomMessageBox.Show("Thêm mặt hàng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                }
-            }
-            else
-            {
-                if (GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).Name != parameter.txtName.Text)
-                {
-                    if (GoodsDAL.Instance.IsExistGoodsName(parameter.txtName.Text))
-                    {
-                        CustomMessageBox.Show("Mặt hàng đã tồn tại, vui lòng nhập lại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-                        parameter.txtName.Focus();
-                        parameter.txtName.Text = "";
-                        return;
-                    }
-                }
-                isSuccessed2 = GoodsDAL.Instance.UpdateOnDB(newGoods);
-                if (isSuccessed2)
-                {
-                    CustomMessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                }
-            }
-            if (!isSuccessed1 || !isSuccessed2)
-            {
-                CustomMessageBox.Show("Thực hiện thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            parameter.Close();
-            LoadStkGoods(homeWindow);
-        }
-    }
-
+        //public void AddGoods(AddGoodsWindow parameter)
+        //{
+        //    List<Goods> goodsList = GoodsDAL.Instance.ConvertDBToList();
+        //    if (string.IsNullOrWhiteSpace(parameter.txtName.Text))
+        //    {
+        //        parameter.txtName.Focus();
+        //        parameter.txtName.Text = "";
+        //        return;
+        //    }
+        //    if (string.IsNullOrEmpty(parameter.cboUnit.Text))
+        //    {
+        //        parameter.cboUnit.Focus();
+        //        return;
+        //    }
+        //    if (string.IsNullOrEmpty(parameter.txtUnitPrice.Text))
+        //    {
+        //        parameter.txtUnitPrice.Focus();
+        //        parameter.txtUnitPrice.Text = "";
+        //        return;
+        //    }
+        //    if (parameter.grdSelectImg.Background == null)
+        //    {
+        //        CustomMessageBox.Show("Vui lòng thêm hình ảnh!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+        //    byte[] imgByteArr;
+        //    try
+        //    {
+        //        imgByteArr = Converter.Instance.ConvertImageToBytes(imageFileName);
+        //    }
+        //    catch
+        //    {
+        //        imgByteArr = GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).ImageFile;
+        //    }
+        //    //imageFileName = null;
+        //    Goods newGoods = new Goods(int.Parse(parameter.txtIdGoods.Text), parameter.txtName.Text,
+        //        parameter.cboUnit.Text, ConvertToNumber(parameter.txtUnitPrice.Text), imgByteArr);
+        //    bool isSuccessed1 = true, isSuccessed2 = true;
+        //    if (goodsList.Count == 0 || newGoods.IdGoods > goodsList[goodsList.Count - 1].IdGoods)
+        //    {
+        //        if (GoodsDAL.Instance.IsExistGoodsName(parameter.txtName.Text))
+        //        {
+        //            CustomMessageBox.Show("Mặt hàng đã tồn tại, vui lòng nhập lại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        //            parameter.txtName.Focus();
+        //            parameter.txtName.Text = "";
+        //            return;
+        //        }
+        //        isSuccessed1 = GoodsDAL.Instance.AddIntoDB(newGoods);
+        //        if (isSuccessed1)
+        //        {
+        //            CustomMessageBox.Show("Thêm mặt hàng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).Name != parameter.txtName.Text)
+        //        {
+        //            if (GoodsDAL.Instance.IsExistGoodsName(parameter.txtName.Text))
+        //            {
+        //                CustomMessageBox.Show("Mặt hàng đã tồn tại, vui lòng nhập lại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        //                parameter.txtName.Focus();
+        //                parameter.txtName.Text = "";
+        //                return;
+        //            }
+        //        }
+        //        isSuccessed2 = GoodsDAL.Instance.UpdateOnDB(newGoods);
+        //        if (isSuccessed2)
+        //        {
+        //            CustomMessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+        //        }
+        //    }
+        //    if (!isSuccessed1 || !isSuccessed2)
+        //    {
+        //        CustomMessageBox.Show("Thực hiện thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //    parameter.Close();
+        //    LoadStkGoods(homeWindow);
+        //}
     }
 }
