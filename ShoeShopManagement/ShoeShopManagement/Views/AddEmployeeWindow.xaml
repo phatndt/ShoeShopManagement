@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         DataContext="{StaticResource EmployeeVM}"
         x:Name="wdAddEmployee"
         WindowStartupLocation="CenterScreen"
-        Title="AddEmployeeWindow" Height="840" Width="600">
+        Title="Thêm nhân vi" Height="840" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -23,336 +24,355 @@
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
         <Grid 
-            x:Name="grdIDEmployee">
+            Grid.Row="0"
+            x:Name="grdIdEmployee">
             <Label
-                    x:Name="lbIDEmployee"
-                    Content="Mã nhân viên" 
-                    HorizontalAlignment="Left"
-                    FontSize="18" 
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}"
-                    Height="32" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbIDEmployee"
+                Content="Mã nhân viên" 
+                HorizontalAlignment="Left"
+                FontSize="18" 
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}"
+                Height="32" 
+                Margin="50 0 0 0" 
+                VerticalAlignment="Center"/>
             <Rectangle
-                    x:Name="recIDEmployee"
-                    Width="300" 
-                    Height="40"
-                    RadiusY="6"
-                    RadiusX="6" 
-                    Margin="0 0 50 0"
-                    Stroke="{StaticResource Gray}" 
-                    HorizontalAlignment="Right"/>
+                x:Name="recIDEmployee"
+                Width="300" 
+                Height="40"
+                RadiusY="6"
+                RadiusX="6" 
+                Margin="0,0,50,0"
+                Stroke="{StaticResource Gray}" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"/>
             <TextBox 
-                    x:Name="txtIDEmployee"
-                    materialDesign:HintAssist.Hint="Mã tự động"
-                    HorizontalAlignment="Right"  
-                    Width="280" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    MaxLines="1"
-                    Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}" 
-                    Margin="0,0,60,0" 
-                    IsReadOnly="True" 
-                    Height="40" 
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    SelectionBrush="{x:Null}"
-                    FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}">
+                x:Name="txtIdEmployee"
+                materialDesign:HintAssist.Hint="Mã tự động"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}" Grid.ColumnSpan="2">
             </TextBox>
         </Grid>
         <Grid  
             Grid.Row="1"
             x:Name="grdName">
             <Label 
-                    x:Name="lbName"
-                    Content="Họ tên"
-                    HorizontalAlignment="Left"
-                    FontSize="20"
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="40" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbName"
+                Content="Họ tên"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
             <Rectangle 
-                    x:Name="recName"
-                    HorizontalAlignment="Right" 
-                    Height="40" 
-                    Width="300" 
-                    RadiusY="6" 
-                    RadiusX="6"
-                    Stroke="{StaticResource PaletteColor1}" 
-                    Margin="0 0 50 0"/>
+                x:Name="recName"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                Height="40" 
+                Width="300" 
+                RadiusY="6" 
+                RadiusX="6"
+                Stroke="{StaticResource PaletteColor1}" 
+                Margin="0 0 50 0"/>
             <TextBox 
-                    x:Name="txtName"
-                    materialDesign:HintAssist.Hint="Họ và tên"
-                    HorizontalAlignment="Right"
-                    Cursor="IBeam"
-                    Height="40" 
-                    Width="280" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    MaxLines="1"
-                    Padding="0" 
-                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Foreground="{StaticResource PaletteColor3}"
-                    Margin="0 0 60 0"
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold" 
-                    SelectionBrush="{x:Null}" 
-                    CaretBrush="{x:Null}"
-                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}"/>
+                x:Name="txtName"
+                materialDesign:HintAssist.Hint="Họ và tên"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Cursor="IBeam"
+                Height="40" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                Foreground="{StaticResource Orange1}"
+                Margin="0 0 60 0"
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold" 
+                SelectionBrush="{x:Null}" 
+                CaretBrush="{x:Null}"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}"/>
         </Grid>
         <Grid   
             x:Name="grdDate" 
             Grid.Row="2">
             <Label 
-                    x:Name="lbDate"
-                    Content="Ngày sinh"
-                    HorizontalAlignment="Left"
-                    FontSize="20"
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="40" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbDate"
+                Content="Ngày sinh"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
             <DatePicker 
-                    x:Name="txtDate"
-                    materialDesign:HintAssist.Hint="Ngày sinh"
-                    HorizontalAlignment="Right"
-                    Cursor="IBeam"
-                    Height="40" 
-                    Width="280" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}"
-                    Margin="0,0,60,0" 
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold"/>
+                x:Name="txtDate"
+                materialDesign:HintAssist.Hint="Ngày sinh"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Cursor="IBeam"
+                Height="40" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                Padding="0" 
+                Foreground="{StaticResource Orange1}"
+                Margin="0,0,60,0" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold"
+                materialDesign:ThemeAssist.Theme="Light"
+                Background="{DynamicResource PaletteColor3}"/>
             <Rectangle 
-                    x:Name="recDate"
-                    HorizontalAlignment="Right" 
-                    Height="40" 
-                    Width="300"
-                    Margin="0 0 50 0"
-                    RadiusY="6" 
-                    RadiusX="6"
-                    Stroke="{StaticResource PaletteColor1}"/>
+                x:Name="recDate"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Height="40" 
+                Width="300"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
         </Grid>
         <Grid   
             x:Name="grdSex" 
             Grid.Row="3">
             <Label 
-                    x:Name="lbSex"
-                    Content="Giới tính"
-                    HorizontalAlignment="Left" 
-                    FontSize="18" 
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}"
-                    Height="40"
-                Margin="50 0 0 0"
-                    VerticalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal"
-                        Height="30"
-                        HorizontalAlignment="Right"
-                        Margin="0 0 100 0">
+                x:Name="lbSex"
+                Content="Giới tính"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center"
+                FontSize="18" 
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}"
+                Height="40"
+                Margin="50 0 0 0"/>
+            <StackPanel 
+                Orientation="Horizontal"
+                Height="30"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="0 0 100 0">
                 <RadioButton
                     x:Name="rdoMale"
                     Style="{StaticResource MaterialDesignLightRadioButton}"
                     IsChecked="True"
                     Content="Nam" 
                     Height="30"
-                    Width="101"
-                    Padding="20,1,0,0"
+                    Width="100"
+                    Padding="20,0,0,0"
                     FontSize="14"
                     FontWeight="Bold" 
-                    BorderBrush="{StaticResource PaletteColor3}" 
-                    Background="{StaticResource PaletteColor3}" 
+                    BorderBrush="{StaticResource Orange1}" 
+                    Background="{StaticResource Orange1}" 
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Center"/>
                 <RadioButton
                     x:Name="rdoFemale"
                     Style="{StaticResource MaterialDesignLightRadioButton}"
-                    BorderBrush="{StaticResource PaletteColor3}" 
-                    Background="{StaticResource PaletteColor3}" 
+                    BorderBrush="{StaticResource Orange1}" 
+                    Background="{StaticResource Orange1}" 
                     Content="Nữ"
-                    Padding="20,1,0,0" 
+                    Padding="20,0,0,0" 
                     FontSize="14" 
                     FontWeight="Bold"
                     Height="30"
-                    Width="101" 
+                    Width="100" 
                     VerticalAlignment="Center" 
-                    HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                    HorizontalAlignment="Left" 
+                    Margin="20,0,0,0"/>
             </StackPanel>
-            
         </Grid>
         <Grid   
             x:Name="grdStartDate" 
             Grid.Row="4">
             <Label 
-                    x:Name="lbStartDate"
-                    Content="Ngày vào làm"
-                    HorizontalAlignment="Left"
-                    FontSize="20"
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="40" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbStartDate"
+                Content="Ngày vào làm"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
             <DatePicker 
-                    x:Name="txtStartDate"
-                    materialDesign:HintAssist.Hint="Ngày vào làm"
-                    HorizontalAlignment="Right"
-                    Cursor="IBeam"
-                    Height="40" 
-                    Width="280" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}"
-                    Margin="0,0,60,0" 
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold"/>
+                x:Name="txtStartDate"
+                materialDesign:HintAssist.Hint="Ngày vào làm"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Cursor="IBeam"
+                Height="40" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                Padding="0" 
+                Foreground="{StaticResource Orange1}"
+                Margin="0,0,60,0" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold"/>
             <Rectangle 
-                    x:Name="recStartDate"
-                    HorizontalAlignment="Right" 
-                    Height="40" 
-                    Width="300"
+                x:Name="recStartDate"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                Height="40" 
+                Width="300"
                 Margin="0 0 50 0"
-                    RadiusY="6" 
-                    RadiusX="6"
-                    Stroke="{StaticResource PaletteColor1}"/>
+                RadiusY="6" 
+                RadiusX="6"
+                Stroke="{StaticResource PaletteColor1}"/>
         </Grid>
         <Grid   
             x:Name="grdPosition" 
             Grid.Row="5">
             <Label 
-                    x:Name="lbPosition"
-                    Content="Chức vụ"
-                    HorizontalAlignment="Left"
-                    FontSize="20"
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="40" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbPosition"
+                Content="Chức vụ"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
             <ComboBox 
-                    x:Name="txtPosition"
-                    materialDesign:HintAssist.Hint="Chức vụ"
-                    HorizontalAlignment="Right"
-                    Cursor="IBeam"
-                    Height="40" 
-                    Width="280" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}"
-                    Margin="0,0,60,0" 
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold"/>
+                x:Name="txtPosition"
+                materialDesign:HintAssist.Hint="Chức vụ"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Cursor="IBeam"
+                Height="40" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                Padding="0" 
+                Foreground="{StaticResource Orange1}"
+                Margin="0,0,60,0" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold"
+                materialDesign:ComboBoxAssist.ClassicMode="True">
+                <ComboBoxItem Content="A"></ComboBoxItem>
+                <ComboBoxItem Content="B"></ComboBoxItem>
+            </ComboBox>
             <Rectangle 
-                    x:Name="recPosition"
-                    HorizontalAlignment="Right" 
-                    Height="40" 
-                    Width="300"
+                x:Name="recPosition"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                Height="40" 
+                Width="300"
                 Margin="0 0 50 0"
-                    RadiusY="6" 
-                    RadiusX="6"
-                    Stroke="{StaticResource PaletteColor1}"/>
+                RadiusY="6" 
+                RadiusX="6"
+                Stroke="{StaticResource PaletteColor1}"/>
         </Grid>
         <Grid 
             x:Name="grdTelephoneNumber"
             Grid.Row="6">
             <Label 
-                    x:Name="lbTelephoneNumber"
-                    Content="Số điện thoại" 
-                    HorizontalAlignment="Left" 
-                    FontSize="20" 
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="32" 
-                    Margin="50 0 0 0" 
-                    VerticalAlignment="Center"/>
+                x:Name="lbTelephoneNumber"
+                Content="Số điện thoại" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center"
+                FontSize="20" 
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="32" 
+                Margin="50 0 0 0" />
             <Rectangle
-                    x:Name="recTelephoneNumber"
-                    HorizontalAlignment="Right" 
-                    Height="40"  
-                    Width="300" 
-                    RadiusY="6" 
-                    RadiusX="6" 
-                    Stroke="{StaticResource PaletteColor1}" 
-                    Margin="0 0 50 0"/>
+                x:Name="recTelephoneNumber"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center" 
+                Height="40"  
+                Width="300" 
+                RadiusY="6" 
+                RadiusX="6" 
+                Stroke="{StaticResource PaletteColor1}" 
+                Margin="0 0 50 0"/>
             <TextBox 
-                    x:Name="txtTelephoneNumber"
-                    materialDesign:HintAssist.Hint="Số điện thoại" 
-                    HorizontalAlignment="Right" 
-                    MaxLength="10"
-                    Height="40"  
-                    Width="280" 
-                    FontSize="14"
-                    BorderThickness="0"
-                    MaxLines="1" 
-                    Foreground="{StaticResource PaletteColor3}"
-                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Padding="0" 
-                    Margin="0,0,60,0" 
-                    Cursor="IBeam"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}">
+                x:Name="txtTelephoneNumber"
+                materialDesign:HintAssist.Hint="Số điện thoại" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                MaxLength="10"
+                Height="40"  
+                Width="280" 
+                FontSize="14"
+                BorderThickness="0"
+                MaxLines="1" 
+                Foreground="{StaticResource Orange1}"
+                Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                Padding="0" 
+                Margin="0,0,60,0" 
+                Cursor="IBeam"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
             </TextBox>
         </Grid>
         <Grid  
             x:Name="grdAddress"
             Grid.Row="7">
             <Label 
-                    x:Name="lbAddress"
-                    Content="Địa chỉ" 
-                    HorizontalAlignment="Left"
-                    FontSize="20" 
-                    FontWeight="SemiBold"
-                    Foreground="{StaticResource PaletteColor1}" 
-                    Height="32" 
-                    Margin="50 0 0 0"
-                    VerticalAlignment="Center"/>
+                x:Name="lbAddress"
+                Content="Địa chỉ" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20" 
+                FontWeight="SemiBold"
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="32" 
+                Margin="50 0 0 0"/>
             <Rectangle 
-                    x:Name="recAddress"
-                    HorizontalAlignment="Right" 
-                    Height="40" 
-                    Width="300" 
-                    RadiusY="6"
-                    RadiusX="6" 
-                    Stroke="{StaticResource PaletteColor1}" 
-                    Margin="0 0 50 0"/>
+                x:Name="recAddress"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                Height="40" 
+                Width="300" 
+                RadiusY="6"
+                RadiusX="6" 
+                Stroke="{StaticResource PaletteColor1}" 
+                Margin="0 0 50 0"/>
             <TextBox
-                    x:Name="txtAddress"
-                    materialDesign:HintAssist.Hint="Địa chỉ" 
-                    HorizontalAlignment="Right" 
-                    Width="280"
-                    Height="40"
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    MaxLines="1" 
-                    Foreground="{StaticResource PaletteColor3}"
-                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Padding="0"  
-                    Margin="0,0,60,0" 
-                    Cursor="IBeam"
-                    VerticalAlignment="Center"
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center" 
-                    FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PaletteColor3}">
+                x:Name="txtAddress"
+                materialDesign:HintAssist.Hint="Địa chỉ" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                Width="280"
+                Height="40"
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1" 
+                Foreground="{StaticResource Orange1}"
+                Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                Padding="0"  
+                Margin="0,0,60,0" 
+                Cursor="IBeam"
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
             </TextBox>
         </Grid>
         <StackPanel   
@@ -369,7 +389,6 @@
                 CommandParameter="{Binding ElementName=wdAddEmployee}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
-                Background="{DynamicResource PaletteColor3}"
                 ToolTip="Thêm nhân viên" 
                 Margin="0" 
                 VerticalAlignment="Center" 
@@ -378,14 +397,17 @@
                 FocusVisualStyle="{x:Null}"
                 Content="Lưu" 
                 FontSize="18" 
-                FontWeight="SemiBold"/>
+                FontWeight="SemiBold">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
             <Button
                 Height="40"
                 Command="{Binding CancalAddEmployeeCammand}" 
                 CommandParameter="{Binding ElementName=wdAddEmployee}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
-                Background="{DynamicResource PaletteColor3}"
                 ToolTip="Thêm nhân viên" 
                 Margin="20 0 0 0" 
                 VerticalAlignment="Center" 
@@ -394,20 +416,24 @@
                 FocusVisualStyle="{x:Null}"
                 Content="Bỏ qua" 
                 FontSize="18" 
-                FontWeight="SemiBold" FlowDirection="LeftToRight"/>
+                FontWeight="SemiBold" FlowDirection="LeftToRight">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
         <Grid  
             x:Name="grdSelectImage"
             Grid.Row="8"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Width="120"
             Height="120"
-            Margin="50 0 0 0"
-            HorizontalAlignment="Left">
+            Margin="50 0 0 0">
             <Rectangle 
                 x:Name="recImage"
                 StrokeDashArray="4 2" 
-                Stroke="{StaticResource PaletteColor3}" 
+                Stroke="{StaticResource Orange1}" 
                 StrokeThickness="4" 
                 RadiusX="4" 
                 RadiusY="4"
@@ -418,7 +444,6 @@
             <Button 
                 x:Name="btnSelectImage"
                 Content="Chọn ảnh"
-                Background="{StaticResource PaletteColor3}"
                 BorderThickness="0"
                 Height="35" 
                 Width="100" 
@@ -430,11 +455,14 @@
                 VerticalAlignment="Bottom"
                 FocusVisualStyle="{x:Null}"
                 FontSize="16">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
             </Button>
             <materialDesign:PackIcon 
                 x:Name="iconImage" 
                 Kind="FileImageOutline" 
-                Foreground="{StaticResource PaletteColor3}"
+                Foreground="{StaticResource Orange1}"
                 Width="64" 
                 Height="54"
                 HorizontalAlignment="Center"

@@ -91,6 +91,9 @@
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
+      <DependentUpon>SalaryUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -109,6 +112,8 @@
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PaySalaryWindow.xaml.cs">
+      <DependentUpon>PaySalaryWindow.xaml</DependentUpon>
     <Compile Include="Views\ImportGoodsWindow.xaml.cs">
       <DependentUpon>ImportGoodsWindow.xaml</DependentUpon>
     </Compile>
@@ -150,6 +155,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\UserControls\SalaryUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +175,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PaySalaryWindow.xaml">
     <Page Include="Views\ImportGoodsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

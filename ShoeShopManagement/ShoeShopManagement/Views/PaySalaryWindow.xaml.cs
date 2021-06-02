@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for AddEmployeeWindow.xaml
+    /// Interaction logic for PaySalaryWindowxaml.xaml
     /// </summary>
-    public partial class AddEmployeeWindow : Window
+    public partial class PaySalaryWindowxaml : Window
     {
-        public AddEmployeeWindow()
+        public PaySalaryWindowxaml()
         {
             InitializeComponent();
         }
-
     }
 }

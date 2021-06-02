@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShoeShopManagement.Views
+namespace ShoeShopManagement.Resources.UserControls
 {
     /// <summary>
-    /// Interaction logic for AddEmployeeWindow.xaml
+    /// Interaction logic for SalaryUc.xaml
     /// </summary>
-    public partial class AddEmployeeWindow : Window
+    public partial class SalaryUc : UserControl
     {
-        public AddEmployeeWindow()
+        public SalaryUc()
         {
             InitializeComponent();
         }
-
     }
 }

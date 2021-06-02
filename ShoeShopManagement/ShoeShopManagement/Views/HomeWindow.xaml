@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+        xmlns:image="clr-namespace:ShoeShopManagement.Resources"
         mc:Ignorable="d"
         x:Name="wdHomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -195,12 +196,7 @@
             </Grid>
             <Grid 
                 x:Name="grdBody_Employee" 
-                HorizontalAlignment="Left" 
-                Height="710" 
-                VerticalAlignment="Top" 
                 Background="#E0FFFF"
-                Width="1160"
-                Margin="0"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Hidden">
@@ -238,14 +234,13 @@
                         FontSize="18"
                         FontWeight="SemiBold" FlowDirection="LeftToRight" >
                         <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                         </Button.Background>
                     </Button>
                     <Button 
                         x:Name="btnPaySalary"
                         Height="40"
-                        Command="{Binding ExportSalaryCommand}" 
+                        Command="{Binding OpenSalaryCommand}" 
                         CommandParameter="{Binding ElementName=wdHome}"
                         materialDesign:ButtonAssist.CornerRadius="2"
                         BorderThickness="0"
@@ -256,20 +251,19 @@
                         FocusVisualStyle="{x:Null}"
                         Content="Trả lương" 
                         FontSize="18" 
-                        HorizontalAlignment="Center" 
-                        FontWeight="SemiBold" >
+                        FontWeight="SemiBold" 
+                        HorizontalAlignment="Center">
                         <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                         </Button.Background>
-                        
                     </Button>
                 </StackPanel>
                 <Grid 
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     Margin="20,0,0,0" 
-                    Width="1120" >
+                    Width="1120"
+                    Background="{DynamicResource Orange1}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2.5*"/>
@@ -280,10 +274,6 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.Background>
-                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
-                    </Grid.Background>
                     <TextBlock 
                         Grid.Column="0"
                         HorizontalAlignment="Center" 
@@ -357,7 +347,6 @@
                     <ScrollViewer 
                         VerticalScrollBarVisibility="Auto"
                         HorizontalScrollBarVisibility="Disabled" 
-                        
                         Margin="0,0,0,0.4" 
                         Width="1120" Grid.ColumnSpan="3">
                         <StackPanel 
