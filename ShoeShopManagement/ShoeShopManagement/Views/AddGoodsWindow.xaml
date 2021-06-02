@@ -258,6 +258,7 @@
                 x:Name="btnSave"
                 Command="{Binding SaveCommand}"
                 CommandParameter="{Binding ElementName=wdAddGoods}"
+                BorderThickness="0"
                 IsDefault="True"
                 Height="40" 
                 Width="100"
@@ -278,18 +279,21 @@
                 Command="{Binding ExitCommand}"
                 CommandParameter="{Binding ElementName=wdAddGoods}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
+                BorderThickness="0"
                 Height="40"
                 Width="100"
-                ToolTip="Thoát"  
-                Background="{StaticResource Gray}" 
-                BorderBrush="{StaticResource Gray}"
+                ToolTip="Thoát"   
                 Margin="0" 
                 HorizontalAlignment="Right"
                 FocusVisualStyle="{x:Null}"
                 Content="Bỏ qua" 
                 FontSize="18"
                 VerticalAlignment="Center"
-                Padding="0" />
+                Padding="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 </Window>
