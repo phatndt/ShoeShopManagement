@@ -62,18 +62,18 @@ namespace ShoeShopManagement.ViewModels
         }
         public void LoadEmployee(HomeWindow parameter)
         {
-            List<Employee> employees = EmployeeDAL.Instance.ConvertDBToList();
-            foreach (Employee employee in employees)
-            {
-                EmployeeUc employeeUc = new EmployeeUc();
-                employeeUc.txbID.Text = employee.IdEmployee.ToString();
-                employeeUc.txbName.Text = employee.Name;
-                employeeUc.txbPosition.Text = employee.Position;
-                employeeUc.txbTelephone.Text = employee.Telephone;
-                employeeUc.txbStartDate.Text = employee.StartDate.ToString();
-                parameter.stkEmployee.Children.Add(employeeUc);
-                MessageBox.Show("oke");
-            }
+            //List<Employee> employees = EmployeeDAL.Instance.ConvertDBToList();
+            //foreach (Employee employee in employees)
+            //{
+            //    EmployeeUc employeeUc = new EmployeeUc();
+            //    employeeUc.txbID.Text = employee.IdEmployee.ToString();
+            //    employeeUc.txbName.Text = employee.Name;
+            //    employeeUc.txbPosition.Text = employee.Position;
+            //    employeeUc.txbTelephone.Text = employee.Telephone;
+            //    employeeUc.txbStartDate.Text = employee.StartDate.ToString();
+            //    parameter.stkEmployee.Children.Add(employeeUc);
+            //    MessageBox.Show("oke");
+            //}
         }
         public void SelectImage(Grid parameter)
         {
