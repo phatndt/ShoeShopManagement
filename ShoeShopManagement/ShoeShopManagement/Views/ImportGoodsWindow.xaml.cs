@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for HomeWindow.xaml
+    /// Interaction logic for ImportGoodsWindow.xaml
     /// </summary>
-    public partial class HomeWindow : Window
+    public partial class ImportGoodsWindow : Window
     {
-        public HomeWindow()
+        public ImportGoodsWindow()
         {
-            //InitializeComponent();
-            //SignIn a = new SignIn();
-            //this.Close();
-            //a.ShowDialog();
+            InitializeComponent();
         }
-
-       
     }
 }
