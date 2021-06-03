@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShoeShopManagement.DAL
 {
-    class GoodsDAL: DataProvider
+    class GoodsDAL
     {
     }
 }

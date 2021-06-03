@@ -21,7 +21,7 @@
             <Rectangle 
                 x:Name="recImage"
                 StrokeDashArray="4 2" 
-                Stroke="{StaticResource PaletteColor1}" 
+                Stroke="{StaticResource PaletteColor3}" 
                 StrokeThickness="4" 
                 RadiusX="4" 
                 RadiusY="4"
@@ -46,8 +46,7 @@
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Bottom"
                 FocusVisualStyle="{x:Null}"
-                Foreground="{DynamicResource White}" 
-                Padding="0"/>
+                Foreground="{DynamicResource White}" />
             <materialDesign:PackIcon 
                 x:Name="iconImage" 
                 Visibility="Hidden"
@@ -75,27 +74,24 @@
                     HorizontalAlignment="Left" 
                     FontSize="18"
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}" 
+                    Foreground="{StaticResource Color1}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     Height="40" 
                     Width="230"
                     RadiusY="6"
                     RadiusX="6" 
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0" 
+                    Stroke="{StaticResource Gray}"  
                     HorizontalAlignment="Right"/>
                 <DatePicker 
                     x:Name="dpImportDate"
                     HorizontalAlignment="Right"
                     Margin="0,0,11,0" 
-                    Padding="0"
                     materialDesign:HintAssist.Hint="Ngày nhập hàng" 
                     Width="210" 
                     Height="40"
-                    BorderThickness="0" 
+                    BorderThickness="0"
                     FontSize="14"
                     Foreground="{StaticResource Gray}" 
                     HorizontalContentAlignment="Left"
@@ -111,16 +107,14 @@
                     HorizontalAlignment="Left"
                     FontSize="18" 
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}"
+                    Foreground="{StaticResource Color1}"
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle
                     Width="230" 
                     Height="40"
                     RadiusY="6"
                     RadiusX="6" 
-                    Margin="0"
                     Stroke="{StaticResource Gray}" 
                     HorizontalAlignment="Right"/>
                 <TextBox 
@@ -131,9 +125,8 @@
                     HorizontalAlignment="Right"  
                     Width="210" 
                     FontSize="14" 
-                    BorderThickness="0" 
                     MaxLines="1"
-                    Padding="0" 
+                    BorderThickness="0"
                     Foreground="{StaticResource Gray}" 
                     Margin="0,0,10,0" 
                     Height="40" 
@@ -151,16 +144,14 @@
                     HorizontalAlignment="Left"
                     FontSize="18" 
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}"
+                    Foreground="{StaticResource Color1}"
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle
                     Width="230" 
                     Height="40"
                     RadiusY="6"
                     RadiusX="6" 
-                    Margin="0"
                     Stroke="{StaticResource Gray}" 
                     HorizontalAlignment="Right"/>
                 <TextBox 
@@ -170,10 +161,9 @@
                     materialDesign:HintAssist.Hint="Mã tự động"
                     HorizontalAlignment="Right"  
                     Width="210" 
-                    FontSize="14" 
-                    BorderThickness="0" 
+                    FontSize="14"  
                     MaxLines="1"
-                    Padding="0" 
+                    BorderThickness="0" 
                     Foreground="{StaticResource Gray}" 
                     Margin="0,0,10,0" 
                     Height="40" 
@@ -191,9 +181,8 @@
                     HorizontalAlignment="Left"
                     FontSize="18"
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}" 
+                    Foreground="{StaticResource Color1}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -201,8 +190,7 @@
                     Width="230" 
                     RadiusY="6" 
                     RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
+                    Stroke="{StaticResource Gray}" />
                 <TextBox 
                     x:Name="txtName"
                     IsReadOnly="True"
@@ -210,11 +198,10 @@
                     materialDesign:HintAssist.Hint="Tên hàng"
                     HorizontalAlignment="Right"
                     Height="40"  
+                    BorderThickness="0"
                     Width="210" 
                     FontSize="14" 
-                    BorderThickness="0" 
                     MaxLines="1"
-                    Padding="0" 
                     Foreground="{StaticResource Gray}" 
                     Margin="0,0,10,0" 
                     HorizontalContentAlignment="Left" 
@@ -230,9 +217,8 @@
                     HorizontalAlignment="Left"  
                     FontSize="18" 
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}"
+                    Foreground="{StaticResource Color1}"
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -240,8 +226,7 @@
                     Width="230"
                     RadiusY="6" 
                     RadiusX="6" 
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0" />
+                    Stroke="{StaticResource Gray}"  />
                 <ComboBox
                     x:Name="cboUnit"
                     IsEnabled="False"
@@ -252,7 +237,6 @@
                     Width="210"
                     BorderThickness="0"
                     Foreground="{StaticResource Gray}"  
-                    Padding="0" 
                     Margin="0,0,10,0" 
                     HorizontalAlignment="Right"
                     VerticalContentAlignment="Center" 
@@ -274,9 +258,8 @@
                     HorizontalAlignment="Left"
                     FontSize="18"
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}" 
+                    Foreground="{StaticResource Color1}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -284,8 +267,7 @@
                     Width="230" 
                     RadiusY="6" 
                     RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
+                    Stroke="{StaticResource Gray}" />
                 <TextBox 
                     x:Name="txtImportPrice"
                     Cursor="IBeam"
@@ -294,10 +276,9 @@
                     HorizontalAlignment="Right"
                     Height="40"  
                     Width="210" 
-                    FontSize="14" 
-                    BorderThickness="0" 
+                    FontSize="14"  
+                    BorderThickness="0"
                     MaxLines="1"
-                    Padding="0" 
                     Foreground="{StaticResource Gray}" 
                     Margin="0,0,10,0" 
                     HorizontalContentAlignment="Left" 
@@ -330,9 +311,8 @@
                     HorizontalAlignment="Left"
                     FontSize="18"
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}" 
+                    Foreground="{StaticResource Color1}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -340,8 +320,7 @@
                     Width="230" 
                     RadiusY="6" 
                     RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
+                    Stroke="{StaticResource Gray}"/>
                 <TextBox 
                     x:Name="txtQuantity"
                     Cursor="IBeam"
@@ -350,10 +329,9 @@
                     HorizontalAlignment="Right"
                     Height="40"  
                     Width="210" 
+                    BorderThickness="0"
                     FontSize="14" 
-                    BorderThickness="0" 
                     MaxLines="1"
-                    Padding="0" 
                     Foreground="{StaticResource Gray}"
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     Margin="0,0,10,0" 
@@ -377,9 +355,8 @@
                     HorizontalAlignment="Left"
                     FontSize="18"
                     FontWeight="SemiBold" 
-                    Foreground="{StaticResource Gray}" 
-                    Height="32" 
-                    Margin="0" 
+                    Foreground="{StaticResource Color1}" 
+                    Height="32"  
                     VerticalAlignment="Center"/>
                 <TextBox 
                     x:Name="txtTotal"
@@ -393,7 +370,6 @@
                     MaxLines="1"
                     Padding="0,0,5,0" 
                     Foreground="{DynamicResource Color1}" 
-                    Margin="0" 
                     HorizontalContentAlignment="Right" 
                     VerticalContentAlignment="Center" 
                     IsTabStop="False" 
@@ -412,17 +388,18 @@
                 Command="{Binding ImportCommand}"
                 CommandParameter="{Binding ElementName=wdImportGoods}"
                 IsDefault="True"
-                Background="{DynamicResource PaletteColor3}"
                 Height="40" 
                 Width="100"
                 ToolTip="Lưu thông tin" 
-                Margin="0" 
                 HorizontalAlignment="Left"
                 FocusVisualStyle="{x:Null}"
                 Content="Lưu" 
                 FontSize="18" 
-                VerticalAlignment="Center"
-                Padding="0" />
+                VerticalAlignment="Center">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
             <Button
                 x:Name="btnCancel"
                 Command="{Binding ExitImportCommand}"
@@ -431,15 +408,16 @@
                 Height="40"
                 Width="100"
                 ToolTip="Thoát"  
-                Background="{StaticResource Gray}" 
-                BorderBrush="{StaticResource Gray}"
-                Margin="0" 
+                BorderBrush="{StaticResource Gray}" 
                 HorizontalAlignment="Right"
                 FocusVisualStyle="{x:Null}"
                 Content="Bỏ qua" 
                 FontSize="18"
-                VerticalAlignment="Center"
-                Padding="0" />
+                VerticalAlignment="Center" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 </Window>
