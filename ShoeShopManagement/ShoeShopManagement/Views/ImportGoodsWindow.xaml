@@ -410,7 +410,7 @@
                 BorderThickness="0"
                 Height="40"
                 Width="100"
-                ToolTip="Thoát"  
+                ToolTip="Thoát" 
                 BorderBrush="{StaticResource Gray}" 
                 HorizontalAlignment="Right"
                 FocusVisualStyle="{x:Null}"
