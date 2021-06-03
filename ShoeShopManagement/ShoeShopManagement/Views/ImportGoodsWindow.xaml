@@ -391,6 +391,7 @@
                 IsDefault="True"
                 Height="40" 
                 Width="100"
+               
                 ToolTip="Lưu thông tin" 
                 HorizontalAlignment="Left"
                 FocusVisualStyle="{x:Null}"
