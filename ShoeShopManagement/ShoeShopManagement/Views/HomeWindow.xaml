@@ -6,7 +6,6 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
         xmlns:image="clr-namespace:ShoeShopManagement.Resources"
-
         mc:Ignorable="d"
         x:Name="wdHomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -23,17 +22,14 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1"
+        <Grid Grid.Row="0"
               Background="#E8641A"
               HorizontalAlignment="Left"
-              Margin="10,10,5,0"
-              >
+              Margin="10,10,5,0">
             <StackPanel Width="200"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="0 20 15 0"
-                        
-                        >
+                        Margin="0 20 15 0">
                 <StackPanel.Resources>
                     <Style TargetType="materialDesign:PackIcon">
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
@@ -178,7 +174,8 @@
 
 
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1"
+              Margin="0 0 10 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="12*"></RowDefinition>
@@ -406,14 +403,14 @@
             </Grid>
             <Grid
                 x:Name="grdBody_Customer" 
-                Background="{DynamicResource PaletteColor1}"
+                Background="{DynamicResource PaletteColor4}"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Hidden">
             </Grid>
             <Grid
                 x:Name="grdBody_Report" 
-                Background="{DynamicResource PaletteColor1}"
+                Background="{DynamicResource PaletteColor5}"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Hidden">
@@ -423,8 +420,7 @@
                 Background="#E0FFFF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible"
-                Margin="0 0 10 0">
+                Visibility="Visible">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
