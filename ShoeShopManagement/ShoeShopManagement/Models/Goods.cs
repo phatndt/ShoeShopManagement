@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShoeShopManagement.Models
 {
-    class Good
+    class Goods
     {
         private int idGood;
         private string name;
@@ -24,11 +24,11 @@ namespace ShoeShopManagement.Models
         public string Color { get => color; set => color = value; }
         public int Size { get => size; set => size = value; }
         
-        public Good()
+        public Goods()
         {
 
         }
-        public Good(int idGood, string name, long price, int quantity, byte[] image, string color, int size)
+        public Goods(int idGood, string name, long price, int quantity, byte[] image, string color, int size)
         {
             this.idGood = idGood;
             this.name = name;

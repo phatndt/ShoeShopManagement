@@ -7,11 +7,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Collections.ObjectModel;
-using FootballFieldManagement.DAL;
 using System.IO;
 using ShoeShopManagement.Models;
 
-namespace FootballFieldManagement.DAL
+namespace ShoeShopManagement.DAL
 {
     class EmployeeDAL : DataProvider
     {
@@ -125,96 +124,81 @@ namespace FootballFieldManagement.DAL
         //        CloseConnection();
         //    }
         //}
-        //public bool AddIntoDB(Employee employee)
-        //{
-        //    try
-        //    {
-        //        OpenConnection();
-        //        string query = "insert into Employee( idEmployee,name,gender,phonenumber,address,dateofBirth,position,startingdate,imageFile,isDeleted) values(@idEmployee,@name,@gender,@phonenumber,@address,@dateofBirth,@position,@startingdate,@imageFile,@isDeleted)";
-        //        SqlCommand command = new SqlCommand(query, conn);
-        //        command.Parameters.AddWithValue("@idEmployee", employee.IdEmployee);
-        //        command.Parameters.AddWithValue("@name", employee.Name);
-        //        command.Parameters.AddWithValue("@gender", employee.Gender);
-        //        command.Parameters.AddWithValue("@phonenumber", employee.Phonenumber);
-        //        command.Parameters.AddWithValue("@address", employee.Address);
-        //        command.Parameters.AddWithValue("@dateofBirth", employee.DateOfBirth);
-        //        command.Parameters.AddWithValue("@position", employee.Position);
-        //        command.Parameters.AddWithValue("@startingdate", employee.Startingdate);
-        //        command.Parameters.AddWithValue("@imageFile", Convert.ToBase64String(employee.ImageFile));
-        //        command.Parameters.AddWithValue("@isDeleted", employee.IsDeleted);
-        //        int rs = command.ExecuteNonQuery();
-        //        if (rs != 1)
-        //        {
-        //            return false;
-        //        }
-        //        else
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        CloseConnection();
-        //    }
-        //}
-        //public bool UpdateOnDB(Employee employee)
-        //{
-        //    try
-        //    {
-        //        OpenConnection();
-        //        string query = "update Employee  set name=@name,gender=@gender,phonenumber=@phonenumber,address=@address,dateofBirth=@dateofBirth,position=@position,startingdate=@startingdate,imageFile=@imageFile,isDeleted=@isDeleted where idEmployee=" + employee.IdEmployee;
-        //        SqlCommand command = new SqlCommand(query, conn);
-        //        command.Parameters.AddWithValue("@name", employee.Name);
-        //        command.Parameters.AddWithValue("@gender", employee.Gender);
-        //        command.Parameters.AddWithValue("@phonenumber", employee.Phonenumber);
-        //        command.Parameters.AddWithValue("@address", employee.Address);
-        //        command.Parameters.AddWithValue("@dateofBirth", employee.DateOfBirth);
-        //        command.Parameters.AddWithValue("@position", employee.Position);
-        //        command.Parameters.AddWithValue("@startingdate", employee.Startingdate);
-        //        command.Parameters.AddWithValue("@imageFile", Convert.ToBase64String(employee.ImageFile));
-        //        command.Parameters.AddWithValue("@isDeleted", employee.IsDeleted);
-        //        int rs = command.ExecuteNonQuery();
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        CloseConnection();
-        //    }
-        //}
-        //public bool DeleteEmployee(Employee employee)
-        //{
-        //    try
-        //    {
-        //        OpenConnection();
-        //        string query = @"Update Employee" +
-        //                        "Set isDeleted=1" +
-        //                        " where idEmployee = " + employee.IdEmployee.ToString();
-        //        SqlCommand command = new SqlCommand(query, conn);
-        //        if (command.ExecuteNonQuery() > 0)
-        //            return true;
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        CustomMessageBox.Show("Xóa thất bại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        CloseConnection();
-        //    }
-        //}
+
+        public bool UpdateOnDatabase(Employee employee)
+        {
+            try
+            {
+                OpenConnection();
+                string query = "update Employee set name=@name,date=@date,sex=@sex,startDate=@startDate,position=@position,telephone=@telephone,address=@address,image=@image where idEmployee=" + employee.IdEmployee;
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@name", employee.Name);
+                command.Parameters.AddWithValue("@date", employee.Date);
+                command.Parameters.AddWithValue("@sex", employee.Sex);
+                command.Parameters.AddWithValue("@startDate", employee.StartDate);
+                command.Parameters.AddWithValue("@position", employee.Position);
+                command.Parameters.AddWithValue("@telephone", employee.Telephone);
+                command.Parameters.AddWithValue("@address", employee.Address);
+                command.Parameters.AddWithValue("@image", employee.Image);
+                //command.Parameters.AddWithValue("@image", Convert.ToBase64String(employee.Image));
+                int rs = command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool DeleteEmployee(int id)
+        {
+            try
+            {
+                OpenConnection();
+                string query = @"Delete from Employee where idEmployee = " + id;
+                SqlCommand command = new SqlCommand(query, conn);
+                if (command.ExecuteNonQuery() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Xóa thất bại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public int GetMaxId()
+        {
+            try
+            {
+                OpenConnection();
+                string query = @"Select max(idEmployee) from Employee";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        } 
         //public void AddEmployee(Employee employee)
         //{
         //    if (ConvertDBToList().Count == 0 || employee.IdEmployee > GetMaxIdEmployee())
@@ -232,42 +216,81 @@ namespace FootballFieldManagement.DAL
         //            CustomMessageBox.Show("Cập nhật thất bại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
         //    }
         //}
-        //public Employee GetEmployee(string idEmployee) // Bao gồm cả nhân viên đã xóa hoặc chưa xóa
-        //{
-        //    Employee res = new Employee();
-        //    try
-        //    {
-        //        OpenConnection();
-        //        string queryString = "select * from Employee where idEmployee = " + idEmployee;
+        public bool AddEmployeeToDatabase(Employee employee)
+        {
+            try
+            {
+                OpenConnection();
+                string query = "insert into Employee values(@idEmployee,@name,@date,@sex,@startDate,@position,@telephone,@address,@imageFile)";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@idEmployee", employee.IdEmployee);
+                command.Parameters.AddWithValue("@name", employee.Name);
+                command.Parameters.AddWithValue("@date", employee.Date);
+                command.Parameters.AddWithValue("@sex", employee.Sex);
+                command.Parameters.AddWithValue("@startDate", employee.StartDate);
+                command.Parameters.AddWithValue("@position", employee.Position);
+                command.Parameters.AddWithValue("@telephone", employee.Telephone);
+                command.Parameters.AddWithValue("@address", employee.Address);
+                command.Parameters.AddWithValue("@imageFile", employee.Image);
+                int rs = command.ExecuteNonQuery();
+                if (rs != 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Thêm thất bại!"+e, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public Employee GetEmployee(string idEmployee)
+        {
+            Employee res = new Employee();
+            try
+            {
+                OpenConnection();
+                string queryString = "select * from Employee where idEmployee = " + idEmployee;
 
-        //        SqlCommand command = new SqlCommand(queryString, conn);
-        //        command.ExecuteNonQuery();
-        //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                command.ExecuteNonQuery();
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
 
-        //        DataTable dataTable = new DataTable();
-        //        adapter.Fill(dataTable);
-        //        int idAccount = -1;
-        //        if (dataTable.Rows[0].ItemArray[8].ToString() != "")
-        //        {
-        //            idAccount = int.Parse(dataTable.Rows[0].ItemArray[8].ToString());
-        //        }
-        //        res = new Employee(int.Parse(dataTable.Rows[0].ItemArray[0].ToString()),
-        //             dataTable.Rows[0].ItemArray[1].ToString(), dataTable.Rows[0].ItemArray[2].ToString(),
-        //             dataTable.Rows[0].ItemArray[3].ToString(), dataTable.Rows[0].ItemArray[4].ToString(),
-        //             DateTime.Parse(dataTable.Rows[0].ItemArray[5].ToString()),
-        //             dataTable.Rows[0].ItemArray[6].ToString(), DateTime.Parse(dataTable.Rows[0].ItemArray[7].ToString()),
-        //             idAccount, Convert.FromBase64String(dataTable.Rows[0].ItemArray[9].ToString()), int.Parse(dataTable.Rows[0].ItemArray[10].ToString()));
-        //    }
-        //    catch
-        //    {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                //int idAccount = -1;
+                //if (dataTable.Rows[0].ItemArray[8].ToString() != "")
+                //{
+                //    idAccount = int.Parse(dataTable.Rows[0].ItemArray[8].ToString());
+                //}
+                res = new Employee(int.Parse(dataTable.Rows[0].ItemArray[0].ToString()),
+                     dataTable.Rows[0].ItemArray[1].ToString(),
+                     DateTime.Parse(dataTable.Rows[0].ItemArray[2].ToString()),
+                     dataTable.Rows[0].ItemArray[3].ToString(),
+                     DateTime.Parse(dataTable.Rows[0].ItemArray[4].ToString()),
+                     dataTable.Rows[0].ItemArray[5].ToString(),
+                     dataTable.Rows[0].ItemArray[6].ToString(),
+                     dataTable.Rows[0].ItemArray[7].ToString(),
+                     dataTable.Rows[0].ItemArray[8].ToString());
+            }
+            catch
+            {
 
-        //    }
-        //    finally
-        //    {
-        //        CloseConnection();
-        //    }
-        //    return res;
-        //}
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return res;
+        }
         //public Employee GetEmployeeByIdEmployee(string idEmployee) // Lấy thông tin khi biết id nhân viên - Không lấy nhân viên đã xóa
         //{
         //    Employee res = new Employee();

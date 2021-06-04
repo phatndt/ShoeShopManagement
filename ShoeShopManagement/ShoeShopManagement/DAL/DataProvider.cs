@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace FootballFieldManagement.DAL
+namespace ShoeShopManagement.DAL
 {
     public class DataProvider : SQLConnection
     {
