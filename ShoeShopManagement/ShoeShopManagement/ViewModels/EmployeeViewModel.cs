@@ -42,7 +42,7 @@ namespace ShoeShopManagement.ViewModels
         public bool AorU;
         public EmployeeViewModel()
         {
-            //grid_employee
+            ////grid_employee
             //OpenWindowAddEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => OpenWindowAddEmployee(parameter));
             //OpenSalaryCommand = new RelayCommand<Button>((parameter) => true, (parameter) => OpenSalary(parameter));
             //LoadEmployeeCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => LoadEmployee(parameter));
