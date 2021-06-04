@@ -1,8 +1,8 @@
-﻿using FootballFieldManagement.DAL;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using ShoeShopManagement.Models;
 using ShoeShopManagement.Resources.UserControls;
 using ShoeShopManagement.Views;
+using ShoeShopManagement.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;

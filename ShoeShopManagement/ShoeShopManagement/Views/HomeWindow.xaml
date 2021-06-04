@@ -199,7 +199,7 @@
                 Background="#E0FFFF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                Visibility="Visible">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
@@ -366,7 +366,7 @@
                 VerticalAlignment="Top" 
                 Width="1160"
                 Grid.Row="1"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>
