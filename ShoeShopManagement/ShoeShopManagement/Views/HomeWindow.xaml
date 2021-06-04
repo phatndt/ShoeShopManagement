@@ -23,11 +23,10 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0"
+        <Grid Grid.Row="1"
               Background="#E8641A"
               HorizontalAlignment="Left"
-              Width="240"
-              Margin="10,20,5,0"
+              Margin="10,10,5,0"
               >
             <StackPanel Width="200"
                         HorizontalAlignment="Center"
@@ -424,7 +423,8 @@
                 Background="#E0FFFF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                Visibility="Visible"
+                Margin="0 0 10 0">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
@@ -487,7 +487,7 @@
                     HorizontalAlignment="Left"
                     Margin="20,0,0,0" 
                     Width="1120"
-                    Background="{DynamicResource Orange1}">
+                    Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2.5*"/>
