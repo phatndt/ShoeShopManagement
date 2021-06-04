@@ -28,8 +28,7 @@
               Margin="10,10,5,0">
             <StackPanel Width="200"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Margin="0 20 15 0">
+                        VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <Style TargetType="materialDesign:PackIcon">
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
@@ -47,15 +46,13 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon
+                        x:Name="iconHome"
                         Grid.Column="0" 
-                        Kind="Home" Foreground="White" Width="50" Height="50"
-                        />
+                        Kind="Home" Foreground="White" 
+                        Width="50" 
+                        Height="50"/>
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"
                             Style="{StaticResource MainMenuButton}" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
@@ -78,11 +75,7 @@
                     <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" Width="43" Height="43" Foreground="White" />
                     <Button Style="{StaticResource MainMenuButton}"
                             x:Name="btnBusiness"
-                            Content="Bán hàng"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}">
+                            Content="Bán hàng">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -103,10 +96,7 @@
                     <materialDesign:PackIcon Kind="Store" Grid.Column="0" Width="45" Height="44" Foreground="White"  />
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Dịch vụ"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"></Button>
+                            x:Name="btnService"></Button>
                 </Grid>
 
                 <Grid>
@@ -114,27 +104,40 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Account" Grid.Column="0" Width="50" Height="50" Foreground="White" />
+                    <materialDesign:PackIcon Kind="PackageVariant" Grid.Column="0" Width="50" Height="50" Foreground="White" />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Nhân viên"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"></Button>
+                            Content="Hàng hóa"
+                            x:Name="btnGoods"></Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="HomeCity" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon Kind="AccountCowboyHat" Grid.Column="0" Foreground="White" Width="35" Height="40" />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Kho"
-                            VerticalAlignment="Center"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"></Button>
+                            Content="Khách hàng"
+                            x:Name="btnCustomer"></Button>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="FileChart" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <Button Style="{StaticResource MainMenuButton}"
+                            Content="Báo cáo"
+                            x:Name="btnReport"></Button>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="Account" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <Button Style="{StaticResource MainMenuButton}"
+                            Content="Nhân viên"
+                            x:Name="btnEmployee"></Button>
                 </Grid>
             </StackPanel>
             <Grid Width="auto"
@@ -143,7 +146,7 @@
                   HorizontalAlignment="Center"
                   VerticalAlignment="Top">
                 <Image  Source="/Resources/Image/logo.png" 
-                       Stretch="Uniform" RenderTransformOrigin="0.515,0.787" Margin="-14,25,14,-25"></Image>
+                       Stretch="Uniform"></Image>
             </Grid>
             <Grid Width="180"
                   Height="50"
@@ -171,8 +174,6 @@
                             Panel.ZIndex="1" Background="{x:Null}"
                         ></Button>
             </Grid>
-
-
         </Grid>
         <Grid Grid.Column="1"
               Margin="0 0 10 0">
