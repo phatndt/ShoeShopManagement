@@ -43,20 +43,20 @@ namespace ShoeShopManagement.ViewModels
         public EmployeeViewModel()
         {
             //grid_employee
-            OpenWindowAddEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => OpenWindowAddEmployee(parameter));
-            OpenSalaryCommand = new RelayCommand<Button>((parameter) => true, (parameter) => OpenSalary(parameter));
-            LoadEmployeeCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => LoadEmployee(parameter));
-            //add_employee_window
-            SelectImageCommand = new RelayCommand<Grid>((parameter) => true, (parameter) => SelectImage(parameter));
-            SaveEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => SaveEmployee(parameter));
-            CancalAddEmployeeCammand = new RelayCommand<Window>((parameter) => true, (parameter) => parameter.Close());
-            LoadPositionCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => LoadPosition(parameter));
-            //employee_control
-            UpdateCommand = new RelayCommand<EmployeeUc>((parameter) => true, (parameter) => UpdateEmployee(parameter));
-            DeleteCommand = new RelayCommand<EmployeeUc>((parameter) => true, (parameter) => DeleteEmployee(parameter));
-            //pay_salary_window
-            ConfirmPaySalaryCommand = new RelayCommand<PaySalaryWindowxaml>((parameter) => true, (parameter) => ConfirmPaySalary(parameter));
-            CancelPaySalaryCommand = new RelayCommand<PaySalaryWindowxaml>((parameter) => true, (parameter) => parameter.Close());
+            //OpenWindowAddEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => OpenWindowAddEmployee(parameter));
+            //OpenSalaryCommand = new RelayCommand<Button>((parameter) => true, (parameter) => OpenSalary(parameter));
+            //LoadEmployeeCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => LoadEmployee(parameter));
+            ////add_employee_window
+            //SelectImageCommand = new RelayCommand<Grid>((parameter) => true, (parameter) => SelectImage(parameter));
+            //SaveEmployeeCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => SaveEmployee(parameter));
+            //CancalAddEmployeeCammand = new RelayCommand<Window>((parameter) => true, (parameter) => parameter.Close());
+            //LoadPositionCommand = new RelayCommand<AddEmployeeWindow>((parameter) => true, (parameter) => LoadPosition(parameter));
+            ////employee_control
+            //UpdateCommand = new RelayCommand<EmployeeUc>((parameter) => true, (parameter) => UpdateEmployee(parameter));
+            //DeleteCommand = new RelayCommand<EmployeeUc>((parameter) => true, (parameter) => DeleteEmployee(parameter));
+            ////pay_salary_window
+            //ConfirmPaySalaryCommand = new RelayCommand<PaySalaryWindowxaml>((parameter) => true, (parameter) => ConfirmPaySalary(parameter));
+            //CancelPaySalaryCommand = new RelayCommand<PaySalaryWindowxaml>((parameter) => true, (parameter) => parameter.Close());
         }
 
         public void OpenWindowAddEmployee(AddEmployeeWindow paramater)
