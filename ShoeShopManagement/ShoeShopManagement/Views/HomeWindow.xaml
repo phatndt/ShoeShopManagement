@@ -399,8 +399,7 @@
                         Padding="0,0,0,2" 
                         FontWeight="SemiBold" >
                         <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                         </Button.Background>
                     </Button>
                     <Button 
@@ -440,8 +439,7 @@
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Background>
-                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                     </Grid.Background>
                     <TextBlock 
                         Grid.Column="0"
