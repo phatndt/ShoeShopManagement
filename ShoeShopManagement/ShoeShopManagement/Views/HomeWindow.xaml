@@ -14,18 +14,21 @@
         Icon="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
         DataContext="{StaticResource HomeVM}">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Image/background.png">
+            </ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0"
-              Background="White"
+              Background="#E8641A"
               HorizontalAlignment="Left"
-              Width="240">
+              Margin="10,10,5,0">
             <StackPanel Width="200"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Margin="0 20 15 0">
+                        VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <Style TargetType="materialDesign:PackIcon">
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
@@ -43,11 +46,14 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <materialDesign:PackIcon
+                        x:Name="iconHome"
                         Grid.Column="0" 
-                        Kind="Home"/>
+                        Kind="Home" Foreground="White" 
+                        Width="50" 
+                        Height="50"/>
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
-                            Style="{StaticResource MainMenuButton}">
+                            Style="{StaticResource MainMenuButton}" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -66,10 +72,10 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" />
+                    <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" Width="43" Height="43" Foreground="White" />
                     <Button Style="{StaticResource MainMenuButton}"
                             x:Name="btnBusiness"
-                            Content="Kinh Doanh">
+                            Content="Bán hàng">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -87,61 +93,66 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Store" Grid.Column="0" />
+                    <materialDesign:PackIcon Kind="Store" Grid.Column="0" Width="45" Height="44" Foreground="White"  />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Hàng hóa"></Button>
+                            Content="Dịch vụ"
+                            x:Name="btnService"></Button>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="PackageVariant" Grid.Column="0" Width="50" Height="50" Foreground="White" />
+                    <Button Style="{StaticResource MainMenuButton}"
+                            Content="Hàng hóa"
+                            x:Name="btnGoods"></Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="HomeCity" Grid.Column="0" />
+                    <materialDesign:PackIcon Kind="AccountCowboyHat" Grid.Column="0" Foreground="White" Width="35" Height="40" />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Nhà cung cấp"
-                            VerticalAlignment="Center"></Button>
+                            Content="Khách hàng"
+                            x:Name="btnCustomer"></Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Package" Grid.Column="0" />
+                    <materialDesign:PackIcon Kind="FileChart" Grid.Column="0" Foreground="White" Width="35" Height="40" />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Loại hàng hóa"></Button>
+                            Content="Báo cáo"
+                            x:Name="btnReport"></Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Account" Grid.Column="0" />
+                    <materialDesign:PackIcon Kind="Account" Grid.Column="0" Foreground="White" Width="35" Height="40" />
                     <Button Style="{StaticResource MainMenuButton}"
-                            Content="Nhân viên"></Button>
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="AccountCowboyHat" Grid.Column="0" />
-                    <Button Style="{StaticResource MainMenuButton}"
-                            Content="Khách hàng"></Button>
+                            Content="Nhân viên"
+                            x:Name="btnEmployee"></Button>
                 </Grid>
             </StackPanel>
             <Grid Width="auto"
                   Height="auto"
-                  Margin="50 10"
+                  Margin="50 35"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Top">
-                <Image Source="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
+                <Image  Source="/Resources/Image/logo.png" 
                        Stretch="Uniform"></Image>
             </Grid>
             <Grid Width="180"
                   Height="50"
                   HorizontalAlignment="Right"
                   VerticalAlignment="Bottom"
-                  Margin="10 10 10 20">
+                  Margin="0,0,42,16.4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -154,209 +165,86 @@
                         <Setter Property="Width" Value="30"></Setter>
                     </Style>
                 </Grid.Resources>
-                <materialDesign:PackIcon Kind="LogoutVariant" Grid.Column="0" />
+                <materialDesign:PackIcon Kind="LogoutVariant" Grid.Column="0" Foreground="White" Width="50" Height="50" />
                 <Button Style="{StaticResource MainMenuButton}"
-                            Content="Đăng xuất"></Button>
+                            Content="Đăng xuất"
+                        Foreground="#FEECEC"
+                            FontSize="22"
+                            FontWeight="Medium"
+                            Panel.ZIndex="1" Background="{x:Null}"
+                        ></Button>
             </Grid>
-
-
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1"
+              Margin="0 0 10 0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="12*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0"
-                  Background="AliceBlue">
+            <Grid Grid.Row="0">
                 <Grid Height="Auto"
                       Margin="5"
                       HorizontalAlignment="Right">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1">
-                        <Ellipse Height="45"
-                                 Width="45"
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Fill="Aqua">
-                        </Ellipse>
+                    <Grid Grid.Column="2"
+                          VerticalAlignment="Top"
+                          Margin="0,20">
+                        <Button materialDesign:ButtonAssist.CornerRadius="10"
+                                Height="40"
+                                Width="40"
+                                Background="#C4C4C4">
+                        </Button>
                     </Grid>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="ShoesShopManagement"
-                                   FontSize="20"
+                    <Grid Grid.Column="1">
+                        <TextBlock Text="Huy Hoàng"
+                                   FontSize="25"
                                    FontFamily="Roboto"
-                                   FontWeight="SemiBold"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="5"></TextBlock>
+                                   FontWeight="Regular"
+                                   VerticalAlignment="Top"
+                                   Margin="0,25,10,0"
+                                   Foreground="White"
+                                   />
+                    </Grid>
+                    <Grid Grid.Row="0">
+                        <Button
+                        Height="50" 
+                        Width="150" 
+                        VerticalAlignment="Top"
+                        Margin="0,20,50,0"
+                            FontSize="20"
+                            Content="Điểm danh"
+                        materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="{x:Null}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                            </Button.Background>
+                        </Button>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid 
-                x:Name="grdBody_Employee" 
-                Background="#E0FFFF"
+            <Grid
+                x:Name="grdBody_Home" 
+                Background="{DynamicResource PaletteColor1}"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Hidden">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
-                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="10*"/>
-                </Grid.RowDefinitions>
-                <StackPanel
-                    Orientation="Horizontal"
-                    Grid.Row="0" 
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center" 
-                    Margin="0,0,40,0">
-                    <Button 
-                        x:Name="btnAddEmployee"
-                        Height="40"
-                        Command="{Binding OpenWindowAddEmployeeCommand}" 
-                        CommandParameter="{Binding ElementName=wdHome}"
-                        materialDesign:ButtonAssist.CornerRadius="2"
-                        BorderThickness="0"
-                        ToolTip="Thêm nhân viên" 
-                        Margin="0" 
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Center" 
-                        Width="180"
-                        FocusVisualStyle="{x:Null}"
-                        Content="Thêm nhân viên" 
-                        FontSize="18"
-                        FontWeight="SemiBold" FlowDirection="LeftToRight" >
-                        <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
-                        </Button.Background>
-                    </Button>
-                    <Button 
-                        x:Name="btnPaySalary"
-                        Height="40"
-                        Command="{Binding OpenSalaryCommand}" 
-                        CommandParameter="{Binding ElementName=wdHome}"
-                        materialDesign:ButtonAssist.CornerRadius="2"
-                        BorderThickness="0"
-                        ToolTip="Trả lương"
-                        Margin="20,0,0,0" 
-                        VerticalAlignment="Center" 
-                        Width="120"
-                        FocusVisualStyle="{x:Null}"
-                        Content="Trả lương" 
-                        FontSize="18" 
-                        FontWeight="SemiBold" 
-                        HorizontalAlignment="Center">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
-                        </Button.Background>
-                    </Button>
-                </StackPanel>
-                <Grid 
-                    Grid.Row="1"
-                    HorizontalAlignment="Left"
-                    Margin="20,0,0,0" 
-                    Width="1120"
-                    Background="{DynamicResource Orange1}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="20"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock 
-                        Grid.Column="0"
-                        HorizontalAlignment="Center" 
-                        Margin="0" 
-                        TextWrapping="Wrap" 
-                        Text="STT" 
-                        VerticalAlignment="Center" 
-                        FontSize="18" 
-                        Foreground="{DynamicResource White}"
-                        FontWeight="SemiBold"/>
-                    <TextBlock
-                        Grid.Column="1" 
-                        HorizontalAlignment="Left" 
-                        Margin="20,0,0,0" 
-                        TextWrapping="Wrap" 
-                        Text="Họ tên nhân viên" 
-                        VerticalAlignment="Center"
-                        FontSize="18" 
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="2" 
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,0" 
-                        TextWrapping="Wrap" 
-                        Text="Chức vụ" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="3" 
-                        HorizontalAlignment="Left"
-                        Margin="20 0 0 0" 
-                        TextWrapping="Wrap" 
-                        Text="Số điện thoại" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="4" 
-                        HorizontalAlignment="Left"
-                        Margin="20 0 0 0" 
-                        TextWrapping="Wrap" 
-                        Text="Ngày vào làm" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                    <TextBlock 
-                        Grid.Column="5" 
-                        HorizontalAlignment="Center"
-                        TextWrapping="Wrap" 
-                        Text="Lương" 
-                        VerticalAlignment="Center" 
-                        FontSize="18"
-                        Foreground="{DynamicResource White}" 
-                        FontWeight="SemiBold"/>
-                </Grid>
-                <Grid 
-                    Grid.Row="2"
-                    HorizontalAlignment="Left" 
-                    Margin="20,0,0,40"
-                    Width="1120" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="460*"/>
-                        <ColumnDefinition Width="184*"/>
-                        <ColumnDefinition Width="475*"/>
-                    </Grid.ColumnDefinitions>
-                    <ScrollViewer 
-                        VerticalScrollBarVisibility="Auto"
-                        HorizontalScrollBarVisibility="Disabled" 
-                        Margin="0,0,0,0.4" 
-                        Width="1120" Grid.ColumnSpan="3">
-                        <StackPanel 
-                            x:Name="stkEmployee"
-                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                            Width="1120" 
-                            HorizontalAlignment="Left">
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
+            </Grid>
+            <Grid
+                x:Name="grdBody_Business" 
+                Background="{DynamicResource PaletteColor2}"
+                Grid.Row="1" 
+                DataContext="{StaticResource EmployeeVM}"
+                Visibility="Hidden">
+            </Grid>
+            <Grid
+                x:Name="grdBody_Service" 
+                Background="{DynamicResource PaletteColor3}"
+                Grid.Row="1" 
+                DataContext="{StaticResource EmployeeVM}"
+                Visibility="Hidden">
             </Grid>
             <Grid
                 x:Name="grdBody_Goods"
@@ -364,9 +252,10 @@
                 HorizontalAlignment="Left" 
                 Height="710" 
                 VerticalAlignment="Top" 
+                Background="#EFD0BF"
                 Width="1160"
                 Grid.Row="1"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>
@@ -399,8 +288,7 @@
                         Padding="0,0,0,2" 
                         FontWeight="SemiBold" >
                         <Button.Background>
-                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                         </Button.Background>
                     </Button>
                     <Button 
@@ -440,8 +328,7 @@
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Background>
-                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"
-/>
+                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
                     </Grid.Background>
                     <TextBlock 
                         Grid.Column="0"
@@ -512,6 +399,186 @@
                             HorizontalAlignment="Left" 
                             ScrollViewer.VerticalScrollBarVisibility="Auto" 
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+            <Grid
+                x:Name="grdBody_Customer" 
+                Background="{DynamicResource PaletteColor4}"
+                Grid.Row="1" 
+                DataContext="{StaticResource EmployeeVM}"
+                Visibility="Hidden">
+            </Grid>
+            <Grid
+                x:Name="grdBody_Report" 
+                Background="{DynamicResource PaletteColor5}"
+                Grid.Row="1" 
+                DataContext="{StaticResource EmployeeVM}"
+                Visibility="Hidden">
+            </Grid>
+            <Grid 
+                x:Name="grdBody_Employee" 
+                Background="#E0FFFF"
+                Grid.Row="1" 
+                DataContext="{StaticResource EmployeeVM}"
+                Visibility="Visible">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Grid.Row="0" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center" 
+                    Margin="0,35,40,35.4" Grid.Column="1">
+                    <Button 
+                        x:Name="btnAddEmployee"
+                        Height="40"
+                        Command="{Binding OpenWindowAddEmployeeCommand}" 
+                        CommandParameter="{Binding ElementName=wdHome}"
+                        materialDesign:ButtonAssist.CornerRadius="2"
+                        BorderThickness="0"
+                        ToolTip="Thêm nhân viên" 
+                        Margin="0" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        Width="180"
+                        FocusVisualStyle="{x:Null}"
+                        Content="Thêm nhân viên" 
+                        FontSize="18"
+                        FontWeight="SemiBold" FlowDirection="LeftToRight" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button 
+                        x:Name="btnPaySalary"
+                        Height="40"
+                        Command="{Binding OpenSalaryCommand}" 
+                        CommandParameter="{Binding ElementName=wdHome}"
+                        materialDesign:ButtonAssist.CornerRadius="2"
+                        BorderThickness="0"
+                        ToolTip="Trả lương"
+                        Margin="20,0,0,0" 
+                        VerticalAlignment="Center" 
+                        Width="120"
+                        FocusVisualStyle="{x:Null}"
+                        Content="Trả lương" 
+                        FontSize="18" 
+                        FontWeight="SemiBold" 
+                        HorizontalAlignment="Center">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <Grid
+                    HorizontalAlignment="Left"
+                    Margin="20,0,0,0" 
+                    Width="1120"
+                    Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Resources/Image/tablebar.png" />
+                    </Grid.Background>
+                    <TextBlock 
+                        Grid.Column="0"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        Text="STT" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="1" 
+                        HorizontalAlignment="Left" 
+                        Margin="20,0,0,0" 
+                        TextWrapping="Wrap" 
+                        Text="Họ tên nhân viên" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="2" 
+                        HorizontalAlignment="Left"
+                        Margin="20,0,0,0" 
+                        TextWrapping="Wrap" 
+                        Text="Chức vụ" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="3" 
+                        HorizontalAlignment="Left"
+                        Margin="20 0 0 0" 
+                        TextWrapping="Wrap" 
+                        Text="Số điện thoại" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="4" 
+                        HorizontalAlignment="Left"
+                        Margin="20 0 0 0" 
+                        TextWrapping="Wrap" 
+                        Text="Ngày vào làm" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="5" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Lương" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                </Grid>
+                <Grid 
+                    Grid.Row="2"
+                    HorizontalAlignment="Left" 
+                    Margin="20,0,0,40.4"
+                    Width="1120" Grid.ColumnSpan="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="460*"/>
+                        <ColumnDefinition Width="184*"/>
+                        <ColumnDefinition Width="475*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer 
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled" 
+                        Margin="0,0,0,0.4" 
+                        Width="1120" Grid.ColumnSpan="3">
+                        <StackPanel 
+                            x:Name="stkEmployee"
+                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            Width="1120" 
+                            HorizontalAlignment="Left">
+                        </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </Grid>

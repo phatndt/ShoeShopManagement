@@ -4,10 +4,11 @@
     <Style x:Key="MainMenuButton" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="Background" Value="White"></Setter>
-        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontSize" Value="22"></Setter>
         <Setter Property="FontFamily" Value="Roboto"></Setter>
-        <Setter Property="FontWeight" Value="SemiBold"></Setter>
-        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource TextMainColor}"></Setter>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
         <Setter Property="Grid.Column" Value="1"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
@@ -22,7 +23,6 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="White"></Setter>
                 <Setter Property="Foreground" Value="#0066FF"></Setter>
             </Trigger>
         </Style.Triggers>
