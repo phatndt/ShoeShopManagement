@@ -236,7 +236,6 @@
     <Resource Include="Resources\Image\background.png" />
     <Content Include="Resources\Image\intro.mp4" />
     <Resource Include="Resources\Image\Logo.jpg" />
-    <Resource Include="Resources\Image\logo.png" />
     <Resource Include="Resources\Image\Shoes\af-1-1-shoe-7qQjnL.jpg" />
     <Resource Include="Resources\Image\Shoes\air-force-1-07-craft-shoe-jCGMCm.jpg" />
     <Resource Include="Resources\Image\Shoes\air-force-1-07-lv8-shoe-ldZ4Ml.jpg" />

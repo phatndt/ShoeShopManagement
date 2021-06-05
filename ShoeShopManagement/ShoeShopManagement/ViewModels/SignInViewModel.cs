@@ -15,7 +15,6 @@ using ShoeShopManagement.ViewModels;
 using ShoeShopManagement.DAL;
 using ShoeShopManagement.Models;
 using ShoeShopManagement.Views;
-using FootballFieldManagement.DAL;
 
 namespace ShoeShopManagement.ViewModels
 {
