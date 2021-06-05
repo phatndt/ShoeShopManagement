@@ -17,9 +17,9 @@ namespace ShoeShopManagement.Views
     /// <summary>
     /// Interaction logic for SignIn.xaml
     /// </summary>
-    public partial class SignIn : Window
+    public partial class SignInWindow : Window
     {
-        public SignIn()
+        public SignInWindow()
         {
             InitializeComponent();
         }
