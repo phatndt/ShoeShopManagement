@@ -46,6 +46,7 @@
                 Foreground="White"
                 FontSize="16"
                 Margin="26,18,28,240"
+                materialDesign:HintAssist.Background="#424242"
                 materialDesign:HintAssist.Hint="Tài khoản"/>
 
             <Image 
@@ -62,6 +63,7 @@
                 Background="#424242"
                 Foreground="White"
                 FontSize="16"
+                materialDesign:HintAssist.Background="#424242"
                 materialDesign:HintAssist.Hint="Mật khẩu" 
                 Margin="26,89,28,169"/>
 
