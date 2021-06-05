@@ -33,8 +33,9 @@
                     <Style TargetType="materialDesign:PackIcon">
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                        <Setter Property="Height" Value="30"></Setter>
-                        <Setter Property="Width" Value="30"></Setter>
+                        <Setter Property="Height" Value="40"></Setter>
+                        <Setter Property="Width" Value="40"></Setter>
+                        <Setter Property="Foreground" Value="White"/>
                     </Style>
                     <Style TargetType="Grid">
                         <Setter Property="Height" Value="60"></Setter>
@@ -48,12 +49,11 @@
                     <materialDesign:PackIcon
                         x:Name="iconHome"
                         Grid.Column="0" 
-                        Kind="Home" Foreground="White" 
-                        Width="50" 
-                        Height="50"/>
+                        Kind="Home"/>
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
-                            Style="{StaticResource MainMenuButton}" >
+                            Style="{StaticResource MainMenuButton}"
+                            Uid ="0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -64,7 +64,6 @@
                                                        CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-
                     </Button>
                 </Grid>
                 <Grid>
@@ -72,14 +71,18 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" Width="43" Height="43" Foreground="White" />
+                    <materialDesign:PackIcon 
+                        Kind="GoogleMyBusiness" 
+                        Grid.Column="0" 
+                        x:Name="iconBusiness"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             x:Name="btnBusiness"
-                            Content="Bán hàng">
+                            Content="Bán hàng"
+                            Uid ="1">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
-                                                       CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="MouseMove">
                                 <i:InvokeCommandAction Command="{Binding GetNameTab}"
@@ -93,53 +96,135 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Store" Grid.Column="0" Width="45" Height="44" Foreground="White"  />
+                    <materialDesign:PackIcon 
+                        Kind="Store" 
+                        Grid.Column="0" 
+                        x:Name="iconService"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Dịch vụ"
-                            x:Name="btnService"></Button>
+                            x:Name="btnService"
+                            Uid ="2">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnService}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="PackageVariant" Grid.Column="0" Width="50" Height="50" Foreground="White" />
+                    <materialDesign:PackIcon 
+                        Kind="PackageVariant" 
+                        Grid.Column="0" 
+                        x:Name="iconGood"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Hàng hóa"
-                            x:Name="btnGoods"></Button>
+                            x:Name="btnGoods"
+                            Uid ="3">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnGoods}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="AccountCowboyHat" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon 
+                        Kind="AccountCowboyHat" 
+                        Grid.Column="0" 
+                        x:Name="iconCustomer" />
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Khách hàng"
-                            x:Name="btnCustomer"></Button>
+                            x:Name="btnCustomer"
+                            Uid ="4">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnCustomer}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="FileChart" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon 
+                        Kind="FileChart" 
+                        Grid.Column="0" 
+                        x:Name="iconReport"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Báo cáo"
-                            x:Name="btnReport"></Button>
+                            x:Name="btnReport"
+                            Uid ="5">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnReport}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Account" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon 
+                        Kind="Account" 
+                        Grid.Column="0"
+                        x:Name="iconEmployee"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Nhân viên"
-                            x:Name="btnEmployee"></Button>
+                            x:Name="btnEmployee"
+                            Uid ="6">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnEmployee}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
             </StackPanel>
+            <Grid 
+                x:Name="grdCursor" 
+                Width="4" 
+                Height="50" 
+                Background="{DynamicResource TextMainColorButton}" 
+                HorizontalAlignment="Left"
+                Margin="0,175,35,0" 
+                VerticalAlignment="Top"/>
             <Grid Width="auto"
                   Height="auto"
                   Margin="50 35"
