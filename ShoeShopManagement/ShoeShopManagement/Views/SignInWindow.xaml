@@ -61,6 +61,7 @@
                 Height="50"
                 Background="#424242"
                 Foreground="White"
+                FontSize="16"
                 materialDesign:HintAssist.Hint="Mật khẩu" 
                 Margin="26,89,28,169"/>
 
@@ -110,11 +111,6 @@
             </Button>
 
         </Grid>
-        <Image 
-            Source="/ShoeShopManagement;component/Resources/Image/logo.png"
-            Width="185"
-            Height="152"
-            Margin="559,10,203.2,385.2"/>
 
     </Grid>
 </Window>
