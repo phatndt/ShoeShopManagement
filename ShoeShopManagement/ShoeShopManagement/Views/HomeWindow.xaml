@@ -54,7 +54,7 @@
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
                             Style="{StaticResource MainMenuButton}" >
-                        <i:Interaction.Triggers>
+                        <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
                                                        CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
@@ -63,7 +63,7 @@
                                 <i:InvokeCommandAction Command="{Binding GetNameTab}"
                                                        CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>-->
 
                     </Button>
                 </Grid>
@@ -76,7 +76,7 @@
                     <Button Style="{StaticResource MainMenuButton}"
                             x:Name="btnBusiness"
                             Content="Bán hàng">
-                        <i:Interaction.Triggers>
+                        <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
                                                        CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
@@ -85,7 +85,7 @@
                                 <i:InvokeCommandAction Command="{Binding GetNameTab}"
                                                        CommandParameter="{Binding ElementName=btnBusiness}"></i:InvokeCommandAction>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>-->
                     </Button>
                 </Grid>
                 <Grid>
@@ -255,18 +255,18 @@
                 Background="#EFD0BF"
                 Width="1160"
                 Grid.Row="1"
-                Visibility="Hidden">
+                Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
-                <i:Interaction.Triggers>
+                <!--<i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadStkGoodsCommand}" 
                                                CommandParameter="{Binding ElementName=wdHome}"/>
                     </i:EventTrigger>
-                </i:Interaction.Triggers>
+                </i:Interaction.Triggers>-->
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
@@ -320,12 +320,12 @@
                     >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="300"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="170"/>
-                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Background>
                         <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
@@ -362,7 +362,7 @@
                         Grid.Column="3" 
                         HorizontalAlignment="Center"
                         TextWrapping="Wrap" 
-                        Text="Đơn vị tính" 
+                        Text="Kích cỡ" 
                         VerticalAlignment="Center" 
                         FontSize="18"
                         Foreground="{DynamicResource White}" 
@@ -376,6 +376,25 @@
                         FontSize="18"
                         Foreground="{DynamicResource White}" 
                         FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="5" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Đơn vị tính" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="6" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Năm sản xuất" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                   
                 </Grid>
                 <Grid 
                     Grid.Row="2"
@@ -421,13 +440,13 @@
                 Background="#E0FFFF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
-                <i:Interaction.Triggers>
+                Visibility="Hidden">
+                <!--<i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
                                                CommandParameter="{Binding ElementName=wdHomeWindow}"/>
                     </i:EventTrigger>
-                </i:Interaction.Triggers>
+                </i:Interaction.Triggers>-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>

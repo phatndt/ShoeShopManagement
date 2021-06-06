@@ -9,7 +9,7 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="ImportGoodsWindow" Height="620" Width="700">
+        Title="ImportGoodsWindow" Height="720" Width="700">
     <Grid Margin="0">
         <Grid
             x:Name="grdSelectImg"
@@ -21,7 +21,7 @@
             <Rectangle 
                 x:Name="recImage"
                 StrokeDashArray="4 2" 
-                Stroke="{StaticResource PaletteColor1}" 
+                Stroke="{StaticResource PaletteColor3}" 
                 StrokeThickness="4" 
                 RadiusX="4" 
                 RadiusY="4"
@@ -31,7 +31,6 @@
                 VerticalAlignment="Top"/>
             <Button 
                 x:Name="btnSelectImage"
-                Visibility="Hidden"
                 Command="{Binding SelectImageCommand}"
                 CommandParameter="{Binding ElementName=grdSelectImg}"
                 Style="{StaticResource GreenButtonStyle}"
@@ -40,19 +39,20 @@
                 Content="Chọn ảnh" 
                 FontSize="16"
                 FontWeight="SemiBold" 
-                materialDesign:ButtonAssist.CornerRadius="4"
-                ToolTip="Chọn ảnh" 
+                ToolTip="Chọn ảnh"
                 Margin="0,0,0,12" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Bottom"
                 FocusVisualStyle="{x:Null}"
-                Foreground="{DynamicResource White}" 
-                Padding="0"/>
+                Padding="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
             <materialDesign:PackIcon 
                 x:Name="iconImage" 
-                Visibility="Hidden"
                 Kind="FileImageOutline" 
-                Foreground="{StaticResource AquaWhite}"
+                Foreground="{StaticResource Color1}"
                 Width="64" Height="54"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"  
@@ -61,7 +61,7 @@
         <StackPanel 
             x:Name="grdInfo"
             HorizontalAlignment="Left"
-            Height="460"
+            Height="550"
             Margin="240,40,0,0"
             VerticalAlignment="Top" 
             Width="420">
@@ -147,6 +147,46 @@
                 Width="420" 
                 Height="40">
                 <Label
+                    Content="Mã nhà cung cấp" 
+                    HorizontalAlignment="Left"
+                    FontSize="18" 
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Gray}"
+                    Height="32" 
+                    Margin="0" 
+                    VerticalAlignment="Center"/>
+                <Rectangle
+                    Width="230" 
+                    Height="40"
+                    RadiusY="6"
+                    RadiusX="6" 
+                    Margin="0"
+                    Stroke="{StaticResource Gray}" 
+                    HorizontalAlignment="Right"/>
+                <TextBox 
+                    x:Name="txtIdNCC"
+                    IsReadOnly="True"
+                    Cursor="Arrow"
+                    materialDesign:HintAssist.Hint="Mã tự động"
+                    HorizontalAlignment="Right"  
+                    Width="210" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
+                    Padding="0" 
+                    Foreground="{StaticResource Gray}" 
+                    Margin="0,0,10,0" 
+                    Height="40" 
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" 
+                    VerticalAlignment="Center" FontWeight="SemiBold" />
+            </Grid>
+            <Grid 
+                Margin="0,20,0,0"
+                VerticalAlignment="Top"  
+                Width="420" 
+                Height="40">
+                <Label
                     Content="Mã hàng hóa" 
                     HorizontalAlignment="Left"
                     FontSize="18" 
@@ -181,6 +221,7 @@
                     VerticalContentAlignment="Center" 
                     VerticalAlignment="Center" FontWeight="SemiBold" />
             </Grid>
+            
             <Grid 
                 Margin="0,20,0,0" 
                 VerticalAlignment="Top" 
@@ -193,7 +234,6 @@
                     FontWeight="SemiBold" 
                     Foreground="{StaticResource Gray}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -201,8 +241,7 @@
                     Width="230" 
                     RadiusY="6" 
                     RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
+                    Stroke="{StaticResource Gray}" />
                 <TextBox 
                     x:Name="txtName"
                     IsReadOnly="True"
@@ -240,8 +279,7 @@
                     Width="230"
                     RadiusY="6" 
                     RadiusX="6" 
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0" />
+                    Stroke="{StaticResource Gray}"  />
                 <ComboBox
                     x:Name="cboUnit"
                     IsEnabled="False"
@@ -276,7 +314,6 @@
                     FontWeight="SemiBold" 
                     Foreground="{StaticResource Gray}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -284,8 +321,7 @@
                     Width="230" 
                     RadiusY="6" 
                     RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
+                    Stroke="{StaticResource Gray}" />
                 <TextBox 
                     x:Name="txtImportPrice"
                     Cursor="IBeam"
@@ -304,7 +340,7 @@
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     VerticalContentAlignment="Center"
                     FontWeight="SemiBold">
-                    <i:Interaction.Triggers>
+                    <!--<i:Interaction.Triggers>
                         <i:EventTrigger EventName="PreviewTextInput" >
                             <ei:CallMethodAction TargetObject="{Binding }" 
                                                  MethodName="NumberValidationTextBox" />
@@ -317,7 +353,7 @@
                             <i:InvokeCommandAction Command="{Binding CalculateTotalCommand}"
                                                    CommandParameter="{Binding ElementName=wdImportGoods}"/>
                         </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    </i:Interaction.Triggers>-->
                 </TextBox>
             </Grid>
             <Grid 
@@ -332,7 +368,6 @@
                     FontWeight="SemiBold" 
                     Foreground="{StaticResource Gray}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <Rectangle 
                     HorizontalAlignment="Right" 
@@ -340,8 +375,7 @@
                     Width="230" 
                     RadiusY="6" 
                     RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
+                    Stroke="{StaticResource Gray}" />
                 <TextBox 
                     x:Name="txtQuantity"
                     Cursor="IBeam"
@@ -359,12 +393,12 @@
                     Margin="0,0,10,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center" FontWeight="SemiBold" >
-                    <i:Interaction.Triggers>
+                    <!--<i:Interaction.Triggers>
                         <i:EventTrigger EventName="KeyUp" >
                             <i:InvokeCommandAction Command="{Binding CalculateTotalCommand}"
                                                    CommandParameter="{Binding ElementName=wdImportGoods}"/>
                         </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    </i:Interaction.Triggers>-->
                 </TextBox>
             </Grid>
             <Grid 
@@ -379,7 +413,6 @@
                     FontWeight="SemiBold" 
                     Foreground="{StaticResource Gray}" 
                     Height="32" 
-                    Margin="0" 
                     VerticalAlignment="Center"/>
                 <TextBox 
                     x:Name="txtTotal"
@@ -393,7 +426,6 @@
                     MaxLines="1"
                     Padding="0,0,5,0" 
                     Foreground="{DynamicResource Color1}" 
-                    Margin="0" 
                     HorizontalContentAlignment="Right" 
                     VerticalContentAlignment="Center" 
                     IsTabStop="False" 
@@ -402,7 +434,7 @@
             </Grid>
         </StackPanel>
         <Grid 
-            Margin="0,520,34,0" 
+            Margin="0,590,34,0" 
             VerticalAlignment="Top"  
             Height="40" 
             Width="220" 
@@ -416,7 +448,6 @@
                 Height="40" 
                 Width="100"
                 ToolTip="Lưu thông tin" 
-                Margin="0" 
                 HorizontalAlignment="Left"
                 FocusVisualStyle="{x:Null}"
                 Content="Lưu" 

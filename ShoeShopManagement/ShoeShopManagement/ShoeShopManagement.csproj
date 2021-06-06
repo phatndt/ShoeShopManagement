@@ -94,6 +94,9 @@
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\GoodUc.xaml.cs">
+      <DependentUpon>GoodUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
     <Page Include="Resources\UserControls\FieldInfoBill.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\UserControls\GoodUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\SalaryUc.xaml">
       <SubType>Designer</SubType>

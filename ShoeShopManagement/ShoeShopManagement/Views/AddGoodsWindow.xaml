@@ -103,7 +103,7 @@
                     BorderThickness="0" 
                     MaxLines="1"
                     Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}" 
+                    Foreground="{StaticResource Gray}" 
                     Margin="0,0,10,0" 
                     Height="40" 
                     HorizontalContentAlignment="Left"
@@ -145,7 +145,7 @@
                     MaxLines="1"
                     Padding="0" 
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Foreground="{StaticResource PaletteColor3}" 
+                    Foreground="{StaticResource Gray}" 
                     Margin="0,0,10,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center"
@@ -181,18 +181,17 @@
                     FontSize="14" 
                     Width="210"
                     BorderThickness="0"
-                    Foreground="{StaticResource PaletteColor3}"  
+                    Foreground="{StaticResource Gray}"  
                     Padding="0" 
                     Margin="0,0,10,0" 
                     HorizontalAlignment="Right"
                     VerticalContentAlignment="Center" 
                     HorizontalContentAlignment="Left"
                     FontWeight="SemiBold">
-                    <ComboBoxItem IsSelected="True" Content="Chai"/>
-                    <ComboBoxItem Content="Đôi"/>
+                    <ComboBoxItem IsSelected="True" Content="Đôi"/>
+                    <ComboBoxItem Content="Mẫu"/>
                     <ComboBoxItem Content="Cái"/>
                     <ComboBoxItem Content="Lon"/>
-                    <ComboBoxItem Content="Cuộn"/>
                 </ComboBox>
             </Grid>
             <Grid 
@@ -229,22 +228,12 @@
                     MaxLines="1"
                     MaxLength="11"
                     Padding="0" 
-                    Foreground="{StaticResource PaletteColor3}" 
+                    Foreground="{StaticResource Gray}" 
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     Margin="0,0,10,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center"
                     FontWeight="SemiBold">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="PreviewTextInput" >
-                            <ei:CallMethodAction TargetObject="{Binding }"
-                                                 MethodName="NumberValidationTextBox" />
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="TextChanged">
-                            <i:InvokeCommandAction Command="{Binding SeparateThousandsCommand}" CommandParameter="{Binding ElementName=txtUnitPrice}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    
                 </TextBox>
             </Grid>
         </Grid>
