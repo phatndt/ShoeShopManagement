@@ -97,6 +97,9 @@
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\ServicesUc.xaml.cs">
+      <DependentUpon>ServicesUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -161,6 +164,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\UserControls\SalaryUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ServicesUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,7 +236,6 @@
     <Resource Include="Resources\Image\account-circle.png" />
     <Resource Include="Resources\Image\lock 1.png" />
     <Resource Include="Resources\Image\loginButton_image.png" />
-    <Resource Include="Resources\Image\logo.png" />
     <Resource Include="Resources\Image\signUp_Button.png" />
     <Resource Include="Resources\Image\attendance_Button.png" />
     <Resource Include="Resources\Image\btnImage.png" />

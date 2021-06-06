@@ -7,7 +7,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Collections.ObjectModel;
-using FootballFieldManagement.DAL;
 using System.IO;
 using ShoeShopManagement.Models;
 
