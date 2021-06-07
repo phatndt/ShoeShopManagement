@@ -24,4 +24,5 @@
     <SolidColorBrush x:Key="TextMainColorButton" Color="#FF45526c"></SolidColorBrush>
     <SolidColorBrush x:Key="TextMainColor" Color="#FEECEC"></SolidColorBrush>
     <SolidColorBrush x:Key="Orange1" Color="#FFFF8500"></SolidColorBrush>
+    <SolidColorBrush x:Key="Orange2" Color="#FFE8641A"></SolidColorBrush>
 </ResourceDictionary>
