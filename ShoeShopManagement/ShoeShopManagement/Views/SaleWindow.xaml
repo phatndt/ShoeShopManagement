@@ -893,14 +893,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBlock
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,3,0,0"
-                               Height="30"
-                               Text="Giảm giá:" 
-                               FontSize="20"
-                               FontFamily="Roboto"
-                               FontWeight="Medium"
+                                 FontWeight="Medium"
                             ></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
