@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
-        xmlns:image="clr-namespace:ShoeShopManagement.Resources"
         mc:Ignorable="d"
         x:Name="wdHomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -33,8 +32,9 @@
                     <Style TargetType="materialDesign:PackIcon">
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                        <Setter Property="Height" Value="30"></Setter>
-                        <Setter Property="Width" Value="30"></Setter>
+                        <Setter Property="Height" Value="40"></Setter>
+                        <Setter Property="Width" Value="40"></Setter>
+                        <Setter Property="Foreground" Value="White"/>
                     </Style>
                     <Style TargetType="Grid">
                         <Setter Property="Height" Value="60"></Setter>
@@ -48,12 +48,11 @@
                     <materialDesign:PackIcon
                         x:Name="iconHome"
                         Grid.Column="0" 
-                        Kind="Home" Foreground="White" 
-                        Width="50" 
-                        Height="50"/>
+                        Kind="Home"/>
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
-                            Style="{StaticResource MainMenuButton}" >
+                            Style="{StaticResource MainMenuButton}"
+                            Uid ="0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -64,7 +63,6 @@
                                                        CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-
                     </Button>
                 </Grid>
                 <Grid>
@@ -72,14 +70,18 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" Width="43" Height="43" Foreground="White" />
+                    <materialDesign:PackIcon 
+                        Kind="GoogleMyBusiness" 
+                        Grid.Column="0" 
+                        x:Name="iconBusiness"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             x:Name="btnBusiness"
-                            Content="Bán hàng">
+                            Content="Bán hàng"
+                            Uid ="1">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
-                                                       CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                             <i:EventTrigger EventName="MouseMove">
                                 <i:InvokeCommandAction Command="{Binding GetNameTab}"
@@ -93,53 +95,135 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Store" Grid.Column="0" Width="45" Height="44" Foreground="White"  />
+                    <materialDesign:PackIcon 
+                        Kind="Store" 
+                        Grid.Column="0" 
+                        x:Name="iconService"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Dịch vụ"
-                            x:Name="btnService"></Button>
+                            x:Name="btnService"
+                            Uid ="2">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnService}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="PackageVariant" Grid.Column="0" Width="50" Height="50" Foreground="White" />
+                    <materialDesign:PackIcon 
+                        Kind="PackageVariant" 
+                        Grid.Column="0" 
+                        x:Name="iconGood"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Hàng hóa"
-                            x:Name="btnGoods"></Button>
+                            x:Name="btnGoods"
+                            Uid ="3">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnGoods}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="AccountCowboyHat" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon 
+                        Kind="AccountCowboyHat" 
+                        Grid.Column="0" 
+                        x:Name="iconCustomer" />
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Khách hàng"
-                            x:Name="btnCustomer"></Button>
+                            x:Name="btnCustomer"
+                            Uid ="4">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnCustomer}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="FileChart" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon 
+                        Kind="FileChart" 
+                        Grid.Column="0" 
+                        x:Name="iconReport"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Báo cáo"
-                            x:Name="btnReport"></Button>
+                            x:Name="btnReport"
+                            Uid ="5">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnReport}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Account" Grid.Column="0" Foreground="White" Width="35" Height="40" />
+                    <materialDesign:PackIcon 
+                        Kind="Account" 
+                        Grid.Column="0"
+                        x:Name="iconEmployee"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Nhân viên"
-                            x:Name="btnEmployee"></Button>
+                            x:Name="btnEmployee"
+                            Uid ="6">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnEmployee}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                 </Grid>
             </StackPanel>
+            <Grid 
+                x:Name="grdCursor" 
+                Width="4" 
+                Height="50" 
+                Background="{DynamicResource TextMainColorButton}" 
+                HorizontalAlignment="Left"
+                Margin="0,175,35,0" 
+                VerticalAlignment="Top"/>
             <Grid Width="auto"
                   Height="auto"
                   Margin="50 35"
@@ -404,10 +488,112 @@
             </Grid>
             <Grid
                 x:Name="grdBody_Customer" 
-                Background="{DynamicResource PaletteColor4}"
+                Background="{DynamicResource White}"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Grid.Row="0" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center" 
+                    Margin="0 0 15 0">
+                    <Button 
+                        x:Name="btnAddCustomer"
+                        Height="40"
+                        Command="{Binding OpenWindowAddEmployeeCommand}" 
+                        CommandParameter="{Binding ElementName=wdHome}"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        BorderThickness="0"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        Width="200"
+                        FocusVisualStyle="{x:Null}"
+                        Content="Thêm khách hàng" 
+                        FontSize="18"
+                        FontWeight="SemiBold" 
+                        FlowDirection="LeftToRight" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <Grid
+                    HorizontalAlignment="Left"
+                    Margin="15,0,0,0" 
+                    Width="1120"
+                    Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Resources/Image/tablebar.png" />
+                    </Grid.Background>
+                    <TextBlock 
+                        Grid.Column="0"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        Text="STT" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="1" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Tên khách hàng" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="2" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Số điện thoại" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="3" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Số hóa đơn" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    HorizontalAlignment="Left" 
+                    Margin="15 0 0 40"
+                    Width="1120">
+                    <ScrollViewer
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled" 
+                        Width="1120">
+                        <StackPanel
+                            x:Name="stkCustomer"
+                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            Width="1120" 
+                            HorizontalAlignment="Left">
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </Grid>
             <Grid
                 x:Name="grdBody_Report" 
@@ -416,12 +602,101 @@
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Hidden">
             </Grid>
+            <Grid
+                x:Name="grdBody_Stock" 
+                Background="{DynamicResource White}"
+                Grid.Row="1" 
+                DataContext="{StaticResource EmployeeVM}"
+                Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Grid.Row="0" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0 0 15 0">
+                    <Button 
+                        x:Name="btnAddStock"
+                        Height="40"
+                        Command="{Binding OpenWindowAddEmployeeCommand}" 
+                        CommandParameter="{Binding ElementName=wdHome}"
+                        materialDesign:ButtonAssist.CornerRadius="2"
+                        BorderThickness="0"
+                        Margin="0" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        Width="200"
+                        FocusVisualStyle="{x:Null}"
+                        Content="Lập phiếu kiểm kho" 
+                        FontSize="18"
+                        FontWeight="SemiBold" FlowDirection="LeftToRight" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <Grid
+                    HorizontalAlignment="Left"
+                    Margin="15,0,0,0" 
+                    Width="1120"
+                    Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Resources/Image/tablebar.png" />
+                    </Grid.Background>
+                    <TextBlock 
+                        Grid.Column="0"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        Text="STT" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="1" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Thời gian" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    HorizontalAlignment="Left" 
+                    Margin="15 0 0 40"
+                    Width="1120">
+                    <ScrollViewer
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled" 
+                        Width="1120">
+                        <StackPanel
+                            x:Name="stkStockGood"
+                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            Width="1120" 
+                            HorizontalAlignment="Left">
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
             <Grid 
                 x:Name="grdBody_Employee" 
                 Background="#E0FFFF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
