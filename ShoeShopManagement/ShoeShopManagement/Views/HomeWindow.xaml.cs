@@ -9,12 +9,8 @@ namespace ShoeShopManagement.Views
     {
         public HomeWindow()
         {
-            //InitializeComponent();
-            //SignIn a = new SignIn();
-            //this.Close();
-            //a.ShowDialog();
+            InitializeComponent();
         }
-
         private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 

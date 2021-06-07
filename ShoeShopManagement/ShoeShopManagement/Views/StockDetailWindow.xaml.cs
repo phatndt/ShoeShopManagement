@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for SignIn.xaml
+    /// Interaction logic for StockDetailWindow.xaml
     /// </summary>
-    public partial class SignIn : Window
+    public partial class StockDetailWindow : Window
     {
-        public SignIn()
+        public StockDetailWindow()
         {
             InitializeComponent();
         }
