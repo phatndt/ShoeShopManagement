@@ -44,7 +44,7 @@ namespace ShoeShopManagement.Models
             this.position = position;
             this.telephone = telephone;
             this.address = address;
-            this.image = image;
+            this.Image = image;
         }
     }
 }
