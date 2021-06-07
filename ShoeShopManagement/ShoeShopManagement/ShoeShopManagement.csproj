@@ -88,6 +88,9 @@
     <Compile Include="Models\StockInDetail.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\test.cs" />
+    <Compile Include="Resources\UserControls\CustomerUc.xaml.cs">
+      <DependentUpon>CustomerUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\EmployeeUc.xaml.cs">
       <DependentUpon>EmployeeUc.xaml</DependentUpon>
     </Compile>
@@ -100,12 +103,20 @@
     <Compile Include="Resources\UserControls\ServicesUc.xaml.cs">
       <DependentUpon>ServicesUc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\StockBillUc.xaml.cs">
+      <DependentUpon>StockBillUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\StockGoodUc.xaml.cs">
+      <DependentUpon>StockGoodUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\GoodsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\StockViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddEmployeeWindow.xaml.cs">
       <DependentUpon>AddEmployeeWindow.xaml</DependentUpon>
@@ -115,6 +126,9 @@
     </Compile>
     <Compile Include="Views\BusinessWindow.xaml.cs">
       <DependentUpon>BusinessWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckStockWindow.xaml.cs">
+      <DependentUpon>CheckStockWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
@@ -130,6 +144,9 @@
     </Compile>
     <Compile Include="Views\SignInWindow.xaml.cs">
       <DependentUpon>SignInWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StockDetailWindow.xaml.cs">
+      <DependentUpon>StockDetailWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\UserControls\CustomerUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\EmployeeUc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,6 +192,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\UserControls\StockBillUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockGoodUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BusinessWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckStockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SignInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StockDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,7 +279,6 @@
     <Resource Include="Resources\Image\background.png" />
     <Content Include="Resources\Image\intro.mp4" />
     <Resource Include="Resources\Image\Logo.jpg" />
-    <Resource Include="Resources\Image\logo.png" />
     <Resource Include="Resources\Image\Shoes\af-1-1-shoe-7qQjnL.jpg" />
     <Resource Include="Resources\Image\Shoes\air-force-1-07-craft-shoe-jCGMCm.jpg" />
     <Resource Include="Resources\Image\Shoes\air-force-1-07-lv8-shoe-ldZ4Ml.jpg" />
