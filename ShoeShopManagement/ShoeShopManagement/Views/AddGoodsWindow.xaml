@@ -8,7 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
         mc:Ignorable="d"
-        Title="AddGoodsWindow" Height="380" Width="700"
+        Title="AddGoodsWindow" Height="680" Width="700"
         DataContext="{StaticResource GoodVM}"
         Background="White"
         WindowStartupLocation="CenterScreen"
@@ -65,7 +65,7 @@
         <Grid 
             x:Name="grdInfo"
             HorizontalAlignment="Left"
-            Height="220"
+            Height="490"
             Margin="240,40,0,0"
             VerticalAlignment="Top" 
             Width="420">
@@ -226,6 +226,47 @@
                     FontSize="14" 
                     BorderThickness="0" 
                     MaxLines="1"
+                    Padding="0" 
+                    Foreground="{StaticResource Gray}" 
+                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                    Margin="0,0,10,0" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Center"
+                    FontWeight="SemiBold">
+                </TextBox>
+            </Grid>
+            <Grid 
+                Margin="0,240,0,0" 
+                VerticalAlignment="Top" 
+                Width="420" 
+                Height="40">
+                <Label 
+                    Content="Kích cỡ"
+                    HorizontalAlignment="Left"
+                    FontSize="18"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Color1}" 
+                    Height="32" 
+                    Margin="0" 
+                    VerticalAlignment="Center"/>
+                <Rectangle 
+                    HorizontalAlignment="Right" 
+                    Height="40" 
+                    Width="230" 
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource Gray}" 
+                    Margin="0"/>
+                <TextBox 
+                    x:Name="txtUnitPriceSize"
+                    Cursor="IBeam"
+                    materialDesign:HintAssist.Hint="Kích cỡ"
+                    HorizontalAlignment="Right"
+                    Height="40"  
+                    Width="210" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
                     MaxLength="11"
                     Padding="0" 
                     Foreground="{StaticResource Gray}" 
@@ -236,9 +277,134 @@
                     FontWeight="SemiBold">
                 </TextBox>
             </Grid>
+            <Grid 
+                Margin="0,300,0,0" 
+                VerticalAlignment="Top" 
+                Width="420" 
+                Height="40">
+                <Label 
+                    Content="Năm sản xuất"
+                    HorizontalAlignment="Left"
+                    FontSize="18"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Color1}" 
+                    Height="32" 
+                    Margin="0" 
+                    VerticalAlignment="Center"/>
+                <Rectangle 
+                    HorizontalAlignment="Right" 
+                    Height="40" 
+                    Width="230" 
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource Gray}" 
+                    Margin="0"/>
+                <TextBox 
+                    x:Name="txtStarYear"
+                    Cursor="IBeam"
+                    materialDesign:HintAssist.Hint="Năm sản xuất"
+                    HorizontalAlignment="Right"
+                    Height="40"  
+                    Width="210" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
+                    MaxLength="11"
+                    Padding="0" 
+                    Foreground="{StaticResource Gray}" 
+                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                    Margin="0,0,10,0" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Center"
+                    FontWeight="SemiBold">
+                </TextBox>
+            </Grid>
+            <Grid 
+                Margin="0,360,0,0" 
+                VerticalAlignment="Top" 
+                Width="420" 
+                Height="40">
+                <Label 
+                    Content="Màu sắc"
+                    HorizontalAlignment="Left"
+                    FontSize="18"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Color1}" 
+                    Height="32" 
+                    Margin="0" 
+                    VerticalAlignment="Center"/>
+                <Rectangle 
+                    HorizontalAlignment="Right" 
+                    Height="40" 
+                    Width="230" 
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource Gray}" 
+                    Margin="0"/>
+                <TextBox 
+                    x:Name="txtColor"
+                    Cursor="IBeam"
+                    materialDesign:HintAssist.Hint="Màu sắc"
+                    HorizontalAlignment="Right"
+                    Height="40"  
+                    Width="210" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
+                    MaxLength="11"
+                    Padding="0" 
+                    Foreground="{StaticResource Gray}" 
+                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                    Margin="0,0,10,0" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Center"
+                    FontWeight="SemiBold">
+                </TextBox>
+            </Grid>
+            <Grid 
+                Margin="0,420,0,0" 
+                VerticalAlignment="Top" 
+                Width="420" 
+                Height="40">
+                <Label 
+                    Content="Nhà cung cấp"
+                    HorizontalAlignment="Left"
+                    FontSize="18"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Color1}" 
+                    Height="32" 
+                    Margin="0" 
+                    VerticalAlignment="Center"/>
+                <Rectangle 
+                    HorizontalAlignment="Right" 
+                    Height="40" 
+                    Width="230" 
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource Gray}" 
+                    Margin="0"/>
+                <ComboBox
+                    x:Name="cbbNCC"
+                    Cursor="IBeam"
+                    materialDesign:HintAssist.Hint="Nhà cung cấp"
+                    HorizontalAlignment="Right"
+                    Height="40"  
+                    Width="210" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    Padding="0" 
+                    Foreground="{StaticResource Gray}" 
+                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
+                    Margin="0,0,10,0" 
+                    HorizontalContentAlignment="Left" 
+                    VerticalContentAlignment="Center"
+                    FontWeight="SemiBold">
+                </ComboBox>
+            </Grid>
+            
         </Grid>
         <Grid 
-            Margin="0,290,34,0" 
+            Margin="0,570,34,0" 
             VerticalAlignment="Top"  
             Height="40" 
             Width="220" 
