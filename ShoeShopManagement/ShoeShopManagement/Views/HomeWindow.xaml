@@ -654,7 +654,7 @@
                         x:Name="btnAddStock"
                         Height="40"
                         Command="{Binding OpenStockBillWindowCommand}" 
-                        CommandParameter="{Binding ElementName=wdHome}"
+                        CommandParameter="{Binding ElementName=wdHomeWindow}"
                         materialDesign:ButtonAssist.CornerRadius="2"
                         BorderThickness="0"
                         Margin="0" 

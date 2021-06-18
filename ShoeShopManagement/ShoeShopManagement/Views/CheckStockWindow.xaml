@@ -316,11 +316,11 @@
             Height="60">
             <Button
                 Height="40"
-                Command="{Binding SaveEmployeeCommand}" 
-                CommandParameter="{Binding ElementName=wdAddEmployee}"
+                Command="{Binding SaveCommand}" 
+                CommandParameter="{Binding ElementName=wdCheckStock}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
-                ToolTip="Thêm nhân viên" 
+                ToolTip="Lưu" 
                 Margin="0" 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
@@ -339,7 +339,7 @@
                 CommandParameter="{Binding ElementName=wdCheckStock}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
-                ToolTip="Thêm nhân viên" 
+                ToolTip="Bỏ qua" 
                 Margin="40 0 0 0" 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 

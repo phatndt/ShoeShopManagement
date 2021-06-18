@@ -49,7 +49,7 @@ namespace ShoeShopManagement.ViewModels
             GetIdGoodCommand = new RelayCommand<CheckStockWindow>(parameter => true, parameter => GetIdGood(parameter));
             AddGoodToStockBillCommand = new RelayCommand<CheckStockWindow>(parameter => true, parameter => AddGoodToStockBill(parameter));
             DeleteCommand = new RelayCommand<StockBillGoodUc>(parameter => true, parameter => DeleteStockCheckGood(parameter));
-            SaveCommand = new RelayCommand<StockBillGoodUc>(parameter => true, parameter => SaveStockCheck(parameter));
+            SaveCommand = new RelayCommand<CheckStockWindow>(parameter => true, parameter => SaveStockCheck(parameter));
         }
 
         private void LoadStockBill(HomeWindow parameter)
@@ -77,16 +77,24 @@ namespace ShoeShopManagement.ViewModels
             StockDetailWindow stockDetailWindow = new StockDetailWindow();
             int i = int.Parse(parameter.txbID.Text.ToString());
             List<StockCheckDetail> stockChecks = StockCheckDAL.Instance.ConvertDBToStockDetailList(i);
+            bool flag = false;
+            int id = 1;
             foreach (StockCheckDetail stockCheck in stockChecks)
             {
                 StockGoodUc stockGoodUc = new StockGoodUc();
-                stockGoodUc.txbId.Text = stockCheck.IdStockCheckDetail.ToString();
+                flag = !flag;
+                if (flag)
+                {
+                    stockGoodUc.grdMain.Background = (Brush)new BrushConverter().ConvertFrom("#FFF1D597");
+                }
+                stockGoodUc.txbId.Text = id.ToString();
                 stockGoodUc.txbName.Text = StockCheckDAL.Instance.GetNameProduct(stockCheck.IdGood);
                 stockGoodUc.txbFirstQuantity.Text = stockCheck.FirstQuantity.ToString();
                 stockGoodUc.txbStockInQuantity.Text = stockCheck.StockInQuantity.ToString();
                 stockGoodUc.txbStockOutQuantity.Text = stockCheck.StockOutQuantity.ToString();
                 stockGoodUc.txbFinalQuantity.Text = stockCheck.FinalQuantity.ToString();
                 stockDetailWindow.stkGoodStockCheck.Children.Add(stockGoodUc);
+                id++;
             }
             stockDetailWindow.Show();
         }
@@ -214,6 +222,39 @@ namespace ShoeShopManagement.ViewModels
         {
             StockCheckDetailDAL.Instance.RemoveStockCheckDetailByIdFromDatabase(int.Parse(parameter.txbStockCheckDetail.Text));
             this.CheckStockWindow.stkGoodBill.Children.Remove(parameter);
+        }
+
+        private void LoadStkStockCheck(HomeWindow homeWindow)
+        {
+            this.homeWindow = homeWindow;
+            homeWindow.stkStockGood.Children.Clear();
+            List<StockCheck> stockChecks = StockCheckDAL.Instance.ConvertDBToList();
+            bool flag = false;
+            foreach (StockCheck stockCheck in stockChecks)
+            {
+                StockBillUc stockBillUc = new StockBillUc();
+                flag = !flag;
+                if (flag)
+                {
+                    stockBillUc.grdMain.Background = (Brush)new BrushConverter().ConvertFrom("#FFF1D597");
+                }
+                stockBillUc.txbID.Text = stockCheck.Id.ToString();
+                stockBillUc.txbTime.Text = stockCheck.Datestock.ToString("dd/MM/yyyy");
+                homeWindow.stkStockGood.Children.Add(stockBillUc);
+            }
+        }
+
+        private void SaveStockCheck(CheckStockWindow parameter)
+        {
+            if (parameter.stkGoodBill.Children.Count == 0)
+            {
+                MessageBox.Show("Không có sản phẩm nào được kiểm tra");
+            } else
+            {
+                Notification.Instance.Success("Thành công");
+                parameter.Close();
+                LoadStkStockCheck(homeWindow);
+            }
         }
     }
 }

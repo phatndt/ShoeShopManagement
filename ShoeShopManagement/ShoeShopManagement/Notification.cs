@@ -11,16 +11,16 @@ using ToastNotifications.Position;
 
 namespace ShoeShopManagement
 {
-    class CustomMessageBox
+    class Notification
     {
-        private static CustomMessageBox instance;
+        private static Notification instance;
 
-        public static CustomMessageBox Instance
+        public static Notification Instance
         {
-            get { if (instance == null) instance = new CustomMessageBox(); return CustomMessageBox.instance; }
-            private set { CustomMessageBox.instance = value; }
+            get { if (instance == null) instance = new Notification(); return Notification.instance; }
+            private set { Notification.instance = value; }
         }
-        private CustomMessageBox()
+        private Notification()
         {
 
         }
@@ -42,5 +42,5 @@ namespace ShoeShopManagement
             });
             notifier.ShowSuccess(message);
         }
-    } 
+    }
 }
