@@ -12,8 +12,8 @@
         x:Name="grdMain"
         Background="#FFFFFF">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="3.5*"/>
             <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="1.5*"/>
@@ -25,7 +25,7 @@
             x:Name="txbId"
             Text="Id"
             TextWrapping="Wrap" 
-            FontSize="18" 
+            FontSize="14" 
             FontWeight="SemiBold" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>
@@ -43,7 +43,7 @@
             Text="Tên sản phẩm"
             TextWrapping="Wrap"
             Margin="20 0 0 0"
-            FontSize="18" 
+            FontSize="14" 
             FontWeight="SemiBold" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Center"/>
@@ -60,7 +60,7 @@
             x:Name="txbFirstQuantity"
             Text="Số lượng tồn đầu"
             TextWrapping="Wrap"
-            FontSize="18" 
+            FontSize="14" 
             FontWeight="SemiBold" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>
@@ -77,7 +77,7 @@
             x:Name="txbStockInQuantity"
             Text="Số lượng nhập"
             TextWrapping="Wrap"
-            FontSize="18" 
+            FontSize="14" 
             FontWeight="SemiBold" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>
@@ -94,7 +94,7 @@
             x:Name="txbStockOutQuantity"
             Text="Số lượng xuất"
             TextWrapping="Wrap"
-            FontSize="18" 
+            FontSize="14" 
             FontWeight="SemiBold" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>
@@ -111,7 +111,7 @@
             x:Name="txbFinalQuantity"
             Text="Số lượng tồn cuối"
             TextWrapping="Wrap"
-            FontSize="18" 
+            FontSize="14" 
             FontWeight="SemiBold" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>

@@ -4,11 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
+                xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        x:Name="wdCheckStock"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource StockVM}"
         Title="CheckStockWindow" Height="800" Width="905">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=wdCheckStock}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ExitStockBillWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=wdCheckStock}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -42,6 +54,7 @@
                 VerticalAlignment="Center"/>
             <Rectangle
                 x:Name="recIdStockBill"
+                StrokeThickness="2"
                 Width="300" 
                 Height="40"
                 RadiusY="6"
@@ -84,29 +97,31 @@
                 Foreground="{StaticResource PaletteColor1}" 
                 Height="40" 
                 Margin="50 0 0 0" />
-            <DatePicker 
+            <TextBox
                 x:Name="txtDate"
                 materialDesign:HintAssist.Hint="Ngày lập phiếu"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Cursor="IBeam"
-                Height="40" 
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
                 Width="280" 
                 FontSize="14" 
                 BorderThickness="0" 
-                Padding="0"
-                IsEnabled="False"
-                Foreground="{StaticResource Orange1}"
-                Margin="0,0,60,0" 
-                HorizontalContentAlignment="Left" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
                 FontWeight="SemiBold"
-                materialDesign:ThemeAssist.Theme="Light"
-                Background="{DynamicResource PaletteColor3}"/>
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
             <Rectangle 
                 x:Name="recDate"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                StrokeThickness="2"
                 Height="40" 
                 Width="300"
                 Margin="0 0 50 0"
@@ -138,6 +153,7 @@
                 BorderThickness="0" 
                 Padding="0" 
                 Foreground="{StaticResource Orange1}"
+                BorderBrush="{StaticResource Orange1}"
                 Margin="0,0,60,0" 
                 HorizontalContentAlignment="Left" 
                 VerticalContentAlignment="Center" 
@@ -148,6 +164,7 @@
                 x:Name="recProduct"
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Center"
+                StrokeThickness="2"
                 Height="40" 
                 Width="300"
                 Margin="0 0 50 0"
@@ -158,6 +175,8 @@
         <Grid Grid.Row="4" Grid.ColumnSpan="2">
             <Button HorizontalAlignment="Right"
                     Margin=" 0 0 50 0"
+                    Command="{Binding AddGoodToStockBillCommand}"
+                    CommandParameter="{Binding ElementName=wdCheckStock}"
                     Content="Thêm"
                     BorderThickness="0">
                 <Button.Background>
@@ -166,7 +185,7 @@
             </Button>
             <TextBox 
                 x:Name="txtId"
-                materialDesign:HintAssist.Hint="Mã tự động"
+                materialDesign:HintAssist.Hint="Mã sản phẩm tự động"
                 HorizontalAlignment="Right"  
                 VerticalAlignment="Center" 
                 Width="190" 
@@ -177,17 +196,18 @@
                 Foreground="{StaticResource Orange1}" 
                 Margin="0,0,150,0" 
                 IsReadOnly="True" 
-                Height="40" 
+                Height="40"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" 
                 SelectionBrush="{x:Null}"
                 FontWeight="SemiBold"
-                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}" Grid.ColumnSpan="2">
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
             </TextBox>
             <Rectangle 
                 x:Name="rec"
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Center"
+                StrokeThickness="2"
                 Height="40" 
                 Width="200"
                 Margin="0 0 150 0"
@@ -202,7 +222,7 @@
             Grid.Row="5" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
@@ -220,7 +240,7 @@
                 TextWrapping="Wrap" 
                 Text="STT" 
                 VerticalAlignment="Center" 
-                FontSize="16" 
+                FontSize="14" 
                 Foreground="{DynamicResource White}"
                 FontWeight="SemiBold"/>
             <TextBlock
@@ -230,7 +250,7 @@
                 TextWrapping="Wrap" 
                 Text="Tên sản phẩm" 
                 VerticalAlignment="Center"
-                FontSize="16" 
+                FontSize="14" 
                 Foreground="{DynamicResource White}" 
                     FontWeight="SemiBold"/>
             <TextBlock 
@@ -239,7 +259,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng tồn đầu" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
@@ -248,7 +268,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng nhập" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
@@ -257,7 +277,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng xuất" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
@@ -266,7 +286,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng tồn cuối" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
         </Grid>
@@ -280,7 +300,7 @@
                     HorizontalScrollBarVisibility="Disabled" 
                     Width="860">
                 <StackPanel 
-                    x:Name="stkEmployee"
+                    x:Name="stkGoodBill"
                     ScrollViewer.HorizontalScrollBarVisibility="Visible"
                     Width="860" 
                     HorizontalAlignment="Left">
@@ -315,8 +335,8 @@
             </Button>
             <Button
                 Height="40"
-                Command="{Binding CancalAddEmployeeCammand}" 
-                CommandParameter="{Binding ElementName=wdAddEmployee}"
+                Command="{Binding ExitStockBillButtonWindowCommand}" 
+                CommandParameter="{Binding ElementName=wdCheckStock}"
                 materialDesign:ButtonAssist.CornerRadius="2"
                 BorderThickness="0"
                 ToolTip="Thêm nhân viên" 

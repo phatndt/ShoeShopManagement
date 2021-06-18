@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              x:Name="StockBillUC"
-             DataContext="{StaticResource EmployeeVM}"
+             DataContext="{StaticResource StockVM}"
              Width="1120"
              Height="50">
     <Grid
@@ -65,8 +65,10 @@
         <Button 
             Grid.Column="2"
             x:Name="btnStockDetailBill"
+            Command="{Binding OpenStockDetailWindow}"
+            CommandParameter="{Binding ElementName=StockBillUC}"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Sửa thông tin"
+            ToolTip="Xem chi tiết"
             Height="30"
             materialDesign:ButtonAssist.CornerRadius="6"
             Background="{x:Null}" 

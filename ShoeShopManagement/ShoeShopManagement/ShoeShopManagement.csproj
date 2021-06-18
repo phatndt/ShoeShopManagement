@@ -73,12 +73,14 @@
     </ApplicationDefinition>
     <Compile Include="Converter.cs" />
     <Compile Include="CurrentAccount.cs" />
+    <Compile Include="CustomMessageBox.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\GoodsDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
     <Compile Include="DAL\StockCheckDAL.cs" />
+    <Compile Include="DAL\StockCheckDetailDAL.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
