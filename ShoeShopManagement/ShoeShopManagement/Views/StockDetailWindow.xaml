@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
+        xmlns:local1="clr-namespace:ShoeShopManagement.Resources.UserControls"
         mc:Ignorable="d"
         Title="StockDetailWindow" Height="450" Width="905">
     <Grid>
@@ -98,8 +99,9 @@
                 <StackPanel 
                     x:Name="stkEmployee"
                     ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                    Width="1120" 
+                    Width="860" 
                     HorizontalAlignment="Left">
+                    <local1:StockGoodUc/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

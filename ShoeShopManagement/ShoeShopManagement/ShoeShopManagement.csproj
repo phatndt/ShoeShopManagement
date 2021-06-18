@@ -71,12 +71,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter.cs" />
     <Compile Include="CurrentAccount.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\GoodsDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
+    <Compile Include="DAL\StockCheckDAL.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -84,6 +86,8 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\StockCheck.cs" />
+    <Compile Include="Models\StockCheckDetail.cs" />
     <Compile Include="Models\StockIn.cs" />
     <Compile Include="Models\StockInDetail.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -99,6 +103,9 @@
     </Compile>
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\StockBillGoodUc.xaml.cs">
+      <DependentUpon>StockBillGoodUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\UserControls\StockBillUc.xaml.cs">
       <DependentUpon>StockBillUc.xaml</DependentUpon>
@@ -182,6 +189,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\UserControls\SalaryUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockBillGoodUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
