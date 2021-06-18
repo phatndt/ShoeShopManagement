@@ -617,106 +617,7 @@
                         <ScrollViewer 
                                 VerticalScrollBarVisibility="Auto" 
                                 HorizontalScrollBarVisibility="Disabled">
-                            <Grid
-                                Width="760"
-                                Height="80"
-                                VerticalAlignment="Top" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="6*"></ColumnDefinition>
-                                    <ColumnDefinition Width="4*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock 
-                                Grid.Column="0"
-                                Text="1" 
-                                HorizontalAlignment="Center"
-                                TextWrapping="Wrap" 
-                                VerticalAlignment="Center" 
-                                FontSize="16"
-                                FontWeight="SemiBold" />
-                                <Rectangle 
-                                Grid.Column="0" 
-                                HorizontalAlignment="Right" 
-                                Height="30" 
-                                Margin="0" 
-                                Width="2"
-                                Fill="{DynamicResource PaletteColor1}" 
-                                VerticalAlignment="Center" />
-                                <TextBlock 
-                                Grid.Column="1"
-                                Text="Vệ sinh giày" 
-                                HorizontalAlignment="Center"
-                                TextWrapping="Wrap" 
-                                VerticalAlignment="Center" 
-                                FontSize="16"
-                                FontWeight="SemiBold" />
-                                <Rectangle 
-                                Grid.Column="1" 
-                                HorizontalAlignment="Right" 
-                                Height="30" 
-                                Margin="0" 
-                                Width="2"
-                                Fill="{DynamicResource PaletteColor1}" 
-                                VerticalAlignment="Center" />
-                                <TextBlock 
-                                Grid.Column="2"
-                                Text="50.000đ" 
-                                HorizontalAlignment="Center"
-                                TextWrapping="Wrap" 
-                                VerticalAlignment="Center" 
-                                FontSize="16"
-                                FontWeight="SemiBold" />
-
-                                <TextBlock 
-                                Grid.Column="0"
-                                    Grid.Row="1"
-                                Text="2" 
-                                HorizontalAlignment="Center"
-                                TextWrapping="Wrap" 
-                                VerticalAlignment="Center" 
-                                FontSize="16"
-                                FontWeight="SemiBold" />
-                                <Rectangle 
-                                Grid.Column="0" 
-                                    Grid.Row="1"
-                                HorizontalAlignment="Right" 
-                                Height="30" 
-                                Margin="0" 
-                                Width="2"
-                                Fill="{DynamicResource PaletteColor1}" 
-                                VerticalAlignment="Center" />
-                                <TextBlock 
-                                Grid.Column="1"
-                                    Grid.Row="1"
-                                Text="Sửa giày" 
-                                HorizontalAlignment="Center"
-                                TextWrapping="Wrap" 
-                                VerticalAlignment="Center" 
-                                FontSize="16"
-                                FontWeight="SemiBold" />
-                                <Rectangle 
-                                Grid.Column="1" 
-                                    Grid.Row="1"
-                                HorizontalAlignment="Right" 
-                                Height="30" 
-                                Margin="0" 
-                                Width="2"
-                                Fill="{DynamicResource PaletteColor1}" 
-                                VerticalAlignment="Center" />
-                                <TextBlock 
-                                Grid.Column="2"
-                                    Grid.Row="1"
-                                Text="100.000đ" 
-                                HorizontalAlignment="Center"
-                                TextWrapping="Wrap" 
-                                VerticalAlignment="Center" 
-                                FontSize="16"
-                                FontWeight="SemiBold" />
-                            </Grid>
+                            
                         </ScrollViewer>
                     </Grid>
                     <Border 
@@ -1129,7 +1030,7 @@
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="50"/>
