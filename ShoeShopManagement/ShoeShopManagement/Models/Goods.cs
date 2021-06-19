@@ -10,33 +10,29 @@ namespace ShoeShopManagement.Models
     {
         private int idGood;
         private string name;
+        private int idLSP;
+        private int idDVT;
         private long price;
-        private int quantity;
         private byte[] image;
-        private string color;
-        private int size;
-
         public int IdGood { get => idGood; set => idGood = value; }
         public string Name { get => name; set => name = value; }
+        public int IdLSP { get => idLSP; set => idLSP = value; }
+        public int IdDVT { get => idDVT; set => idDVT = value; }
         public long Price { get => price; set => price = value; }
-        public int Quantity { get => quantity; set => quantity = value; }
         public byte[] Image { get => image; set => image = value; }
-        public string Color { get => color; set => color = value; }
-        public int Size { get => size; set => size = value; }
-        
+
         public Goods()
         {
 
         }
-        public Goods(int idGood, string name, long price, int quantity, byte[] image, string color, int size)
+        public Goods(int idGood, string name, int idLSP, int idDVT, long price, byte[] image)
         {
             this.idGood = idGood;
             this.name = name;
+            this.idLSP = idLSP;
+            this.idDVT = idDVT;
             this.price = price;
-            this.quantity = quantity;
             this.image = image;
-            this.color = color;
-            this.size = size;
         }
     }
 }

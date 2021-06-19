@@ -1,0 +1,368 @@
+﻿<Window x:Class="ShoeShopManagement.Views.CustomerDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoeShopManagement.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        x:Name="wdCustomerDetail"
+        DataContext="{StaticResource CustomerVM}"
+        WindowStartupLocation="CenterScreen"
+        Title="StockDetailWindow" Height="580" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            TextAlignment="Center"
+            FontSize="30"
+            FontWeight="SemiBold"
+            Text="CHI TIẾT KHÁCH HÀNG"/>
+        <Grid 
+            Grid.Row="1"
+            x:Name="grdId" Grid.ColumnSpan="2">
+            <Label
+                x:Name="lbIdCustomer"
+                Content="Mã khách hàng" 
+                HorizontalAlignment="Left"
+                FontSize="20" 
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}"
+                Height="40" 
+                Margin="50 0 0 0" 
+                VerticalAlignment="Center"/>
+            <Rectangle
+                x:Name="recIdCustomer"
+                StrokeThickness="2"
+                Width="300" 
+                Height="40"
+                RadiusY="6"
+                RadiusX="6" 
+                Margin="0,0,50,0"
+                Stroke="{StaticResource Gray}" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"/>
+            <TextBox 
+                x:Name="txtIdCustomer"
+                materialDesign:HintAssist.Hint="Mã tự động"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0"
+                Cursor="No"
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                IsReadOnly="True"
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}" Grid.ColumnSpan="2">
+            </TextBox>
+        </Grid>
+        <Grid   
+            x:Name="grdName" 
+            Grid.Row="2" Grid.ColumnSpan="2">
+            <Label 
+                x:Name="lbNameCustomer"
+                Content="Tên khách hàng"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
+            <TextBox
+                x:Name="txtCustomer"
+                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Tên khách hàng"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                ToolTip="Chỉnh sửa"
+                Cursor="IBeam"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="Customer"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="300"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+        </Grid>
+        <Grid   
+            x:Name="grdPhone" 
+            Grid.Row="3">
+            <Label 
+                x:Name="lbPhoneCustomer"
+                Content="Số điện thoại"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
+            <TextBox
+                x:Name="txtPhoneCustomer"
+                Text="{Binding Number, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Số điện thoại"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}"
+                Margin="0,20,60,21" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                ToolTip="Chỉnh sửa"
+                Cursor="IBeam"
+                MaxLength="10"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="PhoneCustomer"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="300"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+        </Grid>
+        <Grid   
+            x:Name="grdBusinessBill" 
+            Grid.Row="4">
+            <Label 
+                x:Name="lbBusinessBill"
+                Content="Số hóa đơn mua hàng"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
+            <TextBox
+                x:Name="txtBusinessBill"
+                materialDesign:HintAssist.Hint="Số hóa đơn"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="100" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                IsReadOnly="True"
+                Cursor="No"
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,240,21" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="BusinessBill"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="120"
+                Margin="0 0 230 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+            <TextBox
+                x:Name="txtMoneyBusinessBill"
+                materialDesign:HintAssist.Hint="Tiền"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="140" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                IsReadOnly="True"
+                Cursor="No"
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="MoneyBusinessBill"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="160"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+        </Grid>
+        <Grid   
+            x:Name="grdServiceBill" 
+            Grid.Row="5">
+            <Label 
+                x:Name="lbServiceBill"
+                Content="Số hóa đơn dịch vụ"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
+            <TextBox
+                x:Name="txtServiceBill"
+                materialDesign:HintAssist.Hint="Số hóa đơn"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="100" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                IsReadOnly="True"
+                Cursor="No"
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,240,21" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="ServiceBill"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="120"
+                Margin="0 0 230 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+            <TextBox
+                x:Name="txtMoneyServiceBill"
+                materialDesign:HintAssist.Hint="Tiền"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="140" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                IsReadOnly="True"
+                Cursor="No"
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="MoneyServiceBill"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="160"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+        </Grid>
+        <StackPanel   
+            Grid.Row="6"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal"
+            x:Name="grdButton" 
+            Height="60">
+            <Button
+                Height="40"
+                Command="{Binding SaveCommand}" 
+                CommandParameter="{Binding ElementName=wdCustomerDetail}"
+                materialDesign:ButtonAssist.CornerRadius="2"
+                BorderThickness="0"
+                ToolTip="Lưu" 
+                Margin="0" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Width="100"
+                FocusVisualStyle="{x:Null}"
+                Content="Lưu" 
+                FontSize="18" 
+                FontWeight="SemiBold">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
+            <Button
+                Height="40"
+                Command="{Binding CloseCommand}" 
+                CommandParameter="{Binding ElementName=wdCustomerDetail}"
+                materialDesign:ButtonAssist.CornerRadius="2"
+                BorderThickness="0"
+                ToolTip="Bỏ qua" 
+                Margin="40 0 0 0" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Width="100"
+                FocusVisualStyle="{x:Null}"
+                Content="Bỏ qua" 
+                FontSize="18" 
+                FontWeight="SemiBold" FlowDirection="LeftToRight">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

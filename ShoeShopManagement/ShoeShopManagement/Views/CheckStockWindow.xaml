@@ -4,9 +4,354 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="CheckStockWindow" Height="450" Width="800">
+        x:Name="wdCheckStock"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource StockVM}"
+        Title="CheckStockWindow" Height="800" Width="905">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=wdCheckStock}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ExitStockBillWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=wdCheckStock}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            TextAlignment="Center"
+            FontSize="30"
+            FontWeight="SemiBold"
+            Text="Lập phiếu kiểm kho"/>
+        <Grid 
+            Grid.Row="1"
+            x:Name="grdIdStockBill" Grid.ColumnSpan="2">
+            <Label
+                x:Name="lbIdStockBill"
+                Content="Mã phiếu kiểm kho" 
+                HorizontalAlignment="Left"
+                FontSize="20" 
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}"
+                Height="32" 
+                Margin="50 0 0 0" 
+                VerticalAlignment="Center"/>
+            <Rectangle
+                x:Name="recIdStockBill"
+                StrokeThickness="2"
+                Width="300" 
+                Height="40"
+                RadiusY="6"
+                RadiusX="6" 
+                Margin="0,0,50,0"
+                Stroke="{StaticResource Gray}" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"/>
+            <TextBox 
+                x:Name="txtIdStockBill"
+                materialDesign:HintAssist.Hint="Mã tự động"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}" Grid.ColumnSpan="2">
+            </TextBox>
+        </Grid>
+        <Grid   
+            x:Name="grdDate" 
+            Grid.Row="2" Grid.ColumnSpan="2">
+            <Label 
+                x:Name="lbDate"
+                Content="Ngày lập phiếu"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
+            <TextBox
+                x:Name="txtDate"
+                materialDesign:HintAssist.Hint="Ngày lập phiếu"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,20,60,21" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="recDate"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="300"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="#FF222A68"/>
+        </Grid>
+        <Grid   
+            x:Name="grdProduct" 
+            Grid.Row="3" Grid.ColumnSpan="2">
+            <Label 
+                x:Name="lbProduct"
+                Content="Sản phẩm"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="SemiBold" 
+                Foreground="{StaticResource PaletteColor1}" 
+                Height="40" 
+                Margin="50 0 0 0" />
+            <ComboBox 
+                x:Name="txtGood"
+                materialDesign:HintAssist.Hint="Chọn sản phẩm"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Cursor="IBeam"
+                Height="40" 
+                Width="280" 
+                FontSize="14" 
+                BorderThickness="0" 
+                Padding="0" 
+                Foreground="{StaticResource Orange1}"
+                BorderBrush="{StaticResource Orange1}"
+                Margin="0,0,60,0" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontWeight="SemiBold"
+                materialDesign:ComboBoxAssist.ClassicMode="True">
+            </ComboBox>
+            <Rectangle 
+                x:Name="recProduct"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="300"
+                Margin="0 0 50 0"
+                RadiusY="6" 
+                RadiusX="6"
+                Stroke="{StaticResource PaletteColor1}"/>
+        </Grid>
+        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+            <Button HorizontalAlignment="Right"
+                    Margin=" 0 0 50 0"
+                    Command="{Binding AddGoodToStockBillCommand}"
+                    CommandParameter="{Binding ElementName=wdCheckStock}"
+                    Content="Thêm"
+                    BorderThickness="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
+            <TextBox 
+                x:Name="txtId"
+                materialDesign:HintAssist.Hint="Mã sản phẩm tự động"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="190" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Orange1}" 
+                Margin="0,0,150,0" 
+                IsReadOnly="True" 
+                Height="40"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+            </TextBox>
+            <Rectangle 
+                x:Name="rec"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="200"
+                Margin="0 0 150 0"
+                RadiusY="6" 
+                RadiusX="6"
+                Stroke="{StaticResource PaletteColor1}"/>
+        </Grid>
+        <Grid
+            HorizontalAlignment="Left"
+            Margin="20,0,0,0" 
+            Width="860"
+            Grid.Row="5" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Image/tablebar.png" />
+            </Grid.Background>
+            <TextBlock 
+                Grid.Column="0"
+                HorizontalAlignment="Center" 
+                Margin="0" 
+                TextWrapping="Wrap" 
+                Text="STT" 
+                VerticalAlignment="Center" 
+                FontSize="14" 
+                Foreground="{DynamicResource White}"
+                FontWeight="SemiBold"/>
+            <TextBlock
+                Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Margin="20 0 0 0"
+                TextWrapping="Wrap" 
+                Text="Tên sản phẩm" 
+                VerticalAlignment="Center"
+                FontSize="14" 
+                Foreground="{DynamicResource White}" 
+                    FontWeight="SemiBold"/>
+            <TextBlock 
+                Grid.Column="2" 
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap" 
+                Text="Số lượng tồn đầu" 
+                VerticalAlignment="Center" 
+                FontSize="14"
+                Foreground="{DynamicResource White}" 
+                FontWeight="SemiBold"/>
+            <TextBlock 
+                Grid.Column="3" 
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap" 
+                Text="Số lượng nhập" 
+                VerticalAlignment="Center" 
+                FontSize="14"
+                Foreground="{DynamicResource White}" 
+                FontWeight="SemiBold"/>
+            <TextBlock 
+                Grid.Column="4" 
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap" 
+                Text="Số lượng xuất" 
+                VerticalAlignment="Center" 
+                FontSize="14"
+                Foreground="{DynamicResource White}" 
+                FontWeight="SemiBold"/>
+            <TextBlock 
+                Grid.Column="5" 
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap" 
+                Text="Số lượng tồn cuối" 
+                VerticalAlignment="Center" 
+                FontSize="14"
+                Foreground="{DynamicResource White}" 
+                FontWeight="SemiBold"/>
+        </Grid>
+        <Grid 
+            Grid.Row="6"
+            HorizontalAlignment="Left" 
+            Margin="20,0,0,20"
+            Width="860" Grid.ColumnSpan="2">
+            <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Disabled" 
+                    Width="860">
+                <StackPanel 
+                    x:Name="stkGoodBill"
+                    ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                    Width="860" 
+                    HorizontalAlignment="Left">
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel   
+            Grid.Row="7"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal"
+            x:Name="grdButton" 
+            Height="60">
+            <Button
+                Height="40"
+                Command="{Binding SaveCommand}" 
+                CommandParameter="{Binding ElementName=wdCheckStock}"
+                materialDesign:ButtonAssist.CornerRadius="2"
+                BorderThickness="0"
+                ToolTip="Lưu" 
+                Margin="0" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Width="100"
+                FocusVisualStyle="{x:Null}"
+                Content="Lưu" 
+                FontSize="18" 
+                FontWeight="SemiBold">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
+            <Button
+                Height="40"
+                Command="{Binding ExitStockBillButtonWindowCommand}" 
+                CommandParameter="{Binding ElementName=wdCheckStock}"
+                materialDesign:ButtonAssist.CornerRadius="2"
+                BorderThickness="0"
+                ToolTip="Bỏ qua" 
+                Margin="40 0 0 0" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Width="100"
+                FocusVisualStyle="{x:Null}"
+                Content="Bỏ qua" 
+                FontSize="18" 
+                FontWeight="SemiBold" FlowDirection="LeftToRight">
+                <Button.Background>
+                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
