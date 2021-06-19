@@ -515,8 +515,14 @@
                 x:Name="grdBody_Customer" 
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                DataContext="{StaticResource CustomerVM}"
+                Visibility="Visible">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadCustomerCommand}" 
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="50"/>
@@ -557,8 +563,9 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Background>
@@ -601,6 +608,15 @@
                         FontSize="18" 
                         Foreground="{DynamicResource White}" 
                         FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="4" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Tổng tiền" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
                 </Grid>
                 <Grid
                     Grid.Row="2"
@@ -632,7 +648,7 @@
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
                 DataContext="{StaticResource StockVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadStockBillCommand}" 
