@@ -287,7 +287,7 @@
         <Grid Grid.Column="1"
               Margin="0 0 10 0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1.5*"></RowDefinition>
                 <RowDefinition Height="12*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -318,14 +318,16 @@
                                    Foreground="White"
                                    />
                     </Grid>
-                    <Grid Grid.Row="0">
+                    <Grid 
+                        Grid.Row="0" 
+                        VerticalAlignment="Center"
+                        Margin="0,0,20,0">
                         <Button
                         Height="50" 
                         Width="150" 
-                        VerticalAlignment="Top"
-                        Margin="0,20,50,0"
-                            FontSize="20"
-                            Content="Điểm danh"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        Content="Điểm danh"
                         materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="{x:Null}">
                             <Button.Background>
                                 <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
@@ -341,19 +343,2441 @@
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Hidden">
             </Grid>
-            <Grid
-                x:Name="grdBody_Business" 
-                Background="{DynamicResource PaletteColor2}"
+            <Grid  
+                HorizontalAlignment="Left" 
+                Height="710" 
+                VerticalAlignment="Top" 
+                Background="#EFD0BF"
+                Width="1160"
                 Grid.Row="1" 
+                x:Name="grdBody_Business"
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="60*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      >
+                    <TextBox
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Center"
+                        Height="auto"
+                        materialDesign:HintAssist.Background="#EFD0BF"
+                        materialDesign:HintAssist.Foreground="#E8641A"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                        HorizontalAlignment="Right"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        FontSize="17"
+                        VerticalScrollBarVisibility="Auto"
+                        materialDesign:HintAssist.Hint="Tìm kiếm"
+                        Width="300"
+                        Margin="0,0,10,0"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                              Style="{StaticResource MaterialDesignFlatButton}"
+                              ToolTip="MaterialDesignFlatButton"
+                              Content="Tất cả" 
+                              Foreground="Black"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="MaterialDesignFlatButton"
+                            Content="Nike"
+                            Foreground="Black"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="MaterialDesignFlatButton"
+                            Content="Adidas" 
+                            Foreground="Black"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="MaterialDesignFlatButton"
+                            Content="Converse" 
+                            Foreground="Black"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <!--<StackPanel 
+                                            Orientation="Horizontal">
+                                            <TextBlock Text="2 Colours"
+                                                   FontSize="20"
+                                                   Margin="15,0,3,0"
+                                                   FontFamily="Time news Roman"
+                                                   FontWeight="Medium"
+                                                   Foreground="Gray"></TextBlock>
+                                            <TextBlock 
+                                                Text="|"
+                                                FontSize="20"
+                                                FontWeight="Medium"
+                                                Foreground="Gray"
+                                                FontFamily="Time news Roman"
+                                                VerticalAlignment="Center">
+                                            </TextBlock>
+                                            <TextBlock Text="2 Size"
+                                                   FontSize="20"
+                                                   Margin="3,0,15,0"
+                                                   FontFamily="Time news Roman"
+                                                   FontWeight="Medium"
+                                                   Foreground="Gray"></TextBlock>
+                                        </StackPanel>-->
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel >
+                                        <Button Height="233"
+                                            Margin="15,15,15,10" Width="233"
+                                            materialDesign:ButtonAssist.CornerRadius="10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
+                                            </Button.Background >
+                                        </Button>
+                                        <TextBlock Text="Nike AF 1/1"
+                                                   FontSize="18"
+                                                   Margin="15,0,0,0"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#E8641A"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.5"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Colours" 
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="Black" />
+                                                <ComboBoxItem
+                                                        Content="Blue" />
+                                                <ComboBoxItem
+                                                        Content="White" />
+                                            </ComboBox>
+                                            <ComboBox
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:HintAssist.Foreground="#EFD0BF"
+                                                materialDesign:HintAssist.FontFamily="Time news roman"
+                                                materialDesign:HintAssist.FloatingScale="0.6"
+                                                materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                                materialDesign:ColorZoneAssist.Mode="Light"
+                                                materialDesign:HintAssist.Hint="3 Sizes"
+                                                FontFamily="Time news roman"
+                                                MinWidth="100"
+                                                FontSize="18"
+                                                FontWeight="Medium"
+                                                Foreground="Black"
+                                                Width="80"
+                                                Margin="15,0,0,0" 
+                                                SelectionChanged="ComboBox_SelectionChanged_1">
+                                                <ComboBoxItem>
+                                                    <TextBlock></TextBlock>
+                                                </ComboBoxItem>
+                                                <ComboBoxItem
+                                                        Content="39" />
+                                                <ComboBoxItem
+                                                        Content="40" />
+                                                <ComboBoxItem
+                                                        Content="41" />
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <TextBlock Text="3.500.000 VNĐ"
+                                                   FontSize="18"
+                                                   Margin="15,5,15,20"
+                                                   FontFamily="Time news Roman"
+                                                   Foreground="Black"
+                                                   FontWeight="Medium"></TextBlock>
+                                        <Button Content="Chọn mua"
+                                                Width="235"
+                                                FontFamily="Roboto"
+                                                FontSize="18"
+                                                Height="40"
+                                                Margin="0,-10,0,15"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                BorderBrush="{x:Null}">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Background="Black"
+                      Grid.RowSpan="5"></Grid>
+                <Grid Grid.Row="0"
+                      Grid.Column="2">
+                    <TextBlock Text="Thông tin hóa đơn"
+                               FontSize="30"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontFamily="Roboto"
+                               FontWeight="Medium"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Tên sản phẩm"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Left"
+                               Margin="10,3,0,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Text="Màu"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="2"
+                               Text="Size"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="3"
+                               Text="Số lượng"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="4"
+                               Text="Giá"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid 
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1.5*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0"
+                              Background="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                                Margin="10,3,0,0"
+                               Height="30"
+                               Text="Hoang Hoang" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                                Margin="10,3,0,0"
+                                Height="30"
+                               Text="Hoang Hoang" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                                Margin="10,3,0,0"
+                                Height="30"
+                               Text="Hoang Hoang" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="Xanh" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="Đỏ" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+
+                            ></TextBlock>
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="Vàng" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="18" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="40" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height= "30"
+                               Text="42" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3">
+                                <TextBox
+                                    Margin="0,3,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Height="30"
+                                    Text="1" 
+                                    FontSize="15"
+                                    FontFamily="Roboto"
+                                    FontWeight="Normal"
+                                    Padding="0"
+                                    BorderThickness="0">
+                                </TextBox>
+                                <TextBox
+                                    Margin="0,3,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Height="30"
+                                    Padding="0"
+                                    Text="2" 
+                                    FontSize="15"
+                                    FontFamily="Roboto"
+                                    FontWeight="Normal"
+                                    BorderThickness="0"
+                        ></TextBox>
+                                <TextBox
+                                    Margin="0,3,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Height= "30"
+                                    Text="1"
+                                    Padding="0"
+                                    FontSize="15"
+                                    FontFamily="Roboto"
+                                    FontWeight="Normal"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    BorderThickness="0"
+                                >
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4">
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="7,500" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="550" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                                <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height= "30"
+                               Text="6,500" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                 FontWeight="Medium"
+                            ></TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                                Margin="10,7,0,4.6"
+                               Height="30"
+                               Text="Tổng hóa đơn:" 
+                               FontSize="20"
+                               FontFamily="Roboto"
+                               FontWeight="Medium"
+                            ></TextBlock>
+                            <TextBlock
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                                Margin="10,7,5,4.6"
+                               Height="30"
+                               Text="19,550,000"
+                               FontSize="20"
+                               FontFamily="Roboto"
+                               FontWeight="Medium"
+                               Grid.Column="1"
+                            ></TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <!--<ComboBox
+                                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                    materialDesign:HintAssist.Hint="Số điện thoại"
+                                    materialDesign:HintAssist.Background="#EFD0BF"
+                                    FontFamily="Time news roman"
+                                    FontSize="15"
+                                    FontWeight="Normal"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="7"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    Height="50" Margin="4,9,-0.4,9.8"
+                                    materialDesign:HintAssist.Foreground="#E8641A"
+                                    IsEditable="True"
+                                    BorderBrush="#E8641A">
+                                    <ComboBox.SelectedItem>
+                                        <Binding
+                                            Path="SelectedValidationOutlined"
+                                            Mode="TwoWay"
+                                            UpdateSourceTrigger="PropertyChanged">
+                                        </Binding>
+                                    </ComboBox.SelectedItem>
+                                </ComboBox>-->
+                                <StackPanel VerticalAlignment="Center"
+                                            >
+                                    <TextBox
+                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                        Height="55"
+                                        materialDesign:HintAssist.Hint="Số điện thoại"
+                                        materialDesign:HintAssist.Background="#EFD0BF"
+                                        materialDesign:HintAssist.Foreground="#E8641A"
+                                        materialDesign:HintAssist.FloatingScale="0.7"
+                                        FontSize="15"
+                                        materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                        Margin="10,0,15,0"
+                                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button 
+                                    Height="55" 
+                                    Width="135"
+                                    FontSize="18"
+                                    materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
+                                    RenderTransformOrigin="0.495,0.488"    
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Đăng ký" 
+                                    Click="Button_Click"
+                                    Margin="0,0,12,0"
+                                    FontFamily="Time news roman">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Button 
+                                Height="50" 
+                                Width="200"
+                                FontSize="20"
+                                FontWeight="Medium"
+                                materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
+                                RenderTransformOrigin="0.495,0.488"    
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="Thanh toán" Click="Button_Click_1">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
             <Grid
                 x:Name="grdBody_Service" 
-                Background="{DynamicResource PaletteColor3}"
+                Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="45*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0"
+                      Grid.Row="0">
+                    <Border 
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        HorizontalAlignment="Left"
+                        Height="60"
+                        Width="760"
+                        Margin="20 30 20 20"
+                        VerticalAlignment="Top"
+                        CornerRadius="4">
+                        <Grid
+                            Width="760"
+                            Height="60">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.25*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.25*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.75*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock 
+                                Grid.Column="0"
+                                Text="STT" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="0" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="1"
+                                Text="Tên dịch vụ" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="1" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="2"
+                                Text="Đơn giá dịch vụ" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="2" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="3"
+                                Text="Đơn giá được tính" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="3" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="4"
+                                Text="Số lượng" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="4" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="5"
+                                Text="Thành tiền" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="5" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="6"
+                                Text="Ngày giao" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="6" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="7"
+                                Text="Tình trạng" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="7" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                    <Grid 
+                        HorizontalAlignment="Center"
+                        Height="180" 
+                        Width="760"
+                        Margin="20 90 20 20"
+                        VerticalAlignment="Top" 
+                        Background="White">
+                        <ScrollViewer 
+                                VerticalScrollBarVisibility="Auto" 
+                                HorizontalScrollBarVisibility="Disabled" >
+                            <local:ServicesUc></local:ServicesUc>
+                        </ScrollViewer>
+                    </Grid>
+                    <Border 
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        Width="760" 
+                        Height="240" 
+                        Margin="22,30,0,0"
+                        VerticalAlignment="Top"
+                        CornerRadius="4" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Grid.Column="0"
+                      Grid.Row="1">
+                    <TextBox
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Center"
+                        Height="auto"
+                        HorizontalAlignment="Right"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        materialDesign:HintAssist.Hint="Tìm kiếm"
+                        Width="300"
+                        Margin="0,0,20,0"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"/>
+                    <Label 
+                        Content="Dịch vụ" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center" 
+                        Margin="20 0 0 0" 
+                        FontSize="30" 
+                        FontWeight="Bold" />
+                </Grid>
+                <Grid Grid.Column="0"
+                      Grid.Row="2">
+                    <Border 
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        HorizontalAlignment="Left"
+                        Height="60"
+                        Width="760"
+                        Margin="20 30 20 20"
+                        VerticalAlignment="Top"
+                        CornerRadius="4">
+                        <Grid
+                            Width="760"
+                            Height="60">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock 
+                                Grid.Column="0"
+                                Text="STT" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="0" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="1"
+                                Text="Tên dịch vụ" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="1" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                            <TextBlock 
+                                Grid.Column="2"
+                                Text="Đơn giá dịch vụ" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            <Rectangle 
+                                Grid.Column="2" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                    <Grid 
+                        HorizontalAlignment="Center"
+                        Height="180" 
+                        Width="760"
+                        Margin="20 90 20 20"
+                        VerticalAlignment="Top" 
+                        Background="#FFF3F3F3">
+                        <ScrollViewer 
+                                VerticalScrollBarVisibility="Auto" 
+                                HorizontalScrollBarVisibility="Disabled">
+                            <Grid
+                                Width="760"
+                                Height="80"
+                                VerticalAlignment="Top" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock 
+                                Grid.Column="0"
+                                Text="1" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                                <Rectangle 
+                                Grid.Column="0" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                                <TextBlock 
+                                Grid.Column="1"
+                                Text="Vệ sinh giày" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                                <Rectangle 
+                                Grid.Column="1" 
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                                <TextBlock 
+                                Grid.Column="2"
+                                Text="50.000đ" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+
+                                <TextBlock 
+                                Grid.Column="0"
+                                    Grid.Row="1"
+                                Text="2" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                                <Rectangle 
+                                Grid.Column="0" 
+                                    Grid.Row="1"
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                                <TextBlock 
+                                Grid.Column="1"
+                                    Grid.Row="1"
+                                Text="Sửa giày" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                                <Rectangle 
+                                Grid.Column="1" 
+                                    Grid.Row="1"
+                                HorizontalAlignment="Right" 
+                                Height="30" 
+                                Margin="0" 
+                                Width="2"
+                                Fill="{DynamicResource PaletteColor1}" 
+                                VerticalAlignment="Center" />
+                                <TextBlock 
+                                Grid.Column="2"
+                                    Grid.Row="1"
+                                Text="100.000đ" 
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center" 
+                                FontSize="16"
+                                FontWeight="SemiBold" />
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Border 
+                        BorderBrush="Black"
+                        BorderThickness="2" 
+                        Height="240" 
+                        Margin="22,30,0,0"
+                        VerticalAlignment="Top"
+                        CornerRadius="4" HorizontalAlignment="Left" Width="760"/>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Background="Black"
+                      Grid.RowSpan="5"></Grid>
+                <Grid Grid.Row="0"
+                        Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45*"></RowDefinition>
+                        <RowDefinition Height="45*"></RowDefinition>
+                        <RowDefinition Height="45*"></RowDefinition>
+                        <RowDefinition Height="45*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock 
+                            Text="Thông tin hóa đơn"
+                            FontSize="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Roboto"
+                            FontWeight="Medium"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1"
+                            Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="0*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                                Text="Ngày lập phiếu"
+                                FontSize="20"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"
+                                FontWeight="Medium"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2" >
+                            <TextBlock 
+                                Text="1/1/2021"
+                                FontSize="20"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0 0 20 0"
+                                FontFamily="Roboto"
+                                FontWeight="Medium"></TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2"
+                            Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="0*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                                Text="Tên khách hàng"
+                                FontSize="20"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"
+                                FontWeight="Medium"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2" >
+                            <TextBox
+                                Text="Lê Đức Trung"
+                                FontSize="20"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0 0 20 0"
+                                FontFamily="Roboto"
+                                FontWeight="Medium"></TextBox>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3"
+                            Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="0*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                                Text="Số điện thoại"
+                                FontSize="20"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"
+                                FontWeight="Medium"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2" >
+                            <TextBox 
+                                Text="0336456170"
+                                FontSize="20"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0 0 20 0"
+                                FontFamily="Roboto"
+                                FontWeight="Medium"></TextBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Grid.Column="2"
+                      Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock 
+                            Text="Tổng tiền"
+                            FontSize="25"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10"
+                            FontFamily="Roboto"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBlock 
+                            Text="100.000.000đ"
+                            FontSize="24"
+                            FontWeight="Medium"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="10"
+                            FontFamily="Roboto"></TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2"
+                      Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45*"></RowDefinition>
+                        <RowDefinition Height="45*"></RowDefinition>
+                        <RowDefinition Height="45*"></RowDefinition>
+                        <RowDefinition Height="45*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0"
+                          Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                                Text="Trả trước"
+                                FontSize="20"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock 
+                                Text="70.000.000đ"
+                                FontSize="24"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"></TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                                Text="Còn lại"
+                                FontSize="20"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock 
+                                Text="30.000.000đ"
+                                FontSize="24"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"></TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"></ColumnDefinition>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock 
+                                Text="Thanh toán"
+                                FontSize="28"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock 
+                                Text="70.000.000đ"
+                                FontSize="24"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="10"
+                                FontFamily="Roboto"></TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Button 
+                            Height="50" 
+                            Width="200"
+                            FontSize="25"
+                            materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="{x:Null}"  
+                            Grid.Column="2"
+                            Grid.Row="2" 
+                            RenderTransformOrigin="0.495,0.488"    
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Content="Thanh toán"
+                            Margin="0 0 0 20">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </Grid>
             </Grid>
             <Grid
                 x:Name="grdBody_Goods"
@@ -886,15 +3310,16 @@
                     Margin="20,0,0,40.4"
                     Width="1120" Grid.ColumnSpan="2" >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="460*"/>
+                        <ColumnDefinition Width="83*"/>
+                        <ColumnDefinition Width="378*"/>
                         <ColumnDefinition Width="184*"/>
                         <ColumnDefinition Width="475*"/>
                     </Grid.ColumnDefinitions>
                     <ScrollViewer 
                         VerticalScrollBarVisibility="Auto"
                         HorizontalScrollBarVisibility="Disabled" 
-                        Margin="0,0,0,0.4" 
-                        Width="1120" Grid.ColumnSpan="3">
+                        Margin="0,0,0,-0.4" 
+                        Width="1120" Grid.ColumnSpan="4">
                         <StackPanel 
                             x:Name="stkEmployee"
                             ScrollViewer.HorizontalScrollBarVisibility="Visible"
