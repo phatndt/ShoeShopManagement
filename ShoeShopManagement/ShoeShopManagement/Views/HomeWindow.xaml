@@ -2961,7 +2961,7 @@
                     <Button 
                         x:Name="btnAddCustomer"
                         Height="40"
-                        Command="{Binding OpenWindowAddEmployeeCommand}" 
+                        Command="{Binding OpenAddCustomerCommand}" 
                         CommandParameter="{Binding ElementName=wdHome}"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         BorderThickness="0"

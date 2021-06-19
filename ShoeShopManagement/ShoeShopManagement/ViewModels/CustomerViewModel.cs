@@ -13,45 +13,73 @@ using System.Windows.Media;
 
 namespace ShoeShopManagement.ViewModels
 {
-    class CustomerViewModel: BaseViewModel
+    public class CustomerViewModel : BaseViewModel
     {
         //HomeWindow
         public ICommand LoadCustomerCommand { get; set; }
+        public ICommand OpenAddCustomerCommand { get; set; }
         //CustomerUc
         public ICommand OpenChangeCustomerCommand { get; set; }
         public ICommand DeleteCustomerCommand { get; set; }
         //CustomerDetailWindow
         public ICommand SaveCommand { get; set; }
         public ICommand CloseCommand { get; set; }
+        //AddCustomerWindow
+        public ICommand SaveAddCustomerCommand { get; set; }
+        public ICommand CloseAddCustomerCommand { get; set; }
         public string Name {
             get => name;
             set
             {
                 name = value;
-                SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSave(), parameter => Save(parameter));
+                SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSaveChangeCustomer(), parameter => Save(parameter));
             } 
         }
         public string Number { 
             get => number;
             set 
-            { 
+            {
                 number = value;
-                SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSave(), parameter => Save(parameter));
+                SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSaveChangeCustomer(), parameter => Save(parameter));
+            }
+        }
+
+        public string NameAddCustomer {
+            get => nameAddCustomer;
+            set
+            {
+                nameAddCustomer = value;
+                SaveAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => CanSaveAddCustomer(), parameter => SaveAddCustomer(parameter));
+            } 
+        }
+        public string NumberAddCustomer { 
+            get => numberAddCustomer;
+            set
+            { 
+                numberAddCustomer = value;
+                SaveAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => CanSaveAddCustomer(), parameter => SaveAddCustomer(parameter));
             }
         }
 
         private string name;
         private string number;
+
+        private string nameAddCustomer;
+        private string numberAddCustomer;
         public HomeWindow homeWindow;
         public CustomerViewModel()
         {
             LoadCustomerCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => LoadCustomer(parameter));
+            OpenAddCustomerCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => OpenAddCustomer(parameter));
 
             OpenChangeCustomerCommand = new RelayCommand<CustomerUc>(parameter => true, parameter => OpenChangeCustomer(parameter));
             DeleteCustomerCommand = new RelayCommand<CustomerUc>(parameter => true, parameter => DeleteCustomer(parameter));
 
             CloseCommand = new RelayCommand<CustomerDetailWindow>(parameter => true, parameter => parameter.Close());
-            SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSave(), parameter => Save(parameter));
+            SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSaveChangeCustomer(), parameter => Save(parameter));
+
+            CloseAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => true, parameter => parameter.Close());
+            SaveAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => CanSaveAddCustomer(), parameter => SaveAddCustomer(parameter));
         }
 
         private void LoadCustomer(HomeWindow parameter)
@@ -82,6 +110,16 @@ namespace ShoeShopManagement.ViewModels
             }
         }
 
+        private void OpenAddCustomer(HomeWindow parameter)
+        {
+            AddCustomerWindow addCustomerWindow = new AddCustomerWindow();
+            NameAddCustomer = null;
+            NumberAddCustomer = null;
+            int id = CustomerDAL.Instance.GetMaxId() + 1;
+            addCustomerWindow.txtIdCustomer.Text = id.ToString();
+            addCustomerWindow.ShowDialog();
+        }
+
         private void OpenChangeCustomer(CustomerUc parameter)
         {
             CustomerDetailWindow customerDetailWindow = new CustomerDetailWindow();
@@ -109,9 +147,27 @@ namespace ShoeShopManagement.ViewModels
             Notification.Instance.Success("Thay đổi thông tin công");
             LoadCustomer(this.homeWindow);
         }
-        private bool CanSave()
+        private bool CanSaveChangeCustomer()
         {
-            return (!String.IsNullOrEmpty(name) && number.Length == 10);
+            return !string.IsNullOrEmpty(Name) && Number.Length == 10;
+        }
+        private void SaveAddCustomer(AddCustomerWindow parameter)
+        {
+            Customer customer = new Customer(int.Parse(parameter.txtIdCustomer.Text), parameter.txtCustomer.Text, parameter.txtPhoneCustomer.Text, 0);
+            CustomerDAL.Instance.AddCustomerToDatabase(customer);
+            parameter.Close();
+            Notification.Instance.Success("Lưu khách hàng thành công");
+            LoadCustomer(this.homeWindow);
+        }
+        private bool CanSaveAddCustomer()
+        {
+            if (!string.IsNullOrEmpty(NameAddCustomer) && !string.IsNullOrEmpty(NumberAddCustomer))
+            {
+                if (NumberAddCustomer.Length == 10)
+                    return true;
+                return false;
+            }
+            return false;
         }
     }
 }
