@@ -15,13 +15,23 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for SignIn.xaml
+    /// Interaction logic for AddCustomerWindow.xaml
     /// </summary>
-    public partial class SignIn : Window
+    public partial class AddCustomerWindow : Window
     {
-        public SignIn()
+        public AddCustomerWindow()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
