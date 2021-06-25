@@ -16,9 +16,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.6*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.8*"/>
@@ -61,8 +61,8 @@
             VerticalAlignment="Center" />
         <TextBlock 
             Grid.Column="2" 
-            x:Name="txbQuatity"
-            Text="Quatity"
+            x:Name="txbQuantity"
+            Text="Quantity"
             TextWrapping="Wrap"
             Margin="20 0 0 0"
             FontSize="18" 

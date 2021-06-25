@@ -9,7 +9,10 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="ImportGoodsWindow" Height="820" Width="1120">
+        Title="ImportGoodsWindow" Height="800" 
+        ResizeMode="CanMinimize"
+        
+        Width="1120">
     <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="200*"/>
@@ -267,12 +270,22 @@
 
         </Grid>
         <Grid
-            Margin="0,40,20,0" 
+            Margin="0,100,20,0" 
             VerticalAlignment="Top"  
             HorizontalAlignment="Right"
             Grid.Column="1"
             Width="390">
+            <Rectangle 
+                    x:Name="recSearch"
+                    HorizontalAlignment="Left" 
+                    Width="390"
+                    RadiusY="4" 
+                    RadiusX="4" 
+                    Stroke="{DynamicResource Gray}" 
+                    Height="40" 
+                    StrokeThickness="2"/>
             <ComboBox
+                x:Name="cbbSearch"
                 materialDesign:HintAssist.Hint="Lựa chọn mặt hàng"
                 Height="40" 
                 Width="390"
@@ -292,49 +305,55 @@
         </Grid>
         <Grid 
             Grid.Column="1"
-            Margin="0,280,34,0" 
+            Margin="0,180,34,0" 
             VerticalAlignment="Top"  
-            Height="40" 
-            Width="220" 
+            Height="140"  
             HorizontalAlignment="Right">
-            <Button
-                x:Name="btnSave"
-                Command="{Binding ImportCommand}"
-                CommandParameter="{Binding ElementName=wdImportGoods}"
-                BorderThickness="0"
-                IsDefault="True"
-                Height="40" 
-                Width="100"
-                ToolTip="Lưu thông tin" 
-                HorizontalAlignment="Left"
-                FocusVisualStyle="{x:Null}"
-                Content="Lưu" 
-                FontSize="18" 
-                VerticalAlignment="Center"
-                Padding="0" >
-                <Button.Background>
-                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
-                </Button.Background>
-            </Button>
-            <Button
-                x:Name="btnCancel"
-                Command="{Binding ExitImportCommand}"
-                CommandParameter="{Binding ElementName=wdImportGoods}"
-                Style="{StaticResource MaterialDesignRaisedButton}"
-                BorderThickness="0"
-                Height="40"
-                Width="100"
-                ToolTip="Thoát"  
-                Margin="0" 
-                HorizontalAlignment="Right"
-                FocusVisualStyle="{x:Null}"
-                Content="Bỏ qua" 
-                FontSize="18"
-                VerticalAlignment="Center"
-                Padding="0" >
-                <Button.Background>
-                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
-                </Button.Background>
+            <Button 
+                Grid.Column="0"
+                    x:Name="btnPay"
+                    Height="40"
+                    Command="{Binding ImportStockCommand}"
+                    CommandParameter="{Binding ElementName=wdImportStock}"
+                    materialDesign:ButtonAssist.CornerRadius="4"
+                    BorderThickness="2"
+                    Margin="0,0,20,70"  
+                    FontSize="20" 
+                    Content="Thanh toán"
+                    VerticalAlignment="Bottom" 
+                    Width="320" 
+                    FontWeight="Bold" 
+                    HorizontalAlignment="Center"
+                    IsTabStop="False"/>
+            <Button 
+                Grid.Column="0"
+                    x:Name="btnPrintBill"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Height="40"
+                    Command="{Binding ViewStockReceiptTemplateCommand}"
+                    CommandParameter="{Binding ElementName=wdImportStock}"
+                    materialDesign:ButtonAssist.CornerRadius="4"
+                    BorderThickness="2"
+                    Margin="0,0,20,0" 
+                    Background="{DynamicResource White}" 
+                    BorderBrush="{DynamicResource GreenWhite}"  
+                    Foreground="{DynamicResource GreenWhite}" 
+                    VerticalAlignment="Bottom" 
+                    Width="320" 
+                    HorizontalAlignment="Center" IsTabStop="False">
+                <StackPanel
+                        Orientation="Horizontal">
+                    <TextBlock
+                            Text="In hóa đơn" 
+                            FontSize="20" 
+                            FontWeight="Bold"/>
+                    <materialDesign:PackIcon 
+                            Kind="Printer" 
+                            VerticalAlignment="Bottom" 
+                            Margin="15,0,0,0"
+                            Width="24" 
+                            Height="24" />
+                </StackPanel>
             </Button>
         </Grid>
         <Grid
@@ -342,7 +361,7 @@
             Grid.Row="1"
             >
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <Grid 

@@ -13,22 +13,32 @@ using System.Windows.Media.Imaging;
 using ShoeShopManagement.Views;
 using Microsoft.Win32;
 using ShoeShopManagement.Models;
+using ShoeShopManagement.DAL;
+using ShoeShopManagement.Resources.UserControls;
 
 namespace ShoeShopManagement.ViewModels
 {
     class GoodsViewModel : BaseViewModel
     {
         private string imageFileName;
+        private string quantity;
+        public string Quantity { get => quantity; set => quantity = value; }
+        private string importPrice;
+        public string ImportPrice { get => importPrice; set => importPrice = value; }
+        public long total;
+
         public ICommand AddGoodsCommand { get; set; } //thêm mặt hàng
         public ICommand ImportStockWindowCommand { get; set; }
         public ICommand SelectImageCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public ICommand ExitCommand { get; set; }
+        public ICommand LoadGoodsCommand { get; set; }
         public ICommand SeparateThousandsCommand { get; set; }
         public GoodsViewModel()
         {
             AddGoodsCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => OpenAddGoodsWindow(parameter));
-            
+            //LoadGoodsCommand = new RelayCommand<ImportStockWindow>((parameter) => true, (parameter) => LoadGoodsToView(parameter));
+
             SelectImageCommand = new RelayCommand<Grid>((parameter) => true, (parameter) => ChooseImage(parameter));
             //SaveCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => AddGoods(parameter));
             ExitCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => parameter.Close());
@@ -69,6 +79,25 @@ namespace ShoeShopManagement.ViewModels
                 }
             }
         }
+        // public void LoadGoodsToView(ImportStockWindow parameter)
+        //{
+        //    parameter.wrpGoods.Children.Clear();
+        //    DataTable goodsList = GoodsDAL.Instance.LoadDatatable();
+        //    for (int i = 0; i < goodsList.Rows.Count; i++)
+        //    {
+        //        string name = goodsList.Rows[i].ItemArray[1].ToString();
+        //        if (name.ToLower().Contains(parameter.cbbSearch.ToString().ToLower()))
+        //        {
+        //            ImportGoodUC goods = new ImportGoodUC();
+        //            goods.txbNameGood.Text = goodsList.Rows[i].ItemArray[1].ToString();
+        //            //goods.txbIdGoods.Text = goodsList.Rows[i].ItemArray[0].ToString();
+        //            //goods.imgGood.Source = Converter.Instance.ConvertByteToBitmapImage(Convert.FromBase64String(goodsList.Rows[i].ItemArray[4].ToString()));
+        //            goods.txbQuantity.Text = goodsList.Rows[i].ItemArray[5].ToString();
+        //            goods.txbSize.Text = parameter.txbSize.Text;
+        //            parameter.wrpGoods.Children.Add(goods);
+        //        }
+        //    }
+        //}
         //public void AddGoods(AddGoodsWindow parameter)
         //{
         //    List<Goods> goodsList = GoodsDAL.Instance.ConvertDBToList();
