@@ -1,4 +1,5 @@
 ﻿<Window x:Class="ShoeShopManagement.Views.SignInWindow"
+        x:Name="wdSignin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -74,6 +75,9 @@
                 Source="/ShoeShopManagement;component/Resources/Image/lock 1.png"/>
 
             <Button
+                x:Name="btnSignin"
+                Command="{Binding SignInCommand}"
+                CommandParameter="{Binding ElementName=wdSignin}"
                 Width="275"
                 Height="42"
                 Margin="26,169,28,97"
