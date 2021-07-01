@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
+        xmlns:local1="clr-namespace:ShoeShopManagement.Resources.UserControls"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="StockDetailWindow" Height="450" Width="905">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,8 +20,8 @@
             Width="860"
             Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="3.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
@@ -36,7 +38,7 @@
                 TextWrapping="Wrap" 
                 Text="STT" 
                 VerticalAlignment="Center" 
-                FontSize="16" 
+                FontSize="14" 
                 Foreground="{DynamicResource White}"
                 FontWeight="SemiBold"/>
             <TextBlock
@@ -46,7 +48,7 @@
                 TextWrapping="Wrap" 
                 Text="Tên sản phẩm" 
                 VerticalAlignment="Center"
-                FontSize="16" 
+                FontSize="14" 
                 Foreground="{DynamicResource White}" 
                     FontWeight="SemiBold"/>
             <TextBlock 
@@ -55,7 +57,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng tồn đầu" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
@@ -64,7 +66,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng nhập" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
@@ -73,7 +75,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng xuất" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
@@ -82,7 +84,7 @@
                 TextWrapping="Wrap" 
                 Text="Số lượng tồn cuối" 
                 VerticalAlignment="Center" 
-                FontSize="16"
+                FontSize="14"
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
         </Grid>
@@ -96,9 +98,9 @@
                     HorizontalScrollBarVisibility="Disabled" 
                     Width="860">
                 <StackPanel 
-                    x:Name="stkEmployee"
+                    x:Name="stkGoodStockCheck"
                     ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                    Width="1120" 
+                    Width="860" 
                     HorizontalAlignment="Left">
                 </StackPanel>
             </ScrollViewer>

@@ -1,5 +1,4 @@
-﻿using ShoeShopManagement.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,20 +15,23 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for CheckStockWindow.xaml
+    /// Interaction logic for AddCustomerWindow.xaml
     /// </summary>
-    public partial class CheckStockWindow : Window
+    public partial class AddCustomerWindow : Window
     {
-        public CheckStockWindow()
+        public AddCustomerWindow()
         {
             InitializeComponent();
-            txtGood.SelectionChanged += TxtGood_SelectionChanged;
         }
 
-        private void TxtGood_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ComboBox cmb = sender as ComboBox;
-            txtId.Text = StockCheckDAL.Instance.GetIdProduct(cmb.SelectedItem.ToString()).ToString();
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
