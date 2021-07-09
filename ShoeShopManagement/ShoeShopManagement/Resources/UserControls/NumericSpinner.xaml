@@ -82,7 +82,9 @@
                 Foreground="{StaticResource Gray}"
                 Text="1"
                 TextChanged="tb_main_TextChanged" 
-                PreviewTextInput="tb_main_PreviewTextInput" IsTabStop="False" >
+                PreviewTextInput="tb_main_PreviewTextInput" 
+                
+                IsTabStop="False" >
             </TextBox>
             <Button 
                 x:Name="cmdUp" 
@@ -126,8 +128,7 @@
                 CornerRadius="4" 
                 Grid.RowSpan="2" 
                 Grid.ColumnSpan="2" 
-                Padding="0" 
-                Margin="0" />
+                Padding="0" />
         </Grid>
     </Border>
 </UserControl>

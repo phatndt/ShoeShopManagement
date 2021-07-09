@@ -5,5 +5,6 @@
         internal object wrpGoods;
         internal object cbbSearch;
         internal object txbSize;
+       
     }
 }

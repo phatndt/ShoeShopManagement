@@ -26,8 +26,8 @@
         </Grid.ColumnDefinitions>
         <TextBlock 
             Grid.Column="0" 
-            x:Name="txbIDGood"
-            Text="Id Good"
+            x:Name="txbSTT"
+            Text="STT"
             TextWrapping="Wrap" 
             FontSize="18" 
             FontWeight="SemiBold" 

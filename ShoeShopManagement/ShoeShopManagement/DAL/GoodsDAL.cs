@@ -13,12 +13,9 @@ namespace ShoeShopManagement.DAL
     class GoodsDAL:DataProvider
     {
         private static GoodsDAL instance;
-        public static object Instance {
-            get { if (instance == null) 
-                    instance = new GoodsDAL(); 
-                return GoodsDAL.instance; }
-            private set { GoodsDAL.instance = (GoodsDAL)value; 
-            }
+        public static GoodsDAL Instance {
+            get { if (instance == null) instance = new GoodsDAL(); return GoodsDAL.instance; }
+            private set { GoodsDAL.instance = value; }
         }
         private GoodsDAL()
         {
