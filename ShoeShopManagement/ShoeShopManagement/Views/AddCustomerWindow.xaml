@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:vd="clr-namespace:ShoeShopManagement.Validations"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
         mc:Ignorable="d"
         x:Name="wdAddCustomer"
@@ -91,7 +92,6 @@
                 Margin="50 0 0 0" />
                 <TextBox
                 x:Name="txtCustomer"
-                Text="{Binding NameAddCustomer, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Tên khách hàng"
                 HorizontalAlignment="Right"  
                 VerticalAlignment="Center" 
@@ -136,7 +136,6 @@
                 Margin="50 0 0 0" />
                 <TextBox
                     x:Name="txtPhoneCustomer"
-                    Text="{Binding NumberAddCustomer, UpdateSourceTrigger=PropertyChanged}"
                     materialDesign:HintAssist.Hint="Số điện thoại"
                     HorizontalAlignment="Right"  
                     VerticalAlignment="Center" 
@@ -155,6 +154,13 @@
                     Cursor="IBeam"
                     MaxLength="10"
                     materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+                    <TextBox.Text>
+                        <Binding Path="PhoneNumber" Source="{StaticResource Customer}" UpdateSourceTrigger="PropertyChanged" >
+                            <Binding.ValidationRules>
+                                <vd:NumberValidation ErrorMessage="Chỉ nhập các ký tự số (0 - 9)!" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
                 </TextBox>
                 <Rectangle 
                     x:Name="PhoneCustomer"
