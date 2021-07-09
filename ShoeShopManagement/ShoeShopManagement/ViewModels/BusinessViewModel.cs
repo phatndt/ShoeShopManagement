@@ -1,4 +1,4 @@
-﻿using ShoeShopManagement.Resources.UserControls;
+﻿    using ShoeShopManagement.Resources.UserControls;
 using ShoeShopManagement.Views;
 using System;
 using System.Collections.Generic;

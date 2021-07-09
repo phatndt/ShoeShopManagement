@@ -149,6 +149,9 @@
       <DependentUpon>StockGoodUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validations\NumberValidation.cs" />
+    <Compile Include="Resources\UserControls\StockServicesUC.xaml.cs">
+      <DependentUpon>StockServicesUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
@@ -252,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\StockGoodUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockServicesUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
