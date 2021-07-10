@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+        xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         x:Name="wdHomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -337,11 +338,377 @@
                 </Grid>
             </Grid>
             <Grid
-                x:Name="grdBody_Home" 
-                Background="{DynamicResource PaletteColor1}"
+                x:Name="grdBody_Home"
+                Background="#EFD0BF"
                 Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                DataContext="{StaticResource ReportVM}"
+                Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadCommand}"
+                                                CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card
+                        Padding="4"
+                        Margin="20 20 20 20"
+                        Foreground="{x:Null}"
+                        Grid.Column="0">
+                        <materialDesign:Card.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF7D27FF" Offset="1"/>
+                                <GradientStop Color="#FFBB2086"/>
+                            </LinearGradientBrush>
+                        </materialDesign:Card.Background>
+                        <Grid>
+                            <Label 
+                                x:Name="label" 
+                                Content="Tổng doanh thu tháng này" 
+                                HorizontalAlignment="Left"
+                                Margin="10"
+                                VerticalAlignment="Top" FontSize="20" 
+                                Foreground="#DDF9F9F9"/>
+                            <Label 
+                                x:Name="label_total_money_business" 
+                                Content="{Binding ThisMonthMoney}" 
+                                HorizontalAlignment="Left"
+                                Margin="10 70 0 0" 
+                                VerticalAlignment="Top"
+                                FontSize="24" 
+                                Foreground="#DDF9F9F9" 
+                                FontWeight="Bold"/>
+                            <Label 
+                                Content="{Binding ThisMonth}" 
+                                HorizontalAlignment="Left"
+                                Margin="10 100 0 0" 
+                                VerticalAlignment="Bottom"
+                                FontSize="18" 
+                                Foreground="#DDF9F9F9" 
+                                FontWeight="Bold"/>
+                            <Label x:Name="label_image_business"
+                               Content="" 
+                               HorizontalAlignment="Right"
+                               Height="60"
+                               Margin="10 10"
+                               VerticalAlignment="Top" Width="60">
+                                <Label.Background>
+                                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/money.png" Stretch="Uniform"/>
+                                </Label.Background>
+                            </Label>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card
+                        Padding="4"
+                        Margin="20 20 20 20"
+                        Foreground="{x:Null}"
+                        Grid.Column="1">
+                        <materialDesign:Card.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF51C40"/>
+                                <GradientStop Color="#FFD89B65" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:Card.Background>
+                        <Grid>
+                            <Label 
+                                x:Name="label_service" 
+                                Content="So với tháng trước" 
+                                HorizontalAlignment="Left"
+                                Margin="10"
+                                VerticalAlignment="Top" FontSize="20" 
+                                Foreground="#DDF9F9F9"/>
+                            <Label 
+                                x:Name="label_total_money_service" 
+                                Content="{Binding IncreasingPercent}" 
+                                HorizontalAlignment="Left"
+                                Margin="10 70 0 0" 
+                                VerticalAlignment="Top"
+                                FontSize="24" 
+                                Foreground="#DDF9F9F9" 
+                                FontWeight="Bold"/>
+                            <Label 
+                                Content="{Binding ThisMonth}" 
+                                HorizontalAlignment="Left"
+                                Margin="10 100 0 0" 
+                                VerticalAlignment="Bottom"
+                                FontSize="18" 
+                                Foreground="#DDF9F9F9" 
+                                FontWeight="Bold"/>
+                            <Label x:Name="label_image_service"
+                               Content="" 
+                               HorizontalAlignment="Right"
+                               Height="60"
+                               Margin="10 10"
+                               VerticalAlignment="Top" Width="60">
+                                <Label.Background>
+                                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/IncreaseIcon.png" Stretch="Uniform"/>
+                                </Label.Background>
+                            </Label>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card
+                        Padding="4"
+                        Margin="20 20 20 20"
+                        Foreground="{x:Null}"
+                        Grid.Column="2">
+                        <materialDesign:Card.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF016CFD" Offset="1"/>
+                                <GradientStop Color="#FF00E4FF"/>
+                            </LinearGradientBrush>
+                        </materialDesign:Card.Background>
+                        <Grid>
+                            <Label 
+                                x:Name="label_three" 
+                                Content="Số lượt đặt hàng và dịch vụ" 
+                                HorizontalAlignment="Left"
+                                Margin="10"
+                                VerticalAlignment="Top" FontSize="20" 
+                                Foreground="#DDF9F9F9"/>
+                            <Label 
+                                x:Name="label_total_money_three" 
+                                Content="{Binding NumOfBuy}" 
+                                HorizontalAlignment="Left"
+                                Margin="10 70 0 0" 
+                                VerticalAlignment="Top"
+                                FontSize="24" 
+                                Foreground="#DDF9F9F9" 
+                                FontWeight="Bold"/>
+                            <Label 
+                                Content="{Binding ThisMonth}" 
+                                HorizontalAlignment="Left"
+                                Margin="10 100 0 0" 
+                                VerticalAlignment="Bottom"
+                                FontSize="18" 
+                                Foreground="#DDF9F9F9" 
+                                FontWeight="Bold"/>
+                            <Label x:Name="label_image_three"
+                               Content="" 
+                               HorizontalAlignment="Right"
+                               Height="60"
+                               Margin="10 10"
+                               VerticalAlignment="Top" Width="60">
+                                <Label.Background>
+                                    <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/IncreaseIcon.png" Stretch="Uniform"/>
+                                </Label.Background>
+                            </Label>
+                        </Grid>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid
+                    Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="380"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card
+                        Padding="8"
+                        Margin="20 20 20 20"
+                        Grid.Column="0">
+                        <Wpf:PieChart
+                            x:Name="lvcPieChart"
+                            DataContext="{StaticResource ReportVM}"
+                            LegendLocation="None"
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Top"
+                            Width="300"
+                            Height="320"
+                            Margin="0 50 0 0"
+                            Hoverable="True"
+                            HoverPushOut="10"
+                            FontSize="16"
+                            Series="{Binding PieSeriesCollection}">
+                        </Wpf:PieChart>
+                    </materialDesign:Card>
+                    <ComboBox
+                        x:Name="cboSelectTimePie"
+                        Grid.Column="0"
+                        materialDesign:ComboBoxAssist.ClassicMode="true"
+                        FontSize="16"
+                        FontWeight="Medium" 
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        materialDesign:HintAssist.Hint="Chọn thời gian"
+                        Width="140" 
+                        Height="45" 
+                        HorizontalAlignment="Left" 
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center" 
+                        Padding="3,0,0,0" 
+                        Margin="30,25,0,0"
+                        VerticalAlignment="Top">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding InitPieChartCommand}" 
+                                                CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ComboBoxItem Content="Hôm nay"/>
+                        <ComboBoxItem Content="Tháng nay"/>
+                    </ComboBox>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Height="45"
+                        Margin="0,400,0,0" 
+                        VerticalAlignment="Top"
+                        Grid.Column="0">
+                        <ToggleButton
+                                Style="{StaticResource MaterialDesignActionToggleButton}"
+                                ToolTip="Sân"
+                                Width="45" 
+                                Height="45" 
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Top"
+                                Margin="0" 
+                                Background="{DynamicResource Color2}">
+                            <materialDesign:ToggleButtonAssist.OnContent>
+                                <materialDesign:PackIcon 
+                                        Kind="Soccer"
+                                        Width="30"
+                                        Height="30" 
+                                        Foreground="{DynamicResource White}"/>
+                            </materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon 
+                                        Kind="Soccer"
+                                        Width="30"
+                                        Height="30" 
+                                        Foreground="{DynamicResource White}" />
+                        </ToggleButton>
+                        <TextBlock
+                                TextWrapping="Wrap" 
+                                Text="Bán hàng" 
+                                Margin="8,0,16,0" 
+                                FontSize="16" 
+                                FontWeight="SemiBold" 
+                                VerticalAlignment="Center"/>
+                        <ToggleButton
+                                Style="{StaticResource MaterialDesignActionToggleButton}"
+                                ToolTip="Sân"
+                                Width="45" 
+                                Height="45" 
+                                HorizontalAlignment="Right" 
+                                VerticalAlignment="Top"
+                                Margin="0" 
+                                Background="{DynamicResource PaletteColor3}">
+                            <materialDesign:ToggleButtonAssist.OnContent>
+                                <materialDesign:PackIcon 
+                                        Kind="ShoppingOutline"
+                                        Width="30"
+                                        Height="30" 
+                                        Foreground="{DynamicResource White}" />
+                            </materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon 
+                                        Kind="ShoppingOutline"
+                                        Width="30"
+                                        Height="30" 
+                                        Foreground="{DynamicResource White}" />
+                        </ToggleButton>
+                        <TextBlock
+                                TextWrapping="Wrap" 
+                                Text="Dịch vụ" 
+                                Margin="8,0" 
+                                FontSize="16"
+                                FontWeight="SemiBold" 
+                                VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Grid
+                        Grid.Column="1">
+                        <materialDesign:Card
+                        Padding="8"
+                        Margin="20 20 20 20"
+                        Grid.Column="0">
+                            <Wpf:CartesianChart 
+                                x:Name="lvcColumnChart" 
+                                DataContext="{StaticResource ReportVM}"
+                                Series="{Binding SeriesCollection}" 
+                                LegendLocation="Bottom"
+                                Margin="0 50 0 0">
+                                <Wpf:CartesianChart.AxisX>
+                                    <Wpf:Axis 
+                                    Title="{Binding AxisXTitle, Mode=TwoWay}" 
+                                    Labels="{Binding Labels, Mode=TwoWay}" 
+                                    Foreground="{DynamicResource Color1}"
+                                    FontSize="14">
+                                        <Wpf:Axis.Separator>
+                                            <Wpf:Separator Step="1"/>
+                                        </Wpf:Axis.Separator>
+                                    </Wpf:Axis>
+                                </Wpf:CartesianChart.AxisX>
+                                <Wpf:CartesianChart.AxisY>
+                                    <Wpf:Axis 
+                                    Title="{Binding AxisYTitle, Mode=TwoWay}" 
+                                    LabelFormatter="{Binding Formatter}"
+                                    Foreground="{DynamicResource Color1}"
+                                    FontSize="14"/>
+                                </Wpf:CartesianChart.AxisY>
+                            </Wpf:CartesianChart>
+                        </materialDesign:Card>
+                    </Grid>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center" 
+                        Margin="0,25,0,0"
+                        Grid.Column="1">
+                        <ComboBox
+                            DataContext="{StaticResource ReportVM}"
+                            x:Name="cboSelectPeriod"
+                            materialDesign:ComboBoxAssist.ClassicMode="true"
+                            FontSize="16"
+                            FontWeight="Medium" 
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            materialDesign:HintAssist.Hint="Chọn chu kỳ"
+                            Width="160" 
+                            Height="40" 
+                            HorizontalAlignment="Left" 
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center" 
+                            Padding="3,0,0,0" 
+                            Margin="0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" 
+                                           CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ComboBoxItem Content="Theo tháng"/>
+                            <ComboBoxItem Content="Theo quý"/>
+                            <ComboBoxItem Content="Theo năm"/>
+                        </ComboBox>
+                        <ComboBox
+                                x:Name="cboSelectTime"
+                                DataContext="{StaticResource ReportVM}"
+                                ItemsSource="{Binding ItemSourceTime, Mode=TwoWay}"
+                                materialDesign:ComboBoxAssist.ClassicMode="true"
+                                FontSize="16"
+                                FontWeight="Medium" 
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                materialDesign:HintAssist.Hint="Chọn"
+                                Width="160" 
+                                Height="40" 
+                                HorizontalAlignment="Left" 
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center" 
+                                Padding="3,0,0,0" 
+                                Margin="60,0,0,0" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding InitColumnChartCommand}" 
+                                           CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
             </Grid>
             <Grid  
                 HorizontalAlignment="Left" 
@@ -352,7 +719,7 @@
                 Grid.Row="1" 
                 x:Name="grdBody_Business"
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70*"></ColumnDefinition>
                     <ColumnDefinition Width="5"></ColumnDefinition>
@@ -2139,7 +2506,7 @@
                 Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70*"></ColumnDefinition>
                     <ColumnDefinition Width="5"></ColumnDefinition>
@@ -2841,7 +3208,7 @@
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
                 DataContext="{StaticResource CustomerVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadCustomerCommand}" 

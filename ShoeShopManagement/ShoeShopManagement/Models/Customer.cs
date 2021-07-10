@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoeShopManagement.Model
+namespace ShoeShopManagement.Models
 {
     class Customer
     {

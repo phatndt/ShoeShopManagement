@@ -1,11 +1,13 @@
 ﻿using ShoeShopManagement.DAL;
-using ShoeShopManagement.Model;
+using ShoeShopManagement.Models;
 using ShoeShopManagement.Resources.UserControls;
+using ShoeShopManagement.Validations;
 using ShoeShopManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -79,7 +81,7 @@ namespace ShoeShopManagement.ViewModels
             SaveCommand = new RelayCommand<CustomerDetailWindow>(parameter => CanSaveChangeCustomer(), parameter => Save(parameter));
 
             CloseAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => true, parameter => parameter.Close());
-            SaveAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => CanSaveAddCustomer(), parameter => SaveAddCustomer(parameter));
+            SaveAddCustomerCommand = new RelayCommand<AddCustomerWindow>(parameter => true, parameter => SaveAddCustomer(parameter));
         }
 
         private void LoadCustomer(HomeWindow parameter)
@@ -153,21 +155,30 @@ namespace ShoeShopManagement.ViewModels
         }
         private void SaveAddCustomer(AddCustomerWindow parameter)
         {
-            Customer customer = new Customer(int.Parse(parameter.txtIdCustomer.Text), parameter.txtCustomer.Text, parameter.txtPhoneCustomer.Text, 0);
-            CustomerDAL.Instance.AddCustomerToDatabase(customer);
-            parameter.Close();
-            Notification.Instance.Success("Lưu khách hàng thành công");
-            LoadCustomer(this.homeWindow);
+            Regex regex = new Regex(@"^[0-9]+$");
+            if (!String.IsNullOrEmpty(parameter.txtCustomer.Text) && !String.IsNullOrEmpty(parameter.txtPhoneCustomer.Text) && regex.IsMatch(parameter.txtPhoneCustomer.Text))
+            {
+                Customer customer = new Customer(int.Parse(parameter.txtIdCustomer.Text), parameter.txtCustomer.Text, parameter.txtPhoneCustomer.Text, 0);
+                CustomerDAL.Instance.AddCustomerToDatabase(customer);
+                parameter.Close();
+                Notification.Instance.Success("Lưu khách hàng thành công");
+                LoadCustomer(this.homeWindow);
+            }
+            else
+            {
+                MessageBox.Show("Thông tin chưa hợp lệ");
+            }
         }
         private bool CanSaveAddCustomer()
         {
-            if (!string.IsNullOrEmpty(NameAddCustomer) && !string.IsNullOrEmpty(NumberAddCustomer))
-            {
-                if (NumberAddCustomer.Length == 10)
-                    return true;
-                return false;
-            }
-            return false;
+            //if (!string.IsNullOrEmpty(NameAddCustomer) && !string.IsNullOrEmpty(NumberAddCustomer))
+            //{
+            //    if (NumberAddCustomer.Length == 10)
+            //        return true;
+            //    return false;
+            //}
+            //return false;
+            return true;
         }
     }
 }
