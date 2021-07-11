@@ -21,7 +21,7 @@ using ShoeShopManagement.Resources.Template;
 
 namespace ShoeShopManagement.ViewModels
 {
-    class GoodsViewModel : BaseViewModel
+    class GoodsViewModel : BaseViewModel, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string imageFileName;
@@ -66,18 +66,23 @@ namespace ShoeShopManagement.ViewModels
         public GoodsViewModel()
         {
             AddGoodsCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => OpenAddGoodsWindow(parameter));
-            //LoadGoodsCommand = new RelayCommand<ImportStockWindow>((parameter) => true, (parameter) => LoadGoodsToView(parameter));
+
             LoadStkGoodsCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => LoadStkGoods(parameter));
+
             SelectImageCommand = new RelayCommand<Grid>((parameter) => true, (parameter) => ChooseImage(parameter));
             SaveCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => AddGoods(parameter));
             ExitCommand = new RelayCommand<AddGoodsWindow>((parameter) => true, (parameter) => parameter.Close());
             SeparateThousandsCommand = new RelayCommand<TextBox>((parameter) => true, (parameter) => SeparateThousands(parameter));
             PickGoodsCommand = new RelayCommand<ImportGoodsControl>((parameter) => true, (parameter) => PickGoods(parameter));
+            //
+            EditGoodsCommand = new RelayCommand<TextBlock>((parameter) => true, (parameter) => ShowEditGoods(parameter));
+            DeleteGoodsCommand = new RelayCommand<GoodUc>((parameter) => true, (parameter) => DeleteGoods(parameter));
 
             //
             StockInDetailChangeCommand = new RelayCommand<ImportGoodUC>((parameter) => true, (parameter) => UpdateStockReceiptInfo(parameter));
             OpenImportGoodsWindowCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => OpenImportGoodsWindow(parameter));
             GetWindowCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => SetWindow(parameter));
+            LoadGoodsCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => LoadGoodsToView(parameter));
             ImportStockCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => CompleteStockReceipt(parameter));
             DeleteImportGoodsDetailsCommand = new RelayCommand<ImportGoodUC>((parameter) => true, (parameter) => DeleteImportGoodsDetails(parameter));
             ViewStockReceiptTemplateCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => ViewStockReceiptTemplate(parameter));
@@ -128,8 +133,8 @@ namespace ShoeShopManagement.ViewModels
                     ImportGoodsControl goods = new ImportGoodsControl();
                     goods.txbName.Text = goodsList.Rows[i].ItemArray[1].ToString();
                     goods.txbIdGoods.Text = goodsList.Rows[i].ItemArray[0].ToString();
-                    goods.imgGood.Source = Converter.Instance.ConvertByteToBitmapImage(Convert.FromBase64String(goodsList.Rows[i].ItemArray[4].ToString()));
-                    goods.txbQuantityOfInventory.Text = goodsList.Rows[i].ItemArray[5].ToString();
+                    goods.imgGood.Source = Converter.Instance.ConvertByteToBitmapImage(Convert.FromBase64String(goodsList.Rows[i].ItemArray[9].ToString()));
+                    goods.txbQuantityOfInventory.Text = goodsList.Rows[i].ItemArray[3].ToString();
                     goods.txbIdStockReceipt.Text = parameter.txbIdStockReceipt.Text;
                     parameter.wrpGoods.Children.Add(goods);
                 }
@@ -146,8 +151,9 @@ namespace ShoeShopManagement.ViewModels
             {
                 importPrice = ConvertToNumber(importGoodUc.txtImportPrice.Text);
             }
-            StockInDetail stockInDetail = new StockInDetail(1,int.Parse(idStockReceipt),
+            StockInDetail stockInDetail = new StockInDetail(int.Parse(idStockReceipt),
                 int.Parse(importGoodUc.txbIdGoods.Text), quantity, importPrice);
+
             StockInDetailDAL.Instance.UpdateOnDB(stockInDetail);
             importGoodUc.txbtotal.Text = string.Format("{0:N0}", quantity * importPrice);
             ImportGoodsWindow.txbTotal.Text = string.Format("{0:N0}", StockInDetailDAL.Instance.CalculateTotalMoney(idStockReceipt));
@@ -172,6 +178,7 @@ namespace ShoeShopManagement.ViewModels
                 importGoodsDetailsControl.nmsQuantity.MinValue = 1;
                 importGoodsDetailsControl.nmsQuantity.MaxValue = 99999;
                 long importPrice = 0;
+
                 if (stockInDetail.donGia != 0)
                 {
                     importGoodsDetailsControl.txtImportPrice.Text = string.Format("{0:N0}", stockInDetail.donGia);
@@ -188,13 +195,13 @@ namespace ShoeShopManagement.ViewModels
         {
             bool isExisted = false;
             List<StockInDetail> listStockInDetail = StockInDetailDAL.Instance.GetStockInDetailById(importGoodsControl.txbIdStockReceipt.Text);
-            foreach (var stockReceiptInfo in listStockInDetail)
+            foreach (var stockInDetail in listStockInDetail)
             {
-                if (stockReceiptInfo.mASP.ToString() == importGoodsControl.txbIdGoods.Text)
+                if (stockInDetail.mASP.ToString() == importGoodsControl.txbIdGoods.Text)
                 {
                     isExisted = true;
-                    stockReceiptInfo.sOLuong += 1;
-                    if (StockInDetailDAL.Instance.UpdateOnDB(stockReceiptInfo))
+                    stockInDetail.sOLuong += 1;
+                    if (StockInDetailDAL.Instance.UpdateOnDB(stockInDetail))
                     {
                         LoadImportGoodsDetails(ImportGoodsWindow);
                     }
@@ -203,9 +210,11 @@ namespace ShoeShopManagement.ViewModels
             }
             if (!isExisted)
             {
-                StockInDetail stockReceiptInfo = new StockInDetail(1,int.Parse(importGoodsControl.txbIdStockReceipt.Text),
+                StockInDetail stockReceiptInfo = new StockInDetail(int.Parse(importGoodsControl.txbIdStockReceipt.Text),
                     int.Parse(importGoodsControl.txbIdGoods.Text), 1, 0);
+
                 StockInDetailDAL.Instance.AddIntoDB(stockReceiptInfo);
+
                 LoadImportGoodsDetails(ImportGoodsWindow);
             }
         }
@@ -232,11 +241,16 @@ namespace ShoeShopManagement.ViewModels
         {
             this.homeWindow = homeWindow;
             homeWindow.stkGoods.Children.Clear();
+
             List<Goods> goodsList = GoodsDAL.Instance.ConvertDBToList();
+            
             bool flag = false;
             int i = 1;
             foreach (var goods in goodsList)
             {
+                string Size = GoodsDAL.Instance.GetSize(goods.IdSize);
+                string Color = GoodsDAL.Instance.GetColor(goods.IdColor);
+                string Type = GoodsDAL.Instance.GetType(goods.IdDVT, goods.IdGood);
                 GoodUc temp = new GoodUc();
                 flag = !flag;
                 if (flag)
@@ -246,13 +260,15 @@ namespace ShoeShopManagement.ViewModels
                 temp.txbSTT.Text = goods.IdGood.ToString();
                 temp.txbNameGood.Text = goods.Name.ToString();
                 temp.txbQuantity.Text = goods.Quantity.ToString();
-                temp.txbUnit.Text = goods.DVT.ToString();
+                temp.txbSize.Text = Size;
+                temp.txbColor.Text = Color;
+                temp.txbUnit.Text = Type;
                 temp.txbPrice.Text = string.Format("{0:N0}", goods.Price);
-                if (CurrentAccount.Type == 2)
-                {
-                    temp.btnDeleteGood.IsEnabled = false;
-                    temp.btnEditGood.IsEnabled = false;
-                }
+                //if (CurrentAccount.Type == 2)
+                //{
+                //temp.btnDeleteGood.IsEnabled = false;
+                //temp.btnEditGood.IsEnabled = false;
+                //}
                 homeWindow.stkGoods.Children.Add(temp);
                 i++;
             }
@@ -264,13 +280,13 @@ namespace ShoeShopManagement.ViewModels
             try
             {
                 string idStockReceipt = (StockReceiptDAL.Instance.GetMaxId() + 1).ToString();
-                StockIn stockIn = new StockIn(int.Parse(idStockReceipt), CurrentAccount.IdAccount, DateTime.Now, 0);
+                StockIn stockIn = new StockIn(int.Parse(idStockReceipt),1 /*CurrentAccount.IdAccount*/, DateTime.Now, 0);
                 StockReceiptDAL.Instance.AddIntoDB(stockIn);
                 importGoodsWD.txbIdStockReceipt.Text = idStockReceipt;
             }
             catch
             {
-                StockIn stockReceipt = new StockIn(1, CurrentAccount.IdAccount, DateTime.Now, 0);
+                StockIn stockReceipt = new StockIn(1,1 /*CurrentAccount.IdAccount*/, DateTime.Now, 0);
                 StockReceiptDAL.Instance.AddIntoDB(stockReceipt);
                 importGoodsWD.txbIdStockReceipt.Text = "1";
             }
@@ -288,7 +304,7 @@ namespace ShoeShopManagement.ViewModels
             updateWindow.txtName.SelectionStart = updateWindow.txtName.Text.Length;
             updateWindow.txtName.Select(0, updateWindow.txtName.Text.Length);
 
-            updateWindow.cboUnit.Text = goods.DVT;
+            
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = Converter.Instance.ConvertByteToBitmapImage(goods.Image);
             updateWindow.grdSelectImg.Background = imageBrush;
@@ -365,7 +381,7 @@ namespace ShoeShopManagement.ViewModels
                 Goods goods = GoodsDAL.Instance.GetGoods(stockInDetail.mASP.ToString());
                 stockInDetailUc.txbOrderNum.Text = i.ToString();
                 stockInDetailUc.txbName.Text = goods.Name;
-                stockInDetailUc.txbUnit.Text = goods.DVT;
+             
                 stockInDetailUc.txbQuantity.Text = stockInDetail.sOLuong.ToString();
                 stockInDetailUc.txbImportPrice.Text = stockInDetail.donGia.ToString();
                 stockInDetailUc.txbTotal.Text = (stockInDetail.donGia * stockInDetail.sOLuong).ToString();
@@ -405,12 +421,6 @@ namespace ShoeShopManagement.ViewModels
                 parameter.txtSize.Text = "";
                 return;
             }
-            if (string.IsNullOrEmpty(parameter.txtStartYear.Text))
-            {
-                parameter.txtStartYear.Focus();
-                parameter.txtStartYear.Text = "";
-                return;
-            }
             if (string.IsNullOrEmpty(parameter.txtColor.Text))
             {
                 parameter.txtColor.Focus();
@@ -438,9 +448,11 @@ namespace ShoeShopManagement.ViewModels
                 imgByteArr = GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).Image;
             }
             //imageFileName = null;
-            Goods newGoods = new Goods(int.Parse(parameter.txtIdGoods.Text), parameter.txtName.Text,parameter.cboType.Text,
-                 0,ConvertToNumber(parameter.txtUnitPrice.Text), parameter.cboUnit.Text, parameter.txtColor.Text, ConvertToSize(parameter.txtSize.Text), imgByteArr);
+            Goods newGoods = new Goods(int.Parse(parameter.txtIdGoods.Text), parameter.txtName.Text, ConvertToType(parameter.cboType.Text),
+                 0, ConvertToSize(int.Parse(parameter.txtSize.Text)), ConvertToColor(parameter.txtColor.Text),
+                 ConvertToNumber(parameter.txtUnitPrice.Text), ConvertToUnit(parameter.cboUnit.Text), 0, imgByteArr);
             bool isSuccessed1 = true, isSuccessed2 = true;
+
             if (goodsList.Count == 0 || newGoods.IdGood > goodsList[goodsList.Count - 1].IdGood)
             {
                 if (GoodsDAL.Instance.IsExistGoodsName(parameter.txtName.Text))

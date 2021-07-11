@@ -61,11 +61,11 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "insert into PHIEUNHAPHANG(MaPNH, MaKH,NgayLapPhieu,TongTien) " +
-                    "values(@MaPNH, @MaKH, @NgayLapPhieu, @TongTien)";
+                string queryString = "insert into PHIEUNHAPHANG(MaPNH,NgayLapPhieu,TongTien) " +
+                    "values(@MaPNH, @NgayLapPhieu, @TongTien)";
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@MaPNH", stockReceipt.IdStockIn.ToString());
-                command.Parameters.AddWithValue("@MaKH", stockReceipt.IdAccount.ToString());
+                //command.Parameters.AddWithValue("@MaKH", stockReceipt.IdAccount.ToString());
                 command.Parameters.AddWithValue("@NgayLapPhieu", stockReceipt.DateStockIn);
                 command.Parameters.AddWithValue("@TongTien", stockReceipt.Total.ToString());
 

@@ -26,10 +26,9 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "insert into CHITIETPHIEUNHAP(MaCTPN,MaPNH , MaSP,SoLuong,DonGia) " +
-                    "values(@MaCTPN, @MaPNH, @MaSP, @SoLuong,@DonGia )";
+                string queryString = "insert into CHITIETPHIEUNHAP(MaPNH ,MaSP,SoLuong,DonGia) " +
+                    "values(@MaPNH, @MaSP, @SoLuong,@DonGia )";
                 SqlCommand command = new SqlCommand(queryString, conn);
-                command.Parameters.AddWithValue("@MaCTPN", stockInDetail.mACTPN.ToString());
                 command.Parameters.AddWithValue("@MaPNH", stockInDetail.mAPNH.ToString());
                 command.Parameters.AddWithValue("@MaSP", stockInDetail.mASP.ToString());
                 command.Parameters.AddWithValue("@SoLuong", stockInDetail.sOLuong.ToString());
@@ -167,7 +166,7 @@ namespace ShoeShopManagement.DAL
             {
                 OpenConnection();
                 string queryString = string.Format("select sum(DonGia * SoLuong) as total from CHITIETPHIEUNHAP " +
-                    "where MAPNH = {0} group by MAPNH", MaPNH);
+                    "where MaPNH = {0} group by MaPNH", MaPNH);
                 SqlCommand command = new SqlCommand(queryString, conn);
 
                 SqlDataReader rdr = command.ExecuteReader();
@@ -199,9 +198,8 @@ namespace ShoeShopManagement.DAL
 
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    StockInDetail stockInDetail = new StockInDetail(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()),
-                        int.Parse(dataTable.Rows[i].ItemArray[1].ToString()), int.Parse(dataTable.Rows[i].ItemArray[2].ToString()),
-                        int.Parse(dataTable.Rows[i].ItemArray[3].ToString()), int.Parse(dataTable.Rows[i].ItemArray[4].ToString()));
+                    StockInDetail stockInDetail = new StockInDetail(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()), int.Parse(dataTable.Rows[i].ItemArray[1].ToString()),
+                        int.Parse(dataTable.Rows[i].ItemArray[2].ToString()), int.Parse(dataTable.Rows[i].ItemArray[3].ToString()));
                     listStockInDetail.Add(stockInDetail);
                 }
                 return listStockInDetail;

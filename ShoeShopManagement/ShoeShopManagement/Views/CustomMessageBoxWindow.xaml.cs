@@ -192,19 +192,19 @@ namespace ShoeShopManagement.Views
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/FootballFieldManagement;component/Resources/Images/warning.png"));
+                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/ShoeShopManagement;component/Resources/Image/warning.png"));
                     break;
                 case MessageBoxImage.Asterisk:
-                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/FootballFieldManagement;component/Resources/Images/succes.png"));
+                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/ShoeShopManagement;component/Resources/Image/succes.png"));
                     break;
                 case MessageBoxImage.Error:
-                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/FootballFieldManagement;component/Resources/Images/error.png"));
+                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/ShoeShopManagement;component/Resources/Image/error.png"));
                     break;
                 case MessageBoxImage.Question:
-                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/FootballFieldManagement;component/Resources/Images/help.png"));
+                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/ShoeShopManagement;component/Resources/Image/help.png"));
                     break;
                 default:
-                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/FootballFieldManagement;component/Resources/Images/info.png"));
+                    bitmapImage = new BitmapImage(new Uri("pack://application:,,,/ShoeShopManagement;component/Resources/Image/info.png"));
                     break;
             }
 

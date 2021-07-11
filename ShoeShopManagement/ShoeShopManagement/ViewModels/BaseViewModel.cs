@@ -42,15 +42,83 @@ namespace ShoeShopManagement.ViewModels
             }
             return long.Parse(tmp);
         }
-        public int ConvertToSize(string str)
+        public int ConvertToColor(string str)
         {
-            string[] s = str.Split(',');
-            string tmp = "";
-            foreach (string a in s)
+            if(str == "Xanh")
             {
-                tmp += a;
+                return 1;
             }
-            return int.Parse(tmp);
+            else if (str == "Đỏ")
+            {
+                return 2;
+            }
+            else if (str == "Tím")
+            {
+                return 3;
+            }
+            else if (str == "Vàng")
+            {
+                return 4;
+            }
+            else if (str == "Nâu")
+            {
+                return 5;
+            }
+            else if (str == "Đen")
+            {
+                return 6;
+            }
+            else if (str == "Trắng")
+            {
+                return 7;
+            }
+            else
+            return 0;
+        }
+        public int ConvertToType(string str)
+        {
+            if(str == "Giày")
+            {
+                return 1;
+            }
+            return 0;
+        }
+        public int ConvertToUnit(string str)
+        {
+            if(str == "Đôi")
+            {
+                return 1;
+            }   
+            else if(str == "Cái")
+            {
+                return 2;
+            }
+            else
+            return 0;
+        }
+        public int ConvertToSize(int str)
+        {
+            if (str == 38)
+            {
+                return 1;
+            }
+            else if (str == 39)
+            {
+                return 2;
+            }
+            else if (str == 40)
+            {
+                return 3;
+            }
+            else if (str == 41)
+            {
+                return 4;
+            }
+            else if (str == 36)
+            {
+                return 5;
+            }
+            else return 0;
         }
         public void SeparateThousands(TextBox txt)
         {

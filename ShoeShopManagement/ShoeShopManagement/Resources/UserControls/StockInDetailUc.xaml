@@ -7,17 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450"
              d:DesignWidth="800" 
-             Width="773.6" 
+             Width="938" 
              Height="30"
              >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="240"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="90"/>
         </Grid.ColumnDefinitions>
         <Grid
             Grid.Column="0" 
@@ -47,26 +47,11 @@
             FontWeight="SemiBold" 
             Foreground="{DynamicResource Gray}" 
             FontSize="13"/>
-        <Grid
-            Grid.Column="2" 
-            Background="{DynamicResource White}" >
-            <TextBlock 
-                x:Name="txbUnit"
-                Text="Đơn vị tính"
-                Grid.Column="2"
-                HorizontalAlignment="Center" 
-                Margin="0" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Center" 
-                FontWeight="SemiBold" 
-                Foreground="{DynamicResource Gray}" 
-                TextAlignment="Center" 
-                FontSize="13"/>
-        </Grid>
+        
         <TextBlock 
             x:Name="txbImportPrice"
             Text="Giá nhập"
-            Grid.Column="3"
+            Grid.Column="2"
             HorizontalAlignment="Center" 
             Margin="0" 
             TextWrapping="Wrap" 
@@ -76,7 +61,7 @@
             TextAlignment="Center" 
             FontSize="13"/>
         <Grid
-            Grid.Column="4"
+            Grid.Column="3"
             Background="{DynamicResource White}" >
             <TextBlock 
                 x:Name="txbQuantity"
@@ -93,7 +78,7 @@
         <TextBlock 
             x:Name="txbTotal"
             Text="Thành tiền"
-            Grid.Column="5"
+            Grid.Column="4"
             HorizontalAlignment="Center" 
             Margin="0" 
             TextWrapping="Wrap" 

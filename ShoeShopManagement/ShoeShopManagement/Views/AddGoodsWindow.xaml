@@ -8,6 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShoeShopManagement.Views"
         mc:Ignorable="d"
+        x:Name="wdAddGoods"
         Title="AddGoodsWindow" Height="680" Width="700"
         DataContext="{StaticResource GoodVM}"
         Background="White"
@@ -176,7 +177,6 @@
                     Margin="0" />
                 <ComboBox
                     x:Name="cboType"
-                    materialDesign:HintAssist.Hint="Đơn vị tính"
                     Height="40" 
                     FontSize="14" 
                     Width="210"
@@ -217,22 +217,19 @@
                     Margin="0" />
                 <ComboBox
                     x:Name="cboUnit"
-                    materialDesign:HintAssist.Hint="Đơn vị tính"
                     Height="40" 
                     FontSize="14" 
                     Width="210"
                     BorderThickness="0"
                     Foreground="{StaticResource Gray}"  
                     Padding="0" 
-                    Margin="0,0,10,0" 
+                    Margin="0,0,8,0" 
                     HorizontalAlignment="Right"
                     VerticalContentAlignment="Center" 
                     HorizontalContentAlignment="Left"
                     FontWeight="SemiBold">
                     <ComboBoxItem IsSelected="True" Content="Đôi"/>
-                    <ComboBoxItem Content="Mẫu"/>
                     <ComboBoxItem Content="Cái"/>
-                    <ComboBoxItem Content="Lon"/>
                 </ComboBox>
             </Grid>
             <Grid 
@@ -298,7 +295,7 @@
                     RadiusX="6"
                     Stroke="{StaticResource Gray}" 
                     Margin="0"/>
-                <TextBox 
+                <ComboBox 
                     x:Name="txtSize"
                     Cursor="IBeam"
                     materialDesign:HintAssist.Hint="Kích cỡ"
@@ -307,61 +304,24 @@
                     Width="210" 
                     FontSize="14" 
                     BorderThickness="0" 
-                    MaxLines="1"
-                    MaxLength="11"
                     Padding="0" 
                     Foreground="{StaticResource Gray}" 
                     Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Margin="0,0,10,0" 
+                    Margin="0,0,9,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center"
                     FontWeight="SemiBold">
-                </TextBox>
+                    <ComboBoxItem Content="36"/>
+                    <ComboBoxItem Content="37"/>
+                    <ComboBoxItem Content="38"/>
+                    <ComboBoxItem Content="39"/>
+                    <ComboBoxItem Content="40"/>
+                    <ComboBoxItem Content="41"/>
+                    <ComboBoxItem Content="42"/>
+                </ComboBox>
             </Grid>
             <Grid 
                 Margin="0,360,0,0" 
-                VerticalAlignment="Top" 
-                Width="420" 
-                Height="40">
-                <Label 
-                    Content="Năm sản xuất"
-                    HorizontalAlignment="Left"
-                    FontSize="18"
-                    FontWeight="SemiBold" 
-                    Foreground="{StaticResource Color1}" 
-                    Height="32" 
-                    Margin="0" 
-                    VerticalAlignment="Center"/>
-                <Rectangle 
-                    HorizontalAlignment="Right" 
-                    Height="40" 
-                    Width="230" 
-                    RadiusY="6" 
-                    RadiusX="6"
-                    Stroke="{StaticResource Gray}" 
-                    Margin="0"/>
-                <TextBox 
-                    x:Name="txtStartYear"
-                    Cursor="IBeam"
-                    materialDesign:HintAssist.Hint="Năm sản xuất"
-                    HorizontalAlignment="Right"
-                    Height="40"  
-                    Width="210" 
-                    FontSize="14" 
-                    BorderThickness="0" 
-                    MaxLines="1"
-                    MaxLength="11"
-                    Padding="0" 
-                    Foreground="{StaticResource Gray}" 
-                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
-                    Margin="0,0,10,0" 
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center"
-                    FontWeight="SemiBold">
-                </TextBox>
-            </Grid>
-            <Grid 
-                Margin="0,420,0,0" 
                 VerticalAlignment="Top" 
                 Width="420" 
                 Height="40">
@@ -382,28 +342,30 @@
                     RadiusX="6"
                     Stroke="{StaticResource Gray}" 
                     Margin="0"/>
-                <TextBox 
+                <ComboBox
                     x:Name="txtColor"
-                    Cursor="IBeam"
-                    materialDesign:HintAssist.Hint="Màu sắc"
-                    HorizontalAlignment="Right"
-                    Height="40"  
-                    Width="210" 
+                    Height="40" 
                     FontSize="14" 
-                    BorderThickness="0" 
-                    MaxLines="1"
-                    MaxLength="11"
+                    Foreground="{StaticResource Gray}"  
+                    Width="210"
+                    BorderThickness="0"
                     Padding="0" 
-                    Foreground="{StaticResource Gray}" 
-                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     Margin="0,0,10,0" 
-                    HorizontalContentAlignment="Left" 
-                    VerticalContentAlignment="Center"
-                    FontWeight="SemiBold">
-                </TextBox>
+                    HorizontalAlignment="Right"
+                    VerticalContentAlignment="Center" 
+                    HorizontalContentAlignment="Left"
+                    FontWeight="SemiBold" SelectedIndex="0">
+                    <ComboBoxItem Content="Xanh"/>
+                    <ComboBoxItem Content="Đỏ"/>
+                    <ComboBoxItem Content="Tím"/>
+                    <ComboBoxItem Content="Vàng"/>
+                    <ComboBoxItem Content="Nâu"/>
+                    <ComboBoxItem Content="Đen"/>
+                    <ComboBoxItem Content="Trắng"/>
+                </ComboBox>
             </Grid>
             <Grid 
-                Margin="0,480,0,0" 
+                Margin="0,420,0,0" 
                 VerticalAlignment="Top" 
                 Width="420" 
                 Height="40">
@@ -426,26 +388,27 @@
                     Margin="0"/>
                 <ComboBox
                     x:Name="cbbNCC"
-                    Cursor="IBeam"
-                    materialDesign:HintAssist.Hint="Nhà cung cấp"
                     HorizontalAlignment="Right"
-                    Height="40"  
+                    Height="39"  
                     Width="210" 
                     FontSize="14" 
                     BorderThickness="0" 
                     Padding="0" 
                     Foreground="{StaticResource Gray}" 
-                    Validation.ErrorTemplate="{StaticResource textBoxErrorTemplate}"
                     Margin="0,0,10,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center"
+                    SelectedIndex="0"
                     FontWeight="SemiBold">
+                    <ComboBoxItem Content="Phan Anh Nhất"/>
+                    <ComboBoxItem Content="Nguyễn Đức Thành Phát"/>
+                    <ComboBoxItem Content="Lê Đức Trung"/>
+                    <ComboBoxItem Content="Nguyễn Huy Hoàng"/>
                 </ComboBox>
             </Grid>
-
         </Grid>
         <Grid 
-            Margin="0,590,34,0" 
+            Margin="0,550,34,0" 
             VerticalAlignment="Top"  
             Height="40" 
             Width="220" 

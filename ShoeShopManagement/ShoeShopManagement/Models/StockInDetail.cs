@@ -8,9 +8,6 @@ namespace ShoeShopManagement.Models
 {
     class StockInDetail
     {
-        private int MaCTPN;
-        public int mACTPN { get => MaCTPN; set => MaCTPN = value; }
-
         private int MaPNH;
         public int mAPNH { get => MaPNH; set => MaPNH = value; }
 
@@ -25,9 +22,9 @@ namespace ShoeShopManagement.Models
         public StockInDetail() { 
 
         }
-        public StockInDetail(int MaCTPN, int MaPNH, int MaSP, int SoLuong, long DonGia)
+        public StockInDetail( int MaPNH, int MaSP, int SoLuong, long DonGia)
         {
-            this.MaCTPN= MaCTPN;
+            
             this.MaPNH = MaPNH;
             this.MaSP = MaSP;
             this.SoLuong = SoLuong;

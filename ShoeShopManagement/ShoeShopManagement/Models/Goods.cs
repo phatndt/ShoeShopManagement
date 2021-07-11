@@ -13,37 +13,40 @@ namespace ShoeShopManagement.Models
         private long price;
         private int quantity;
         private byte[] image;
-        private string color;
-        private string type;
-        private string dvt;
+        private int idColor;
+        private int idType;
+        private int idDvt;
         private int size;
+        private int isDeleted;
 
         public int IdGood { get => idGood; set => idGood = value; }
         public string Name { get => name; set => name = value; }
         public long Price { get => price; set => price = value; }
         public int Quantity { get => quantity; set => quantity = value; }
         public byte[] Image { get => image; set => image = value; }
-        public string Color { get => color; set => color = value; }
-        public string Type { get => type; set => type = value; }
-        public string DVT { get => dvt; set =>dvt = value; }
-        public int Size { get => size; set => size = value; }
+        public int IdColor { get => idColor; set => idColor = value; }
+        public int IdType { get => idType; set => idType = value; }
+        public int IdDVT { get => idDvt; set =>idDvt = value; }
+        public int IdSize { get => size; set => size = value; }
         
+        public int IsDeleted { get => isDeleted; set => isDeleted = value; }
+
         public Goods()
         {
 
         }
-        public Goods(int idGood, string name,string type, int quantity, long price, string dtv, string color, int size ,byte[] image)
+        public Goods(int idGood, string name,int idType, int quantity, int size, int idColor, long price, int idDtv, int isdeleted,byte[] image)
         {
             this.idGood = idGood;
             this.name = name;
-            this.type = type;
+            this.idType = idType;
             this.quantity = quantity;
             this.size = size;
-            this.color = color;
+            this.idColor = idColor;
             this.price = price;
-            this.dvt = dtv;
+            this.idDvt = idDtv;
             this.image = image;
-
+            this.isDeleted = isdeleted;
         }
     }
 }

@@ -9,10 +9,18 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:uc="clr-namespace:ShoeShopManagement.Resources.UserControls"
         mc:Ignorable="d"
+        x:Name="wdImportStock" 
+        DataContext="{StaticResource GoodVM}"
         WindowStartupLocation="CenterScreen"
         Title="ImportGoodsWindow" Height="810" 
         ResizeMode="CanMinimize"
         Width="1440">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=wdImportStock}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Margin="0">
         <Grid>
             <Grid 
@@ -66,7 +74,7 @@
                 Width="938"
                 Height="40" 
                 Margin="60,50,0,0"
-                Background="{DynamicResource AquaWhite}" >
+                Background="{DynamicResource White}" >
                     <Grid 
                     Width="938"
                     Height="40"
@@ -75,7 +83,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60"/>
                             <ColumnDefinition Width="280"/>
-                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="90"/>
@@ -96,7 +104,7 @@
                         <TextBlock 
                         Text="Tên mặt hàng" 
                         Grid.Column="1" 
-                        HorizontalAlignment="Left" 
+                        HorizontalAlignment="Center" 
                         Margin="20,0,0,0" 
                         TextWrapping="Wrap" 
                         VerticalAlignment="Center" 
@@ -136,7 +144,6 @@
                         <Rectangle 
                         Grid.Column="0" 
                         HorizontalAlignment="Right"
-                        Margin="0,2,0,0" 
                         StrokeThickness="3"
                         Width="2"
                         Fill="{DynamicResource White}"
@@ -145,7 +152,7 @@
                         <Rectangle 
                         Grid.Column="1" 
                         HorizontalAlignment="Right"
-                        Margin="0,2,0,0" 
+                        
                         StrokeThickness="3"
                         Width="2"
                         Fill="{DynamicResource White}"
@@ -178,7 +185,7 @@
                 Width="938"
                 Margin="60,90,0,0" 
                 VerticalAlignment="Top" 
-                Background="{StaticResource GrayWhite}">
+                Background="{StaticResource White}">
                     <ScrollViewer 
                     VerticalScrollBarVisibility="Auto" 
                     HorizontalScrollBarVisibility="Disabled" >
@@ -193,13 +200,13 @@
                 </Grid>
                 <Border 
                 BorderBrush="{DynamicResource AquaWhite}"
-                BorderThickness="4"
+                BorderThickness="3"
                 HorizontalAlignment="Left"
                 Height="356" 
                 Margin="60,50,0,0" 
                 VerticalAlignment="Top"
                 Width="938" 
-                CornerRadius="4"/>
+                CornerRadius="2"/>
                 <Label 
                 Content="Danh sách mặt hàng" 
                 HorizontalAlignment="Left" 
@@ -213,7 +220,7 @@
                 Height="280" 
                 Width="938"
                 Margin="60,480,10,0" 
-                Background="{StaticResource GrayWhite}"
+                Background="{StaticResource White}"
                 VerticalAlignment="Top" >
                     <ScrollViewer 
                     VerticalScrollBarVisibility="Auto" 
@@ -231,14 +238,14 @@
                     </ScrollViewer>
                 </Grid>
                 <Border 
-                CornerRadius="4"
+                CornerRadius="2"
                 HorizontalAlignment="Left"
                 Height="280" 
                 Width="938"
                 Margin="60,480,10,0" 
                 VerticalAlignment="Top" 
                 BorderBrush="{DynamicResource AquaWhite}"
-                BorderThickness="5">
+                BorderThickness="3">
                 </Border>
             </Grid>
             <Grid  
