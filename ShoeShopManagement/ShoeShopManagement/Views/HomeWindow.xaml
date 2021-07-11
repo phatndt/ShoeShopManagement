@@ -342,7 +342,7 @@
                 Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource ReportVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200"/>
                     <RowDefinition/>
@@ -3330,10 +3330,119 @@
             </Grid>
             <Grid
                 x:Name="grdBody_Report" 
-                Background="{DynamicResource PaletteColor5}"
+                Background="#EFD0BF"
                 Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
-                Visibility="Hidden">
+                DataContext="{StaticResource ReportVM}"
+                Visibility="Visible">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadYearCommand}" 
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="20 10 0 0">
+                    <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Height="60"
+                    VerticalAlignment="Center"
+                    Grid.Row="0"
+                    Margin="0 0 0 0">
+                        <ComboBox
+                        x:Name="cboSelectYear"
+                        materialDesign:ComboBoxAssist.ClassicMode="true"
+                        ItemsSource="{Binding ItemSourceYear, Mode=TwoWay}"
+                        FontSize="16"
+                        FontWeight="Medium" 
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        materialDesign:HintAssist.Hint="Chọn năm"
+                        Width="160" 
+                        Height="40" 
+                        HorizontalAlignment="Left" 
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center" 
+                        Padding="3,0,0,0" 
+                        Margin="20 0 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChangedYearCommand}" 
+                                           CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <ComboBox
+                        x:Name="cboSelectMonth"
+                        DataContext="{StaticResource ReportVM}"
+                        ItemsSource="{Binding ItemSourceMonth, Mode=TwoWay}"
+                        materialDesign:ComboBoxAssist.ClassicMode="true"
+                        FontSize="16"
+                        FontWeight="Medium" 
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        materialDesign:HintAssist.Hint="Chọn tháng"
+                        Width="160" 
+                        Height="40" 
+                        HorizontalAlignment="Left" 
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center" 
+                        Padding="3,0,0,0" 
+                        Margin="60,0,0,0" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding InitColumnChartReportCommand}" 
+                                           CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <Button
+                            x:Name="btnAddDateReport"
+                            Grid.Row="0"
+                            Width="150"
+                            BorderThickness="0"
+                            Margin="40 0 20 0"
+                            Content="Thêm tháng">    
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </StackPanel>
+                </materialDesign:Card>
+                <Grid Grid.Row="1">
+                    <materialDesign:Card
+                        Margin="20 10 20 20"
+                        Padding="8">
+                        <Wpf:CartesianChart 
+                            x:Name="lvcColumnChartReport" 
+                            DataContext="{StaticResource ReportVM}"
+                            Series="{Binding SeriesReportCollection}" 
+                            LegendLocation="Bottom">
+                            <Wpf:CartesianChart.AxisX>
+                                <Wpf:Axis 
+                                    Title="{Binding AxisXTitleReport, Mode=TwoWay}" 
+                                    Labels="{Binding LabelsReport, Mode=TwoWay}" 
+                                    Foreground="{DynamicResource Color1}"
+                                    FontSize="14">
+                                    <Wpf:Axis.Separator>
+                                        <Wpf:Separator Step="1"/>
+                                    </Wpf:Axis.Separator>
+                                </Wpf:Axis>
+                            </Wpf:CartesianChart.AxisX>
+                            <Wpf:CartesianChart.AxisY>
+                                <Wpf:Axis 
+                                    Title="{Binding AxisYTitleReport, Mode=TwoWay}" 
+                                    LabelFormatter="{Binding FormatterReport}"
+                                    Foreground="{DynamicResource Color1}"
+                                    FontSize="14"/>
+                            </Wpf:CartesianChart.AxisY>
+                        </Wpf:CartesianChart>
+                    </materialDesign:Card>
+                </Grid>
             </Grid>
             <Grid
                 x:Name="grdBody_Stock" 

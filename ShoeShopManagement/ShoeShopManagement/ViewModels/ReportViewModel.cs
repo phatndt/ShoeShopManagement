@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -59,16 +60,47 @@ namespace ShoeShopManagement.ViewModels
         private string[] labels;
         public string[] Labels { get => labels; set { labels = value; OnPropertyChanged(); } }
 
+        //Report
+
+        private ObservableCollection<string> itemSourceYear = new ObservableCollection<string>();
+        public ObservableCollection<string> ItemSourceYear { get => itemSourceYear; set { itemSourceYear = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<string> itemSourceMonth = new ObservableCollection<string>();
+        public ObservableCollection<string> ItemSourceMonth { get => itemSourceMonth; set { itemSourceMonth = value; OnPropertyChanged(); } }
+
+        private SeriesCollection seriesReportCollection;
+        public SeriesCollection SeriesReportCollection { get => seriesReportCollection; set { seriesReportCollection = value; OnPropertyChanged(); } }
+
+        private Func<double, string> formatterReport;
+        public Func<double, string> FormatterReport { get => formatterReport; set { formatterReport = value; OnPropertyChanged(); } }
+
+        private string axisYTitleReport;
+        public string AxisYTitleReport { get => axisYTitleReport; set { axisYTitleReport = value; OnPropertyChanged(); } }
+
+        private string axisXTitleReport;
+        public string AxisXTitleReport { get => axisXTitleReport; set { axisXTitleReport = value; OnPropertyChanged(); } }
+
+        private string[] labelsReport;
+        public string[] LabelsReport { get => labelsReport; set { labelsReport = value; OnPropertyChanged(); } }
+
+
         public ICommand LoadCommand { get; set; }
         public ICommand InitPieChartCommand { get; set; }
         public ICommand InitColumnChartCommand { get; set; }
         public ICommand SelectionChangedCommand { get; set; }
+        public ICommand LoadYearCommand { get; set; }
+        public ICommand SelectionChangedYearCommand { get; set; }
+        public ICommand InitColumnChartReportCommand { get; set; }
         public ReportViewModel()
         {
             LoadCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => LoadDefaultChart(parameter));
             InitPieChartCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => InitPieChart(parameter));
             InitColumnChartCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => InitColumnChart(parameter));
             SelectionChangedCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => SelectionChanged(parameter));
+
+            LoadYearCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => LoadYear(parameter));
+            SelectionChangedYearCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => SelectionChangedYear(parameter));
+            InitColumnChartReportCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => InitColumnChartReport(parameter));
         }
 
         private void LoadDefaultChart(HomeWindow parameter)
@@ -279,6 +311,54 @@ namespace ShoeShopManagement.ViewModels
                 ItemSourceTime.Add("Năm " + (currentYear - 1).ToString());
                 ItemSourceTime.Add("Năm " + (currentYear).ToString());
             }
+        }
+
+        public void LoadYear(HomeWindow parameter)
+        {
+            ItemSourceYear.Clear();
+            string[] year = ReportDAL.Instance.GetYearInDB();
+            for(int i = 0; i < year.Length; i++)
+            {
+                ItemSourceYear.Add(year[i]);
+            }
+        }
+        private void SelectionChangedYear(HomeWindow parameter)
+        {
+            ItemSourceMonth.Clear();
+            string[] month = ReportDAL.Instance.GetMonthInDB(parameter.cboSelectYear.SelectedItem.ToString());
+            for (int i = 0; i < month.Length; i++)
+            {
+                ItemSourceMonth.Add(month[i]);
+            }
+        }
+        private void InitColumnChartReport(HomeWindow parameter)
+        {
+            AxisXTitleReport = "Ngày";
+            string selectedMonth = parameter.cboSelectMonth.SelectedItem.ToString();
+            string currentYear = parameter.cboSelectYear.SelectedItem.ToString();
+            SeriesReportCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "Bán hàng",
+                    Fill = (Brush)new BrushConverter().ConvertFrom("#FF2a9d8f"),
+                    Values = ReportDAL.Instance.GetBusinessInDB(selectedMonth, currentYear),
+                },
+                new ColumnSeries
+                {
+                    Title = "Dịch vụ",
+                    Fill = (Brush)new BrushConverter().ConvertFrom("#FFff6666"),
+                    Values = ReportDAL.Instance.GetServiceInDB(selectedMonth, currentYear),
+                },
+                new ColumnSeries
+                {
+                    Title = "Chi nhập",
+                    Fill = (Brush)new BrushConverter().ConvertFrom("#FFccff66"),
+                    Values = ReportDAL.Instance.GetStockInInDB(selectedMonth, currentYear),
+                }
+            };
+            LabelsReport = ReportDAL.Instance.GetDayInDB(selectedMonth, currentYear);
+            FormatterReport = value => string.Format("{0:N0}", value);
         }
     }
 }
