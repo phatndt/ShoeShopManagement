@@ -77,9 +77,57 @@ namespace ShoeShopManagement.ViewModels
         }
         public int ConvertToType(string str)
         {
-            if(str == "Giày")
+            if(str == "Sneaker Nike")
             {
                 return 1;
+            }
+            if (str == "Adidas")
+            {
+                return 2;
+            }
+            if (str == "Vans")
+            {
+                return 3;
+            }
+            if (str == "Balenciaga")
+            {
+                return 4;
+            }
+            if (str == "Converse")
+            {
+                return 5;
+            }
+            if (str == "Puma")
+            {
+                return 6;
+            }
+            if (str == "Pitis Hunter")
+            {
+                return 7;
+            }
+            return 0;
+        }
+        public int ConvertToNCC(string str)
+        {
+            if (str == "Công ti FreeTrend Bình Dương")
+            {
+                return 1;
+            }
+            if (str == "Nike Viet Nam")
+            {
+                return 2;
+            }
+            if (str == "Adidas Viet Nam")
+            {
+                return 3;
+            }
+            if (str == "Bitis Viet Nam")
+            {
+                return 4;
+            }
+            if (str == "Converse Viet Nam")
+            {
+                return 5;
             }
             return 0;
         }

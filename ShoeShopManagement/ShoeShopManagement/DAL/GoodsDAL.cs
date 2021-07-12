@@ -27,7 +27,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "select * from SANPHAM where MaSPXoa = 0";
+                string queryString = "select * from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MaSPXoa = 0";
                
                 SqlCommand command = new SqlCommand(queryString, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -37,9 +37,9 @@ namespace ShoeShopManagement.DAL
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     Goods acc = new Goods(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()), dataTable.Rows[i].ItemArray[1].ToString(),
-                    int.Parse(dataTable.Rows[i].ItemArray[2].ToString()), int.Parse(dataTable.Rows[i].ItemArray[3].ToString()), int.Parse(dataTable.Rows[i].ItemArray[4].ToString()), int.Parse(dataTable.Rows[i].ItemArray[5].ToString()),
-                    long.Parse(dataTable.Rows[i].ItemArray[6].ToString()),int.Parse(dataTable.Rows[i].ItemArray[7].ToString()), int.Parse(dataTable.Rows[i].ItemArray[8].ToString()),
-                    Convert.FromBase64String(dataTable.Rows[i].ItemArray[9].ToString()));
+                    int.Parse(dataTable.Rows[i].ItemArray[2].ToString()), int.Parse(dataTable.Rows[i].ItemArray[11].ToString()), int.Parse(dataTable.Rows[i].ItemArray[9].ToString()), int.Parse(dataTable.Rows[i].ItemArray[10].ToString()),
+                    long.Parse(dataTable.Rows[i].ItemArray[4].ToString()),int.Parse(dataTable.Rows[i].ItemArray[3].ToString()), int.Parse(dataTable.Rows[i].ItemArray[6].ToString()),
+                    Convert.FromBase64String(dataTable.Rows[i].ItemArray[5].ToString()));
                     goodsList.Add(acc);
                 }
                 return goodsList;
@@ -58,7 +58,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "select * from SANPHAM where MaSPXoa =0";
+                string queryString = "select SANPHAM.MaSP,SANPHAM.TenSP,SANPHAM.DonGia,SANPHAM.ANH,CHITIETSP.SoLuong from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MaSPXoa = 0";
 
                 SqlCommand command = new SqlCommand(queryString, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -81,21 +81,41 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "insert into SANPHAM (MaSP, TenSP,MaLSP,DonGia,SoLuong,Anh,MaMau,MaSIZE,MaDVT,MaSPXoa) " +
-                    "values(@MaSp, @TenSP, @MaLSP,@DonGia, @Soluong, @Anh, @MaMau, @MaSIZE,@MaDVT,@MaSPXoa)";
+                string queryString = "insert into SANPHAM (MaSP, TenSP,MaLSP,DonGia,Anh,MaDVT,MaSPXoa) " +
+                    "values(@MaSp, @TenSP, @MaLSP,@DonGia, @Anh,@MaDVT,@MaSPXoa)";
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@MaSP", goods.IdGood.ToString());
                 command.Parameters.AddWithValue("@MaSPXoa", goods.IsDeleted.ToString());
                 command.Parameters.AddWithValue("@MaLSP", goods.IdType.ToString());
                 command.Parameters.AddWithValue("@TenSP", goods.Name);
                 command.Parameters.AddWithValue("@DonGia", goods.Price.ToString());
-                command.Parameters.AddWithValue("@MaDVT", goods.IdDVT.ToString());
-                command.Parameters.AddWithValue("@SoLuong", goods.Quantity.ToString());
+                command.Parameters.AddWithValue("@MaDVT", goods.IdDVT.ToString());     
                 command.Parameters.AddWithValue("@Anh", Convert.ToBase64String(goods.Image));
-                command.Parameters.AddWithValue("@MaMau", goods.IdColor.ToString());
-                command.Parameters.AddWithValue("@MaSIZE", goods.IdSize.ToString());
-
                 int rs = command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool AddIntoDBCT(Goods goods)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString2 = "insert into CHITIETSP(MaCTSP,MaSP,SoLuong,MaMau,MaSIZE)" + "values (@MaCTSP,@MaSP,@SoLuong,@MaMau,@MaSIZE) ";
+                SqlCommand command2 = new SqlCommand(queryString2, conn);
+                command2.Parameters.AddWithValue("@MaCTSP", goods.IdGood.ToString());
+                command2.Parameters.AddWithValue("@MaSP", goods.IdGood.ToString());
+                command2.Parameters.AddWithValue("@SoLuong", goods.Quantity.ToString());
+                command2.Parameters.AddWithValue("@MaMau", goods.IdColor.ToString());
+                command2.Parameters.AddWithValue("@MaSIZE", goods.IdSize.ToString());
+                int rs = command2.ExecuteNonQuery();
                 return true;
             }
             catch
@@ -112,14 +132,34 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "update SANPHAM set TenSP=@TenSP, MaSIZE=@MaSIZE,DonGia=@DonGia, Anh=@Anh " +
+                string queryString = "update SANPHAM set TenSP=@TenSP,DonGia=@DonGia, Anh=@Anh " +
                     "where MaSP =" + goods.IdGood.ToString();
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@TenSP", goods.Name);
                 command.Parameters.AddWithValue("@DonGia", goods.Price.ToString());
-                command.Parameters.AddWithValue("@MaSIZE", goods.IdSize);
                 command.Parameters.AddWithValue("@Anh", Convert.ToBase64String(goods.Image));
 
+                int rs = command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool UpdateOnDBCT(Goods goods)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString = "update CHITIETSP set MaSIZE=@MaSIZE,MaMau=@MaMau " + "where MaSP =" + goods.IdGood.ToString();
+                SqlCommand command = new SqlCommand(queryString, conn);
+                command.Parameters.AddWithValue("@MaMau", goods.IdColor);
+                command.Parameters.AddWithValue("@MaSIZE", goods.IdSize);
                 int rs = command.ExecuteNonQuery();
                 return true;
             }
@@ -137,7 +177,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "update SANPHAM set SoLuong=@SoLuong where MaSP = " + idGood.ToString();
+                string queryString = "update CHITIETSP set SoLuong=@SoLuong where MaSP = " + idGood.ToString();
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@quantity", quantity.ToString());
                 int rs = command.ExecuteNonQuery();
@@ -157,7 +197,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "update SANPHAM set SoLuong = SoLuong +@SoLuong where MaSP=" + goods.IdGood.ToString();
+                string queryString = "update CHITIETSP set SoLuong = SoLuong +@SoLuong where MaSP=" + goods.IdGood.ToString();
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@SoLuong", goods.Quantity.ToString());
                 command.ExecuteNonQuery();
@@ -196,7 +236,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "select * from SANPHAM where MASP = " + idGood;
+                string queryString = "select * from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MASP = " +"'"+ idGood+"'";
 
                 SqlCommand command = new SqlCommand(queryString, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -205,9 +245,9 @@ namespace ShoeShopManagement.DAL
                 adapter.Fill(dataTable);
 
                 Goods res = new Goods(int.Parse(idGood), dataTable.Rows[0].ItemArray[1].ToString(),
-                    int.Parse(dataTable.Rows[0].ItemArray[2].ToString()), int.Parse(dataTable.Rows[0].ItemArray[3].ToString()), int.Parse(dataTable.Rows[0].ItemArray[4].ToString()), int.Parse(dataTable.Rows[0].ItemArray[5].ToString()),
-                    long.Parse(dataTable.Rows[0].ItemArray[6].ToString()), int.Parse(dataTable.Rows[0].ItemArray[7].ToString()), int.Parse(dataTable.Rows[0].ItemArray[8].ToString()),
-                    Convert.FromBase64String(dataTable.Rows[0].ItemArray[9].ToString()));
+                    int.Parse(dataTable.Rows[0].ItemArray[2].ToString()), int.Parse(dataTable.Rows[0].ItemArray[11].ToString()), int.Parse(dataTable.Rows[0].ItemArray[9].ToString()), int.Parse(dataTable.Rows[0].ItemArray[10].ToString()),
+                    long.Parse(dataTable.Rows[0].ItemArray[4].ToString()), int.Parse(dataTable.Rows[0].ItemArray[3].ToString()), int.Parse(dataTable.Rows[0].ItemArray[6].ToString()),
+                    Convert.FromBase64String(dataTable.Rows[0].ItemArray[5].ToString()));
                 return res;
             }
             catch
@@ -224,7 +264,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string getColor = "select Mau.TenMau from SANPHAM inner join MAU on SANPHAM.MaMau= MAU.MaMau Where SANPHAM.MaMau =" + idColor.ToString();
+                string getColor = "select Mau.TenMau from CHITIETSP inner join MAU on CHITIETSP.MaMau= MAU.MaMau Where CHITIETSP.MaMau =" + idColor.ToString();
                 SqlCommand command = new SqlCommand(getColor, conn);
                 SqlDataReader rdr = command.ExecuteReader();
                 rdr.Read();
@@ -245,7 +285,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string getSize = "select SIZE.TenSize from SANPHAM inner join SIZE on SANPHAM.MaSize= SIZE.MaSize Where SANPHAM.MaSize =" + idSize.ToString();
+                string getSize = "select SIZE.TenSize from CHITIETSP inner join SIZE on CHITIETSP.MaSize= SIZE.MaSize Where CHITIETSP.MaSize =" + idSize.ToString();
                 SqlCommand command = new SqlCommand(getSize, conn);
                 SqlDataReader rdr = command.ExecuteReader();
                 rdr.Read();
@@ -261,12 +301,12 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
-        public String GetType(int idType,int idGood)
+        public String GetDVT(int idDVT,int idGood)
         {
             try
             {
                 OpenConnection();
-                string getType = "select DONVITINH.TenDVT from SANPHAM inner join DONVITINH on SANPHAM.MaDVT= DONVITINH.MaDVT Where SANPHAM.MaDVT= " +idType.ToString()+" and SANPHAM.MaSp = " + idGood.ToString();
+                string getType = "select TenDVT from SANPHAM inner join DONVITINH on SANPHAM.MaDVT= DONVITINH.MaDVT Where SANPHAM.MaDVT= " +idDVT.ToString()+" and SANPHAM.MaSp = " + idGood.ToString();
                 SqlCommand command = new SqlCommand(getType, conn);
                 SqlDataReader rdr = command.ExecuteReader();
                 rdr.Read();

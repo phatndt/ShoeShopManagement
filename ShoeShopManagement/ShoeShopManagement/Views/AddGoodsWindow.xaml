@@ -183,14 +183,18 @@
                     BorderThickness="0"
                     Foreground="{StaticResource Gray}"  
                     Padding="0" 
-                    Margin="0,0,10,0" 
+                    Margin="0,0,8,0" 
                     HorizontalAlignment="Right"
                     VerticalContentAlignment="Center" 
                     HorizontalContentAlignment="Left"
                     FontWeight="SemiBold">
-                    <ComboBoxItem IsSelected="True" Content="Giày"/>
-                    <ComboBoxItem Content="Nước lau giày"/>
-                    <ComboBoxItem Content="Dây giày"/>
+                    <ComboBoxItem IsSelected="True" Content="Sneaker Nike"/>
+                    <ComboBoxItem Content="AdiDas"/>
+                    <ComboBoxItem Content="Vans"/>
+                    <ComboBoxItem Content="Balanciaga"/>
+                    <ComboBoxItem Content="Converse"/>
+                    <ComboBoxItem Content="Puma"/>
+                    <ComboBoxItem Content="Pitis Hunter"/>
                 </ComboBox>
             </Grid>
             <Grid 
@@ -395,15 +399,16 @@
                     BorderThickness="0" 
                     Padding="0" 
                     Foreground="{StaticResource Gray}" 
-                    Margin="0,0,10,0" 
+                    Margin="0,0,8,0" 
                     HorizontalContentAlignment="Left" 
                     VerticalContentAlignment="Center"
                     SelectedIndex="0"
                     FontWeight="SemiBold">
-                    <ComboBoxItem Content="Phan Anh Nhất"/>
-                    <ComboBoxItem Content="Nguyễn Đức Thành Phát"/>
-                    <ComboBoxItem Content="Lê Đức Trung"/>
-                    <ComboBoxItem Content="Nguyễn Huy Hoàng"/>
+                    <ComboBoxItem Content="Công ti FreeTrend Bình Dương"/>
+                    <ComboBoxItem Content="Nike Viet Nam"/>
+                    <ComboBoxItem Content="Adidas Viet Nam"/>
+                    <ComboBoxItem Content="Bitis Viet Nam"/>
+                    <ComboBoxItem Content="Converse Viet Nam"/>
                 </ComboBox>
             </Grid>
         </Grid>

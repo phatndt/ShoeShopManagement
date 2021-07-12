@@ -26,9 +26,10 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "insert into CHITIETPHIEUNHAP(MaPNH ,MaSP,SoLuong,DonGia) " +
-                    "values(@MaPNH, @MaSP, @SoLuong,@DonGia )";
+                string queryString = "insert into CHITIETPHIEUNHAP(MaCTPN,MaPNH ,MaSP,SoLuong,DonGia) " +
+                    "values(@MaCTPN,@MaPNH, @MaSP, @SoLuong,@DonGia )";
                 SqlCommand command = new SqlCommand(queryString, conn);
+                command.Parameters.AddWithValue("@MaCTPN", stockInDetail.mACTPN.ToString());
                 command.Parameters.AddWithValue("@MaPNH", stockInDetail.mAPNH.ToString());
                 command.Parameters.AddWithValue("@MaSP", stockInDetail.mASP.ToString());
                 command.Parameters.AddWithValue("@SoLuong", stockInDetail.sOLuong.ToString());
@@ -146,7 +147,7 @@ namespace ShoeShopManagement.DAL
                 SqlDataReader rdr = command.ExecuteReader();
                 while (rdr.Read())
                 {
-                    res.Add(rdr["idStockReceipt"].ToString());
+                    res.Add(rdr["MaPNH"].ToString());
                 }
                 return res;
             }
@@ -183,6 +184,29 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
+        public int GetMaxId()
+        {
+            int res = 0;
+            try
+            {
+                OpenConnection();
+                string queryString = "select max(MaCTPN) as id from CHITIETPHIEUNHAP";
+                SqlCommand command = new SqlCommand(queryString, conn);
+
+                SqlDataReader rdr = command.ExecuteReader();
+                rdr.Read();
+                res = int.Parse(rdr["id"].ToString());
+                return res;
+            }
+            catch
+            {
+                return res;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
         public List<StockInDetail> GetStockInDetailById(string MaPNH)
         {
             List<StockInDetail> listStockInDetail = new List<StockInDetail>();
@@ -195,11 +219,11 @@ namespace ShoeShopManagement.DAL
 
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    StockInDetail stockInDetail = new StockInDetail(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()), int.Parse(dataTable.Rows[i].ItemArray[1].ToString()),
-                        int.Parse(dataTable.Rows[i].ItemArray[2].ToString()), int.Parse(dataTable.Rows[i].ItemArray[3].ToString()));
+                    StockInDetail stockInDetail = new StockInDetail(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()), int.Parse(dataTable.Rows[i].ItemArray[1].ToString()), int.Parse(dataTable.Rows[i].ItemArray[2].ToString()),
+                        int.Parse(dataTable.Rows[i].ItemArray[3].ToString()), int.Parse(dataTable.Rows[i].ItemArray[4].ToString()));
+
                     listStockInDetail.Add(stockInDetail);
                 }
                 return listStockInDetail;

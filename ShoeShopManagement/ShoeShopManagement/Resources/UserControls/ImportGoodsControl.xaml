@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="ShoeShopManagement.Resources.UserControls.ImportGoodsControl"
+﻿<UserControl 
+        x:Class="ShoeShopManagement.Resources.UserControls.ImportGoodsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

@@ -94,7 +94,7 @@
             TabIndex="0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding StockReceiptInfoChangeCommand}" 
+                    <i:InvokeCommandAction Command="{Binding StockInDetailChangeCommand}" 
                                            CommandParameter="{Binding ElementName=ucImportGoodsDetails}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
