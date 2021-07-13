@@ -3050,12 +3050,9 @@
             <Grid
                 x:Name="grdBody_Goods"
                 DataContext="{StaticResource GoodVM}"
-                HorizontalAlignment="Left" 
-                Height="660" 
-                VerticalAlignment="Top" 
                 Background="#EFD0BF"
                 Width="1210"
-                Visibility="Visible" Margin="0,110,-19.2,0" Grid.RowSpan="2">
+                Visibility="Visible" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>
@@ -3070,7 +3067,7 @@
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
-                    Margin="0,0,35,0"
+                    Margin="0,0,65,0"
                     VerticalAlignment="Center">
                     <Button 
                         x:Name="btnAddGoods"
@@ -3114,7 +3111,7 @@
                 <Grid 
                     Grid.Row="1"
                     HorizontalAlignment="Left"
-                    Margin="20,0,0,0" 
+                    Margin="35,0,0,0" 
                     Width="1110" 
                     >
                     <Grid.ColumnDefinitions>
@@ -3199,7 +3196,7 @@
                 <Grid 
                     Grid.Row="2"
                     HorizontalAlignment="Left" 
-                    Margin="20,0,0,40"
+                    Margin="35,0,0,40"
                     Width="1110" >
                     <ScrollViewer
                         HorizontalScrollBarVisibility="Disabled" 
@@ -3218,7 +3215,7 @@
             </Grid>
             <Grid
                 x:Name="grdBody_Customer" 
-                Background="{DynamicResource White}"
+                Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource CustomerVM}"
                 Visibility="Hidden">
@@ -3238,7 +3235,7 @@
                     Grid.Row="0" 
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center" 
-                    Margin="0 0 15 0">
+                    Margin="0 0 35 0">
                     <Button 
                         x:Name="btnAddCustomer"
                         Height="40"
@@ -3261,7 +3258,7 @@
                 </StackPanel>
                 <Grid
                     HorizontalAlignment="Left"
-                    Margin="15,0,0,0" 
+                    Margin="30,0,0,0" 
                     Width="1120"
                     Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -3326,7 +3323,7 @@
                 <Grid
                     Grid.Row="2"
                     HorizontalAlignment="Left" 
-                    Margin="15 0 0 40"
+                    Margin="30 0 0 40"
                     Width="1120">
                     <ScrollViewer
                         VerticalScrollBarVisibility="Auto"
@@ -3346,7 +3343,7 @@
                 Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource ReportVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadYearCommand}" 
@@ -3459,7 +3456,7 @@
             </Grid>
             <Grid
                 x:Name="grdBody_Stock" 
-                Background="{DynamicResource White}"
+                Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource StockVM}"
                 Visibility="Hidden">
@@ -3479,7 +3476,7 @@
                     Grid.Row="0" 
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Margin="0 0 15 0">
+                    Margin="0 0 30 0">
                     <Button 
                         x:Name="btnAddStock"
                         Height="40"
@@ -3502,7 +3499,7 @@
                 </StackPanel>
                 <Grid
                     HorizontalAlignment="Left"
-                    Margin="15,0,0,0" 
+                    Margin="30,0,0,0" 
                     Width="1120"
                     Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -3537,7 +3534,7 @@
                 <Grid
                     Grid.Row="2"
                     HorizontalAlignment="Left" 
-                    Margin="15 0 0 40"
+                    Margin="30 0 0 40"
                     Width="1120">
                     <ScrollViewer
                         VerticalScrollBarVisibility="Auto"
