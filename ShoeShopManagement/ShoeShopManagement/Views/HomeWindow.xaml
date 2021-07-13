@@ -245,10 +245,10 @@
             <Grid 
                 x:Name="grdCursor" 
                 Width="4" 
-                Height="50" 
+                Height="60" 
                 Background="{DynamicResource TextMainColorButton}" 
                 HorizontalAlignment="Left"
-                Margin="0,145,35,0" 
+                Margin="0,140,35,0" 
                 VerticalAlignment="Top"/>
             <Grid Width="auto"
                   Height="auto"
