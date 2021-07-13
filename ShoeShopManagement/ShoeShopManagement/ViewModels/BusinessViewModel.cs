@@ -1,4 +1,5 @@
-﻿using ShoeShopManagement.Resources.UserControls;
+﻿using Microsoft.Expression.Interactivity.Core;
+using ShoeShopManagement.Resources.UserControls;
 using ShoeShopManagement.Views;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,25 @@ namespace ShoeShopManagement.ViewModels
                     checkbackground = true;
                 parameter.PanelBills.Children.Add(fieldInfoBill);
             }
+        }
+
+        private ActionCommand loadBussinessCommand;
+
+        public ICommand LoadBussinessCommand
+        {
+            get
+            {
+                if (loadBussinessCommand == null)
+                {
+                    loadBussinessCommand = new ActionCommand(LoadBussiness);
+                }
+
+                return loadBussinessCommand;
+            }
+        }
+
+        private void LoadBussiness()
+        {
         }
     }
 }

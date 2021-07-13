@@ -9,911 +9,360 @@
         x:Name="wdSaleWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
-        Title="HomeWindow" Height="800" Width="1400"
+        Title="HomeWindow" Height="800" Width="1265"
         Icon="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
         DataContext="{StaticResource HomeVM}">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Image/background.png">
-            </ImageBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="10*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0"
-              Background="#E8641A"
-              HorizontalAlignment="Left"
-              Margin="10,20,5,0"
-              >
-            <Border BorderBrush="White"
-                    BorderThickness="3"
-                    Margin="0,0,0,0">
-                <StackPanel Width="200"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Margin="0 20 15 0"
-                        
-                        >
-                    <StackPanel.Resources>
-                        <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                            <Setter Property="Height" Value="30"></Setter>
-                            <Setter Property="Width" Value="30"></Setter>
-                        </Style>
-                        <Style TargetType="Grid">
-                            <Setter Property="Height" Value="60"></Setter>
-                        </Style>
-                    </StackPanel.Resources>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon
-                        Grid.Column="0" 
-                        Kind="Home" Foreground="White" Width="50" Height="50"
-                        />
-                        <Button Content="Trang chủ"
-                            x:Name="btnHome"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"
-                            Style="{StaticResource MainMenuButton}" >
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
-                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetNameTab}"
-                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-
-                        </Button>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon Kind="GoogleMyBusiness" Grid.Column="0" Width="43" Height="43" Foreground="White" />
-                        <Button Style="{StaticResource MainMenuButton}"
-                            x:Name="btnBusiness"
-                            Content="Bán hàng"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
-                                                       CommandParameter="{Binding ElementName=HomeWd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetNameTab}"
-                                                       CommandParameter="{Binding ElementName=btnBusiness}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon Kind="Store" Grid.Column="0" Width="45" Height="44" Foreground="White"  />
-                        <Button Style="{StaticResource MainMenuButton}"
-                            Content="Dịch vụ"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"></Button>
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon Kind="Account" Grid.Column="0" Width="50" Height="50" Foreground="White" />
-                        <Button Style="{StaticResource MainMenuButton}"
-                            Content="Nhân viên"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"></Button>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon Kind="HomeCity" Grid.Column="0" Foreground="White" Width="35" Height="40" />
-                        <Button Style="{StaticResource MainMenuButton}"
-                            Content="Kho"
-                            VerticalAlignment="Center"
-                            Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"></Button>
-                    </Grid>
-                </StackPanel>
-            </Border>
-            <Grid Width="auto"
-                  Height="auto"
-                  Margin="50 35"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Top">
-                <Image  Source="/Resources/Image/logo.png" 
-                       Stretch="Uniform" RenderTransformOrigin="0.515,0.787" Margin="-14,25,14,-25"></Image>
-            </Grid>
-            <Grid Width="180"
-                  Height="50"
-                  HorizontalAlignment="Right"
-                  VerticalAlignment="Bottom"
-                  Margin="0,0,42,16.4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.Resources>
-                    <Style TargetType="materialDesign:PackIcon">
-                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                        <Setter Property="Height" Value="30"></Setter>
-                        <Setter Property="Width" Value="30"></Setter>
-                    </Style>
-                </Grid.Resources>
-                <materialDesign:PackIcon Kind="LogoutVariant" Grid.Column="0" Foreground="White" Width="50" Height="50" />
-                <Button Style="{StaticResource MainMenuButton}"
-                            Content="Đăng xuất"
-                        Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"
-                        ></Button>
-            </Grid>
-
-
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="12*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid Height="Auto"
-                      Margin="5"
-                      HorizontalAlignment="Right">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="auto"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="2"
-                          VerticalAlignment="Top"
-                          Margin="0,20">
-                        <Button materialDesign:ButtonAssist.CornerRadius="10"
-                                Height="40"
-                                Width="40"
-                                Background="#C4C4C4">
-                        </Button>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <TextBlock Text="Huy Hoàng"
-                                   FontSize="25"
-                                   FontFamily="Roboto"
-                                   FontWeight="Regular"
-                                   VerticalAlignment="Top"
-                                   Margin="0,25,10,0"
-                                   Foreground="White"
-                                   />
-                    </Grid>
-                    <Grid Grid.Row="0">
-                        <Button
-                        Height="50" 
-                        Width="150" 
-                        VerticalAlignment="Top"
-                        Margin="0,20,50,0"
-                            FontSize="20"
-                            Content="Điểm danh"
-                        materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="{x:Null}">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid 
-                x:Name="grdBody_Employee" 
+    <Grid  
                 HorizontalAlignment="Left" 
-                Height="710" 
+                Height="765" 
                 VerticalAlignment="Top" 
                 Background="#EFD0BF"
-                Width="1160"
-                Margin="0"
+                Width="1190"
                 Grid.Row="1" 
                 DataContext="{StaticResource EmployeeVM}"
                 Visibility="Visible">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70*"></ColumnDefinition>
-                    <ColumnDefinition Width="5"></ColumnDefinition>
-                    <ColumnDefinition Width="30*"/>
-                </Grid.ColumnDefinitions>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
                                                CommandParameter="{Binding ElementName=wdHomeWindow}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="7*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="60*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0"
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
                       Grid.Column="0"
                       >
-                    <TextBox
+                <TextBox
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                         VerticalAlignment="Center"
                         Height="auto"
+                        materialDesign:HintAssist.Background="#EFD0BF"
+                        materialDesign:HintAssist.Foreground="#E8641A"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
                         HorizontalAlignment="Right"
                         AcceptsReturn="True"
                         TextWrapping="Wrap"
+                        FontSize="17"
                         VerticalScrollBarVisibility="Auto"
                         materialDesign:HintAssist.Hint="Tìm kiếm"
                         Width="300"
                         Margin="0,0,10,0"
                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
-                </Grid>
-                <Grid Grid.Row="1">
-                    <StackPanel Orientation="Horizontal">
-                        <Button
-                              Style="{StaticResource MaterialDesignFlatButton}"
-                            
-                              ToolTip="MaterialDesignFlatButton"
-                              Content="Tất cả" 
-                                Foreground="Black"/>
-                        <Button
-                              Style="{StaticResource MaterialDesignFlatButton}"
-                              
-                              ToolTip="MaterialDesignFlatButton"
-                              Content="Nike"
-                                                        Foreground="Black"/>
-                        <Button
-                              Style="{StaticResource MaterialDesignFlatButton}"
-                              
-                              ToolTip="MaterialDesignFlatButton"
-                              Content="Adidas" 
-                                                        Foreground="Black"/>
-                        <Button
-                              Style="{StaticResource MaterialDesignFlatButton}"
-                            
-                              ToolTip="MaterialDesignFlatButton"
-                              Content="Converse" 
-                                                    Foreground="Black"/>
-                    </StackPanel>
-                </Grid>
-                <Grid Grid.Row="3">
-                    <ScrollViewer>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <StackPanel>
-                                    <StackPanel > 
-                                        <Button Height="233"
-                                            Margin="15,15,15,10" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-craft-shoe-jCGMCm.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-lv8-shoe-ldZ4Ml.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-lv8-shoe-XpNPKh.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,10" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,10" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-craft-shoe-jCGMCm.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-lv8-shoe-ldZ4Ml.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-lv8-shoe-XpNPKh.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,10" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Grid.Column="2">
-                                <StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,10" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-craft-shoe-jCGMCm.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-lv8-shoe-ldZ4Ml.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,35" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/air-force-1-07-lv8-shoe-XpNPKh.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel >
-                                        <Button Height="233"
-                                            Margin="15,15,15,10" Width="233"
-                                            materialDesign:ButtonAssist.CornerRadius="10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Image/Shoes/af-1-1-shoe-7qQjnL.jpg" />
-                                            </Button.Background>
-                                        </Button>
-                                        <TextBlock Text="Nike AF 1/1"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                        <TextBlock Text="2 Colours"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,0"
-                                                   FontFamily="Time news Roman"
-                                                   FontWeight="Medium"
-                                                   Foreground="Gray"></TextBlock>
-                                        <TextBlock Text="3.500.000 VNĐ"
-                                                   FontSize="20"
-                                                   Margin="15,0,15,20"
-                                                   FontFamily="Time news Roman"
-                                                   Foreground="Black"
-                                                   FontWeight="Medium"></TextBlock>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackPanel>
+                            </StackPanel>
                         </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid Grid.Column="1"
+                        <Grid Grid.Column="1">
+                            <StackPanel>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1"
                       Background="Black"
                       Grid.RowSpan="5"></Grid>
-                <Grid Grid.Row="0"
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
                       Grid.Column="2">
-                    <TextBlock Text="Thông tin hóa đơn"
+            <TextBlock Text="Thông tin hóa đơn"
                                FontSize="30"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontFamily="Roboto"
                                FontWeight="Medium"></TextBlock>
-                </Grid>
-                <Grid Grid.Row="1"
+        </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Text="Thứ 5, ngày 20 tháng 5 năm 2014"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,15,0"></TextBlock>
+            </Grid>
+        <Grid Grid.Row="2"
                       Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="1"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                <ColumnDefinition Width="1.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="1"
                                Grid.Column="0"
                                Text="Tên sản phẩm"
                                FontFamily="Roboto"
-                               FontSize="20"
+                               FontSize="15"
                                FontWeight="Medium"
                                HorizontalAlignment="Left"
                                Margin="10,3,0,0"
                                VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Grid.Row="1"
+            <TextBlock Grid.Row="1"
                                Grid.Column="1"
+                               Text="Màu"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="1"
+                               Grid.Column="2"
+                               Text="Size"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="1"
+                               Grid.Column="3"
                                Text="Số lượng"
                                FontFamily="Roboto"
-                               FontSize="20"
+                               FontSize="15"
                                FontWeight="Medium"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Grid.Row="1"
-                               Grid.Column="2"
+            <TextBlock Grid.Row="1"
+                               Grid.Column="4"
                                Text="Giá"
                                FontFamily="Roboto"
-                               FontSize="20"
+                               FontSize="15"
                                FontWeight="Medium"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"></TextBlock>
-                </Grid>
-                <Grid 
+        </Grid>
+        <Grid 
                     Grid.Row="3"
                     Grid.Column="2"
-                    Margin="0,0,0,150"
                     >
-                    <Grid >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="9*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0"
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
                               Background="White">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2.5*"></ColumnDefinition>
-                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
-                                <TextBlock
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                 Margin="10,3,0,0"
                                Height="30"
                                Text="Hoang Hoang" 
-                               FontSize="20"
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                                <TextBlock                               HorizontalAlignment="Left"
+                        <TextBlock                               HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                 Margin="10,3,0,0"
                                 Height="30"
                                Text="Hoang Hoang" 
-                               FontSize="20"
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                                <TextBlock                               HorizontalAlignment="Left"
+                        <TextBlock                               HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                 Margin="10,3,0,0"
                                 Height="30"
                                Text="Hoang Hoang" 
-                               FontSize="20"
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <TextBlock
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Margin="0,3,0,0"
                                 Height="30"
-                               Text="5" 
-                               FontSize="20"
+                               Text="Xanh" 
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                                <TextBlock
+                        <TextBlock
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Margin="0,3,0,0"
                                 Height="30"
-                               Text="5" 
-                               FontSize="20"
+                               Text="Đỏ" 
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
 
                             ></TextBlock>
-                                <TextBlock
+                        <TextBlock
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Margin="0,3,0,0"
                                 Height="30"
-                               Text="5" 
-                               FontSize="20"
+                               Text="Vàng" 
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2">
-                                <TextBlock
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Margin="0,3,0,0"
                                 Height="30"
-                               Text="5" 
-                               FontSize="20"
+                               Text="18" 
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                                <TextBlock
+                        <TextBlock
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Margin="0,3,0,0"
                                 Height="30"
-                               Text="5" 
-                               FontSize="20"
+                               Text="40" 
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                                <TextBlock
+                        <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height= "30"
+                               Text="42" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3">
+                        <TextBox
+                                    Margin="0,3,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Height="30"
+                                    Text="1" 
+                                    FontSize="15"
+                                    FontFamily="Roboto"
+                                    FontWeight="Normal"
+                                    Padding="0"
+                                    BorderThickness="0">
+                        </TextBox>
+                        <TextBox
+                                    Margin="0,3,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Height="30"
+                                    Padding="0"
+                                    Text="2" 
+                                    FontSize="15"
+                                    FontFamily="Roboto"
+                                    FontWeight="Normal"
+                                    BorderThickness="0"
+                        ></TextBox>
+                        <TextBox
+                                    Margin="0,3,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Height= "30"
+                                    Text="1"
+                                    Padding="0"
+                                    FontSize="15"
+                                    FontFamily="Roboto"
+                                    FontWeight="Normal"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    BorderThickness="0"
+                                >
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="4">
+                        <TextBlock
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Margin="0,3,0,0"
                                 Height="30"
-                               Text="5" 
-                               FontSize="20"
+                               Text="7,500" 
+                               FontSize="15"
                                FontFamily="Roboto"
                                FontWeight="Normal"
                             ></TextBlock>
-                            </StackPanel>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition ></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock
+                        <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height="30"
+                               Text="550" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                        <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Margin="0,3,0,0"
+                                Height= "30"
+                               Text="6,500" 
+                               FontSize="15"
+                               FontFamily="Roboto"
+                               FontWeight="Normal"
+                            ></TextBlock>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
                                  FontWeight="Medium"
                             ></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <TextBlock
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,3,0,0"
-                               Height="30"
-                               Text="Tổng hóa đơn:" 
-                               FontSize="20"
-                               FontFamily="Roboto"
-                               FontWeight="Medium"
-                            ></TextBlock>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition ></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                 Margin="10,7,0,4.6"
@@ -923,36 +372,75 @@
                                FontFamily="Roboto"
                                FontWeight="Medium"
                             ></TextBlock>
-                            <TextBlock
+                    <TextBlock
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                 Margin="10,7,5,4.6"
                                Height="30"
-                               Text="100.000.000 VND" 
+                               Text="19,550,000"
                                FontSize="20"
                                FontFamily="Roboto"
                                FontWeight="Medium"
                                Grid.Column="1"
                             ></TextBlock>
-                        </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel VerticalAlignment="Center"
+                                            >
+                            <TextBox
+                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                        Height="55"
+                                        materialDesign:HintAssist.Hint="Số điện thoại"
+                                        materialDesign:HintAssist.Background="#EFD0BF"
+                                        materialDesign:HintAssist.Foreground="#E8641A"
+                                        materialDesign:HintAssist.FloatingScale="0.7"
+                                        FontSize="15"
+                                        materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                                        Margin="10,0,15,0"
+                                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button 
+                                    Height="55" 
+                                    Width="135"
+                                    FontSize="18"
+                                    materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
+                                    RenderTransformOrigin="0.495,0.488"    
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Đăng ký" 
+                                    Margin="0,0,12,0"
+                                    FontFamily="Time news roman">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
+                            </Button.Background>
+                        </Button>
                     </Grid>
                 </Grid>
-                <Button 
-                        Height="50" 
-                        Width="200"
-                        FontSize="25"
-                        materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="{x:Null}"  
-                        Grid.Column="2"
-                        Grid.Row="2" RenderTransformOrigin="0.495,0.488"    
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        Margin="73.2,0,74,85.4"
-                        Content="Thanh toán">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
-                    </Button.Background>
-                </Button>
+                <Grid Grid.Row="3">
+                    <Button 
+                                Height="50" 
+                                Width="200"
+                                FontSize="20"
+                                FontWeight="Medium"
+                                materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
+                                RenderTransformOrigin="0.495,0.488"    
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="Thanh toán" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
             </Grid>
+        </Grid>
         </Grid>
     </Grid>
 </Window>

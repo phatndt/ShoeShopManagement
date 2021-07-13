@@ -117,6 +117,9 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\test.cs" />
     <Compile Include="Notification.cs" />
+    <Compile Include="Resources\UserControls\BillUC.xaml.cs">
+      <DependentUpon>BillUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\CustomerUc.xaml.cs">
       <DependentUpon>CustomerUc.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,9 @@
     </Compile>
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ProductUC.xaml.cs">
+      <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
@@ -140,6 +146,9 @@
     </Compile>
     <Compile Include="Resources\UserControls\StockGoodUc.xaml.cs">
       <DependentUpon>StockGoodUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\SaleUC.xaml.cs">
+      <DependentUpon>SaleUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
@@ -210,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\UserControls\BillUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\CustomerUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,7 +235,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\UserControls\ProductUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\SalaryUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\SaleUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,7 +252,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\ServicesUc.xaml">
-            <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\StockBillGoodUc.xaml">
