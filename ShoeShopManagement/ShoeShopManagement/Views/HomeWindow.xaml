@@ -10,7 +10,7 @@
         x:Name="wdHomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
-        Title="HomeWindow" Height="800" Width="1400"
+        Title="HomeWindow" Height="800" Width="1447"
         Icon="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
         DataContext="{StaticResource HomeVM}">
     <Grid>
@@ -3051,12 +3051,11 @@
                 x:Name="grdBody_Goods"
                 DataContext="{StaticResource GoodVM}"
                 HorizontalAlignment="Left" 
-                Height="710" 
+                Height="660" 
                 VerticalAlignment="Top" 
                 Background="#EFD0BF"
-                Width="1160"
-                Grid.Row="1"
-                Visibility="Hidden">
+                Width="1210"
+                Visibility="Visible" Margin="0,110,-19.2,0" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>
@@ -3065,7 +3064,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadStkGoodsCommand}" 
-                                               CommandParameter="{Binding ElementName=wdHome}"/>
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <StackPanel
@@ -3076,12 +3075,11 @@
                     <Button 
                         x:Name="btnAddGoods"
                         Command="{Binding AddGoodsCommand}"
-                        CommandParameter="{Binding ElementName=wdHome}"
+                        CommandParameter="{Binding ElementName=wdHomeWindow}"
                         BorderThickness="0"
                         Content="Thêm mặt hàng"
                         Height="40"
                         materialDesign:ButtonAssist.CornerRadius="2"
-                        ToolTip="Thêm hàng hóa" 
                         FontSize="18" 
                         VerticalAlignment="Center" 
                         FocusVisualStyle="{x:Null}"
@@ -3094,8 +3092,8 @@
                     </Button>
                     <Button 
                         x:Name="btnImportStock"
-                        Command="{Binding ImportStockWindowCommand}"
-                        CommandParameter="{Binding ElementName=wdHome}"
+                        Command="{Binding OpenImportGoodsWindowCommand}"
+                        CommandParameter="{Binding ElementName=wdHomeWindow}"
                         BorderThickness="0"
                         Content="Nhập hàng"
                         Height="40"
@@ -3117,19 +3115,20 @@
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     Margin="20,0,0,0" 
-                    Width="1120" 
+                    Width="1110" 
                     >
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="300"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="170"/>
-                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Background>
-                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnImage.png"/>
+                        <ImageBrush ImageSource="/ShoeShopManagement;component/Resources/Image/btnListview.png"/>
                     </Grid.Background>
                     <TextBlock 
                         Grid.Column="0"
@@ -3163,7 +3162,7 @@
                         Grid.Column="3" 
                         HorizontalAlignment="Center"
                         TextWrapping="Wrap" 
-                        Text="Đơn vị tính" 
+                        Text="Kích cỡ" 
                         VerticalAlignment="Center" 
                         FontSize="18"
                         Foreground="{DynamicResource White}" 
@@ -3172,7 +3171,26 @@
                         Grid.Column="4" 
                         HorizontalAlignment="Center"
                         TextWrapping="Wrap" 
-                        Text="Đơn giá" 
+                        Text="Giá nhập" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+
+                    <TextBlock 
+                        Grid.Column="5" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Đơn vị tính" 
+                        VerticalAlignment="Center" 
+                        FontSize="18"
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+                    <TextBlock 
+                        Grid.Column="6" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Màu" 
                         VerticalAlignment="Center" 
                         FontSize="18"
                         Foreground="{DynamicResource White}" 
@@ -3182,21 +3200,16 @@
                     Grid.Row="2"
                     HorizontalAlignment="Left" 
                     Margin="20,0,0,40"
-                    Width="1120" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="207*"/>
-                        <ColumnDefinition Width="73*"/>
-                    </Grid.ColumnDefinitions>
+                    Width="1110" >
                     <ScrollViewer
                         HorizontalScrollBarVisibility="Disabled" 
                         Margin="0,0,0,0.4" 
-                        Width="1120" 
+                        Width="1110" 
                         HorizontalAlignment="Left" 
-                        
                         VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
                         <StackPanel 
                             x:Name="stkGoods" 
-                            Width="1120" 
+                            Width="1110" 
                             HorizontalAlignment="Left" 
                             ScrollViewer.VerticalScrollBarVisibility="Auto" 
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
