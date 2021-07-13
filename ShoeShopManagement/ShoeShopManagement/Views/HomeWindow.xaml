@@ -87,7 +87,7 @@
                                 <i:InvokeCommandAction Command="{Binding GetNameTab}"
                                                        CommandParameter="{Binding ElementName=btnBusiness}"></i:InvokeCommandAction>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                        </i:Interaction.Triggers>
                     </Button>
                 </Grid>
                 <Grid>
@@ -3186,7 +3186,7 @@
                         <i:InvokeCommandAction Command="{Binding LoadEmployeeCommand}" 
                                                CommandParameter="{Binding ElementName=wdHomeWindow}"/>
                     </i:EventTrigger>
-                </i:Interaction.Triggers>-->
+                </i:Interaction.Triggers>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>

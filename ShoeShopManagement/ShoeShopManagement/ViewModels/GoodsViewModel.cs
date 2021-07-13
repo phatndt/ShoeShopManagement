@@ -266,7 +266,7 @@ namespace ShoeShopManagement.ViewModels
             {
                 string Size = GoodsDAL.Instance.GetSize(goods.IdSize);
                 string Color = GoodsDAL.Instance.GetColor(goods.IdColor);
-                string DVT = GoodsDAL.Instance.GetDVT(goods.IdDVT, goods.IdGood);
+                string DVT = GoodsDAL.Instance.GetDVT(goods.IdDvt, goods.IdGood);
                 GoodUc temp = new GoodUc();
                 flag = !flag;
                 if (flag)
