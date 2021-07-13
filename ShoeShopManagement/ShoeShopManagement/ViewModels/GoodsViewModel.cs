@@ -61,6 +61,7 @@ namespace ShoeShopManagement.ViewModels
         public ICommand ImportStockCommand { get; set; }
         public ICommand StockInDetailChangeCommand { get; set; }
         public ICommand LoadGoodsCommand { get; set; }
+        public ICommand ExitImportGoodsWindowCommand { get; set; }
         public ICommand SeparateThousandsCommand { get; set; }
         public ICommand PickGoodsCommand { get; set; }
         public ICommand ViewStockReceiptTemplateCommand { get; set; }
@@ -86,16 +87,22 @@ namespace ShoeShopManagement.ViewModels
             LoadGoodsCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => LoadGoodsToView(parameter));
             ImportStockCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => CompleteStockReceipt(parameter));
             DeleteImportGoodsDetailsCommand = new RelayCommand<ImportGoodUC>((parameter) => true, (parameter) => DeleteImportGoodsDetails(parameter));
-            //ViewStockReceiptTemplateCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => ViewStockReceiptTemplate(parameter));
+            ExitImportGoodsWindowCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => ExitImportGoods(parameter));
         }
 
+        private void ExitImportGoods(ImportGoodsWindow parameter)
+        {
+            if (!new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close"))
+            {
+                StockReceiptDAL.Instance.DeleteFromDB(parameter.txbIdStockReceipt.Text);
+            }
+        }
 
         public void DeleteImportGoodsDetails(ImportGoodUC importGoodsDetailsControl)
         {
             string idStockReceipt = importGoodsDetailsControl.txbIdStockReceipt.Text;
             StockInDetailDAL.Instance.DeleteByIdStock(importGoodsDetailsControl.txbIdGoods.Text, idStockReceipt);
             ImportGoodsWindow.stkPickedGoods.Children.Remove(importGoodsDetailsControl);
-
             ImportGoodsWindow.txbTotal.Text = string.Format("{0:N0}", StockInDetailDAL.Instance.CalculateTotalMoney(idStockReceipt));
         }
         public void CompleteStockReceipt(ImportGoodsWindow importStockWindow)
@@ -116,6 +123,8 @@ namespace ShoeShopManagement.ViewModels
                     Goods goods = GoodsDAL.Instance.GetGoods(stockReceiptInfo.mASP.ToString());
                     goods.Quantity = stockReceiptInfo.sOLuong;
                     GoodsDAL.Instance.ImportToDB(goods);
+                    goods.Price = stockReceiptInfo.donGia;
+                    GoodsDAL.Instance.ImportToDBSP(goods);
                 }
                 CustomMessageBox.Show("Nhập hàng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 importStockWindow.Close();
@@ -373,38 +382,6 @@ namespace ShoeShopManagement.ViewModels
                 }
             }
         }
-        //public void ViewStockReceiptTemplate(ImportGoodsWindow importGoodsWindow)
-        //{
-        //    //Thông tin stock receipt
-        //    string MaPNH = importGoodsWindow.txbIdStockReceipt.Text;
-        //    StockReceiptTemplate stockReceiptTemplate = new StockReceiptTemplate();
-
-        //    stockReceiptTemplate.txbIdStockReceipt.Text = "#" + MaPNH;
-        //    stockReceiptTemplate.txbDate.Text = importGoodsWindow.txbDate.Text;
-        //    stockReceiptTemplate.txbTotal.Text = importGoodsWindow.txbTotal.Text;
-
-        //    //Load các mặt hàng trong stock receipt
-        //    List<StockInDetail> listStockDetail = StockInDetailDAL.Instance.GetStockInDetailById(MaPNH);
-        //    int numOfGoods = listStockDetail.Count();
-        //    if (numOfGoods > 7)
-        //    {
-        //        stockReceiptTemplate.Height += (numOfGoods - 7) * 31;
-        //    }
-        //    int i = 1;
-        //    foreach (var stockInDetail in listStockDetail)
-        //    {
-        //        StockInDetailUc stockInDetailUc = new StockInDetailUc();
-        //        Goods goods = GoodsDAL.Instance.GetGoods(stockInDetail.mASP.ToString());
-        //        stockInDetailUc.txbOrderNum.Text = i.ToString();
-        //        stockInDetailUc.txbName.Text = goods.Name;
-        //        stockInDetailUc.txbQuantity.Text = stockInDetail.sOLuong.ToString();
-        //        stockInDetailUc.txbImportPrice.Text = stockInDetail.donGia.ToString();
-        //        stockInDetailUc.txbTotal.Text = (stockInDetail.donGia * stockInDetail.sOLuong).ToString();
-        //        stockReceiptTemplate.stkStockReceiptInfo.Children.Add(stockInDetailUc);
-        //        i++;
-        //    }
-        //    stockReceiptTemplate.ShowDialog();
-        //}
         public void AddGoods(AddGoodsWindow parameter)
         {
             List<Goods> goodsList = GoodsDAL.Instance.ConvertDBToList();

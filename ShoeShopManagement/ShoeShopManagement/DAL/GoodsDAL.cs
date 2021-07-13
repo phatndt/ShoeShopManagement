@@ -212,6 +212,26 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
+        public bool ImportToDBSP(Goods goods)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString = "update SANPHAM set DonGia = @DonGia where MaSP=" + goods.IdGood.ToString();
+                SqlCommand command = new SqlCommand(queryString, conn);
+                command.Parameters.AddWithValue("@DonGia", goods.Price.ToString());
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
         public bool DeleteFromDB(string idGoods)
         {
             try
