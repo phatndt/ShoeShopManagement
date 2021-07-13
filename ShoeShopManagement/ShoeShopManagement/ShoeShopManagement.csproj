@@ -77,6 +77,12 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ToastNotifications, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.5.1\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.Messages.2.5.1\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -86,12 +92,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter.cs" />
     <Compile Include="CurrentAccount.cs" />
+    <Compile Include="CustomMessageBox.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\GoodsDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
+    <Compile Include="DAL\StockCheckDAL.cs" />
+    <Compile Include="DAL\StockCheckDetailDAL.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -99,10 +110,13 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\StockCheck.cs" />
+    <Compile Include="Models\StockCheckDetail.cs" />
     <Compile Include="Models\StockIn.cs" />
     <Compile Include="Models\StockInDetail.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\test.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="Resources\UserControls\CustomerUc.xaml.cs">
       <DependentUpon>CustomerUc.xaml</DependentUpon>
     </Compile>
@@ -117,6 +131,9 @@
     </Compile>
     <Compile Include="Resources\UserControls\ServicesUc.xaml.cs">
       <DependentUpon>ServicesUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\StockBillGoodUc.xaml.cs">
+      <DependentUpon>StockBillGoodUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\UserControls\StockBillUc.xaml.cs">
       <DependentUpon>StockBillUc.xaml</DependentUpon>
@@ -147,6 +164,9 @@
     </Compile>
     <Compile Include="Views\CheckStockWindow.xaml.cs">
       <DependentUpon>CheckStockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerDetailWindow.xaml.cs">
+      <DependentUpon>CustomerDetailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
@@ -211,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\ServicesUc.xaml">
+            <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockBillGoodUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CheckStockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomerDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

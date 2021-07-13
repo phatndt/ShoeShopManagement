@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Resources/ButtonStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources/MainResource.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources/Color.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type DatePickerTextBox}">
                 <Setter Property="VerticalContentAlignment" Value="Center"/>

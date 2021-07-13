@@ -215,6 +215,31 @@
                         </i:Interaction.Triggers>
                     </Button>
                 </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon 
+                        Kind="Account" 
+                        Grid.Column="0"
+                        x:Name="iconStock"/>
+                    <Button Style="{StaticResource MainMenuButton}"
+                            Content="Kho"
+                            x:Name="btnStock"
+                            Uid ="7">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
+                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
+                                                       CommandParameter="{Binding ElementName=btnStock}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Grid>
             </StackPanel>
             <Grid 
                 x:Name="grdCursor" 
@@ -222,7 +247,7 @@
                 Height="50" 
                 Background="{DynamicResource TextMainColorButton}" 
                 HorizontalAlignment="Left"
-                Margin="0,175,35,0" 
+                Margin="0,145,35,0" 
                 VerticalAlignment="Top"/>
             <Grid Width="auto"
                   Height="auto"
@@ -2914,8 +2939,14 @@
                 x:Name="grdBody_Customer" 
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
+                DataContext="{StaticResource CustomerVM}"
                 Visibility="Visible">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadCustomerCommand}" 
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="50"/>
@@ -2956,8 +2987,9 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Background>
@@ -3000,6 +3032,15 @@
                         FontSize="18" 
                         Foreground="{DynamicResource White}" 
                         FontWeight="SemiBold"/>
+                    <TextBlock
+                        Grid.Column="4" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Tổng tiền" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
                 </Grid>
                 <Grid
                     Grid.Row="2"
@@ -3030,8 +3071,14 @@
                 x:Name="grdBody_Stock" 
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
+                DataContext="{StaticResource StockVM}"
                 Visibility="Hidden">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadStockBillCommand}" 
+                                               CommandParameter="{Binding ElementName=wdHomeWindow}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="50"/>
@@ -3046,8 +3093,8 @@
                     <Button 
                         x:Name="btnAddStock"
                         Height="40"
-                        Command="{Binding OpenWindowAddEmployeeCommand}" 
-                        CommandParameter="{Binding ElementName=wdHome}"
+                        Command="{Binding OpenStockBillWindowCommand}" 
+                        CommandParameter="{Binding ElementName=wdHomeWindow}"
                         materialDesign:ButtonAssist.CornerRadius="2"
                         BorderThickness="0"
                         Margin="0" 
