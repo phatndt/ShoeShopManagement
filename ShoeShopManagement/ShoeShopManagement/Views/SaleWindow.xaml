@@ -893,14 +893,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBlock
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,3,0,0"
-                               Height="30"
-                               Text="Giảm giá:" 
-                               FontSize="20"
-                               FontFamily="Roboto"
-                               FontWeight="Medium"
+                                 FontWeight="Medium"
                             ></TextBlock>
                         </Grid>
                         <Grid Grid.Row="2">
@@ -949,12 +942,12 @@
                         Width="200"
                         FontSize="25"
                         materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="{x:Null}"  
-                    Grid.Column="2"
-                    Grid.Row="2" RenderTransformOrigin="0.495,0.488"    
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Margin="73.2,0,74,85.4"
-                    Content="Thanh toán">
+                        Grid.Column="2"
+                        Grid.Row="2" RenderTransformOrigin="0.495,0.488"    
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Margin="73.2,0,74,85.4"
+                        Content="Thanh toán">
                     <Button.Background>
                         <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
                     </Button.Background>

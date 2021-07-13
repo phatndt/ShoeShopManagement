@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace ShoeShopManagement
 {
-    class Converter
+    public class Converter
     {
         private static Converter instance;
 

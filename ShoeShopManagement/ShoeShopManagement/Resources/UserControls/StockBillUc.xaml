@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="ShoeShopManagement.Resources.UserControls.StockBillUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             x:Name="StockBillUC"
+             DataContext="{StaticResource StockVM}"
+             Width="1120"
+             Height="50">
+    <Grid
+        x:Name="grdMain"
+        Background="#FFFFFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+            Grid.Column="0" 
+            x:Name="txbID"
+            Text="Id"
+            TextWrapping="Wrap" 
+            FontSize="18" 
+            FontWeight="SemiBold" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"/>
+        <Rectangle 
+            Grid.Column="0" 
+            HorizontalAlignment="Right" 
+            Height="30" 
+            Margin="0" 
+            Width="2"
+            Fill="{DynamicResource PaletteColor1}" 
+            VerticalAlignment="Center" />
+        <TextBlock 
+            Grid.Column="1" 
+            x:Name="txbTime"
+            Text="Time"
+            TextWrapping="Wrap"
+            Margin="20 0 0 0"
+            FontSize="18" 
+            FontWeight="SemiBold" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"/>
+        <Rectangle 
+            Grid.Column="1" 
+            HorizontalAlignment="Right" 
+            Height="30" 
+            Margin="0" 
+            Width="2"
+            Fill="{DynamicResource PaletteColor1}" 
+            VerticalAlignment="Center" />
+        <Rectangle 
+            Grid.Column="2" 
+            HorizontalAlignment="Right" 
+            Height="30" 
+            Margin="0" 
+            Width="2"
+            Fill="{DynamicResource PaletteColor1}" 
+            VerticalAlignment="Center" />
+        <Button 
+            Grid.Column="2"
+            x:Name="btnStockDetailBill"
+            Command="{Binding OpenStockDetailWindow}"
+            CommandParameter="{Binding ElementName=StockBillUC}"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Xem chi tiết"
+            Height="30"
+            materialDesign:ButtonAssist.CornerRadius="6"
+            Background="{x:Null}" 
+            BorderBrush="{x:Null}" 
+            Foreground="{DynamicResource PaletteColor1}" 
+            FontSize="16" 
+            VerticalAlignment="Center" 
+            FocusVisualStyle="{x:Null}"
+            Width="40"
+            HorizontalAlignment="Center" 
+            Padding="0"
+            FontWeight="SemiBold">
+            <materialDesign:PackIcon 
+                Kind="SquareEditOutline" 
+                Width="24"
+                Height="24"/>
+        </Button>
+    </Grid>
+</UserControl>
