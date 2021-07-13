@@ -28,7 +28,7 @@ namespace ShoeShopManagement.ViewModels
         {
             int index = int.Parse(this.Name);
 
-            parameter.grdCursor.Margin = new Thickness(0, (170 + 60 * index), 40, 0);
+            parameter.grdCursor.Margin = new Thickness(0, (140 + 60 * index), 40, 0);
 
             parameter.grdBody_Home.Visibility = Visibility.Hidden;
             parameter.grdBody_Business.Visibility = Visibility.Hidden;

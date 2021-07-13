@@ -52,6 +52,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -109,6 +115,7 @@
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\GoodsDAL.cs" />
+    <Compile Include="DAL\ReportDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
     <Compile Include="DAL\StockInDetailDAL.cs" />
     <Compile Include="DAL\StockReceiptDAL.cs" />
@@ -172,6 +179,10 @@
     <Compile Include="Resources\UserControls\StockGoodUc.xaml.cs">
       <DependentUpon>StockGoodUc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validations\NumberValidation.cs" />
+    <Compile Include="Resources\UserControls\StockServicesUC.xaml.cs">
+      <DependentUpon>StockServicesUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
@@ -181,6 +192,7 @@
     <Compile Include="ViewModels\ImportStockWindow.cs" />
     <Compile Include="ViewModels\PrintViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddCustomerWindow.xaml.cs">
@@ -291,7 +303,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\ServicesUc.xaml">
-            <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\StockBillGoodUc.xaml">
@@ -303,6 +315,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\StockGoodUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockServicesUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -386,6 +402,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Image\money.png" />
     <Resource Include="Resources\Image\error.png" />
     <Resource Include="Resources\Image\succes.png" />
     <Resource Include="Resources\Image\warning.png" />
@@ -397,6 +414,8 @@
     <Resource Include="Resources\Image\attendance_Button.png" />
     <Resource Include="Resources\Image\btnImage.png" />
     <Resource Include="Resources\Image\background.png" />
+    <Resource Include="Resources\Image\IncomeIcon.png" />
+    <Resource Include="Resources\Image\IncreaseIcon.png" />
     <Resource Include="Resources\Image\btnListview.png" />
     <Resource Include="Resources\Image\help.png" />
     <Resource Include="Resources\Image\info.png" />

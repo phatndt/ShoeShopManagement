@@ -1,4 +1,4 @@
-﻿using ShoeShopManagement.Model;
+﻿using ShoeShopManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -177,6 +177,55 @@ namespace ShoeShopManagement.DAL
             catch
             {
                 return 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public int GetMaxId()
+        {
+            try
+            {
+                OpenConnection();
+                string query = @"Select max(MaKH) from KHACHHANG";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool AddCustomerToDatabase(Customer customer)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString = String.Format("Insert Into KHACHHANG Values('{0}',N'{1}','{2}','{3}')",customer.IdCustomer,customer.Name,customer.PhoneNumber,customer.IsDelete);
+                SqlCommand command = new SqlCommand(queryString, conn);
+
+                int rs = command.ExecuteNonQuery();
+                if (rs != 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Thêm thất bại!" + e, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
             finally
             {

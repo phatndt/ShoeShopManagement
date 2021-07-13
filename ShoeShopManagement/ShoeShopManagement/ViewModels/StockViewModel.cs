@@ -15,7 +15,7 @@ using System.Windows.Media;
 
 namespace ShoeShopManagement.ViewModels
 {
-    class StockViewModel: BaseViewModel
+    class StockViewModel : BaseViewModel
     {
         public ICommand LoadStockBillCommand { get; set; }
         public ICommand OpenStockDetailWindow { get; set; }

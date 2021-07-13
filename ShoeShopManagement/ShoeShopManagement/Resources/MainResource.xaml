@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:viewmodels="clr-namespace:ShoeShopManagement.ViewModels">
+                    xmlns:viewmodels="clr-namespace:ShoeShopManagement.ViewModels"
+                    xmlns:models="clr-namespace:ShoeShopManagement.Models">
     <viewmodels:SignInViewModel x:Key="SignInVM"></viewmodels:SignInViewModel>
     <viewmodels:HomeViewModel x:Key="HomeVM"></viewmodels:HomeViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
@@ -9,6 +10,7 @@
     <viewmodels:GoodsViewModel x:Key="GoodVM"></viewmodels:GoodsViewModel>
     <viewmodels:StockViewModel x:Key="StockVM"/>
     <viewmodels:CustomerViewModel x:Key="CustomerVM"/>
+    <viewmodels:ReportViewModel x:Key="ReportVM"/>
     <ControlTemplate x:Key="textBoxErrorTemplate">
         <StackPanel>
             <AdornedElementPlaceholder x:Name="placeholder"/>
@@ -21,4 +23,5 @@
                 HorizontalAlignment="Left"/>
         </StackPanel>
     </ControlTemplate>
+    <models:Customer x:Key="Customer"></models:Customer>
 </ResourceDictionary> 
