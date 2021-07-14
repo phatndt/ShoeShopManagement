@@ -15,6 +15,8 @@
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition Width="0.75*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -64,7 +66,7 @@
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
         <TextBlock 
-            Grid.Column="2" 
+            Grid.Column="4" 
             x:Name="txbQuantity"
             Text="Telephone"
             TextWrapping="Wrap"
@@ -73,7 +75,7 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>
         <Rectangle 
-            Grid.Column="2" 
+            Grid.Column="4" 
             HorizontalAlignment="Right" 
             Height="30" 
             Margin="0" 
@@ -89,7 +91,7 @@
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
         <TextBlock 
-            Grid.Column="3" 
+            Grid.Column="5" 
             x:Name="textPrice"
             Text="Bill"
             TextWrapping="Wrap"
@@ -98,12 +100,38 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"/>
         <Rectangle 
-            Grid.Column="4" 
+            Grid.Column="5" 
             HorizontalAlignment="Right" 
             Height="30" 
             Margin="0" 
             Width="2"
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
+        <Rectangle 
+            Grid.Column="2" 
+            HorizontalAlignment="Right" 
+            Height="30" 
+            Margin="0" 
+            Width="2"
+            Fill="{DynamicResource PaletteColor1}" 
+            VerticalAlignment="Center" />
+        <TextBlock 
+            Grid.Column="2" 
+            x:Name="txbColor"
+            Text="Id"
+            TextWrapping="Wrap" 
+            FontSize="16" 
+            FontWeight="SemiBold" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"/>
+        <TextBlock 
+            Grid.Column="3" 
+            x:Name="txbSize"
+            Text="Id"
+            TextWrapping="Wrap" 
+            FontSize="16" 
+            FontWeight="SemiBold" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

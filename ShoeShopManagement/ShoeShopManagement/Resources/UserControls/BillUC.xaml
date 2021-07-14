@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
-              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              x:Name="SaleBillUC"
              DataContext="{StaticResource BusinessVM}"
-             d:DesignHeight="40" 
+             d:DesignHeight="60" 
              d:DesignWidth="400">
-    <Grid Background="#EFD0BF"
+    <Grid
+        x:Name="grdMain"
+        Background="#EFD0BF"
                       Grid.Column="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.2*"></ColumnDefinition>
@@ -20,82 +23,153 @@
             <ColumnDefinition Width="20"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock 
+            x:Name="idBillDetail"
             Grid.Row="1"
             Grid.Column="0"
             Text="Tên sản phẩm"
             FontFamily="Roboto"
-            FontSize="14"
+            FontSize="16"
+            FontWeight="Medium"
+            HorizontalAlignment="Left"
+            Margin="10,3,0,0"
+            VerticalAlignment="Center"
+            Visibility="Hidden"></TextBlock>
+        <TextBlock 
+            x:Name="idGooDetail"
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="Tên sản phẩm"
+            FontFamily="Roboto"
+            FontSize="16"
+            FontWeight="Medium"
+            HorizontalAlignment="Left"
+            Margin="10,3,0,0"
+            VerticalAlignment="Center"
+            Visibility="Hidden"></TextBlock>
+        <TextBlock 
+            x:Name="name"
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="Tên sản phẩm"
+            FontFamily="Roboto"
+            FontSize="16"
             FontWeight="Medium"
             HorizontalAlignment="Left"
             Margin="10,3,0,0"
             VerticalAlignment="Center"></TextBlock>
         <TextBox
+            x:Name="quantity"
             Grid.Column="1"
             Text="100"
             FontFamily="Roboto"
-            FontSize="14"
+            FontSize="16"
+            Width="45"
             Margin="5 0 5 0"
             FontWeight="Medium"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"></TextBox>
+            VerticalAlignment="Center"
+            PreviewTextInput="quantity_PreviewTextInput">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction 
+                                Command="{Binding LoadPriceCommand}"
+                                CommandParameter="{Binding ElementName=SaleBillUC}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <Rectangle 
+            x:Name="recDate"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            StrokeThickness="2"
+            Height="30" 
+            Width="55"
+            RadiusY="6" 
+            RadiusX="6" Stroke="{DynamicResource Black}"/>
         <TextBox 
+            x:Name="price"
             Grid.Column="2"
             Text="100000000"
             FontFamily="Roboto"
-            FontSize="14"
+            Width="90"
+            FontSize="16"
             Margin="3 0 3 0"
             FontWeight="Medium"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"></TextBox>
+            VerticalAlignment="Center"
+            PreviewTextInput="quantity_PreviewTextInput"></TextBox>
+        <TextBox 
+            x:Name="pricedefaul"
+            Grid.Column="2"
+            Text="100000000"
+            FontFamily="Roboto"
+            Width="90"
+            FontSize="16"
+            Margin="3 0 3 0"
+            FontWeight="Medium"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Visibility="Hidden"></TextBox>
+        <Rectangle 
+            x:Name="recPrice"
+            Grid.Column="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            StrokeThickness="2"
+            Height="30" 
+            Width="100"
+            RadiusY="6" 
+            RadiusX="6" Stroke="{DynamicResource Black}"/>
         <Button 
             Grid.Column="3"
             x:Name="btnEditEmployee"
-            Command="{Binding UpdateCommand}"
-            CommandParameter="{Binding ElementName=EmployeeUC}"
+            Command="{Binding DetailBillCommand}"
+            CommandParameter="{Binding ElementName=SaleBillUC}"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Sửa thông tin"
-            Height="20"
+            Height="24"
             materialDesign:ButtonAssist.CornerRadius="6"
-            Margin="10,0,0,0" 
+            Margin="5,0,0,0" 
             Background="{x:Null}" 
             BorderBrush="{x:Null}" 
             Foreground="{DynamicResource PaletteColor1}" 
             FontSize="16" 
             VerticalAlignment="Center" 
             FocusVisualStyle="{x:Null}"
-            Width="20"
+            Width="24"
             HorizontalAlignment="Left" 
             Padding="0"
             FontWeight="SemiBold">
             <materialDesign:PackIcon 
                 Kind="SquareEditOutline" 
-                Width="16"
-                Height="16"/>
+                Width="20"
+                Height="20"/>
         </Button>
         <Button 
             Grid.Column="3"
             x:Name="btnDeleteEmployee"
-            Command="{Binding DeleteCommand}"
-            CommandParameter="{Binding ElementName=EmployeeUC}"
+            Command="{Binding DeleteBillDetailCommand}"
+            CommandParameter="{Binding ElementName=SaleBillUC}"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Xóa nhân viên" 
-            Height="20"
+            Height="24"
             materialDesign:ButtonAssist.CornerRadius="6"
-            Margin="0,0,10,0" 
+            Margin="0,0,5,0" 
             Background="{x:Null}" 
             BorderBrush="{x:Null}" 
             Foreground="{DynamicResource PaletteColor3}" 
             FontSize="16" 
             VerticalAlignment="Center" 
             FocusVisualStyle="{x:Null}"
-            Width="20"
+            Width="24"
             HorizontalAlignment="Right" 
             FontWeight="SemiBold" 
             Padding="0">
             <materialDesign:PackIcon 
                 Kind="DeleteOutline" 
-                Height="16"
-                Width="16"/>
+                Height="20"
+                Width="20"/>
         </Button>
     </Grid>
 </UserControl>
