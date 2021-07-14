@@ -240,7 +240,7 @@
             <Grid Grid.Row="3" 
                   Grid.Column="0"
                   Grid.ColumnSpan="2">
-                
+
                 <Label 
                     x:Name="lbProduct"
                     Content="Dịch vụ"
@@ -699,12 +699,12 @@
                     </TextBox>
                 </Grid>
             </Grid>
-            <StackPanel Grid.Row="9"
+            <StackPanel Grid.Row="8"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal"
                 x:Name="grdButton" 
-                Height="60" Grid.ColumnSpan="2" Margin="332,4.6,326.8,-4.6">
+                Height="60" Grid.ColumnSpan="2" Margin="332,70,285.8,0.4" Width="281" Grid.RowSpan="2">
                 <Button
                     Height="40"
                     Command="{Binding SaveServicesBillCommand}" 
