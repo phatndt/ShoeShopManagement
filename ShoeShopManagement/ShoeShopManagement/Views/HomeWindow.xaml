@@ -2553,7 +2553,8 @@
                     </Button>
                 </StackPanel>
                 <Grid Grid.Row="1"
-                      Width="1120">
+                      Width="1120"
+                      Margin="5 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.4*"></ColumnDefinition>
                         <ColumnDefinition Width="1.25*"></ColumnDefinition>
@@ -2644,12 +2645,13 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <ScrollViewer
-                        VerticalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Hidden"
                         HorizontalScrollBarVisibility="Disabled" 
                         Width="1120">
                         <StackPanel
                             x:Name="stkServicesBill"
-                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
                             Width="1120" 
                             HorizontalAlignment="Left">
                         </StackPanel>
@@ -2681,7 +2683,8 @@
                     </Button>
                 </StackPanel>
                 <Grid Grid.Row="4"
-                      Width="1120">
+                      Width="1120"
+                      Margin="5 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.75*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -2732,12 +2735,13 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <ScrollViewer
-                        VerticalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Hidden"
                         HorizontalScrollBarVisibility="Disabled" 
                         Width="1120">
                         <StackPanel
                             x:Name="stkServices"
-                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
                             Width="1120" 
                             HorizontalAlignment="Left">
                         </StackPanel>

@@ -419,7 +419,7 @@ namespace ShoeShopManagement.ViewModels
                 if (isSuccessed)
                 {
                     homeWindow.stkServices.Children.Remove(services);
-                    Notification.Instance.Success("Xóa dịch vụ thành công");
+                    Notification.Instance.Success("Xóa   dịch vụ thành công");
                 }
                 else
                 {
