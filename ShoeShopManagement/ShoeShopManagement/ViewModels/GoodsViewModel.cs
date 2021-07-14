@@ -95,6 +95,7 @@ namespace ShoeShopManagement.ViewModels
             if (!new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close"))
             {
                 StockReceiptDAL.Instance.DeleteFromDB(parameter.txbIdStockReceipt.Text);
+                StockInDetailDAL.Instance.DeleteByIdStockReceipt(parameter.txbIdStockReceipt.Text);
             }
         }
 
@@ -143,6 +144,8 @@ namespace ShoeShopManagement.ViewModels
                     ImportGoodsControl goods = new ImportGoodsControl();
                     goods.txbName.Text = goodsList.Rows[i].ItemArray[1].ToString();
                     goods.txbIdGoods.Text = goodsList.Rows[i].ItemArray[0].ToString();
+                    goods.txbColorOfInventory.Text = ConvertIntToColor(goodsList.Rows[i].ItemArray[5].ToString());
+                    goods.txbSizeOfInventory.Text = ConvertIntToSize(goodsList.Rows[i].ItemArray[6].ToString());
                     goods.imgGood.Source = Converter.Instance.ConvertByteToBitmapImage(Convert.FromBase64String(goodsList.Rows[i].ItemArray[3].ToString()));
                     goods.txbQuantityOfInventory.Text = goodsList.Rows[i].ItemArray[4].ToString();
                     goods.txbIdStockReceipt.Text = parameter.txbIdStockReceipt.Text;

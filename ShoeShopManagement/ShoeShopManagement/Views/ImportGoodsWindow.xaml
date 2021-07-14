@@ -230,7 +230,7 @@
                     HorizontalScrollBarVisibility="Disabled">
                         <WrapPanel 
                         x:Name="wrpGoods" 
-                        Margin="0,0,0,6">
+                        Margin="10,0,0,6">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadGoodsCommand}" 

@@ -97,7 +97,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "delete from CHITIEUPHIEUNHAP where MAPNH = " + idStockReceipt;
+                string queryString = "delete from CHITIETPHIEUNHAP where MAPNH = " + idStockReceipt;
                 SqlCommand command = new SqlCommand(queryString, conn);
                 int rs = command.ExecuteNonQuery();
                 return true;

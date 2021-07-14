@@ -58,7 +58,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "select SANPHAM.MaSP,SANPHAM.TenSP,SANPHAM.DonGia,SANPHAM.ANH,CHITIETSP.SoLuong from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MaSPXoa = 0";
+                string queryString = "select SANPHAM.MaSP,SANPHAM.TenSP,SANPHAM.DonGia,SANPHAM.ANH,CHITIETSP.SoLuong,CHITIETSP.MaMau,CHITIETSP.MaSize from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MaSPXoa = 0";
 
                 SqlCommand command = new SqlCommand(queryString, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);

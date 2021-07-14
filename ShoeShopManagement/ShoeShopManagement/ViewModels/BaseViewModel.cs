@@ -75,6 +75,7 @@ namespace ShoeShopManagement.ViewModels
             else
             return 0;
         }
+
         public int ConvertToType(string str)
         {
             if(str == "Sneaker Nike")
@@ -107,29 +108,37 @@ namespace ShoeShopManagement.ViewModels
             }
             return 0;
         }
-        public int ConvertToNCC(string str)
+        public string ConvertIntToColor(string str)
         {
-            if (str == "Công ti FreeTrend Bình Dương")
+            if (str == "1")
             {
-                return 1;
+                return "Xanh";
             }
-            if (str == "Nike Viet Nam")
+            if (str == "2")
             {
-                return 2;
+                return "Đỏ";
             }
-            if (str == "Adidas Viet Nam")
+            if (str == "3")
             {
-                return 3;
+                return "Tím";
             }
-            if (str == "Bitis Viet Nam")
+            if (str == "4")
             {
-                return 4;
+                return "Vàng";
             }
-            if (str == "Converse Viet Nam")
+            if (str == "5")
             {
-                return 5;
+                return "Nâu";
             }
-            return 0;
+            if (str == "6")
+            {
+                return "Đen";
+            }
+            if (str == "7")
+            {
+                return "Trắng";
+            }
+            return null;
         }
         public int ConvertToUnit(string str)
         {
@@ -167,6 +176,34 @@ namespace ShoeShopManagement.ViewModels
                 return 5;
             }
             else return 0;
+        }
+        public string ConvertIntToSize(string str)
+        {
+            if (str == "1")
+            {
+                return "38";
+            }
+            else if (str == "2")
+            {
+                return "39";
+            }
+            else if (str == "3")
+            {
+                return "40";
+            }
+            else if (str == "4")
+            {
+                return "41";
+            }
+            else if (str == "5")
+            {
+                return "36";
+            }
+            else if(str== "6")
+            {
+                return "37";
+            }    
+            else return null;
         }
         public void SeparateThousands(TextBox txt)
         {
