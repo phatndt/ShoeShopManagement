@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using ShoeShopManagement.Views;
 using Microsoft.Win32;
 using ShoeShopManagement.Models;
+using ShoeShopManagement.DAL;
 
 namespace ShoeShopManagement.ViewModels
 {
@@ -103,7 +104,7 @@ namespace ShoeShopManagement.ViewModels
         //    {
         //        imgByteArr = GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).ImageFile;
         //    }
-        //    //imageFileName = null;
+        //    imageFileName = null;
         //    Goods newGoods = new Goods(int.Parse(parameter.txtIdGoods.Text), parameter.txtName.Text,
         //        parameter.cboUnit.Text, ConvertToNumber(parameter.txtUnitPrice.Text), imgByteArr);
         //    bool isSuccessed1 = true, isSuccessed2 = true;

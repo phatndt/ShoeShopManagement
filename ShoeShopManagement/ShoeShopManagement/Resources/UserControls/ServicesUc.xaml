@@ -3,35 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              x:Name="ServicesUC"
-             d:DesignHeight="60" d:DesignWidth="760">
+             DataContext="{StaticResource ServicesVM}"
+             d:DesignHeight="50" d:DesignWidth="1120">
     <Grid
+        x:Name="grdMain"
         VerticalAlignment="Top" 
         Background="White"
-        Width="760"
-        Height="60">
+        Width="1120"
+        Height="50">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="1.25*"></ColumnDefinition>
+            <ColumnDefinition Width="1.625*"></ColumnDefinition>
             <ColumnDefinition Width="0.75*"></ColumnDefinition>
-            <ColumnDefinition Width="1.5*"></ColumnDefinition>
-            <ColumnDefinition Width="1.25*"></ColumnDefinition>
-            <ColumnDefinition Width="1.25*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="1.5*"></ColumnDefinition>
-            <ColumnDefinition Width="1.75*"></ColumnDefinition>
-            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.75*"></ColumnDefinition>
+            <ColumnDefinition Width="0.75*"></ColumnDefinition>
+            <ColumnDefinition Width="1.625*"></ColumnDefinition>
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock 
+            x:Name="txtId"
             Grid.Column="0"
-            Text="1" 
+            Text="Id" 
             HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
+            FontSize="18"
+            FontWeight="SemiBold" 
+            Visibility="Hidden"/>
+        <TextBlock 
+            x:Name="txtSTT"
+            Grid.Column="0"
+            Text="STT" 
+            HorizontalAlignment="Center"
+            TextWrapping="Wrap" 
+            VerticalAlignment="Center" 
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="0" 
             HorizontalAlignment="Right" 
@@ -41,13 +55,14 @@
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
         <TextBlock 
+            x:Name="txtName"
             Grid.Column="1"
-            Text="Vệ sinh giày" 
+            Text="Tên KH" 
             HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="1" 
             HorizontalAlignment="Right" 
@@ -57,13 +72,14 @@
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
         <TextBlock 
+            x:Name="txtDateCreate"
             Grid.Column="2"
-            Text="50.000đ" 
+            Text="Ngày lập phiếu" 
             HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="2" 
             HorizontalAlignment="Right" 
@@ -72,14 +88,15 @@
             Width="2"
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
-        <TextBox 
+        <TextBlock 
+            x:Name="txtTotal"
             Grid.Column="3"
-            Text="60.000đ" 
+            Text="Tổng tiền" 
             HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="3" 
             HorizontalAlignment="Right" 
@@ -88,14 +105,15 @@
             Width="2"
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
-        <TextBox 
+        <TextBlock 
+            x:Name="txtPrePay"
             Grid.Column="4"
-            Text="1" 
+            Text="Trả trước" 
             HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="4" 
             HorizontalAlignment="Right" 
@@ -105,13 +123,14 @@
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
         <TextBlock 
+            x:Name="txtRest"
             Grid.Column="5"
-            Text="60.000đ" 
+            Text="Còn lại" 
             HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="5" 
             HorizontalAlignment="Right" 
@@ -121,22 +140,14 @@
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
         <TextBlock 
+            x:Name="txtDeliveryDate"
             Grid.Column="6"
-            Text="23/10/2021" 
-            HorizontalAlignment="Left"
-            Margin="10 0 0 0"
+            Text="Ngày giao" 
+            HorizontalAlignment="Center"
             TextWrapping="Wrap" 
             VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
-        <materialDesign:PackIcon 
-            Grid.Column="6"
-            Kind="CalendarRange" 
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Height="23"
-            Width="23"
-            Margin="0 0 5 0"/>
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Rectangle 
             Grid.Column="6" 
             HorizontalAlignment="Right" 
@@ -145,24 +156,11 @@
             Width="2"
             Fill="{DynamicResource PaletteColor1}" 
             VerticalAlignment="Center" />
-        <TextBlock 
-            Grid.Column="7"
-            Text="Chưa hoàn thành" 
-            HorizontalAlignment="Center"
-            TextWrapping="Wrap" 
-            VerticalAlignment="Center" 
-            FontSize="16"
-            FontWeight="Normal" />
-        <Rectangle 
-            Grid.Column="7" 
-            HorizontalAlignment="Right" 
-            Height="30" 
-            Margin="0" 
-            Width="2"
-            Fill="{DynamicResource PaletteColor1}" 
-            VerticalAlignment="Center" />
+
         <Button 
-            Grid.Column="8"
+            Command="{Binding DeleteBillCommand}"
+            CommandParameter="{Binding ElementName=ServicesUC}"
+            Grid.Column="7"
             x:Name="btnDeleteService"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Xóa dịch vụ" 
@@ -174,13 +172,38 @@
             VerticalAlignment="Center" 
             FocusVisualStyle="{x:Null}"
             Width="40"
-            HorizontalAlignment="Center" 
+            HorizontalAlignment="Right" 
             FontWeight="SemiBold" 
             Padding="0">
             <materialDesign:PackIcon 
                 Kind="DeleteOutline" 
                 Height="26"
                 Width="26"/>
+        </Button>
+        <Button 
+            Grid.Column="7"
+            x:Name="btnEditEmployee"
+            Command="{Binding UpdateCommand}"
+            CommandParameter="{Binding ElementName=EmployeeUC}"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Sửa thông tin"
+            Height="30"
+            materialDesign:ButtonAssist.CornerRadius="6"
+            Margin="0,0,30,0" 
+            Background="{x:Null}" 
+            BorderBrush="{x:Null}" 
+            Foreground="{DynamicResource PaletteColor1}" 
+            FontSize="16" 
+            VerticalAlignment="Center" 
+            FocusVisualStyle="{x:Null}"
+            Width="40"
+            HorizontalAlignment="Right" 
+            Padding="0"
+            FontWeight="SemiBold">
+            <materialDesign:PackIcon 
+                Kind="SquareEditOutline" 
+                Width="24"
+                Height="24"/>
         </Button>
     </Grid>
 </UserControl>
