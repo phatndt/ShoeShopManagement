@@ -24,6 +24,8 @@
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="0.75*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
@@ -50,8 +52,26 @@
                 FontSize="16" 
                 Foreground="{DynamicResource White}" 
                     FontWeight="SemiBold"/>
-            <TextBlock 
+            <TextBlock
                 Grid.Column="2" 
+                HorizontalAlignment="Center" 
+                TextWrapping="Wrap" 
+                Text="Màu" 
+                VerticalAlignment="Center"
+                FontSize="16" 
+                Foreground="{DynamicResource White}" 
+                    FontWeight="SemiBold"/>
+            <TextBlock
+                Grid.Column="3" 
+                HorizontalAlignment="Center" 
+                TextWrapping="Wrap" 
+                Text="Size" 
+                VerticalAlignment="Center"
+                FontSize="16" 
+                Foreground="{DynamicResource White}" 
+                    FontWeight="SemiBold"/>
+            <TextBlock 
+                Grid.Column="4" 
                 HorizontalAlignment="Center"
                 TextWrapping="Wrap" 
                 Text="Số lượng" 
@@ -60,7 +80,7 @@
                 Foreground="{DynamicResource White}" 
                 FontWeight="SemiBold"/>
             <TextBlock 
-                Grid.Column="3" 
+                Grid.Column="5" 
                 HorizontalAlignment="Center"
                 TextWrapping="Wrap" 
                 Text="Đơn giá" 

@@ -122,10 +122,10 @@
     <Compile Include="DAL\StockReceiptDAL.cs" />
     <Compile Include="DAL\StockCheckDAL.cs" />
     <Compile Include="DAL\StockCheckDetailDAL.cs" />
-
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\GoodDetail.cs" />
     <Compile Include="Models\Goods.cs" />
     <Compile Include="Models\SaleBill.cs" />
     <Compile Include="Models\SaleBillDetail.cs" />
@@ -283,7 +283,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Template\StockReceiptTemplate.xaml">
-            <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\BillUC.xaml">
@@ -335,7 +335,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\StockInDetailUc.xaml">
-          <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\SaleUC.xaml">

@@ -36,8 +36,9 @@ namespace ShoeShopManagement.DAL
                 adapter.Fill(dataTable);
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    Goods acc = new Goods(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()), dataTable.Rows[i].ItemArray[1].ToString(),
-                    int.Parse(dataTable.Rows[i].ItemArray[2].ToString()), int.Parse(dataTable.Rows[i].ItemArray[11].ToString()), int.Parse(dataTable.Rows[i].ItemArray[9].ToString()), int.Parse(dataTable.Rows[i].ItemArray[10].ToString()),
+                    Goods acc = new Goods(int.Parse(dataTable.Rows[i].ItemArray[0].ToString()), dataTable.Rows[i].ItemArray[1].ToString(), 
+                        int.Parse(dataTable.Rows[i].ItemArray[2].ToString()), int.Parse(dataTable.Rows[i].ItemArray[11].ToString()), 
+                        int.Parse(dataTable.Rows[i].ItemArray[9].ToString()), int.Parse(dataTable.Rows[i].ItemArray[10].ToString()),
                     long.Parse(dataTable.Rows[i].ItemArray[4].ToString()),int.Parse(dataTable.Rows[i].ItemArray[3].ToString()), int.Parse(dataTable.Rows[i].ItemArray[6].ToString()),
                     Convert.FromBase64String(dataTable.Rows[i].ItemArray[5].ToString()));
                     goodsList.Add(acc);
