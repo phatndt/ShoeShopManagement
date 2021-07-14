@@ -419,12 +419,6 @@ namespace ShoeShopManagement.ViewModels
                 parameter.txtColor.Text = "";
                 return;
             }
-            if (string.IsNullOrEmpty(parameter.cbbNCC.Text))
-            {
-                parameter.cbbNCC.Focus();
-                parameter.cbbNCC.Text = "";
-                return;
-            }
             if (parameter.grdSelectImg.Background == null)
             {
                 CustomMessageBox.Show("Vui lòng thêm hình ảnh!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);

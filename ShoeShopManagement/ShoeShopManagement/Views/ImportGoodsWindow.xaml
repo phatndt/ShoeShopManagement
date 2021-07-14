@@ -280,7 +280,7 @@
                         HorizontalAlignment="Left" 
                         Margin="0" 
                         TextWrapping="Wrap"
-                        Text="Mã hóa đơn" 
+                        Text="Mã phiếu nhập hàng" 
                         VerticalAlignment="Top" 
                         FontSize="18" 
                         FontWeight="SemiBold" 
