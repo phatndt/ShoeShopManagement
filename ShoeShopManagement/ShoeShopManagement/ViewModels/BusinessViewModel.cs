@@ -1,4 +1,6 @@
-﻿using Microsoft.Expression.Interactivity.Core;
+
+using ShoeShopManagement.Resources.UserControls;
+using Microsoft.Expression.Interactivity.Core;
 using ShoeShopManagement.DAL;
 using ShoeShopManagement.Models;
 using ShoeShopManagement.Resources.UserControls;
