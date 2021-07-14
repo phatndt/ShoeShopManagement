@@ -96,6 +96,7 @@
     <Compile Include="CurrentAccount.cs" />
     <Compile Include="CustomMessageBox.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\BusinessDAL.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
@@ -107,6 +108,8 @@
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Goods.cs" />
+    <Compile Include="Models\SaleBill.cs" />
+    <Compile Include="Models\SaleBillDetail.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Salary.cs" />
@@ -132,6 +135,12 @@
     <Compile Include="Resources\UserControls\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\ReceiptDetailUc.xaml.cs">
+      <DependentUpon>ReceiptDetailUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ReceiptUc.xaml.cs">
+      <DependentUpon>ReceiptUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
     </Compile>
@@ -149,6 +158,9 @@
     </Compile>
     <Compile Include="Resources\UserControls\SaleUC.xaml.cs">
       <DependentUpon>SaleUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\StockInUc.xaml.cs">
+      <DependentUpon>StockInUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
@@ -179,6 +191,9 @@
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceiptDetailWindow.xaml.cs">
+      <DependentUpon>ReceiptDetailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SaleWindow.xaml.cs">
       <DependentUpon>SaleWindow.xaml</DependentUpon>
@@ -239,11 +254,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\UserControls\ReceiptDetailUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ReceiptUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\SalaryUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\SaleUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockInUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,6 +315,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReceiptDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

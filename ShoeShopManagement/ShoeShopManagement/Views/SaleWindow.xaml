@@ -9,22 +9,18 @@
         x:Name="wdSaleWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
-        Title="HomeWindow" Height="800" Width="1265"
+        Title="HomeWindow" Height="800" Width="1300"
         Icon="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
-        DataContext="{StaticResource HomeVM}">
-    <Grid  
-                HorizontalAlignment="Left" 
-                Height="765" 
-                VerticalAlignment="Top" 
-                Background="#EFD0BF"
-                Width="1190"
-                Grid.Row="1" 
-                DataContext="{StaticResource EmployeeVM}"
-                Visibility="Visible">
+        DataContext="{StaticResource BusinessVM}">
+    <Grid
+        Height="765" 
+        Background="#EFD0BF"
+        Grid.Row="1"
+        Visibility="Visible">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70*"></ColumnDefinition>
             <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">
@@ -37,410 +33,360 @@
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="60*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0"
-                      Grid.Column="0"
-                      >
+            <Grid 
+                Grid.Row="0"
+                Grid.Column="0">
                 <TextBox
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                        VerticalAlignment="Center"
-                        Height="auto"
-                        materialDesign:HintAssist.Background="#EFD0BF"
-                        materialDesign:HintAssist.Foreground="#E8641A"
-                        materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
-                        HorizontalAlignment="Right"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        FontSize="17"
-                        VerticalScrollBarVisibility="Auto"
-                        materialDesign:HintAssist.Hint="Tìm kiếm"
-                        Width="300"
-                        Margin="0,0,10,0"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    VerticalAlignment="Center"
+                    Height="auto"
+                    materialDesign:HintAssist.Background="#EFD0BF"
+                    materialDesign:HintAssist.Foreground="#E8641A"
+                    materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
+                    HorizontalAlignment="Right"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    FontSize="17"
+                    VerticalScrollBarVisibility="Auto"
+                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                    Width="300"
+                    Margin="0,0,10,0"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
             </Grid>
             <Grid Grid.Row="1">
                 <ScrollViewer>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <StackPanel>
-                            </StackPanel>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <StackPanel>
-                            </StackPanel>
-                        </Grid>
-                        <Grid Grid.Column="2">
-                            <StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
+                    <WrapPanel 
+                        x:Name="wrpGoods" 
+                        Margin="2 2 2 2">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadGoodsCommand}" 
+                                                       CommandParameter="{Binding ElementName=wdSaleWindow}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </WrapPanel>
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1"
-                      Background="Black"
-                      Grid.RowSpan="5"></Grid>
+        <Grid 
+            Grid.Column="1"
+            Background="Black"
+            Grid.RowSpan="5"/>
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="7*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="60*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0"
-                      Grid.Column="2">
-            <TextBlock Text="Thông tin hóa đơn"
-                               FontSize="30"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontFamily="Roboto"
-                               FontWeight="Medium"></TextBlock>
-        </Grid>
-            <Grid Grid.Row="1">
-                <TextBlock Text="Thứ 5, ngày 20 tháng 5 năm 2014"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="0,0,15,0"></TextBlock>
+            <Grid 
+                Grid.Row="0"
+                Grid.Column="2">
+                <TextBlock 
+                    Text="Thông tin hóa đơn"
+                    FontSize="30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Roboto"
+                    FontWeight="Medium"/>
             </Grid>
-        <Grid Grid.Row="2"
-                      Grid.Column="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.2*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1.3*"></ColumnDefinition>
-                <ColumnDefinition Width="1.2*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="1"
-                               Grid.Column="0"
-                               Text="Tên sản phẩm"
-                               FontFamily="Roboto"
-                               FontSize="15"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Left"
-                               Margin="10,3,0,0"
-                               VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="1"
-                               Grid.Column="1"
-                               Text="Màu"
-                               FontFamily="Roboto"
-                               FontSize="15"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="1"
-                               Grid.Column="2"
-                               Text="Size"
-                               FontFamily="Roboto"
-                               FontSize="15"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="1"
-                               Grid.Column="3"
-                               Text="Số lượng"
-                               FontFamily="Roboto"
-                               FontSize="15"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="1"
-                               Grid.Column="4"
-                               Text="Giá"
-                               FontFamily="Roboto"
-                               FontSize="15"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"></TextBlock>
-        </Grid>
-        <Grid 
-                    Grid.Row="3"
+            <Grid 
+                Grid.Row="1"
+                x:Name="grdIdStockBill" 
+                Grid.ColumnSpan="2">
+                <Label
+                    x:Name="lbIdStockBill"
+                    Content="Mã hóa đơn" 
+                    HorizontalAlignment="Left"
+                    FontSize="20" 
+                    FontWeight="SemiBold"
+                    Height="32" 
+                    Margin="10 0 0 0" 
+                    VerticalAlignment="Center"/>
+                <Rectangle
+                    x:Name="recIdStockBill"
+                    StrokeThickness="2"
+                    Width="180" 
+                    Height="40"
+                    RadiusY="6"
+                    RadiusX="6" 
+                    Margin="0,0,10,0"
+                    Stroke="{StaticResource Black}" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+                <TextBox 
+                    x:Name="txtIdSaleBill"
+                    materialDesign:HintAssist.Hint="Ngày lập phiếu"
+                    HorizontalAlignment="Right"  
+                    VerticalAlignment="Center" 
+                    Width="160" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
+                    Padding="0" 
+                    Foreground="{StaticResource Black}" 
+                    Margin="0,0,20,0" 
+                    IsReadOnly="True" 
+                    Height="40" 
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" 
+                    SelectionBrush="{x:Null}"
+                    FontWeight="SemiBold"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Black}">
+                </TextBox>
+            </Grid>
+            <Grid   
+            x:Name="grdDate" 
+            Grid.Row="2" Grid.ColumnSpan="2">
+                <Label 
+                    x:Name="lbDate"
+                    Content="Ngày lập phiếu"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Black}" 
+                    Height="40" 
+                    Margin="10 0 0 0" />
+                <TextBox
+                    x:Name="txtDate"
+                    materialDesign:HintAssist.Hint="Ngày lập phiếu"
+                    HorizontalAlignment="Right"  
+                    VerticalAlignment="Center" 
+                    Width="160" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
+                    Padding="0" 
+                    Foreground="{StaticResource Black}" 
+                    Margin="0,0,20,0" 
+                    IsReadOnly="True" 
+                    Height="40" 
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" 
+                    SelectionBrush="{x:Null}"
+                    FontWeight="SemiBold"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+                </TextBox>
+                <Rectangle 
+                x:Name="recDate"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                StrokeThickness="2"
+                Height="40" 
+                Width="180"
+                Margin="0 0 10 0"
+                RadiusY="6" 
+                RadiusX="6" Stroke="{DynamicResource Black}"/>
+            </Grid>
+            <Grid   
+                x:Name="grdCustomer" 
+                Grid.Row="3">
+                <Label 
+                    x:Name="lbCustomer"
+                    Content="Tên khách hàng"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Black}" 
+                    Height="40" 
+                    Margin="10 0 0 0" />
+                <TextBox
+                x:Name="txtCustomer"
+                materialDesign:HintAssist.Hint="Tên khách hàng"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="160" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Black}" 
+                Margin="0,0,20,0" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+                </TextBox>
+                <Rectangle 
+                    x:Name="recCustomer"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center"
+                    StrokeThickness="2"
+                    Height="40" 
+                    Width="180"
+                    Margin="0 0 10 0"
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource Black}"/>
+            </Grid>
+            <Grid   
+                x:Name="grdNumberCustomer" 
+                Grid.Row="4">
+                <Label 
+                    x:Name="lbProduct"
+                    Content="Số điện thoại"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource PaletteColor3}" 
+                    Height="40" 
+                    Margin="10 0 0 0" />
+                <TextBox
+                    x:Name="txtNumberCustomer"
+                    materialDesign:HintAssist.Hint="Số điện thoại khách hàng"
+                    HorizontalAlignment="Right"  
+                    VerticalAlignment="Center" 
+                    Width="160" 
+                    FontSize="14" 
+                    BorderThickness="0" 
+                    MaxLines="1"
+                    Padding="0" 
+                    Foreground="{StaticResource PaletteColor3}" 
+                    Margin="0,0,20,0"
+                    Height="40" 
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" 
+                    SelectionBrush="{x:Null}"
+                    FontWeight="SemiBold"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}"
+                    PreviewTextInput="txtNumberCustomer_PreviewTextInput">
+                </TextBox>
+                <Rectangle 
+                    x:Name="recProduct"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center"
+                    StrokeThickness="2"
+                    Height="40" 
+                    Width="180"
+                    Margin="0 0 10 0"
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource PaletteColor3}"/>
+            </Grid>
+            <Grid 
+                Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.2*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.75*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Resources/Image/tablebar.png" />
+                </Grid.Background>
+                <TextBlock 
+                    Grid.Column="0"
+                    Text="Tên sản phẩm"
+                    FontFamily="Roboto"
+                    FontSize="15"
+                    FontWeight="Medium"
+                    HorizontalAlignment="Left"
+                    Margin="10,3,0,0"
+                    VerticalAlignment="Center"></TextBlock>
+                <TextBlock 
+                    Grid.Column="1"
+                    Text="SL"
+                    FontFamily="Roboto"
+                    FontSize="14"
+                    FontWeight="Medium"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"></TextBlock>
+                <TextBlock 
                     Grid.Column="2"
-                    >
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="8*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1.5*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0"
-                              Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2.2*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.3*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <TextBlock
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,3,0,0"
-                               Height="30"
-                               Text="Hoang Hoang" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,3,0,0"
-                                Height="30"
-                               Text="Hoang Hoang" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,3,0,0"
-                                Height="30"
-                               Text="Hoang Hoang" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="Xanh" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="Đỏ" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-
-                            ></TextBlock>
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="Vàng" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2">
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="18" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="40" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height= "30"
-                               Text="42" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                    </StackPanel>
-                    <StackPanel Grid.Column="3">
-                        <TextBox
-                                    Margin="0,3,0,0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Height="30"
-                                    Text="1" 
-                                    FontSize="15"
-                                    FontFamily="Roboto"
-                                    FontWeight="Normal"
-                                    Padding="0"
-                                    BorderThickness="0">
-                        </TextBox>
-                        <TextBox
-                                    Margin="0,3,0,0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top"
-                                    Height="30"
-                                    Padding="0"
-                                    Text="2" 
-                                    FontSize="15"
-                                    FontFamily="Roboto"
-                                    FontWeight="Normal"
-                                    BorderThickness="0"
-                        ></TextBox>
-                        <TextBox
-                                    Margin="0,3,0,0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Height= "30"
-                                    Text="1"
-                                    Padding="0"
-                                    FontSize="15"
-                                    FontFamily="Roboto"
-                                    FontWeight="Normal"
-                                    materialDesign:TextFieldAssist.HasClearButton="True"
-                                    BorderThickness="0"
-                                >
-                        </TextBox>
-                    </StackPanel>
-                    <StackPanel Grid.Column="4">
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="7,500" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height="30"
-                               Text="550" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                        <TextBlock
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                                Margin="0,3,0,0"
-                                Height= "30"
-                               Text="6,500" 
-                               FontSize="15"
-                               FontFamily="Roboto"
-                               FontWeight="Normal"
-                            ></TextBlock>
-                    </StackPanel>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition ></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                                 FontWeight="Medium"
-                            ></TextBlock>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition ></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                Margin="10,7,0,4.6"
-                               Height="30"
-                               Text="Tổng hóa đơn:" 
-                               FontSize="20"
-                               FontFamily="Roboto"
-                               FontWeight="Medium"
-                            ></TextBlock>
-                    <TextBlock
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                                Margin="10,7,5,4.6"
-                               Height="30"
-                               Text="19,550,000"
-                               FontSize="20"
-                               FontFamily="Roboto"
-                               FontWeight="Medium"
-                               Grid.Column="1"
-                            ></TextBlock>
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <StackPanel VerticalAlignment="Center"
-                                            >
-                            <TextBox
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        Height="55"
-                                        materialDesign:HintAssist.Hint="Số điện thoại"
-                                        materialDesign:HintAssist.Background="#EFD0BF"
-                                        materialDesign:HintAssist.Foreground="#E8641A"
-                                        materialDesign:HintAssist.FloatingScale="0.7"
-                                        FontSize="15"
-                                        materialDesign:TextFieldAssist.UnderlineBrush="#E8641A"
-                                        Margin="10,0,15,0"
-                                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Button 
-                                    Height="55" 
-                                    Width="135"
-                                    FontSize="18"
-                                    materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
-                                    RenderTransformOrigin="0.495,0.488"    
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Content="Đăng ký" 
-                                    Margin="0,0,12,0"
-                                    FontFamily="Time news roman">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
-                            </Button.Background>
-                        </Button>
-                    </Grid>
-                </Grid>
-                <Grid Grid.Row="3">
-                    <Button 
-                                Height="50" 
-                                Width="200"
-                                FontSize="20"
-                                FontWeight="Medium"
-                                materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
-                                RenderTransformOrigin="0.495,0.488"    
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Content="Thanh toán" >
-                        <Button.Background>
-                            <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
-                        </Button.Background>
-                    </Button>
-                </Grid>
+                    Text="Giá"
+                    FontFamily="Roboto"
+                    FontSize="15"
+                    FontWeight="Medium"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"></TextBlock>
             </Grid>
-        </Grid>
+            <Grid 
+                Grid.Row="6">
+                <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Disabled" 
+                    Width="400">
+                    <StackPanel 
+                        x:Name="stkGoodBill"
+                        ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                        Width="400" 
+                        HorizontalAlignment="Left">
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            <Grid   
+                x:Name="grdTotal" 
+                Grid.Row="7">
+                <Label 
+                    x:Name="lbTotal"
+                    Content="Tổng tiền"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="SemiBold" 
+                    Foreground="{StaticResource Black}" 
+                    Height="40" 
+                    Margin="10 0 0 0" />
+                <TextBox
+                x:Name="txtTotal"
+                materialDesign:HintAssist.Hint="Tổng tiền"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="160" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Black}" 
+                Margin="0,0,20,0" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+                </TextBox>
+                <Rectangle 
+                    x:Name="recTotal"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center"
+                    StrokeThickness="2"
+                    Height="40" 
+                    Width="180"
+                    Margin="0 0 10 0"
+                    RadiusY="6" 
+                    RadiusX="6"
+                    Stroke="{StaticResource Black}"/>
+            </Grid>
+            <Grid Grid.Row="8">
+                <Button 
+                    Height="40" 
+                    Width="200"
+                    FontSize="20"
+                    FontWeight="Medium"
+                    materialDesign:ButtonAssist.CornerRadius="10" BorderBrush="{x:Null}"  
+                    RenderTransformOrigin="0.495,0.488"    
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Thanh toán" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/Image/btnImage.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
