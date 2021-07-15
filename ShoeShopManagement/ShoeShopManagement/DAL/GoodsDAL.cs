@@ -83,14 +83,14 @@ namespace ShoeShopManagement.DAL
             {
                 OpenConnection();
                 string queryString = "insert into SANPHAM (MaSP, TenSP,MaLSP,DonGia,Anh,MaDVT,MaSPXoa) " +
-                    "values(@MaSp, @TenSP, @MaLSP,@DonGia, @Anh,@MaDVT,@MaSPXoa)";
+                    "values(@MaSP, @TenSP, @MaLSP,@DonGia, @Anh,@MaDVT,@MaSPXoa)";
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@MaSP", goods.IdGood.ToString());
                 command.Parameters.AddWithValue("@MaSPXoa", goods.IsDeleted.ToString());
                 command.Parameters.AddWithValue("@MaLSP", goods.IdType.ToString());
                 command.Parameters.AddWithValue("@TenSP", goods.Name);
                 command.Parameters.AddWithValue("@DonGia", goods.Price.ToString());
-                command.Parameters.AddWithValue("@MaDVT", goods.IdDVT.ToString());     
+                command.Parameters.AddWithValue("@MaDVT", goods.IdDvt.ToString());     
                 command.Parameters.AddWithValue("@Anh", Convert.ToBase64String(goods.Image));
                 int rs = command.ExecuteNonQuery();
                 return true;
@@ -109,7 +109,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString2 = "insert into CHITIETSP(MaCTSP,MaSP,SoLuong,MaMau,MaSIZE)" + "values (@MaCTSP,@MaSP,@SoLuong,@MaMau,@MaSIZE) ";
+                string queryString2 = "insert into CHITIETSP(MaCTSP,MaSP,SoLuong,MaMau,MaSize)" + "values (@MaCTSP,@MaSP,@SoLuong,@MaMau,@MaSIZE) ";
                 SqlCommand command2 = new SqlCommand(queryString2, conn);
                 command2.Parameters.AddWithValue("@MaCTSP", goods.IdGood.ToString());
                 command2.Parameters.AddWithValue("@MaSP", goods.IdGood.ToString());

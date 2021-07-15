@@ -167,7 +167,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string query = String.Format("Update KHACHHANG Set TenKH = '{0}', SDT = '{1}' Where MaKH = '{2}'", customer.Name, customer.PhoneNumber, customer.IdCustomer);
+                string query = String.Format("Update KHACHHANG Set TenKH = N'{0}', SDT = '{1}' Where MaKH = '{2}'", customer.Name, customer.PhoneNumber, customer.IdCustomer);
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();

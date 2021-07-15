@@ -65,7 +65,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "Insert Into CHITIETPKK Values(@id, @idStockCheck, @idGood, @firstQuantity, @stockInQuantity, @stockOutQuantity, @finalQuantity)";
+                string queryString = "Insert Into CHITIETPKK Values(@id, @idStockCheck, @idGood, @firstQuantity, @finalQuantity, @stockOutQuantity, @stockInQuantity)";
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@id", stockCheckDetail.IdStockCheckDetail);
                 command.Parameters.AddWithValue("@idStockCheck", stockCheckDetail.IdStockCheck);
@@ -73,7 +73,7 @@ namespace ShoeShopManagement.DAL
                 command.Parameters.AddWithValue("@firstQuantity", stockCheckDetail.FirstQuantity);
                 command.Parameters.AddWithValue("@stockInQuantity", stockCheckDetail.StockInQuantity);
                 command.Parameters.AddWithValue("@stockOutQuantity", stockCheckDetail.StockOutQuantity);
-                command.Parameters.AddWithValue("@finalQuantity", stockCheckDetail.FirstQuantity);
+                command.Parameters.AddWithValue("@finalQuantity", stockCheckDetail.FinalQuantity);
 
                 int rs = command.ExecuteNonQuery();
                 if (rs != 1)

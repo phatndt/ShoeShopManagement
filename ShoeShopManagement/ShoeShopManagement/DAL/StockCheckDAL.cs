@@ -85,7 +85,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string query = String.Format("Select SoLuong from CHITIETSP where MaSP = {0}",id);
+                string query = String.Format("Select Sum(SoLuong) from CHITIETSP where MaSP = {0}",id);
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();

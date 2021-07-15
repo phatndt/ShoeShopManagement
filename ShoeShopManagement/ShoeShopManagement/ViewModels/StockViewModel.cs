@@ -90,8 +90,8 @@ namespace ShoeShopManagement.ViewModels
                 stockGoodUc.txbId.Text = id.ToString();
                 stockGoodUc.txbName.Text = StockCheckDAL.Instance.GetNameProduct(stockCheck.IdGood);
                 stockGoodUc.txbFirstQuantity.Text = stockCheck.FirstQuantity.ToString();
-                stockGoodUc.txbStockInQuantity.Text = stockCheck.StockInQuantity.ToString();
-                stockGoodUc.txbStockOutQuantity.Text = stockCheck.StockOutQuantity.ToString();
+                stockGoodUc.txbStockInQuantity.Text = stockCheck.StockOutQuantity.ToString();
+                stockGoodUc.txbStockOutQuantity.Text = stockCheck.StockInQuantity.ToString();
                 stockGoodUc.txbFinalQuantity.Text = stockCheck.FinalQuantity.ToString();
                 stockDetailWindow.stkGoodStockCheck.Children.Add(stockGoodUc);
                 id++;
@@ -168,8 +168,8 @@ namespace ShoeShopManagement.ViewModels
                 stockBillGood.txbId.Text = i.ToString();
                 stockBillGood.txbName.Text = StockCheckDetailDAL.Instance.GetNameProduct(stockCheckDetail.IdGood);
                 stockBillGood.txbFirstQuantity.Text = stockCheckDetail.FirstQuantity.ToString();
-                stockBillGood.txbStockInQuantity.Text = stockCheckDetail.StockInQuantity.ToString();
-                stockBillGood.txbStockOutQuantity.Text = stockCheckDetail.StockOutQuantity.ToString();
+                stockBillGood.txbStockInQuantity.Text = stockCheckDetail.StockOutQuantity.ToString();
+                stockBillGood.txbStockOutQuantity.Text = stockCheckDetail.StockInQuantity.ToString();
                 stockBillGood.txbFinalQuantity.Text = stockCheckDetail.FinalQuantity.ToString();
 
                 stockBillGood.txbStockCheckDetail.Text = stockCheckDetail.IdStockCheckDetail.ToString();

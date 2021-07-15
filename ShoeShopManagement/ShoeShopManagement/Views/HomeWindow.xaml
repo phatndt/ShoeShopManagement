@@ -1421,6 +1421,8 @@
                         </ComboBox>
                         <Button
                             x:Name="btnAddDateReport"
+                            Command="{Binding AddReportCommand}"
+                            CommandParameter="{Binding ElementName=wdHomeWindow}"
                             Grid.Row="0"
                             Width="150"
                             BorderThickness="0"

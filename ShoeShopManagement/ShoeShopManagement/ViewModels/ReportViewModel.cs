@@ -91,6 +91,8 @@ namespace ShoeShopManagement.ViewModels
         public ICommand LoadYearCommand { get; set; }
         public ICommand SelectionChangedYearCommand { get; set; }
         public ICommand InitColumnChartReportCommand { get; set; }
+        public ICommand AddReportCommand { get; set; }
+
         public ReportViewModel()
         {
             LoadCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => LoadDefaultChart(parameter));
@@ -101,6 +103,8 @@ namespace ShoeShopManagement.ViewModels
             LoadYearCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => LoadYear(parameter));
             SelectionChangedYearCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => SelectionChangedYear(parameter));
             InitColumnChartReportCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => InitColumnChartReport(parameter));
+
+            AddReportCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => AddReport(parameter));
         }
         public ReportViewModel(HomeWindow homeWindow)
         {
@@ -368,6 +372,30 @@ namespace ShoeShopManagement.ViewModels
             };
             LabelsReport = ReportDAL.Instance.GetDayInDB(selectedMonth, currentYear);
             FormatterReport = value => string.Format("{0:N0}", value);
+        }
+
+        public void AddReport(HomeWindow parameter)
+        {
+            int id = ReportDAL.Instance.GetMaxId() + 1;
+            string dt = DateTime.Now.ToString();
+            string d = DateTime.Now.Day.ToString();
+            string m = DateTime.Now.Month.ToString();
+            string y = DateTime.Now.Year.ToString();
+            if (ReportDAL.Instance.CheckMonthIntoDatabase(y, m, d))
+            {
+                CustomMessageBox.Show("Đã thống kê tháng này");
+            }
+            else
+            {
+                ReportDAL.Instance.AddMonthToDatabase(id, dt);
+                int idDetailReport = ReportDAL.Instance.GetMaxIdDetailReport() + 1;
+                long a = ReportDAL.Instance.GetTotalMoneyOfBusinessInMonth(m, y);
+                long b = ReportDAL.Instance.GetTotalMoneyOfServiceInMonth(m, y);
+                long c = ReportDAL.Instance.AddStockInMonth(m, y);
+                ReportDAL.Instance.AddDetailReport(idDetailReport, id, a, b, c);
+                LoadYear(parameter);
+            }
+
         }
     }
 }

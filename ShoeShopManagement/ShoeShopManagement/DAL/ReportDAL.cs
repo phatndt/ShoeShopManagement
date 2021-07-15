@@ -875,5 +875,146 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
+        public int GetMaxId()
+        {
+            try
+            {
+                OpenConnection();
+                string query = @"Select max(MaThang) from THANG";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool AddMonthToDatabase(int id, string month)
+        {
+            try
+            {
+                OpenConnection();
+                string query = string.Format("insert into THANG values ('{0}','{1}')",id, month);
+                SqlCommand command = new SqlCommand(query, conn);
+                int rs = command.ExecuteNonQuery();
+                if (rs != 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Thêm thất bại!" + e, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool CheckMonthIntoDatabase(string year, string month, string day)
+        {
+            try
+            {
+                OpenConnection();
+                string query = string.Format("select * from THANG where year(TenThang) = {0} and month(TenThang) = {1} and day(TenThang) = {2}", year, month, day);
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Thêm thất bại!" + e, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public long AddStockInMonth(string month, string year)
+        {
+            long res = 0;
+            try
+            {
+                OpenConnection();
+                string queryString = string.Format("select sum(TongTien) from PHIEUNHAPHANG " +
+                    "where year(NgayLapPhieu) = {0} and month(NgayLapPhieu) = {1}", year, month);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return res;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public long AddDetailReport(int id, int idMotnh, long a, long b, long c)
+        {
+            long res = 0;
+            try
+            {
+                OpenConnection();
+                string queryString = string.Format("insert into CHITIETBCTK Values('{0}','{1}','{2}','{3}','{4}')", id, idMotnh, a, b, c);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return res;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public int GetMaxIdDetailReport()
+        {
+            try
+            {
+                OpenConnection();
+                string query = @"Select max(MaCTBCTK) from CHITIETBCTK";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
     }
 }
