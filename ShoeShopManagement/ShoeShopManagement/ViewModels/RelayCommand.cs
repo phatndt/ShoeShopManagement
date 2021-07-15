@@ -42,5 +42,6 @@ namespace ShoeShopManagement.ViewModels
         {
             _execute((T)parameter);
         }
+        
     }
 }

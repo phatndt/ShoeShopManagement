@@ -10,7 +10,7 @@
              DataContext="{StaticResource StockVM}"
              Width="1120"
              Height="50">
-    <Grid
+    <Grid   
         x:Name="grdMain"
         Background="#FFFFFF">
         <Grid.ColumnDefinitions>
