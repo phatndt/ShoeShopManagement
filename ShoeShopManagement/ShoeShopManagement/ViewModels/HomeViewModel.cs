@@ -15,13 +15,17 @@ namespace ShoeShopManagement.ViewModels
     {
         public ICommand GetNameTab { get; set; }
         public ICommand SwitchTabCommand { get; set; }
+        public ICommand LogOutCommand { get; set; }
 
-        public string Name;
+    public string Name;
         public HomeViewModel()
         {
             GetNameTab = new RelayCommand<Button>((parameter) => true, (parameter) => Name = parameter.Uid);
 
             SwitchTabCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => SwitchTab(parameter));
+
+            LogOutCommand = new RelayCommand<HomeWindow>((parameter) => true, (parameter) => LogOut(parameter));
+
 
         }
         public void SwitchTab(HomeWindow parameter)
@@ -59,41 +63,47 @@ namespace ShoeShopManagement.ViewModels
             switch (index)
             {
                 case 0:
+                    ReportViewModel reportViewModel = new ReportViewModel(parameter);
                     parameter.grdBody_Home.Visibility = Visibility.Visible;
                     parameter.btnHome.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     parameter.iconHome.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
                 case 1:
+                    BusinessViewModel businessViewModel = new BusinessViewModel();
                     parameter.grdBody_Business.Visibility = Visibility.Visible;
                     parameter.btnBusiness.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     parameter.iconBusiness.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
                 case 2:
+                    ServicesViewModel servicesViewModel = new ServicesViewModel();
                     parameter.grdBody_Service.Visibility = Visibility.Visible;
                     parameter.btnService.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     parameter.iconService.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
                 case 3:
+                    GoodsViewModel goodsViewModel = new GoodsViewModel();
                     parameter.grdBody_Goods.Visibility = Visibility.Visible;
                     parameter.btnGoods.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     parameter.iconGood.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
                 case 4:
+                    CustomerViewModel customerViewModel = new CustomerViewModel();
                     parameter.grdBody_Customer.Visibility = Visibility.Visible;
                     parameter.btnCustomer.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     parameter.iconCustomer.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
                 case 5:
+                    ReportViewModel reportViewModel1 = new ReportViewModel(parameter, 1);
                     parameter.grdBody_Report.Visibility = Visibility.Visible;
                     parameter.btnReport.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     parameter.iconReport.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
-                case 6:
+                case 7:
                     parameter.grdBody_Employee.Visibility = Visibility.Visible;
                     //parameter.btnEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     //parameter.iconEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
-                case 7:
+                case 6:
                     StockViewModel stockViewModel = new StockViewModel();
                     parameter.grdBody_Stock.Visibility = Visibility.Visible;
                     parameter.btnStock.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
@@ -102,6 +112,13 @@ namespace ShoeShopManagement.ViewModels
                 default:
                     break;
             }
+        }
+
+        public void LogOut(HomeWindow parameter)
+        {
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            parameter.Close();
         }
     }
 }

@@ -46,11 +46,12 @@
                     <materialDesign:PackIcon
                         x:Name="iconHome"
                         Grid.Column="0" 
-                        Kind="Home"/>
+                        Kind="Home" Foreground="#FF45526c"/>
                     <Button Content="Trang chủ"
                             x:Name="btnHome"
                             Style="{StaticResource MainMenuButton}"
-                            Uid ="0">
+                            Uid ="0"
+                            Foreground="#FF45526c">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -200,7 +201,7 @@
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Kho"
                             x:Name="btnStock"
-                            Uid ="7">
+                            Uid ="6">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
@@ -248,13 +249,15 @@
                     </Style>
                 </Grid.Resources>
                 <materialDesign:PackIcon Kind="LogoutVariant" Grid.Column="0" Foreground="White" Width="50" Height="50" />
-                <Button Style="{StaticResource MainMenuButton}"
-                            Content="Đăng xuất"
-                        Foreground="#FEECEC"
-                            FontSize="22"
-                            FontWeight="Medium"
-                            Panel.ZIndex="1" Background="{x:Null}"
-                        ></Button>
+                <Button 
+                    Style="{StaticResource MainMenuButton}"
+                    Content="Đăng xuất"
+                    Foreground="#FEECEC"
+                    FontSize="22"
+                    FontWeight="Medium"
+                    Panel.ZIndex="1" Background="{x:Null}"
+                    Command="{Binding LogOutCommand}"
+                    CommandParameter="{Binding ElementName=wdHomeWindow}"></Button>
             </Grid>
         </Grid>
         <Grid Grid.Column="1"
@@ -314,7 +317,7 @@
                 Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource ReportVM}"
-                Visibility="Hidden">
+                Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200"/>
                     <RowDefinition/>
@@ -687,7 +690,7 @@
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
                 DataContext="{StaticResource BusinessVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadBillCommand}" 
@@ -811,7 +814,7 @@
                 Background="{DynamicResource White}"
                 Grid.Row="1" 
                 DataContext="{StaticResource ServicesVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadStockServicesCommand  }" 
@@ -836,7 +839,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center" 
-                    Margin="0 0 15 0">
+                    Margin="0 0 40 0">
                     <Button 
                         x:Name="btnAddServiceBill"
                         Height="40"
@@ -859,7 +862,7 @@
                 </StackPanel>
                 <Grid Grid.Row="1"
                       Width="1120"
-                      Margin="5 0 0 0">
+                      Margin="-8 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.4*"></ColumnDefinition>
                         <ColumnDefinition Width="1.25*"></ColumnDefinition>
@@ -940,7 +943,7 @@
                 </Grid>
                 <Grid Grid.Row="2"
                     HorizontalAlignment="Left" 
-                    Margin="15 0 0 0"
+                    Margin="30 0 0 0"
                     Width="1120">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Loaded">
@@ -966,7 +969,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center" 
-                    Margin="0 0 15 0">
+                    Margin="0 0 40 0">
                     <Button 
                         x:Name="btnAddService"
                         Height="40"
@@ -989,7 +992,7 @@
                 </StackPanel>
                 <Grid Grid.Row="4"
                       Width="1120"
-                      Margin="5 0 0 0">
+                      Margin="-8 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.75*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -1030,7 +1033,7 @@
                 </Grid>
                 <Grid Grid.Row="5"
                     HorizontalAlignment="Left" 
-                    Margin="15 0 0 0"
+                    Margin="30 0 0 0"
                     Width="1120">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Loaded">
@@ -1058,7 +1061,7 @@
                 DataContext="{StaticResource GoodVM}"
                 Background="#EFD0BF"
                 Width="1210"
-                Visibility="Visible" Grid.Row="2">
+                Visibility="Hidden" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="50"/>

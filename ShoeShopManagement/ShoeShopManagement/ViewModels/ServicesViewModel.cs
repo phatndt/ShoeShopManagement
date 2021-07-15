@@ -217,12 +217,12 @@ namespace ShoeShopManagement.ViewModels
                 int id = ServicesDAL.Instance.GetMaxId() + 1;
                 addServicesBill.txtIdServicesBill.Text = id.ToString();
                 addServicesBill.txtService.ItemsSource = getNameServices();
-                ServicesBill servicesBill = new ServicesBill(id, "", DateTime.Now, 0, 0, 0, DateTime.Now.AddDays(7), 0);
+                ServicesBill servicesBill = new ServicesBill(id, "1", DateTime.Now, 0, 0, 0, DateTime.Now.AddDays(7), 0);
                 ServicesBillDAL.Instance.AddIntoDB(servicesBill);
             }
             catch
             {
-                ServicesBill servicesBill = new ServicesBill(1, "", DateTime.Now, 0, 0, 0, DateTime.Now.AddDays(7), 0);
+                ServicesBill servicesBill = new ServicesBill(1, "1", DateTime.Now, 0, 0, 0, DateTime.Now.AddDays(7), 0);
                 ServicesBillDAL.Instance.AddIntoDB(servicesBill);
                 addServicesBill.txtIdServicesBill.Text = "1";
             }

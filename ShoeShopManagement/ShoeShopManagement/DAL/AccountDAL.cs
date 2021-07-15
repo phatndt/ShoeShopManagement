@@ -203,5 +203,33 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
+        public bool CheckLogin(string username, string password)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString = string.Format("select * from TAIKHOAN where TenTK = '{0}' And MK = '{1}'",username,password);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                if (dataTable.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
     }
 }
