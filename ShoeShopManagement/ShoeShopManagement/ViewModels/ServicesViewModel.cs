@@ -388,7 +388,8 @@ namespace ShoeShopManagement.ViewModels
         }
         public void GetPrePay(AddServicesBillWindow parameter)
         {
-            PrePay = "Trả trước tối thiểu là: " + (ToTal / 2).ToString();
+            long s = ToTal /2;
+            PrePay = "Trả trước tối thiểu là: " + string.Format("{0:N0}",s); ;
         }
         public void DeleteBill(ServicesUc services)
         {

@@ -101,10 +101,7 @@ namespace ShoeShopManagement.ViewModels
         }
         public void DeleteBill(ReceiptUc parameter)
         {
-            if (BusinessDAL.Instance.DeleteSaleBill(int.Parse(parameter.txbIdSaleBill.Text)))
-                MessageBox.Show("TT");
-            else
-                MessageBox.Show("TB");
+            BusinessDAL.Instance.DeleteSaleBill(int.Parse(parameter.txbIdSaleBill.Text));
             LoadBill(homeWindow);
         }
         public void ShowDetailBill(ReceiptUc parameter)
@@ -256,7 +253,6 @@ namespace ShoeShopManagement.ViewModels
                 int id = BusinessDAL.Instance.GetIdCustomer(saleWindow.txtNumberCustomer.Text);
                 BusinessDAL.Instance.UpdateCustomerSaleBill(id, int.Parse(saleWindow.txtIdSaleBill.Text));
                 int total = BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(int.Parse(saleWindow.txtIdSaleBill.Text));
-                MessageBox.Show(BusinessDAL.Instance.UpdateToDatabase(int.Parse(saleWindow.txtIdSaleBill.Text), total).ToString());
                 Update(int.Parse(saleWindow.txtIdSaleBill.Text));
                 saleWindow.Close();
                 CustomMessageBox.Instance.Success("Tạo đơn hàng thành công");

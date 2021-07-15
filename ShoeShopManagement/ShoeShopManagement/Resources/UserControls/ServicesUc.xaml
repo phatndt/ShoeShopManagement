@@ -172,38 +172,13 @@
             VerticalAlignment="Center" 
             FocusVisualStyle="{x:Null}"
             Width="40"
-            HorizontalAlignment="Right" 
+            HorizontalAlignment="Center" 
             FontWeight="SemiBold" 
             Padding="0">
             <materialDesign:PackIcon 
                 Kind="DeleteOutline" 
                 Height="26"
                 Width="26"/>
-        </Button>
-        <Button 
-            Grid.Column="7"
-            x:Name="btnEditEmployee"
-            Command="{Binding UpdateCommand}"
-            CommandParameter="{Binding ElementName=EmployeeUC}"
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Sửa thông tin"
-            Height="30"
-            materialDesign:ButtonAssist.CornerRadius="6"
-            Margin="0,0,30,0" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}" 
-            Foreground="{DynamicResource PaletteColor1}" 
-            FontSize="16" 
-            VerticalAlignment="Center" 
-            FocusVisualStyle="{x:Null}"
-            Width="40"
-            HorizontalAlignment="Right" 
-            Padding="0"
-            FontWeight="SemiBold">
-            <materialDesign:PackIcon 
-                Kind="SquareEditOutline" 
-                Width="24"
-                Height="24"/>
         </Button>
     </Grid>
 </UserControl>
