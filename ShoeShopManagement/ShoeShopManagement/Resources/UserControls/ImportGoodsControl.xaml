@@ -12,7 +12,7 @@
              d:DesignHeight="450" 
              d:DesignWidth="800" 
              Width="180" 
-             Height="200" 
+             Height="270" 
              Margin="2"
              Cursor="Hand">
     <i:Interaction.Triggers>
@@ -23,23 +23,25 @@
     </i:Interaction.Triggers>
     <Border
         Background="{DynamicResource White}" 
-        BorderBrush="{DynamicResource AquaWhite}"
+        BorderBrush="{DynamicResource Color3}"
         Width="180" 
-        Height="200" 
-        BorderThickness="1" 
+        Height="250" 
+        BorderThickness="3" 
         CornerRadius="4">
         <Grid Cursor="Hand" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="130"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock 
                 x:Name="txbIdGoods" 
-                Visibility="Hidden"/>
+                Visibility="Hidden" Margin="0,0,-0.6,40.2" />
             <TextBlock 
                 x:Name="txbIdStockReceipt" 
-                Visibility="Hidden"/>
+                Visibility="Hidden" Margin="0,0,-0.6,40.2" />
             <Image 
                 x:Name="imgGood" 
                 Grid.Row="0"
@@ -51,7 +53,7 @@
                 Text="Tên hàng" 
                 TextTrimming="WordEllipsis" 
                 HorizontalAlignment="Center" 
-                Margin="10,0" 
+                Margin="10,0"
                 TextWrapping="Wrap"
                 Grid.Row="1" 
                 Foreground="{DynamicResource Gray}" 
@@ -67,20 +69,62 @@
                 TextWrapping="Wrap"
                 VerticalAlignment="Center" 
                 FontSize="12" 
-                Foreground="{DynamicResource Gray}"/>
+                Foreground="{DynamicResource Gray}" />
             <TextBlock 
                 Name="txbQuantityOfInventory"
                 Text="100"
                 MaxWidth="70"
                 TextTrimming="CharacterEllipsis" 
                 HorizontalAlignment="Right"
-                Margin="0,0,10,0" 
+                Margin="10,0,10,0" 
                 Grid.Row="2" 
                 TextWrapping="Wrap"
                 VerticalAlignment="Center" 
                 FontSize="14" 
                 FontWeight="SemiBold" 
                 Foreground="{DynamicResource Color5}"/>
+            <TextBlock 
+                Text="Màu sắc:" 
+                HorizontalAlignment="Left"
+                Margin="10,0,0,0" 
+                Grid.Row="3" 
+                TextWrapping="Wrap"
+                VerticalAlignment="Center" 
+                FontSize="12" 
+                Foreground="{DynamicResource Gray}"/>
+            <TextBlock 
+                Name="txbColorOfInventory"
+                Text="Màu"
+                TextTrimming="CharacterEllipsis" 
+                HorizontalAlignment="Right"
+                Margin="10,0,10,0"
+                Grid.Row="3" 
+                TextWrapping="Wrap"
+                VerticalAlignment="Center" 
+                FontSize="14" 
+                FontWeight="SemiBold" 
+                Foreground="{DynamicResource Color5}"/>
+            <TextBlock 
+                Text="Kích cỡ:" 
+                HorizontalAlignment="Left"
+                Margin="10,0,0,0" 
+                Grid.Row="4" 
+                TextWrapping="Wrap"
+                VerticalAlignment="Center" 
+                FontSize="12" 
+                Foreground="{DynamicResource Gray}"/>
+            <TextBlock 
+                Name="txbSizeOfInventory"
+                Text="Kích cỡ"
+                TextTrimming="CharacterEllipsis" 
+                HorizontalAlignment="Right"
+                Margin="10,0,10,0" 
+                Grid.Row="4" 
+                TextWrapping="Wrap"
+                VerticalAlignment="Center" 
+                FontSize="14" 
+                FontWeight="SemiBold" 
+                Foreground="{DynamicResource Color5}" />
         </Grid>
     </Border>
 </UserControl>

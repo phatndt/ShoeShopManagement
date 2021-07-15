@@ -61,6 +61,7 @@ namespace ShoeShopManagement.ViewModels
         public ICommand ImportStockCommand { get; set; }
         public ICommand StockInDetailChangeCommand { get; set; }
         public ICommand LoadGoodsCommand { get; set; }
+        public ICommand ExitImportGoodsWindowCommand { get; set; }
         public ICommand SeparateThousandsCommand { get; set; }
         public ICommand PickGoodsCommand { get; set; }
         public ICommand ViewStockReceiptTemplateCommand { get; set; }
@@ -86,16 +87,23 @@ namespace ShoeShopManagement.ViewModels
             LoadGoodsCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => LoadGoodsToView(parameter));
             ImportStockCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => CompleteStockReceipt(parameter));
             DeleteImportGoodsDetailsCommand = new RelayCommand<ImportGoodUC>((parameter) => true, (parameter) => DeleteImportGoodsDetails(parameter));
-            //ViewStockReceiptTemplateCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => ViewStockReceiptTemplate(parameter));
+            ExitImportGoodsWindowCommand = new RelayCommand<ImportGoodsWindow>((parameter) => true, (parameter) => ExitImportGoods(parameter));
         }
 
+        private void ExitImportGoods(ImportGoodsWindow parameter)
+        {
+            if (!new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close"))
+            {
+                StockReceiptDAL.Instance.DeleteFromDB(parameter.txbIdStockReceipt.Text);
+                StockInDetailDAL.Instance.DeleteByIdStockReceipt(parameter.txbIdStockReceipt.Text);
+            }
+        }
 
         public void DeleteImportGoodsDetails(ImportGoodUC importGoodsDetailsControl)
         {
             string idStockReceipt = importGoodsDetailsControl.txbIdStockReceipt.Text;
             StockInDetailDAL.Instance.DeleteByIdStock(importGoodsDetailsControl.txbIdGoods.Text, idStockReceipt);
             ImportGoodsWindow.stkPickedGoods.Children.Remove(importGoodsDetailsControl);
-
             ImportGoodsWindow.txbTotal.Text = string.Format("{0:N0}", StockInDetailDAL.Instance.CalculateTotalMoney(idStockReceipt));
         }
         public void CompleteStockReceipt(ImportGoodsWindow importStockWindow)
@@ -116,6 +124,8 @@ namespace ShoeShopManagement.ViewModels
                     Goods goods = GoodsDAL.Instance.GetGoods(stockReceiptInfo.mASP.ToString());
                     goods.Quantity = stockReceiptInfo.sOLuong;
                     GoodsDAL.Instance.ImportToDB(goods);
+                    goods.Price = stockReceiptInfo.donGia;
+                    GoodsDAL.Instance.ImportToDBSP(goods);
                 }
                 CustomMessageBox.Show("Nhập hàng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 importStockWindow.Close();
@@ -134,6 +144,8 @@ namespace ShoeShopManagement.ViewModels
                     ImportGoodsControl goods = new ImportGoodsControl();
                     goods.txbName.Text = goodsList.Rows[i].ItemArray[1].ToString();
                     goods.txbIdGoods.Text = goodsList.Rows[i].ItemArray[0].ToString();
+                    goods.txbColorOfInventory.Text = ConvertIntToColor(goodsList.Rows[i].ItemArray[5].ToString());
+                    goods.txbSizeOfInventory.Text = ConvertIntToSize(goodsList.Rows[i].ItemArray[6].ToString());
                     goods.imgGood.Source = Converter.Instance.ConvertByteToBitmapImage(Convert.FromBase64String(goodsList.Rows[i].ItemArray[3].ToString()));
                     goods.txbQuantityOfInventory.Text = goodsList.Rows[i].ItemArray[4].ToString();
                     goods.txbIdStockReceipt.Text = parameter.txbIdStockReceipt.Text;
@@ -492,12 +504,6 @@ namespace ShoeShopManagement.ViewModels
             {
                 parameter.txtColor.Focus();
                 parameter.txtColor.Text = "";
-                return;
-            }
-            if (string.IsNullOrEmpty(parameter.cbbNCC.Text))
-            {
-                parameter.cbbNCC.Focus();
-                parameter.cbbNCC.Text = "";
                 return;
             }
             if (parameter.grdSelectImg.Background == null)

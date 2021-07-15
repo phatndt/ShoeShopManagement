@@ -59,7 +59,7 @@ namespace ShoeShopManagement.DAL
             try
             {
                 OpenConnection();
-                string queryString = "select SANPHAM.MaSP,SANPHAM.TenSP,SANPHAM.DonGia,SANPHAM.ANH,CHITIETSP.SoLuong from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MaSPXoa = 0";
+                string queryString = "select SANPHAM.MaSP,SANPHAM.TenSP,SANPHAM.DonGia,SANPHAM.ANH,CHITIETSP.SoLuong,CHITIETSP.MaMau,CHITIETSP.MaSize from SANPHAM,CHITIETSP where SANPHAM.MaSP=CHITIETSP.MaSP and SANPHAM.MaSPXoa = 0";
 
                 SqlCommand command = new SqlCommand(queryString, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -201,6 +201,26 @@ namespace ShoeShopManagement.DAL
                 string queryString = "update CHITIETSP set SoLuong = SoLuong +@SoLuong where MaSP=" + goods.IdGood.ToString();
                 SqlCommand command = new SqlCommand(queryString, conn);
                 command.Parameters.AddWithValue("@SoLuong", goods.Quantity.ToString());
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool ImportToDBSP(Goods goods)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString = "update SANPHAM set DonGia = @DonGia where MaSP=" + goods.IdGood.ToString();
+                SqlCommand command = new SqlCommand(queryString, conn);
+                command.Parameters.AddWithValue("@DonGia", goods.Price.ToString());
                 command.ExecuteNonQuery();
                 return true;
             }

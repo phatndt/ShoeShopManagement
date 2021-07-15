@@ -20,6 +20,10 @@
             <i:InvokeCommandAction Command="{Binding GetWindowCommand}" 
                                    CommandParameter="{Binding ElementName=wdImportStock}"/>
         </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ExitImportGoodsWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=wdImportStock}"/>
+        </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Margin="0">
         <Grid>
@@ -81,7 +85,7 @@
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Top" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="280"/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -152,7 +156,6 @@
                         <Rectangle 
                         Grid.Column="1" 
                         HorizontalAlignment="Right"
-                        
                         StrokeThickness="3"
                         Width="2"
                         Fill="{DynamicResource White}"
@@ -227,7 +230,7 @@
                     HorizontalScrollBarVisibility="Disabled">
                         <WrapPanel 
                         x:Name="wrpGoods" 
-                        Margin="0,0,0,6">
+                        Margin="10,0,0,6">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadGoodsCommand}" 
@@ -264,12 +267,39 @@
                 <StackPanel
                 HorizontalAlignment="Center" 
                 Width="350"
-                Margin="0,260,0,0" 
+                Margin="0,170,0,0" 
                 VerticalAlignment="Top">
-                    <Grid>
+                    <Rectangle 
+                    HorizontalAlignment="Center" 
+                    Height="3" 
+                    Margin="0,0,0,20" 
+                    Width="300"
+                    Fill="{DynamicResource Color5}"/>
+                    <Grid Margin="0,0,0,0">
                         <TextBlock 
                         HorizontalAlignment="Left" 
                         Margin="0" 
+                        TextWrapping="Wrap"
+                        Text="Mã phiếu nhập hàng" 
+                        VerticalAlignment="Top" 
+                        FontSize="18" 
+                        FontWeight="SemiBold" 
+                        Foreground="{DynamicResource Gray}"/>
+                        <TextBlock 
+                        x:Name="txbIdStockReceipt"
+                        HorizontalAlignment="Right" 
+                        Margin="0" 
+                        TextWrapping="Wrap"
+                        Text="1" 
+                        VerticalAlignment="Top" 
+                        FontSize="18" 
+                        FontWeight="SemiBold" 
+                        Foreground="{DynamicResource Gray}"/>
+                    </Grid>
+                    <Grid>
+                        <TextBlock 
+                        HorizontalAlignment="Left" 
+                        Margin="0,15,0,0" 
                         TextWrapping="Wrap"
                         Text="Thời gian" 
                         VerticalAlignment="Top" 
@@ -279,7 +309,7 @@
                         <TextBlock 
                         x:Name="txbTime"
                         HorizontalAlignment="Right" 
-                        Margin="0" 
+                        Margin="0,15,0,0" 
                         TextWrapping="Wrap"
                         Text="11h00" 
                         VerticalAlignment="Top" 
@@ -308,27 +338,6 @@
                         FontWeight="SemiBold" 
                         Foreground="{DynamicResource Gray}"/>
                     </Grid>
-                    <Grid Margin="0,15,0,0">
-                        <TextBlock 
-                        HorizontalAlignment="Left" 
-                        Margin="0" 
-                        TextWrapping="Wrap"
-                        Text="Mã hóa đơn" 
-                        VerticalAlignment="Top" 
-                        FontSize="18" 
-                        FontWeight="SemiBold" 
-                        Foreground="{DynamicResource Gray}"/>
-                        <TextBlock 
-                        x:Name="txbIdStockReceipt"
-                        HorizontalAlignment="Right" 
-                        Margin="0" 
-                        TextWrapping="Wrap"
-                        Text="1" 
-                        VerticalAlignment="Top" 
-                        FontSize="18" 
-                        FontWeight="SemiBold" 
-                        Foreground="{DynamicResource Gray}"/>
-                    </Grid>
                 </StackPanel>
                 <Grid
                 Height="240" 
@@ -349,35 +358,6 @@
                     FontWeight="Bold" 
                     HorizontalAlignment="Center"
                     IsTabStop="False"/>
-                    <Button 
-                    x:Name="btnPrintBill"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Height="40"
-                    Command="{Binding ViewStockReceiptTemplateCommand}"
-                    CommandParameter="{Binding ElementName=wdImportStock}"
-                    materialDesign:ButtonAssist.CornerRadius="4"
-                    BorderThickness="2"
-                    Margin="0,0,0,30" 
-                    Background="{DynamicResource White}" 
-                    BorderBrush="{DynamicResource Color5}"  
-                    Foreground="{DynamicResource Color5}" 
-                    VerticalAlignment="Bottom" 
-                    Width="320" 
-                    HorizontalAlignment="Center" IsTabStop="False">
-                        <StackPanel
-                        Orientation="Horizontal">
-                            <TextBlock
-                            Text="In hóa đơn" 
-                            FontSize="20" 
-                            FontWeight="Bold"/>
-                            <materialDesign:PackIcon 
-                            Kind="Printer" 
-                            VerticalAlignment="Bottom" 
-                            Margin="15,0,0,0"
-                            Width="24" 
-                            Height="24" />
-                        </StackPanel>
-                    </Button>
                     <Grid 
                     HorizontalAlignment="Center" 
                     Height="30" 
