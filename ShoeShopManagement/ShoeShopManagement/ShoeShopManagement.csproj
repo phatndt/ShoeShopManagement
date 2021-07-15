@@ -78,6 +78,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -117,6 +118,8 @@
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\GoodsDAL.cs" />
     <Compile Include="DAL\ReportDAL.cs" />
+    <Compile Include="DAL\ServicesBillDAL.cs" />
+    <Compile Include="DAL\ServicesDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
     <Compile Include="DAL\StockInDetailDAL.cs" />
     <Compile Include="DAL\StockReceiptDAL.cs" />
@@ -132,6 +135,8 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\ServicesBill.cs" />
+    <Compile Include="Models\ServicesBillDetail.cs" />
     <Compile Include="Models\StockCheck.cs" />
     <Compile Include="Models\StockCheckDetail.cs" />
     <Compile Include="Models\StockIn.cs" />
@@ -178,6 +183,9 @@
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\ServicesBillDetailUc.xaml.cs">
+      <DependentUpon>ServicesBillDetailUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\StockInDetailUc.xaml.cs">
       <DependentUpon>StockInDetailUc.xaml</DependentUpon>
     </Compile>
@@ -214,6 +222,7 @@
     <Compile Include="ViewModels\PrintViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\ServicesViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddCustomerWindow.xaml.cs">
@@ -224,6 +233,12 @@
     </Compile>
     <Compile Include="Views\AddGoodsWindow.xaml.cs">
       <DependentUpon>AddGoodsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddServicesBillWindow.xaml.cs">
+      <DependentUpon>AddServicesBillWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddServiceWindow.xaml.cs">
+      <DependentUpon>AddServiceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BusinessWindow.xaml.cs">
       <DependentUpon>BusinessWindow.xaml</DependentUpon>
@@ -236,6 +251,9 @@
     </Compile>
     <Compile Include="Views\CustomerDetailWindow.xaml.cs">
       <DependentUpon>CustomerDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditServiceWindow.xaml.cs">
+      <DependentUpon>EditServiceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
@@ -334,6 +352,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\UserControls\ServicesBillDetailUc.xaml">
+            <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\StockInDetailUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -378,6 +400,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddServicesBillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BusinessWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -391,6 +421,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CustomerDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditServiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

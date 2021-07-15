@@ -11,23 +11,22 @@ namespace ShoeShopManagement.Models
         private int idService;
         private string name;
         private long price;
-        private bool status;
+        private int isDelete;
 
         public int IdService { get => idService; set => idService = value; }
         public string Name { get => name; set => name = value; }
         public long Price { get => price; set => price = value; }
-        public bool Status { get => status; set => status = value; }
-
+        public int IsDelete { get => isDelete; set => isDelete = value; }
         public Service()
         {
 
         }
-        public Service(int idService, string name, long price, bool status)
+        public Service(int idService, string name, long price, int isdelete)
         {
             this.idService = idService;
             this.name = name;
             this.price = price;
-            this.status = status;
+            this.isDelete = isdelete;
         }
     }
 }

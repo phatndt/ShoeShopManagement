@@ -375,6 +375,58 @@ namespace ShoeShopManagement.ViewModels
         }
         //public void ViewStockReceiptTemplate(ImportGoodsWindow importGoodsWindow)
         //{
+        //    List<Goods> goodsList = GoodsDAL.Instance.ConvertDBToList();
+        //    if (string.IsNullOrWhiteSpace(parameter.txtName.Text))
+        //    {
+        //        parameter.txtName.Focus();
+        //        parameter.txtName.Text = "";
+        //        return;
+        //    }
+        //    if (string.IsNullOrEmpty(parameter.cboUnit.Text))
+        //    {
+        //        parameter.cboUnit.Focus();
+        //        return;
+        //    }
+        //    if (string.IsNullOrEmpty(parameter.txtUnitPrice.Text))
+        //    {
+        //        parameter.txtUnitPrice.Focus();
+        //        parameter.txtUnitPrice.Text = "";
+        //        return;
+        //    }
+        //    if (parameter.grdSelectImg.Background == null)
+        //    {
+        //        CustomMessageBox.Show("Vui lòng thêm hình ảnh!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+        //    byte[] imgByteArr;
+        //    try
+        //    {
+        //        imgByteArr = Converter.Instance.ConvertImageToBytes(imageFileName);
+        //    }
+        //    catch
+        //    {
+        //        imgByteArr = GoodsDAL.Instance.GetGoods(parameter.txtIdGoods.Text).ImageFile;
+        //    }
+        //    imageFileName = null;
+        //    Goods newGoods = new Goods(int.Parse(parameter.txtIdGoods.Text), parameter.txtName.Text,
+        //        parameter.cboUnit.Text, ConvertToNumber(parameter.txtUnitPrice.Text), imgByteArr);
+        //    bool isSuccessed1 = true, isSuccessed2 = true;
+        //    if (goodsList.Count == 0 || newGoods.IdGoods > goodsList[goodsList.Count - 1].IdGoods)
+        //    {
+        //        if (GoodsDAL.Instance.IsExistGoodsName(parameter.txtName.Text))
+        //        {
+        //            CustomMessageBox.Show("Mặt hàng đã tồn tại, vui lòng nhập lại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        //            parameter.txtName.Focus();
+        //            parameter.txtName.Text = "";
+        //            return;
+        //        }
+        //        isSuccessed1 = GoodsDAL.Instance.AddIntoDB(newGoods);
+        //        if (isSuccessed1)
+        //        {
+        //            CustomMessageBox.Show("Thêm mặt hàng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+        //        }
+        //    }
+        //    else=
         //    //Thông tin stock receipt
         //    string MaPNH = importGoodsWindow.txbIdStockReceipt.Text;
         //    StockReceiptTemplate stockReceiptTemplate = new StockReceiptTemplate();
