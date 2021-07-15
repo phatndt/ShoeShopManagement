@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,19 +15,13 @@ using System.Windows.Shapes;
 namespace ShoeShopManagement.Views
 {
     /// <summary>
-    /// Interaction logic for SaleWindow.xaml
+    /// Interaction logic for EditServiceWindow.xaml
     /// </summary>
-    public partial class SaleWindow : Window
+    public partial class EditServiceWindow : Window
     {
-        public SaleWindow()
+        public EditServiceWindow()
         {
             InitializeComponent();
-        }
-
-        private void txtNumberCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

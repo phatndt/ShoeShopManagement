@@ -102,7 +102,16 @@ namespace ShoeShopManagement.ViewModels
             SelectionChangedYearCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => SelectionChangedYear(parameter));
             InitColumnChartReportCommand = new RelayCommand<HomeWindow>(parameter => true, parameter => InitColumnChartReport(parameter));
         }
-
+        public ReportViewModel(HomeWindow homeWindow)
+        {
+            homeWindow.cboSelectTimePie.SelectedIndex = -1;
+            homeWindow.cboSelectPeriod.SelectedIndex = -1;
+            LoadDefaultChart(homeWindow);
+        }
+        public ReportViewModel(HomeWindow homeWindow, int i)
+        {
+            LoadYear(homeWindow);
+        }
         private void LoadDefaultChart(HomeWindow parameter)
         {
             string currentDay = DateTime.Now.Day.ToString();
