@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="ShoeShopManagement.Resources.UserControls.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShoeShopManagement.Resources.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="1120">
+    <Grid>
+        <Grid
+                    HorizontalAlignment="Left"
+                    Width="1120"
+                    Grid.Row="1"
+            Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Image/tablebar.png" />
+            </Grid.Background>
+            <TextBlock 
+                        Grid.Column="0"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        Text="STT" 
+                        VerticalAlignment="Center" 
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}"
+                        FontWeight="SemiBold"/>
+            <TextBlock
+                        Grid.Column="1" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Mã phiếu bán hàng" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+            <TextBlock
+                        Grid.Column="2" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Tên khách hàng" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+            <TextBlock
+                        Grid.Column="3" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Thời gian" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+            <TextBlock
+                        Grid.Column="4" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        Text="Tổng tiền" 
+                        VerticalAlignment="Center"
+                        FontSize="18" 
+                        Foreground="{DynamicResource White}" 
+                        FontWeight="SemiBold"/>
+        </Grid>
+    </Grid>
+</UserControl>

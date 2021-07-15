@@ -6,6 +6,7 @@
     <viewmodels:HomeViewModel x:Key="HomeVM"></viewmodels:HomeViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:EmployeeViewModel x:Key="EmployeeVM"></viewmodels:EmployeeViewModel>
+    
     <viewmodels:GoodsViewModel x:Key="GoodVM"></viewmodels:GoodsViewModel>
     <viewmodels:ServicesViewModel x:Key="ServicesVM"></viewmodels:ServicesViewModel>
     <viewmodels:StockViewModel x:Key="StockVM"/>

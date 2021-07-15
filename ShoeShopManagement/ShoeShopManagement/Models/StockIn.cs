@@ -15,13 +15,16 @@ namespace ShoeShopManagement.Models
         public int IdStockIn { get => idStockIn; set => idStockIn = value; }
         public DateTime DateStockIn { get => dateStockIn; set => dateStockIn = value; }
         public double Total { get => total; set => total = value; }
+        private int idAccount;
+        public int IdAccount { get => idAccount; set => idAccount = value; }
         public StockIn()
         {
 
         }
-        public StockIn(int idStockIn,DateTime dateStockIn,double total)
+        public StockIn(int idStockIn,int idAccount,DateTime dateStockIn,double total)
         {
             this.idStockIn = idStockIn;
+            this.idAccount = idAccount;
             this.dateStockIn = dateStockIn;
             this.total = total;
         }

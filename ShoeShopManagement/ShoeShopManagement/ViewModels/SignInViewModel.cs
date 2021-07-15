@@ -39,46 +39,42 @@ namespace ShoeShopManagement.ViewModels
             }
             List<Account> accounts = AccountDAL.Instance.ConvertDBToList();
             //check username
-            if (string.IsNullOrEmpty(parameter.txtUsername.Text))
+            if (string.IsNullOrEmpty(parameter.txtUsername.Text) || string.IsNullOrEmpty(parameter.txtPassword.Password))
             {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                CustomMessageBox.Show("Thông tin chưa đầy đủ");
                 parameter.txtUsername.Focus();
                 return;
-            }
-            //check password
-            if (string.IsNullOrEmpty(parameter.txtPassword.Password))
+            } else
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                parameter.txtPassword.Focus();
-                return;
-            }
-            foreach (var account in accounts)
-            {
-                if (account.UserName == parameter.txtUsername.Text.ToString() && account.PassWord == password && account.TypeAcount != 3)
+                foreach (var account in accounts)
                 {
-                    CurrentAccount.Type = account.TypeAcount; // Kiểm tra quyền
-                    if (CurrentAccount.Type != 0)
+                    if (account.UserName == parameter.txtUsername.Text.ToString() && account.PassWord == password && account.TypeAcount != 3)
                     {
-                        List<Employee> employees = EmployeeDAL.Instance.ConvertDBToList();
-                        foreach (var employee in employees)
+                        CurrentAccount.Type = account.TypeAcount; // Kiểm tra quyền
+                        if (CurrentAccount.Type != 0)
                         {
-                            if (employee.IdAccount == account.IdAccount)
+                            List<Employee> employees = EmployeeDAL.Instance.ConvertDBToList();
+                            foreach (var employee in employees)
                             {
-                                //Lấy thông tin người đăng nhập
-                                CurrentAccount.DisplayName = employee.Name;
-                                CurrentAccount.Image = employee.Image;
-                                CurrentAccount.IdEmployee = employee.IdEmployee;
-                                this.employee = employee;
-                                break;
+                                if (employee.IdAccount == account.IdAccount)
+                                {
+                                    //Lấy thông tin người đăng nhập
+                                    CurrentAccount.DisplayName = employee.Name;
+                                    CurrentAccount.Image = employee.Image;
+                                    CurrentAccount.IdEmployee = employee.IdEmployee;
+                                    this.employee = employee;
+                                    break;
+                                }
                             }
                         }
+                        CurrentAccount.IdAccount = account.IdAccount;
+                        CurrentAccount.Password = password;
+                        isSignIn = true;
+                        break;
                     }
-                    CurrentAccount.IdAccount = account.IdAccount;
-                    CurrentAccount.Password = password;
-                    isSignIn = true;
-                    break;
                 }
             }
+            
         }
     }
 }

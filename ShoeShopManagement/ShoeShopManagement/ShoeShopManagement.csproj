@@ -58,6 +58,12 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=2.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.0\lib\net452\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -68,10 +74,13 @@
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -103,6 +112,7 @@
     <Compile Include="CurrentAccount.cs" />
     <Compile Include="CustomMessageBox.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
+    <Compile Include="DAL\BusinessDAL.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
@@ -111,12 +121,17 @@
     <Compile Include="DAL\ServicesBillDAL.cs" />
     <Compile Include="DAL\ServicesDAL.cs" />
     <Compile Include="DAL\SQLConnection.cs" />
+    <Compile Include="DAL\StockInDetailDAL.cs" />
+    <Compile Include="DAL\StockReceiptDAL.cs" />
     <Compile Include="DAL\StockCheckDAL.cs" />
     <Compile Include="DAL\StockCheckDetailDAL.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\GoodDetail.cs" />
     <Compile Include="Models\Goods.cs" />
+    <Compile Include="Models\SaleBill.cs" />
+    <Compile Include="Models\SaleBillDetail.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Salary.cs" />
@@ -128,7 +143,13 @@
     <Compile Include="Models\StockInDetail.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\test.cs" />
+    <Compile Include="Resources\Template\StockReceiptTemplate.xaml.cs">
+      <DependentUpon>StockReceiptTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Notification.cs" />
+    <Compile Include="Resources\UserControls\BillUC.xaml.cs">
+      <DependentUpon>BillUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\CustomerUc.xaml.cs">
       <DependentUpon>CustomerUc.xaml</DependentUpon>
     </Compile>
@@ -138,12 +159,37 @@
     <Compile Include="Resources\UserControls\FieldInfoBill.xaml.cs">
       <DependentUpon>FieldInfoBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\GoodUc.xaml.cs">
+      <DependentUpon>GoodUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ImportGoodsControl.xaml.cs">
+      <DependentUpon>ImportGoodsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ImportGoodUC.xaml.cs">
+      <DependentUpon>ImportGoodUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\NumericSpinner.xaml.cs">
+      <DependentUpon>NumericSpinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ProductUC.xaml.cs">
+      <DependentUpon>ProductUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ReceiptDetailUc.xaml.cs">
+      <DependentUpon>ReceiptDetailUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\ReceiptUc.xaml.cs">
+      <DependentUpon>ReceiptUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserControls\SalaryUc.xaml.cs">
       <DependentUpon>SalaryUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\UserControls\ServicesBillDetailUc.xaml.cs">
       <DependentUpon>ServicesBillDetailUc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\StockInDetailUc.xaml.cs">
+      <DependentUpon>StockInDetailUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
     <Compile Include="Resources\UserControls\ServicesUc.xaml.cs">
       <DependentUpon>ServicesUc.xaml</DependentUpon>
     </Compile>
@@ -160,12 +206,20 @@
     <Compile Include="Resources\UserControls\StockServicesUC.xaml.cs">
       <DependentUpon>StockServicesUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UserControls\SaleUC.xaml.cs">
+      <DependentUpon>SaleUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UserControls\StockInUc.xaml.cs">
+      <DependentUpon>StockInUc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\GoodsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ImportStockWindow.cs" />
+    <Compile Include="ViewModels\PrintViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\ServicesViewModel.cs" />
@@ -189,6 +243,9 @@
     <Compile Include="Views\BusinessWindow.xaml.cs">
       <DependentUpon>BusinessWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CustomMessageBoxWindow.xaml.cs">
+      <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CheckStockWindow.xaml.cs">
       <DependentUpon>CheckStockWindow.xaml</DependentUpon>
     </Compile>
@@ -200,6 +257,9 @@
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceiptDetailWindow.xaml.cs">
+      <DependentUpon>ReceiptDetailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SaleWindow.xaml.cs">
       <DependentUpon>SaleWindow.xaml</DependentUpon>
@@ -240,6 +300,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Template\StockReceiptTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\BillUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\CustomerUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -252,11 +320,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\UserControls\GoodUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ImportGoodsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ImportGoodUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\NumericSpinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ProductUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ReceiptDetailUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\ReceiptUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\UserControls\SalaryUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\UserControls\ServicesBillDetailUc.xaml">
+            <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockInDetailUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\SaleUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\UserControls\StockInUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -304,6 +412,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CustomMessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CheckStockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -317,6 +429,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReceiptDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,6 +475,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -370,6 +489,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Image\money.png" />
+    <Resource Include="Resources\Image\error.png" />
+    <Resource Include="Resources\Image\succes.png" />
+    <Resource Include="Resources\Image\warning.png" />
     <Resource Include="Resources\Image\loginRegion.png" />
     <Resource Include="Resources\Image\account-circle.png" />
     <Resource Include="Resources\Image\lock 1.png" />
@@ -380,6 +502,9 @@
     <Resource Include="Resources\Image\background.png" />
     <Resource Include="Resources\Image\IncomeIcon.png" />
     <Resource Include="Resources\Image\IncreaseIcon.png" />
+    <Resource Include="Resources\Image\btnListview.png" />
+    <Resource Include="Resources\Image\help.png" />
+    <Resource Include="Resources\Image\info.png" />
     <Content Include="Resources\Image\intro.mp4" />
     <Resource Include="Resources\Image\Logo.jpg" />
     <Resource Include="Resources\Image\Shoes\af-1-1-shoe-7qQjnL.jpg" />
@@ -403,6 +528,7 @@
     <Resource Include="Resources\Image\tablebar.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
