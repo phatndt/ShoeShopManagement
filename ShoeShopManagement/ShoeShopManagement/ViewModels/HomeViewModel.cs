@@ -28,7 +28,7 @@ namespace ShoeShopManagement.ViewModels
         {
             int index = int.Parse(this.Name);
 
-            parameter.grdCursor.Margin = new Thickness(0, (140 + 60 * index), 40, 0);
+            parameter.grdCursor.Margin = new Thickness(0, (170 + 60 * index), 40, 0);
 
             parameter.grdBody_Home.Visibility = Visibility.Hidden;
             parameter.grdBody_Business.Visibility = Visibility.Hidden;
@@ -45,7 +45,7 @@ namespace ShoeShopManagement.ViewModels
             parameter.btnGoods.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             parameter.btnCustomer.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             parameter.btnReport.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
-            parameter.btnEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
+            //parameter.btnEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             parameter.btnStock.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
 
             parameter.iconHome.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
@@ -54,7 +54,7 @@ namespace ShoeShopManagement.ViewModels
             parameter.iconGood.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             parameter.iconCustomer.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             parameter.iconReport.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
-            parameter.iconEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
+            //parameter.iconEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             parameter.iconStock.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFFEECEC");
             switch (index)
             {
@@ -90,8 +90,8 @@ namespace ShoeShopManagement.ViewModels
                     break;
                 case 6:
                     parameter.grdBody_Employee.Visibility = Visibility.Visible;
-                    parameter.btnEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
-                    parameter.iconEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
+                    //parameter.btnEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
+                    //parameter.iconEmployee.Foreground = (Brush)new BrushConverter().ConvertFrom("#FF45526c");
                     break;
                 case 7:
                     StockViewModel stockViewModel = new StockViewModel();

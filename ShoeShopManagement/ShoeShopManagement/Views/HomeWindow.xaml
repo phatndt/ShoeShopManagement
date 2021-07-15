@@ -13,11 +13,7 @@
         Title="HomeWindow" Height="800" Width="1447"
         Icon="/ShoeShopManagement;component/Resources/Image/Logo.jpg"
         DataContext="{StaticResource HomeVM}">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Image/background.png">
-            </ImageBrush>
-        </Grid.Background>
+    <Grid Background="{DynamicResource Black}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="58*"/>
             <ColumnDefinition Width="195*"/>
@@ -200,31 +196,6 @@
                     <materialDesign:PackIcon 
                         Kind="Account" 
                         Grid.Column="0"
-                        x:Name="iconEmployee"/>
-                    <Button Style="{StaticResource MainMenuButton}"
-                            Content="Nhân viên"
-                            x:Name="btnEmployee"
-                            Uid ="6">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
-                                                       CommandParameter="{Binding ElementName=wdHomeWindow}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="MouseMove">
-                                <i:InvokeCommandAction Command="{Binding GetNameTab}"
-                                                       CommandParameter="{Binding ElementName=btnEmployee}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon 
-                        Kind="Account" 
-                        Grid.Column="0"
                         x:Name="iconStock"/>
                     <Button Style="{StaticResource MainMenuButton}"
                             Content="Kho"
@@ -249,7 +220,7 @@
                 Height="60" 
                 Background="{DynamicResource TextMainColorButton}" 
                 HorizontalAlignment="Left"
-                Margin="0,140,35,0" 
+                Margin="0,170,35,0" 
                 VerticalAlignment="Top"/>
             <Grid Width="auto"
                   Height="auto"
@@ -292,7 +263,7 @@
                 <RowDefinition Height="1.5*"></RowDefinition>
                 <RowDefinition Height="12*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Visibility="Hidden">
                 <Grid Height="Auto"
                       Margin="5"
                       HorizontalAlignment="Right">
