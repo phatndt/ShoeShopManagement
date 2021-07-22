@@ -746,129 +746,192 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
-        public ChartValues<long> GetBusinessInDB(string month, string year)
+        //public ChartValues<long> GetBusinessInDB(string month, string year)
+        //{
+        //    ChartValues<long> res = new ChartValues<long>();
+        //    try
+        //    {
+        //        string[] monthsOfYear = ReportDAL.Instance.GetDayInDB(month, year);
+        //        OpenConnection();
+        //        string queryString = string.Format("select day(TenTHANG), sum(BanHang) " +
+        //            "from CHITIETBCTK CT, THANG T " +
+        //            "where CT.MaThang = T.MaThang " +
+        //            "AND year(TenTHANG) = {0} " +
+        //            "and month(TenTHANG) = {1} group by day(TenTHANG)", year, month);
+        //        SqlCommand command = new SqlCommand(queryString, conn);
+
+        //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //        DataTable dataTable = new DataTable();
+        //        adapter.Fill(dataTable);
+
+        //        long[] revenue = new long[monthsOfYear.Length];
+        //        int j = 0;
+        //        int numOfRows = dataTable.Rows.Count;
+
+        //        for (int i = 0; i < monthsOfYear.Length && j < numOfRows; i++)
+        //        {
+        //            if (monthsOfYear[i] == dataTable.Rows[j].ItemArray[0].ToString())
+        //            {
+        //                revenue[i] = long.Parse(dataTable.Rows[j].ItemArray[1].ToString());
+        //                j++;
+        //            }
+        //        }
+        //        res = new ChartValues<long>(revenue);
+        //        return res;
+        //    }
+        //    catch
+        //    {
+        //        res.Add(0);
+        //        return res;
+        //    }
+        //    finally
+        //    {
+        //        CloseConnection();
+        //    }
+        //}
+        //public ChartValues<long> GetServiceInDB(string month, string year)
+        //{
+        //    ChartValues<long> res = new ChartValues<long>();
+        //    try
+        //    {
+        //        string[] monthsOfYear = ReportDAL.Instance.GetDayInDB(month, year);
+        //        OpenConnection();
+        //        string queryString = string.Format("select day(TenTHANG), sum(DichVu) " +
+        //            "from CHITIETBCTK CT, THANG T " +
+        //            "where CT.MaThang = T.MaThang " +
+        //            "AND year(TenTHANG) = {0} " +
+        //            "and month(TenTHANG) = {1} group by day(TenTHANG)", year, month);
+        //        SqlCommand command = new SqlCommand(queryString, conn);
+
+        //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //        DataTable dataTable = new DataTable();
+        //        adapter.Fill(dataTable);
+
+        //        long[] revenue = new long[monthsOfYear.Length];
+        //        int j = 0;
+        //        int numOfRows = dataTable.Rows.Count;
+
+        //        for (int i = 0; i < monthsOfYear.Length && j < numOfRows; i++)
+        //        {
+        //            if (monthsOfYear[i] == dataTable.Rows[j].ItemArray[0].ToString())
+        //            {
+        //                revenue[i] = long.Parse(dataTable.Rows[j].ItemArray[1].ToString());
+        //                j++;
+        //            }
+        //        }
+        //        res = new ChartValues<long>(revenue);
+        //        return res;
+        //    }
+        //    catch
+        //    {
+        //        res.Add(0);
+        //        return res;
+        //    }
+        //    finally
+        //    {
+        //        CloseConnection();
+        //    }
+        //}
+        //public ChartValues<long> GetStockInInDB(string month, string year)
+        //{
+        //    ChartValues<long> res = new ChartValues<long>();
+        //    try
+        //    {
+        //        string[] monthsOfYear = ReportDAL.Instance.GetDayInDB(month, year);
+        //        OpenConnection();
+        //        string queryString = string.Format("select day(TenTHANG), sum(Chi) " +
+        //            "from CHITIETBCTK CT, THANG T " +
+        //            "where CT.MaThang = T.MaThang " +
+        //            "AND year(TenTHANG) = {0} " +
+        //            "and month(TenTHANG) = {1} group by day(TenTHANG)", year, month);
+        //        SqlCommand command = new SqlCommand(queryString, conn);
+
+        //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //        DataTable dataTable = new DataTable();
+        //        adapter.Fill(dataTable);
+
+        //        long[] revenue = new long[monthsOfYear.Length];
+        //        int j = 0;
+        //        int numOfRows = dataTable.Rows.Count;
+
+        //        for (int i = 0; i < monthsOfYear.Length && j < numOfRows; i++)
+        //        {
+        //            if (monthsOfYear[i] == dataTable.Rows[j].ItemArray[0].ToString())
+        //            {
+        //                revenue[i] = long.Parse(dataTable.Rows[j].ItemArray[1].ToString());
+        //                j++;
+        //            }
+        //        }
+        //        res = new ChartValues<long>(revenue);
+        //        return res;
+        //    }
+        //    catch
+        //    {
+        //        res.Add(0);
+        //        return res;
+        //    }
+        //    finally
+        //    {
+        //        CloseConnection();
+        //    }
+        //}
+        public long GetBusinessInDB(int id)
         {
-            ChartValues<long> res = new ChartValues<long>();
             try
             {
-                string[] monthsOfYear = ReportDAL.Instance.GetDayInDB(month, year);
                 OpenConnection();
-                string queryString = string.Format("select day(TenTHANG), sum(BanHang) " +
-                    "from CHITIETBCTK CT, THANG T " +
-                    "where CT.MaThang = T.MaThang " +
-                    "AND year(TenTHANG) = {0} " +
-                    "and month(TenTHANG) = {1} group by day(TenTHANG)", year, month);
-                SqlCommand command = new SqlCommand(queryString, conn);
-
+                string query = string.Format("Select BanHang from CHITIETBCTK where MaCTBCTK = {0}",id);
+                SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
-                long[] revenue = new long[monthsOfYear.Length];
-                int j = 0;
-                int numOfRows = dataTable.Rows.Count;
-
-                for (int i = 0; i < monthsOfYear.Length && j < numOfRows; i++)
-                {
-                    if (monthsOfYear[i] == dataTable.Rows[j].ItemArray[0].ToString())
-                    {
-                        revenue[i] = long.Parse(dataTable.Rows[j].ItemArray[1].ToString());
-                        j++;
-                    }
-                }
-                res = new ChartValues<long>(revenue);
-                return res;
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
             }
             catch
             {
-                res.Add(0);
-                return res;
+                return 0;
             }
             finally
             {
                 CloseConnection();
             }
         }
-        public ChartValues<long> GetServiceInDB(string month, string year)
+        public long GetServicesInDB(int id)
         {
-            ChartValues<long> res = new ChartValues<long>();
             try
             {
-                string[] monthsOfYear = ReportDAL.Instance.GetDayInDB(month, year);
                 OpenConnection();
-                string queryString = string.Format("select day(TenTHANG), sum(DichVu) " +
-                    "from CHITIETBCTK CT, THANG T " +
-                    "where CT.MaThang = T.MaThang " +
-                    "AND year(TenTHANG) = {0} " +
-                    "and month(TenTHANG) = {1} group by day(TenTHANG)", year, month);
-                SqlCommand command = new SqlCommand(queryString, conn);
-
+                string query = string.Format("Select DichVu from CHITIETBCTK where MaCTBCTK = {0}", id);
+                SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
-                long[] revenue = new long[monthsOfYear.Length];
-                int j = 0;
-                int numOfRows = dataTable.Rows.Count;
-
-                for (int i = 0; i < monthsOfYear.Length && j < numOfRows; i++)
-                {
-                    if (monthsOfYear[i] == dataTable.Rows[j].ItemArray[0].ToString())
-                    {
-                        revenue[i] = long.Parse(dataTable.Rows[j].ItemArray[1].ToString());
-                        j++;
-                    }
-                }
-                res = new ChartValues<long>(revenue);
-                return res;
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
             }
             catch
             {
-                res.Add(0);
-                return res;
+                return 0;
             }
             finally
             {
                 CloseConnection();
             }
         }
-        public ChartValues<long> GetStockInInDB(string month, string year)
+        public long GetStockInDB(int id)
         {
-            ChartValues<long> res = new ChartValues<long>();
             try
             {
-                string[] monthsOfYear = ReportDAL.Instance.GetDayInDB(month, year);
                 OpenConnection();
-                string queryString = string.Format("select day(TenTHANG), sum(Chi) " +
-                    "from CHITIETBCTK CT, THANG T " +
-                    "where CT.MaThang = T.MaThang " +
-                    "AND year(TenTHANG) = {0} " +
-                    "and month(TenTHANG) = {1} group by day(TenTHANG)", year, month);
-                SqlCommand command = new SqlCommand(queryString, conn);
-
+                string query = string.Format("Select Chi from CHITIETBCTK where MaCTBCTK = {0}", id);
+                SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
-                long[] revenue = new long[monthsOfYear.Length];
-                int j = 0;
-                int numOfRows = dataTable.Rows.Count;
-
-                for (int i = 0; i < monthsOfYear.Length && j < numOfRows; i++)
-                {
-                    if (monthsOfYear[i] == dataTable.Rows[j].ItemArray[0].ToString())
-                    {
-                        revenue[i] = long.Parse(dataTable.Rows[j].ItemArray[1].ToString());
-                        j++;
-                    }
-                }
-                res = new ChartValues<long>(revenue);
-                return res;
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
             }
             catch
             {
-                res.Add(0);
-                return res;
+                return 0;
             }
             finally
             {
@@ -923,12 +986,12 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
-        public bool CheckMonthIntoDatabase(string year, string month, string day)
+        public bool CheckMonthIntoDatabase(string year, string month)
         {
             try
             {
                 OpenConnection();
-                string query = string.Format("select * from THANG where year(TenThang) = {0} and month(TenThang) = {1} and day(TenThang) = {2}", year, month, day);
+                string query = string.Format("select * from THANG where year(TenThang) = {0} and month(TenThang) = {1}", year, month);
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
@@ -1010,6 +1073,76 @@ namespace ShoeShopManagement.DAL
             catch
             {
                 return 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public long DeleteReport(string month, string year)
+        {
+            long res = 0;
+            try
+            {
+                OpenConnection();
+                string queryString = string.Format("delete from THANG " +
+                    "where year(TenTHANG) = {0} and month(TenTHANG) = {1}", year, month);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return res;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public long DeleteReportDetail(int id)
+        {
+            long res = 0;
+            try
+            {
+                OpenConnection();
+                string queryString = string.Format("delete from CHITIETBCTK " +
+                    "where MaThang = {0}", id);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return res;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public int GetIdReport(string month, string year)
+        {
+            int res = 0;
+            try
+            {
+                OpenConnection();
+                string queryString = string.Format("Select MaThang from THANG " +
+                    "where year(TenTHANG) = {0} and month(TenTHANG) = {1}", year, month);
+                MessageBox.Show(queryString);
+                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+            }
+            catch
+            {
+                return res;
             }
             finally
             {

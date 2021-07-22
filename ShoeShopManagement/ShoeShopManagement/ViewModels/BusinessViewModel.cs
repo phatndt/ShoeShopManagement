@@ -43,6 +43,9 @@ namespace ShoeShopManagement.ViewModels
         private string total = "";
         public string Total { get => total; set { total = value; OnPropertyChanged(); } }
 
+        private string totalHidden = "";
+        public string TotalHidden { get => totalHidden; set { totalHidden = value; OnPropertyChanged(); } }
+
         private int idSaleBill = 0;
 
         // Product UC
@@ -194,7 +197,9 @@ namespace ShoeShopManagement.ViewModels
                 SaleBillDetail saleBillDetail = new SaleBillDetail(id, idSaleBill, idGoodDetail, 1, long.Parse(parameter.Price.Text));
                 BusinessDAL.Instance.AddSaleBillDetailToDatabase(saleBillDetail);
                 LoadBillUc(this.saleWindow);
-                this.Total = string.Format("{0:N0}", BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill)); 
+                int c = BusinessDAL.Instance.GetTotalSaleBillToDatabase(this.idSaleBill);
+                this.Total = string.Format("{0:N0}", c);
+                BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill, c);
             }
         }
         public void LoadBillUc(SaleWindow parameter)
@@ -227,7 +232,9 @@ namespace ShoeShopManagement.ViewModels
         {
             BusinessDAL.Instance.DeteleSaleBillDetailToDatabase(int.Parse(billUC.idBillDetail.Text));
             LoadBillUc(this.saleWindow);
-            this.Total = string.Format("{0:N0}", BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill));
+            int c = BusinessDAL.Instance.GetTotalSaleBillToDatabase(this.idSaleBill);
+            this.Total = string.Format("{0:N0}", c);
+            BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill, c);
         }
         public void DetailBill(BillUC billUC)
         {
@@ -244,7 +251,9 @@ namespace ShoeShopManagement.ViewModels
                 billUC.price.Text = price.ToString();
                 BusinessDAL.Instance.UpdateSaleBillDetailToDatabase(int.Parse(billUC.idBillDetail.Text), int.Parse(billUC.quantity.Text), price);
             }
-            this.Total = string.Format("{0:N0}", BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill));
+            int c = BusinessDAL.Instance.GetTotalSaleBillToDatabase(this.idSaleBill);
+            this.Total = string.Format("{0:N0}", c);
+            BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill, c);
         }
         public void SaveSaleBill(SaleWindow saleWindow)
         {
@@ -252,7 +261,9 @@ namespace ShoeShopManagement.ViewModels
             {
                 int id = BusinessDAL.Instance.GetIdCustomer(saleWindow.txtNumberCustomer.Text);
                 BusinessDAL.Instance.UpdateCustomerSaleBill(id, int.Parse(saleWindow.txtIdSaleBill.Text));
-                int total = BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(int.Parse(saleWindow.txtIdSaleBill.Text));
+
+                int c = BusinessDAL.Instance.GetTotalSaleBillToDatabase(this.idSaleBill);
+                BusinessDAL.Instance.UpdateTotalSaleBillToDatabase(this.idSaleBill, c);
                 Update(int.Parse(saleWindow.txtIdSaleBill.Text));
                 saleWindow.Close();
                 CustomMessageBox.Instance.Success("Tạo đơn hàng thành công");

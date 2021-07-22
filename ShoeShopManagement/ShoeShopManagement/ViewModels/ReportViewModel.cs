@@ -84,6 +84,16 @@ namespace ShoeShopManagement.ViewModels
         public string[] LabelsReport { get => labelsReport; set { labelsReport = value; OnPropertyChanged(); } }
 
 
+        private string totalBusiness;
+        public string TotalBusiness { get => totalBusiness; set { totalBusiness = value; OnPropertyChanged(); } }
+
+        private string totalService;
+        public string TotalService { get => totalService; set { totalService = value; OnPropertyChanged(); } }
+
+        private string totalStock;
+        public string TotalStock { get => totalStock; set { totalStock = value; OnPropertyChanged(); } }
+
+
         public ICommand LoadCommand { get; set; }
         public ICommand InitPieChartCommand { get; set; }
         public ICommand InitColumnChartCommand { get; set; }
@@ -337,64 +347,74 @@ namespace ShoeShopManagement.ViewModels
         }
         private void SelectionChangedYear(HomeWindow parameter)
         {
-            ItemSourceMonth.Clear();
-            string[] month = ReportDAL.Instance.GetMonthInDB(parameter.cboSelectYear.SelectedItem.ToString());
-            for (int i = 0; i < month.Length; i++)
+            if (parameter.cboSelectYear.SelectedItem != null)
             {
-                ItemSourceMonth.Add(month[i]);
+                ItemSourceMonth.Clear();
+                string[] month = ReportDAL.Instance.GetMonthInDB(parameter.cboSelectYear.SelectedItem.ToString());
+                for (int i = 0; i < month.Length; i++)
+                {
+                    ItemSourceMonth.Add(month[i]);
+                }
             }
         }
         private void InitColumnChartReport(HomeWindow parameter)
         {
-            AxisXTitleReport = "Ngày";
-            string selectedMonth = parameter.cboSelectMonth.SelectedItem.ToString();
-            string currentYear = parameter.cboSelectYear.SelectedItem.ToString();
-            SeriesReportCollection = new SeriesCollection
+            if (parameter.cboSelectMonth.SelectedItem != null && parameter.cboSelectYear.SelectedItem != null)
             {
+                AxisXTitleReport = "Ngày";
+                string selectedMonth = parameter.cboSelectMonth.SelectedItem.ToString();
+                string currentYear = parameter.cboSelectYear.SelectedItem.ToString();
+                SeriesReportCollection = new SeriesCollection
+                {
                 new ColumnSeries
                 {
                     Title = "Bán hàng",
                     Fill = (Brush)new BrushConverter().ConvertFrom("#FF2a9d8f"),
-                    Values = ReportDAL.Instance.GetBusinessInDB(selectedMonth, currentYear),
+                    Values = ReportDAL.Instance.QueryMoneyBusinessByMonth(selectedMonth, currentYear),
                 },
                 new ColumnSeries
                 {
                     Title = "Dịch vụ",
                     Fill = (Brush)new BrushConverter().ConvertFrom("#FFff6666"),
-                    Values = ReportDAL.Instance.GetServiceInDB(selectedMonth, currentYear),
+                    Values = ReportDAL.Instance.QueryMoneyServiceByMonth(selectedMonth, currentYear),
                 },
                 new ColumnSeries
                 {
                     Title = "Chi nhập",
                     Fill = (Brush)new BrushConverter().ConvertFrom("#FFccff66"),
-                    Values = ReportDAL.Instance.GetStockInInDB(selectedMonth, currentYear),
+                    Values = ReportDAL.Instance.QueryMoneyStockInByMonth(selectedMonth, currentYear),
                 }
-            };
-            LabelsReport = ReportDAL.Instance.GetDayInDB(selectedMonth, currentYear);
-            FormatterReport = value => string.Format("{0:N0}", value);
+                };
+                LabelsReport = ReportDAL.Instance.QueryDayInMonth(selectedMonth, currentYear);
+                FormatterReport = value => string.Format("{0:N0}", value);
+                int id = ReportDAL.Instance.GetIdReport(selectedMonth, currentYear);
+                TotalBusiness = string.Format("{0:N0}", ReportDAL.Instance.GetBusinessInDB(id));
+                TotalService = string.Format("{0:N0}", ReportDAL.Instance.GetServicesInDB(id));
+                TotalStock = string.Format("{0:N0}", ReportDAL.Instance.GetStockInDB(id));
+            }
         }
 
         public void AddReport(HomeWindow parameter)
         {
-            int id = ReportDAL.Instance.GetMaxId() + 1;
             string dt = DateTime.Now.ToString();
-            string d = DateTime.Now.Day.ToString();
             string m = DateTime.Now.Month.ToString();
             string y = DateTime.Now.Year.ToString();
-            if (ReportDAL.Instance.CheckMonthIntoDatabase(y, m, d))
+            if (ReportDAL.Instance.CheckMonthIntoDatabase(y, m))
             {
-                CustomMessageBox.Show("Đã thống kê tháng này");
+                int idDelete = ReportDAL.Instance.GetIdReport(m, y);
+                ReportDAL.Instance.DeleteReportDetail(idDelete);
+                ReportDAL.Instance.DeleteReport(m, y);
             }
-            else
-            {
-                ReportDAL.Instance.AddMonthToDatabase(id, dt);
-                int idDetailReport = ReportDAL.Instance.GetMaxIdDetailReport() + 1;
-                long a = ReportDAL.Instance.GetTotalMoneyOfBusinessInMonth(m, y);
-                long b = ReportDAL.Instance.GetTotalMoneyOfServiceInMonth(m, y);
-                long c = ReportDAL.Instance.AddStockInMonth(m, y);
-                ReportDAL.Instance.AddDetailReport(idDetailReport, id, a, b, c);
-                LoadYear(parameter);
-            }
+            int id = ReportDAL.Instance.GetMaxId() + 1;
+            ReportDAL.Instance.AddMonthToDatabase(id, dt);
+            int idDetailReport = ReportDAL.Instance.GetMaxIdDetailReport() + 1;
+            long a = ReportDAL.Instance.GetTotalMoneyOfBusinessInMonth(m, y);
+            long b = ReportDAL.Instance.GetTotalMoneyOfServiceInMonth(m, y);
+            long c = ReportDAL.Instance.AddStockInMonth(m, y);
+            ReportDAL.Instance.AddDetailReport(idDetailReport, id, a, b, c);
+            ItemSourceMonth.Clear();
+            ItemSourceYear.Clear();
+            LoadYear(parameter);
 
         }
     }

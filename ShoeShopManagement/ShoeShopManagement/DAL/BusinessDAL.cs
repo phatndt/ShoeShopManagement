@@ -628,7 +628,66 @@ namespace ShoeShopManagement.DAL
                 CloseConnection();
             }
         }
-        public int UpdateTotalSaleBillToDatabase(int idSaleBill)
+        //public int UpdateTotalSaleBillToDatabase(int idSaleBill)
+        //{
+        //    int total = 0;
+        //    try
+        //    {
+        //        OpenConnection();
+        //        string queryString = String.Format("Select Sum(DonGiaBanRa) From CHITIETPBH Where MAPBH = {0}", idSaleBill);
+        //        SqlCommand command = new SqlCommand(queryString, conn);
+        //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //        DataTable dataTable = new DataTable();
+        //        adapter.Fill(dataTable);
+        //        if (dataTable.Rows[0].ItemArray[0].ToString() != "")
+        //        {
+        //            total = int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
+
+        //            string query = String.Format("Update PHIEUBANHANG Set TongTien = '{0}' Where MaPBH = {1}", total, idSaleBill);
+        //            SqlCommand command1 = new SqlCommand(query, conn);
+
+        //        }
+        //        return total;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show("Thêm thất bại!" + e, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return 0;
+        //    }
+        //    finally
+        //    {
+        //        CloseConnection();
+        //    }
+        //}
+        public bool UpdateTotalSaleBillToDatabase(int idSaleBill, int total)
+        {
+            try
+            {
+                OpenConnection();
+                string queryString = String.Format("Update PHIEUBANHANG Set TongTien = '{0}' Where MaPBH = {1}", total, idSaleBill);
+                SqlCommand command = new SqlCommand(queryString, conn);
+
+                int rs = command.ExecuteNonQuery();
+                if (rs != 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Thêm thất bại!" + e, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public int GetTotalSaleBillToDatabase(int idSaleBill)
         {
             int total = 0;
             try
@@ -642,10 +701,6 @@ namespace ShoeShopManagement.DAL
                 if (dataTable.Rows[0].ItemArray[0].ToString() != "")
                 {
                     total = int.Parse(dataTable.Rows[0].ItemArray[0].ToString());
-
-                    string query = String.Format("Update PHIEUBANHANG Set TongTien = '{0}' Where MaPBH = {1}", total, idSaleBill);
-                    SqlCommand command1 = new SqlCommand(query, conn);
-
                 }
                 return total;
             }

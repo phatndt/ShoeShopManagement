@@ -442,6 +442,28 @@
                 FontWeight="SemiBold"
                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
                 </TextBox>
+                <TextBox
+                x:Name="txtTotalHidden"
+                materialDesign:HintAssist.Hint="Tổng tiền"
+                    Text="{Binding TotalHidden}"
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Center" 
+                Width="160" 
+                FontSize="14" 
+                BorderThickness="0" 
+                MaxLines="1"
+                Padding="0" 
+                Foreground="{StaticResource Black}" 
+                Margin="0,0,20,0" 
+                IsReadOnly="True" 
+                Height="40" 
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" 
+                SelectionBrush="{x:Null}"
+                FontWeight="SemiBold"
+                    Visibility="Hidden"
+                materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Orange1}">
+                </TextBox>
                 <Rectangle 
                     x:Name="recTotal"
                     HorizontalAlignment="Right" 
