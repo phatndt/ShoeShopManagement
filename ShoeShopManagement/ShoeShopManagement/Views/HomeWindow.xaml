@@ -317,7 +317,7 @@
                 Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource ReportVM}"
-                Visibility="Hidden">
+                Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200"/>
                     <RowDefinition/>
@@ -1352,7 +1352,7 @@
                 Background="#EFD0BF"
                 Grid.Row="1" 
                 DataContext="{StaticResource ReportVM}"
-                Visibility="Visible">
+                Visibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadYearCommand}" 

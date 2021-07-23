@@ -1133,7 +1133,6 @@ namespace ShoeShopManagement.DAL
                 OpenConnection();
                 string queryString = string.Format("Select MaThang from THANG " +
                     "where year(TenTHANG) = {0} and month(TenTHANG) = {1}", year, month);
-                MessageBox.Show(queryString);
                 SqlCommand command = new SqlCommand(queryString, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
